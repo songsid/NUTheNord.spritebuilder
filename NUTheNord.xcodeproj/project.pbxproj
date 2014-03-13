@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		1F75493018D1D8CF006E357A /* SkipIntoLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F75492F18D1D8CF006E357A /* SkipIntoLayer.m */; };
 		1F75493418D1E01F006E357A /* MainMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F75493318D1E01F006E357A /* MainMenuLayer.m */; };
-		1F75493B18D1E573006E357A /* PayerInfoLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F75493A18D1E573006E357A /* PayerInfoLayer.m */; };
 		1F75493E18D1E639006E357A /* PlayerInfoScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F75493D18D1E639006E357A /* PlayerInfoScene.m */; };
+		1F75494618D1F897006E357A /* PlayerInfoLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F75494518D1F897006E357A /* PlayerInfoLayer.m */; };
 		B71F5911188484E7003F4D28 /* iPad-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5907188484E7003F4D28 /* iPad-old.png */; };
 		B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5908188484E7003F4D28 /* iPad-old@2x.png */; };
 		B71F5913188484E7003F4D28 /* iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5909188484E7003F4D28 /* iPad.png */; };
@@ -63,10 +63,10 @@
 		1F75492F18D1D8CF006E357A /* SkipIntoLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SkipIntoLayer.m; path = Source/SkipIntoLayer.m; sourceTree = "<group>"; };
 		1F75493218D1E01F006E357A /* MainMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainMenuLayer.h; path = Source/MainMenuLayer.h; sourceTree = "<group>"; };
 		1F75493318D1E01F006E357A /* MainMenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainMenuLayer.m; path = Source/MainMenuLayer.m; sourceTree = "<group>"; };
-		1F75493918D1E573006E357A /* PayerInfoLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayerInfoLayer.h; path = Source/PayerInfoLayer.h; sourceTree = "<group>"; };
-		1F75493A18D1E573006E357A /* PayerInfoLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PayerInfoLayer.m; path = Source/PayerInfoLayer.m; sourceTree = "<group>"; };
 		1F75493C18D1E639006E357A /* PlayerInfoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerInfoScene.h; path = Source/PlayerInfoScene.h; sourceTree = "<group>"; };
 		1F75493D18D1E639006E357A /* PlayerInfoScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerInfoScene.m; path = Source/PlayerInfoScene.m; sourceTree = "<group>"; };
+		1F75494418D1F897006E357A /* PlayerInfoLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerInfoLayer.h; path = Source/PlayerInfoLayer.h; sourceTree = "<group>"; };
+		1F75494518D1F897006E357A /* PlayerInfoLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerInfoLayer.m; path = Source/PlayerInfoLayer.m; sourceTree = "<group>"; };
 		B71F5907188484E7003F4D28 /* iPad-old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old.png"; path = "Icons/iPad-old.png"; sourceTree = "<group>"; };
 		B71F5908188484E7003F4D28 /* iPad-old@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old@2x.png"; path = "Icons/iPad-old@2x.png"; sourceTree = "<group>"; };
 		B71F5909188484E7003F4D28 /* iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPad.png; path = Icons/iPad.png; sourceTree = "<group>"; };
@@ -128,8 +128,8 @@
 			children = (
 				1F75493C18D1E639006E357A /* PlayerInfoScene.h */,
 				1F75493D18D1E639006E357A /* PlayerInfoScene.m */,
-				1F75493918D1E573006E357A /* PayerInfoLayer.h */,
-				1F75493A18D1E573006E357A /* PayerInfoLayer.m */,
+				1F75494418D1F897006E357A /* PlayerInfoLayer.h */,
+				1F75494518D1F897006E357A /* PlayerInfoLayer.m */,
 			);
 			name = PlayerInfo;
 			sourceTree = "<group>";
@@ -358,9 +358,9 @@
 				1F75493418D1E01F006E357A /* MainMenuLayer.m in Sources */,
 				B737893F1807617C0076A88C /* AppDelegate.m in Sources */,
 				1F75493E18D1E639006E357A /* PlayerInfoScene.m in Sources */,
-				1F75493B18D1E573006E357A /* PayerInfoLayer.m in Sources */,
 				B7378994180767190076A88C /* MainScene.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
+				1F75494618D1F897006E357A /* PlayerInfoLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

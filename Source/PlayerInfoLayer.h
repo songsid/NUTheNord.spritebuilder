@@ -1,5 +1,5 @@
 //
-//  PayerInfoLayer.h
+//  PlayerInfoLayer.h
 //  NUTheNord
 //
 //  Created by Sid on 2014/3/13.
@@ -9,11 +9,9 @@
 
 -(void) popPlayerInfo;
 
-
 @end
-
 #import "CCNode.h"
 
-@interface PayerInfoLayer : CCNode
-@property (nonatomic,weak) id <PlayerInfoLayerDelegate> delegate;
+@interface PlayerInfoLayer : CCNode
+@property (nonatomic,weak)id <PlayerInfoLayerDelegate> delegate;
 @end
