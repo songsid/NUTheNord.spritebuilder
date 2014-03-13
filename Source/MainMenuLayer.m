@@ -21,5 +21,6 @@
 
 -(void) isLeagueScene:(id)sender
 {
+    [self.delegate pushLeagueScene];
 }
 @end

@@ -38,5 +38,8 @@
 
 -(void) pushLeagueScene
 {
+    CCScene * info = (CCScene * )[CCBReader loadAsScene:@"LeagueScene"];
+    CCTransition *trans = [CCTransition transitionPushWithDirection:1 duration:0.2f];
+    [[CCDirector sharedDirector]pushScene:info withTransition:trans];
 }
 @end
