@@ -5,6 +5,12 @@
 //  Created by Sid on 2014/3/13.
 //  Copyright (c) 2014年 Apportable. All rights reserved.
 //
+@protocol LeagueSceneDelegate <NSObject>
+
+-(void) sendLevel:(CCNode *)level;
+
+@end
+
 
 #import "CCNode.h"
 #import "LeagueLayer.h"
@@ -13,6 +19,7 @@
 {
     CCScrollView * _leagueSceneScrollView;
 }
-
--(void)popLeagueScene;
+@property (nonatomic,weak) id <LeagueSceneDelegate> delegate;
+-(void) popLeagueScene;
+-(void) pushLevel:(CCScene *)scene;
 @end

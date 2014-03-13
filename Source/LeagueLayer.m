@@ -18,4 +18,11 @@
     [self.delegate popLeagueScene];
     CCLOG(@"popleague!");
 }
+-(void) isSelectLevel_0:(id)sender
+{
+    CCNode * send = (CCNode *)[CCBReader load:@"Level_0"];
+    [self.delegate pushLevel:send];
+    
+    CCLOG(@"send level0!");
+}
 @end

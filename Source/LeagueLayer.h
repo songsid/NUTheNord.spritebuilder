@@ -8,6 +8,7 @@
 @protocol LeagueLayerDelegate <NSObject>
 
 -(void) popLeagueScene;
+-(void) pushLevel :(CCNode *) level;
 
 @end
 
