@@ -21,14 +21,29 @@
     [[NSUserDefaults standardUserDefaults] setInteger:99 forKey:@"score"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
-
--(void) skipInto
+-(void) firstTimeIntro
 {
     MainMenuLayer * menu = (MainMenuLayer *) [CCBReader load:@"MainMenuLayer"];
     menu.delegate = self;
     _mainScrollView.contentNode = menu;
     CCLOG(@"skip!!!!");
     
+}
+-(void) skipInto
+{
+    NSString *firstIntro = [[NSUserDefaults standardUserDefaults]objectForKey:@"FirstTime"];
+    
+    if (!firstIntro) {
+        FirstTimeIntroLayer * first = (FirstTimeIntroLayer *) [CCBReader load:@"FirstTimeIntroLayer"];
+        first.delegate = self;
+        _mainScrollView.contentNode = first;
+    }else{
+    
+    MainMenuLayer * menu = (MainMenuLayer *) [CCBReader load:@"MainMenuLayer"];
+    menu.delegate = self;
+    _mainScrollView.contentNode = menu;
+    CCLOG(@"skip!!!!");
+    }
     
 }
 -(void) pushPlayerInfoScene

@@ -12,11 +12,13 @@
 #import "SkipIntoLayer.h"
 
 
-@interface PlayerInfoScene : CCNode <PlayerInfoLayerDelegate>
+@interface PlayerInfoScene : CCNode
 {
     CCScrollView * _playerInfoScrollView;
+    CCScrollView * _spriteScrollView;
+    CCLabelTTF * _spriteLabel;
     
 }
 
--(void) popPlayerInfo;
+
 @end

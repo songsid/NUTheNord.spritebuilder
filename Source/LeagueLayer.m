@@ -35,6 +35,7 @@
 -(void) isSelectAreaTwo:(id)sender
 {
 
+
     _levels = [[NSArray alloc]initWithObjects:@"Level_4",@"Level_5",@"Level_6",@"Level_7", nil];
     [self.tableView reloadData];
 }
@@ -56,7 +57,7 @@
     else bg = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0 green:1 blue:0 alpha:0.5]];
  
     
-    bg.userInteractionEnabled = YES;
+    bg.userInteractionEnabled = NO;
     bg.contentSizeType = CCSizeTypeNormalized;
     bg.contentSize = CGSizeMake(1, 1);
     [cell addChild:bg];

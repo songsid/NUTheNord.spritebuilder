@@ -10,9 +10,6 @@
 
 @implementation PlayerInfoLayer
 
--(void) isPopPlayerInfoScene:(id)sender
-{
-    [self.delegate popPlayerInfo];
-}
+
 
 @end

@@ -16,6 +16,7 @@
 		1F75495018D205D1006E357A /* LevelScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F75494F18D205D1006E357A /* LevelScene.m */; };
 		1F75495418D2060F006E357A /* Level_0.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F75495318D2060F006E357A /* Level_0.m */; };
 		1F75495718D206C7006E357A /* LevelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F75495618D206C7006E357A /* LevelObject.m */; };
+		1F75498818D482A1006E357A /* FirstTimeIntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F75498718D482A1006E357A /* FirstTimeIntroLayer.m */; };
 		B71F5911188484E7003F4D28 /* iPad-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5907188484E7003F4D28 /* iPad-old.png */; };
 		B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5908188484E7003F4D28 /* iPad-old@2x.png */; };
 		B71F5913188484E7003F4D28 /* iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5909188484E7003F4D28 /* iPad.png */; };
@@ -82,6 +83,8 @@
 		1F75495318D2060F006E357A /* Level_0.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Level_0.m; path = Source/Level_0.m; sourceTree = "<group>"; };
 		1F75495518D206C7006E357A /* LevelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelObject.h; sourceTree = "<group>"; };
 		1F75495618D206C7006E357A /* LevelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelObject.m; sourceTree = "<group>"; };
+		1F75498618D482A1006E357A /* FirstTimeIntroLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FirstTimeIntroLayer.h; path = Source/FirstTimeIntroLayer.h; sourceTree = "<group>"; };
+		1F75498718D482A1006E357A /* FirstTimeIntroLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FirstTimeIntroLayer.m; path = Source/FirstTimeIntroLayer.m; sourceTree = "<group>"; };
 		B71F5907188484E7003F4D28 /* iPad-old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old.png"; path = "Icons/iPad-old.png"; sourceTree = "<group>"; };
 		B71F5908188484E7003F4D28 /* iPad-old@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old@2x.png"; path = "Icons/iPad-old@2x.png"; sourceTree = "<group>"; };
 		B71F5909188484E7003F4D28 /* iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPad.png; path = Icons/iPad.png; sourceTree = "<group>"; };
@@ -158,6 +161,8 @@
 				1F75492F18D1D8CF006E357A /* SkipIntoLayer.m */,
 				1F75493218D1E01F006E357A /* MainMenuLayer.h */,
 				1F75493318D1E01F006E357A /* MainMenuLayer.m */,
+				1F75498618D482A1006E357A /* FirstTimeIntroLayer.h */,
+				1F75498718D482A1006E357A /* FirstTimeIntroLayer.m */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -404,6 +409,7 @@
 				B737893F1807617C0076A88C /* AppDelegate.m in Sources */,
 				1F75495718D206C7006E357A /* LevelObject.m in Sources */,
 				1F75493E18D1E639006E357A /* PlayerInfoScene.m in Sources */,
+				1F75498818D482A1006E357A /* FirstTimeIntroLayer.m in Sources */,
 				B7378994180767190076A88C /* MainScene.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
 				1F75494618D1F897006E357A /* PlayerInfoLayer.m in Sources */,
