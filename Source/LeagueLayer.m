@@ -7,11 +7,83 @@
 //
 
 #import "LeagueLayer.h"
-
+#define kCCTestMenuItemHeight 30
+#define kCCUITestHeaderHeight 44
 @implementation LeagueLayer
+@synthesize tableView;
 -(void) didLoadFromCCB
 {
     self.userInteractionEnabled = TRUE;
+    tableView = [[CCTableView alloc] init];
+    tableView.contentSizeType = CCSizeTypeMake(CCSizeUnitNormalized, CCSizeUnitInsetPoints);
+    tableView.contentSize = CGSizeMake(0.3f,90.0f);
+    tableView.rowHeight = kCCTestMenuItemHeight;
+    tableView.dataSource = self;
+    tableView.anchorPoint = ccp(0, 1);
+    tableView.position = ccp(243 ,300 );
+ //   _levels = Nil;
+    [self addChild:tableView z:1];
+    
+}
+-(void) isSelectAreaOne:(id)sender
+{
+
+    _levels = [[NSArray alloc]initWithObjects:@"Level_0",@"Level_1",@"Level_2",@"Level_3", nil];
+    [self.tableView reloadData];
+}
+
+-(void) isSelectAreaTwo:(id)sender
+{
+
+    _levels = [[NSArray alloc]initWithObjects:@"Level_4",@"Level_5",@"Level_6",@"Level_7", nil];
+    [self.tableView reloadData];
+}
+
+
+-(CCTableViewCell *) tableView:(CCTableView *)tableView nodeForRowAtIndex:(NSUInteger)index
+{
+    
+    CCTableViewCell* cell = [CCTableViewCell node];
+    
+    cell.contentSizeType = CCSizeTypeMake(CCSizeUnitNormalized, CCSizeUnitUIPoints);
+    cell.contentSize = CGSizeMake(1, kSimpleTableViewRowHeight);
+    
+    // Color every other row differently
+ 
+    CCNodeColor* bg;
+ 
+    if (index % 2 != 0) bg = [CCNodeColor nodeWithColor:[CCColor colorWithRed:1 green:0 blue:0 alpha:0.5]];
+    else bg = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0 green:1 blue:0 alpha:0.5]];
+ 
+    
+    bg.userInteractionEnabled = YES;
+    bg.contentSizeType = CCSizeTypeNormalized;
+    bg.contentSize = CGSizeMake(1, 1);
+    [cell addChild:bg];
+ 
+    // Create a label with the row number
+   CCLabelTTF* lbl = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@", [self.levels objectAtIndex:index]] fontName:@"HelveticaNeue" fontSize:18 * [CCDirector sharedDirector].UIScaleFactor];
+    lbl.positionType = CCPositionTypeNormalized;
+    lbl.position = ccp(0.5f, 0.5f);
+    
+    [cell addChild:lbl];
+    //
+
+    CCButton * bt = [CCButton buttonWithTitle:[NSString stringWithFormat:@"Button %d \n測試中 \n 測試2",(int) index] fontName:@"微軟正黑體" fontSize:18 ];
+    bt.positionType = CCPositionTypeNormalized;
+    bt.position = ccp(0.0f,0.0f);
+    bt.anchorPoint = ccp(0, 0);
+    [cell addChild:bt];
+
+    
+    return cell;
+
+
+}
+
+-(NSUInteger) tableViewNumberOfRows:(CCTableView *)tableView
+{
+    return [self.levels count];
 }
 -(void) isPopLeagueScene:(id)sender
 {
@@ -25,4 +97,8 @@
     
     CCLOG(@"send level0!");
 }
+
+
+
+
 @end

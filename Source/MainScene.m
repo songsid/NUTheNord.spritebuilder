@@ -17,7 +17,9 @@
     skip.delegate = self;
     _mainScrollView.contentNode = skip;
     
-    
+    [[NSUserDefaults standardUserDefaults] setObject:@"danchen" forKey:@"username"];
+    [[NSUserDefaults standardUserDefaults] setInteger:99 forKey:@"score"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 -(void) skipInto

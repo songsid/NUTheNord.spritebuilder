@@ -15,6 +15,12 @@
     PlayerInfoLayer * infoLayer = (PlayerInfoLayer *)[CCBReader load:@"PlayerInfoLayer"];
     infoLayer.delegate = self;
     _playerInfoScrollView.contentNode = infoLayer;
+    
+    NSString *user = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+    int score = [[NSUserDefaults standardUserDefaults] integerForKey:@"score"];
+    NSLog(@"Welcome! %@\n Your current score is %d.", user, score);
+    
+    
 }
 -(void) popPlayerInfo
 {

@@ -467,7 +467,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ching-Yung Chen (VD73EEE5XZ)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -490,7 +490,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = NUTheNord;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "F3E80775-5EA0-40E6-A901-FAD3F0AB77C4";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -501,7 +501,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ching-Yung Chen (VD73EEE5XZ)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -522,7 +522,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = NUTheNord;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "F3E80775-5EA0-40E6-A901-FAD3F0AB77C4";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

@@ -13,7 +13,11 @@
 @end
 
 #import "CCNode.h"
+#define kSimpleTableViewRowHeight 24
+#define kSimpleTableViewInset 50
+@interface LeagueLayer : CCNode<CCTableViewDataSource>
 
-@interface LeagueLayer : CCNode
 @property (nonatomic,weak) id <LeagueLayerDelegate> delegate;
+@property (nonatomic,strong) NSArray * levels;
+@property (nonatomic,strong) CCTableView* tableView ;
 @end
