@@ -21,7 +21,7 @@
     tableView.dataSource = self;
     tableView.anchorPoint = ccp(0, 1);
     tableView.position = ccp(243 ,300 );
- //   _levels = Nil;
+   _levels = Nil;
     [self addChild:tableView z:1];
     
 }
@@ -48,7 +48,7 @@
     cell.contentSizeType = CCSizeTypeMake(CCSizeUnitNormalized, CCSizeUnitUIPoints);
     cell.contentSize = CGSizeMake(1, kSimpleTableViewRowHeight);
     
-    // Color every other row differently
+// Color every other row differently
  
     CCNodeColor* bg;
  
@@ -61,13 +61,15 @@
     bg.contentSize = CGSizeMake(1, 1);
     [cell addChild:bg];
  
-    // Create a label with the row number
+// Create a label with the row number
    CCLabelTTF* lbl = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@", [self.levels objectAtIndex:index]] fontName:@"HelveticaNeue" fontSize:18 * [CCDirector sharedDirector].UIScaleFactor];
     lbl.positionType = CCPositionTypeNormalized;
     lbl.position = ccp(0.5f, 0.5f);
     
     [cell addChild:lbl];
-    //
+
+
+//Create button
 
     CCButton * bt = [CCButton buttonWithTitle:[NSString stringWithFormat:@"Button %d \n測試中 \n 測試2",(int) index] fontName:@"微軟正黑體" fontSize:18 ];
     bt.positionType = CCPositionTypeNormalized;
