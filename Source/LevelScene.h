@@ -11,7 +11,8 @@
 #import "CCNode.h"
 #import "LeagueScene.h"
 #import "Level_0.h"
-@interface LevelScene : CCNode <LeagueSceneDelegate,LevelDelegate>
+#import "Level_P.h"
+@interface LevelScene : CCNode <LeagueSceneDelegate,LevelDelegate,Level_PDelegate>
 {
     CCScrollView * _levelSceneScrollView;
     

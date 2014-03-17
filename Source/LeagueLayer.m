@@ -23,6 +23,7 @@
     tableView.position = ccp(243 ,300 );
    _levels = Nil;
     [self addChild:tableView z:1];
+    CCLOG(@"didloadfromccb");
     
 }
 -(void) isSelectAreaOne:(id)sender
@@ -30,6 +31,11 @@
 
     _levels = [[NSArray alloc]initWithObjects:@"Level_0",@"Level_1",@"Level_2",@"Level_3", nil];
     [self.tableView reloadData];
+    int i;
+    for (i=0; i<_levels.count; i++) {
+        CCLOG(@"%@",_levels[i]);
+    }
+
 }
 
 -(void) isSelectAreaTwo:(id)sender
@@ -38,6 +44,11 @@
 
     _levels = [[NSArray alloc]initWithObjects:@"Level_4",@"Level_5",@"Level_6",@"Level_7", nil];
     [self.tableView reloadData];
+    int i;
+    for (i=0; i<_levels.count; i++) {
+            CCLOG(@"%@",_levels[i]);
+    }
+
 }
 
 
@@ -78,15 +89,16 @@
     bt.anchorPoint = ccp(0, 0);
     [cell addChild:bt];
 
-    
-    return cell;
+    CCLOG(@"return cell");
 
+    return cell;
 
 }
 
 -(NSUInteger) tableViewNumberOfRows:(CCTableView *)tableView
 {
     return [self.levels count];
+    CCLOG(@"return count");
 }
 -(void) isPopLeagueScene:(id)sender
 {

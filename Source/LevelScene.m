@@ -12,7 +12,7 @@
 -(void) didLoadFromCCB
 {
     self.userInteractionEnabled = TRUE;
-    Level_0 * level = (Level_0 *) [CCBReader load:@"Level_0"];
+    Level_P * level = (Level_P *) [CCBReader load:@"Level"];
     _levelSceneScrollView.contentNode = level;
     level.delegate = self;
 }
