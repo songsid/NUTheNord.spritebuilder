@@ -21,16 +21,31 @@
     tableView.dataSource = self;
     tableView.anchorPoint = ccp(0, 1);
     tableView.position = ccp(243 ,300 );
-   _levels = Nil;
+    _levels = nil;
     [self addChild:tableView z:1];
     CCLOG(@"didloadfromccb");
     
 }
+-(void) setTableView:(CCTableView *)tableViewer
+{
+//    tableViewer = [[CCTableView alloc] init];
+    tableViewer.contentSizeType = CCSizeTypeMake(CCSizeUnitNormalized, CCSizeUnitInsetPoints);
+    tableViewer.contentSize = CGSizeMake(0.3f,90.0f);
+    tableViewer.rowHeight = kCCTestMenuItemHeight;
+    tableViewer.dataSource = self;
+    tableViewer.anchorPoint = ccp(0, 1);
+    tableViewer.position = ccp(243 ,300 );
+
+    [self addChild:tableViewer z:1];
+
+}
 -(void) isSelectAreaOne:(id)sender
 {
-
-    _levels = [[NSArray alloc]initWithObjects:@"Level_0",@"Level_1",@"Level_2",@"Level_3", nil];
-    [self.tableView reloadData];
+    [self removeChild:tableView cleanup:YES];
+    _levels = [[NSArray alloc]initWithObjects:@"Level_0",@"Level_1",@"Level_2",@"Level_3",@"Level_99", nil];
+    tableView = [[CCTableView alloc]init];
+    [self setTableView:tableView];
+    //cclog test
     int i;
     for (i=0; i<_levels.count; i++) {
         CCLOG(@"%@",_levels[i]);
@@ -40,10 +55,12 @@
 
 -(void) isSelectAreaTwo:(id)sender
 {
-
+    [self removeChild:tableView cleanup:YES];
 
     _levels = [[NSArray alloc]initWithObjects:@"Level_4",@"Level_5",@"Level_6",@"Level_7", nil];
-    [self.tableView reloadData];
+    tableView = [[CCTableView alloc]init];
+    [self setTableView:tableView];
+    //cclog test
     int i;
     for (i=0; i<_levels.count; i++) {
             CCLOG(@"%@",_levels[i]);
@@ -64,8 +81,8 @@
  
     CCNodeColor* bg;
  
-    if (index % 2 != 0) bg = [CCNodeColor nodeWithColor:[CCColor colorWithRed:1 green:0 blue:0 alpha:0.5]];
-    else bg = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0 green:1 blue:0 alpha:0.5]];
+    if (index % 2 != 0) bg = [CCNodeColor nodeWithColor:[CCColor colorWithRed:1 green:0 blue:0 alpha:1]];
+    else bg = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0 green:1 blue:0 alpha:1]];
  
     
     bg.userInteractionEnabled = NO;
@@ -97,9 +114,16 @@
 
 -(NSUInteger) tableViewNumberOfRows:(CCTableView *)tableView
 {
+    CCLOG(@"return count: %d",[self.levels count]);
     return [self.levels count];
-    CCLOG(@"return count");
 }
+
+- (float) tableView:(CCTableView*)tableView heightForRowAtIndex:(NSUInteger) index{
+    return kCCTestMenuItemHeight;
+}
+
+
+
 -(void) isPopLeagueScene:(id)sender
 {
     [self.delegate popLeagueScene];

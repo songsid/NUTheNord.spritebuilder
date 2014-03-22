@@ -28,7 +28,7 @@
     
     
     
-    _player.position = ccp(_player.position.x + 50*delta, _player.position.y);
+    _player.position = ccp(_player.position.x + 70*delta, _player.position.y);
     //CCLOG(@"\nposition = %f, %hhd",_player.position.y,enableJump);
     float xTarget = 80 - _player.position.x;
     CGPoint oldLayerPosition = self.position;
@@ -40,7 +40,7 @@
     
     
     ///EndGame/////////////////////////////////////////////////////////////
-    if(_player.position.x > 2000)
+    if((_player.position.x > 2000 )||(_player.position.y<0))
     {
         [self.delegate popLevelScene];
         CCLOG(@"gameover!!!");
@@ -51,7 +51,7 @@
 {
     if (enableJump)
     {
-        [_player.physicsBody applyImpulse:ccp(0, 2000.f)];
+        [_player.physicsBody applyImpulse:ccp(0, 1400.f)];
     }
 }
 -(void)attack

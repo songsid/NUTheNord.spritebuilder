@@ -12,11 +12,13 @@
 #import "LeagueScene.h"
 #import "Level_0.h"
 #import "Level_P.h"
-@interface LevelScene : CCNode <LeagueSceneDelegate,LevelDelegate,Level_PDelegate>
+#import "Level_1.h"
+@interface LevelScene : CCNode <LeagueSceneDelegate,LevelDelegate,Level_PDelegate,Level_1Delegate>
 {
     CCScrollView * _levelSceneScrollView;
-    
+   
 }
+@property (nonatomic,strong) CCNode * currentLevel;
 
 -(void) sendLevel:(CCNode *)level;
 -(void) popLevelScene;

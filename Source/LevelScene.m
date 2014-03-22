@@ -12,8 +12,9 @@
 -(void) didLoadFromCCB
 {
     self.userInteractionEnabled = TRUE;
-    Level_P * level = (Level_P *) [CCBReader load:@"Level"];
+    Level_1 * level = (Level_1 *) [CCBReader load:@"Level_1"];
     _levelSceneScrollView.contentNode = level;
+    self.currentLevel = level;
     level.delegate = self;
 }
 -(void) sendLevel:(CCNode *)level
@@ -26,5 +27,15 @@
 {
     CCTransition * trans = [CCTransition transitionFadeWithDuration:1.0f];
     [[CCDirector sharedDirector ]popSceneWithTransition:trans];
+}
+
+-(void) isAttack:(id)sender
+{
+
+    Level_1 * level1 = (Level_1 *) self.currentLevel;
+
+    [level1 attack];
+    
+    CCLOG(@"attack");
 }
 @end

@@ -104,7 +104,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>MainMenuLayer.ccb</string>
+						<string>SkipIntoLayer.ccb</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -139,6 +139,8 @@
 						<false/>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
