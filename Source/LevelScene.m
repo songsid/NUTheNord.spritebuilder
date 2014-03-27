@@ -16,6 +16,25 @@
     _levelSceneScrollView.contentNode = level;
     self.currentLevel = level;
     level.delegate = self;
+ 
+    switch ([[NSUserDefaults standardUserDefaults] integerForKey:@"Spirit"]) {
+        case 0:
+            _skillOne.visible = NO;
+            _skillTwo.visible = NO;
+            break;
+        case 1:
+            _skillOne.visible = YES;
+            _skillTwo.visible = NO;
+            break;
+        case 2:
+            _skillOne.visible = NO;
+            _skillTwo.visible = YES;
+            break;
+            
+        default:
+            break;
+    }
+    
 }
 -(void) sendLevel:(CCNode *)level
 {

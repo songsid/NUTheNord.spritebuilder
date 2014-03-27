@@ -26,13 +26,13 @@
 		<array>
 			<dict>
 				<key>baseClass</key>
-				<string>CCNodeGradient</string>
+				<string>CCNodeColor</string>
 				<key>children</key>
 				<array/>
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCNodeGradient</string>
+				<string>CCNodeColor</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -54,8 +54,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>240</real>
+							<real>320</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -68,7 +68,7 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>480</real>
+							<real>200</real>
 							<real>320</real>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -82,7 +82,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -100,42 +100,39 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>startColor</string>
+						<string>color</string>
 						<key>type</key>
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<real>0.97243058681488037</real>
 							<real>1</real>
-							<real>0.91406500339508057</real>
+							<real>0.9743034839630127</real>
+							<real>0.9465644359588623</real>
 							<real>1</real>
 						</array>
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>endColor</string>
+						<string>opacity</string>
 						<key>type</key>
-						<string>Color3</string>
+						<string>Float</string>
 						<key>value</key>
-						<array>
-							<real>0.98898810148239136</real>
-							<real>1</real>
-							<real>0.92825907468795776</real>
-							<real>1</real>
-						</array>
+						<real>1</real>
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>vector</string>
+						<string>blendFunc</string>
 						<key>type</key>
-						<string>Point</string>
+						<string>Blendmode</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>-1</real>
+							<integer>770</integer>
+							<integer>771</integer>
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>

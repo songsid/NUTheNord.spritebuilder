@@ -25,6 +25,7 @@
     [self addChild:tableView z:1];
     CCLOG(@"didloadfromccb");
     
+    
 }
 -(void) setTableView:(CCTableView *)tableViewer
 {
@@ -44,7 +45,9 @@
     [self removeChild:tableView cleanup:YES];
     _levels = [[NSArray alloc]initWithObjects:@"Level_0",@"Level_1",@"Level_2",@"Level_3",@"Level_99", nil];
     tableView = [[CCTableView alloc]init];
+    tableView.dataSource = self;
     [self setTableView:tableView];
+
     //cclog test
     int i;
     for (i=0; i<_levels.count; i++) {
@@ -59,7 +62,10 @@
 
     _levels = [[NSArray alloc]initWithObjects:@"Level_4",@"Level_5",@"Level_6",@"Level_7", nil];
     tableView = [[CCTableView alloc]init];
+    tableView.dataSource = self;
     [self setTableView:tableView];
+
+    
     //cclog test
     int i;
     for (i=0; i<_levels.count; i++) {
@@ -73,7 +79,7 @@
 {
     
     CCTableViewCell* cell = [CCTableViewCell node];
-    
+    cell.userInteractionEnabled = YES;
     cell.contentSizeType = CCSizeTypeMake(CCSizeUnitNormalized, CCSizeUnitUIPoints);
     cell.contentSize = CGSizeMake(1, kSimpleTableViewRowHeight);
     
@@ -81,11 +87,12 @@
  
     CCNodeColor* bg;
  
-    if (index % 2 != 0) bg = [CCNodeColor nodeWithColor:[CCColor colorWithRed:1 green:0 blue:0 alpha:1]];
-    else bg = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0 green:1 blue:0 alpha:1]];
+ //   if (index % 2 != 0) bg = [CCNodeColor nodeWithColor:[CCColor colorWithRed:1 green:0 blue:0 alpha:1]];
+ //   else
+        bg = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.3 green:0.4 blue:0.5 alpha:1]];
  
     
-    bg.userInteractionEnabled = NO;
+    bg.userInteractionEnabled = YES;
     bg.contentSizeType = CCSizeTypeNormalized;
     bg.contentSize = CGSizeMake(1, 1);
     [cell addChild:bg];
@@ -96,16 +103,16 @@
     lbl.position = ccp(0.5f, 0.5f);
     
     [cell addChild:lbl];
-
+    
 
 //Create button
 
-    CCButton * bt = [CCButton buttonWithTitle:[NSString stringWithFormat:@"Button %d \n測試中 \n 測試2",(int) index] fontName:@"微軟正黑體" fontSize:18 ];
+    CCButton * bt = [CCButton buttonWithTitle:[NSString stringWithFormat:@"%d",(int) index] fontName:@"微軟正黑體" fontSize:18 ];
     bt.positionType = CCPositionTypeNormalized;
     bt.position = ccp(0.0f,0.0f);
     bt.anchorPoint = ccp(0, 0);
     [cell addChild:bt];
-
+    
     CCLOG(@"return cell");
 
     return cell;
@@ -134,10 +141,22 @@
     CCNode * send = (CCNode *)[CCBReader load:@"Level_0"];
     [self.delegate pushLevel:send];
     
+    
     CCLOG(@"send level0!");
 }
 
+-(void) touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    if ([event isEqual:tableView ] ) {
+        CCLOG(@"%@",tableView);
+    }
+    CCLOG(@"touchend");
+}
 
+-(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    CCLOG(@"touchBegin");
+}
 
 
 @end

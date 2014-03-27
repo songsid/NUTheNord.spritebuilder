@@ -22,6 +22,9 @@
     _spriteLabel.anchorPoint = ccp(0,1);
     _spriteLabel.position =ccp(140, 301);
     _spriteLabel.string = [NSString stringWithFormat:@"fdfsaweraef"];
+    
+
+
 }
 -(void) popPlayerInfoScene:(id)sender
 {
@@ -56,7 +59,30 @@
         
 }
 
-
+-(void) isPlayer : (id) sender
+{
+    switch (_spriteScrollView.horizontalPage) {
+        case 0:
+            [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"Spirit"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            break;
+            
+        case 1:
+            [[NSUserDefaults standardUserDefaults] setInteger:1  forKey:@"Spirit"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            break;
+            
+        case 2:
+            [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:@"Spirit"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            break;
+            
+        default:
+            break;
+    }
+    CCTransition * trans = [CCTransition transitionFadeWithDuration:0.2f];
+    [[CCDirector sharedDirector]popSceneWithTransition:trans];
+}
 
 
 @end

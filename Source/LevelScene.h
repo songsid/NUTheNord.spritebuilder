@@ -16,7 +16,8 @@
 @interface LevelScene : CCNode <LeagueSceneDelegate,LevelDelegate,Level_PDelegate,Level_1Delegate>
 {
     CCScrollView * _levelSceneScrollView;
-   
+    CCNode * _skillOne;
+    CCNode * _skillTwo;
 }
 @property (nonatomic,strong) CCNode * currentLevel;
 

@@ -19,12 +19,17 @@
     _player.position = ccp(20, 60);
     _player.anchorPoint = ccp(0.5f,0.5f);
     [_physicsNode addChild:_player];
-##
-    /*
-    enemy * _enemy = [[enemy alloc]init];
+    _player.physicsBody.collisionType = @"Player";
+
+    
+    
+    _enemy = [CCBReader load:@"enemy"];
+    _enemy.physicsBody.collisionType = @"enemy";
     _enemy.position = ccp(532, 43);
     [_physicsNode addChild:_enemy];
-    CCLOG(@"%@",_enemy.physicsBody.collisionType);*/
+
+    
+    CCLOG(@"%@",_enemy.physicsBody.collisionType);
 }
 
 -(void) update:(CCTime)delta
@@ -73,7 +78,8 @@
 -(void)attack
 {
     CCLOG(@"attack");
-##
+    
+//##
  /*   Bana * banana = [[Bana alloc]init];
     
     banana.position =ccp(_player.position.x+50, _player.position.y+50);
@@ -81,21 +87,20 @@
     [_physicsNode addChild:banana];
     [banana.physicsBody applyImpulse:ccp(300.0f, 0.0f)];
 */
- /*   _attack = [CCBReader load:@"bana"];
+    _attack = [CCBReader load:@"bana"];
     _attack.position = ccp(_player.position.x+50, _player.position.y+50);
     _attack.anchorPoint = ccp(0.5f,0.5f);
     [_physicsNode addChild:_attack];
 
     [_attack.physicsBody applyImpulse:ccp(300.0f, 0.f)];
     _attack.physicsBody.collisionType = @"Bana";
-*/
+
 }
 
-
--(BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair Bana:(Bana *)nodeA Enemy:(enemy *)nodeB
+-(BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair Bana:(CCNode *)nodeA enemy:(CCNode *)nodeB
 {
-    nodeA.visible = NO;
-    nodeB.visible = NO;
+    [nodeA removeFromParentAndCleanup:YES];
+    [nodeB removeFromParentAndCleanup:YES];
     CCLOG(@"colision!!!!");
     return YES;
 }

@@ -12,7 +12,11 @@
 -(void) didLoadFromCCB
 {
     self.userInteractionEnabled = YES;
+    //first time key
     [[NSUserDefaults standardUserDefaults] setObject:@"Intro"  forKey:@"FirstTime" ];
+    //spirit default
+    [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"Spirit"];
+
     [[NSUserDefaults standardUserDefaults] synchronize];
 
     _talk.anchorPoint = ccp(0.5, 0.5);

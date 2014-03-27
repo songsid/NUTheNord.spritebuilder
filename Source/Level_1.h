@@ -24,6 +24,7 @@
     CCNode * _attack;
     CCNode * _endPosition;
     CCNode * _boss;
+    CCNode * _enemy;
 
 
     BOOL enableJump;
