@@ -300,9 +300,9 @@
 						<key>displayName</key>
 						<string>road_0</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>_road</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>physicsBody</key>
 						<dict>
 							<key>affectedByGravity</key>
@@ -398,9 +398,9 @@
 						<key>displayName</key>
 						<string>ground</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>_road</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>physicsBody</key>
 						<dict>
 							<key>affectedByGravity</key>
@@ -512,6 +512,8 @@
 								</array>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -523,9 +525,9 @@
 						<key>displayName</key>
 						<string>dart</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>_road</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -583,9 +585,9 @@
 						<key>displayName</key>
 						<string>road_0</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>_road</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>physicsBody</key>
 						<dict>
 							<key>affectedByGravity</key>
@@ -681,9 +683,9 @@
 						<key>displayName</key>
 						<string>road_0</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>_road</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>physicsBody</key>
 						<dict>
 							<key>affectedByGravity</key>
@@ -779,9 +781,9 @@
 						<key>displayName</key>
 						<string>road_0</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>_road</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>physicsBody</key>
 						<dict>
 							<key>affectedByGravity</key>
@@ -877,9 +879,9 @@
 						<key>displayName</key>
 						<string>road_0</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>_road</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>physicsBody</key>
 						<dict>
 							<key>affectedByGravity</key>
@@ -975,9 +977,9 @@
 						<key>displayName</key>
 						<string>way</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>_road</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>physicsBody</key>
 						<dict>
 							<key>affectedByGravity</key>
@@ -1073,9 +1075,9 @@
 						<key>displayName</key>
 						<string>way</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>_road</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>physicsBody</key>
 						<dict>
 							<key>affectedByGravity</key>
@@ -1101,16 +1103,16 @@
 									<real>0.0</real>
 								</array>
 								<array>
+									<real>65.05078125</real>
 									<real>0.0</real>
+								</array>
+								<array>
+									<real>65.05078125</real>
 									<real>32</real>
 								</array>
 								<array>
-									<real>32</real>
-									<real>32</real>
-								</array>
-								<array>
-									<real>32</real>
 									<real>0.0</real>
+									<real>32</real>
 								</array>
 							</array>
 						</dict>
@@ -1171,9 +1173,9 @@
 						<key>displayName</key>
 						<string>way</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>_road</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>physicsBody</key>
 						<dict>
 							<key>affectedByGravity</key>
@@ -1269,9 +1271,9 @@
 						<key>displayName</key>
 						<string>way</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>_road</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>physicsBody</key>
 						<dict>
 							<key>affectedByGravity</key>
@@ -1367,9 +1369,9 @@
 						<key>displayName</key>
 						<string>way</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>_road</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>physicsBody</key>
 						<dict>
 							<key>affectedByGravity</key>
@@ -1465,9 +1467,9 @@
 						<key>displayName</key>
 						<string>road_0</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>_road</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>physicsBody</key>
 						<dict>
 							<key>affectedByGravity</key>
@@ -1563,9 +1565,9 @@
 						<key>displayName</key>
 						<string>CCBFile</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>_road</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>physicsBody</key>
 						<dict>
 							<key>affectedByGravity</key>
@@ -1661,9 +1663,9 @@
 						<key>displayName</key>
 						<string>CCBFile</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>_road</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>physicsBody</key>
 						<dict>
 							<key>affectedByGravity</key>
@@ -1759,9 +1761,9 @@
 						<key>displayName</key>
 						<string>ground</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>_road</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>physicsBody</key>
 						<dict>
 							<key>affectedByGravity</key>
@@ -1884,9 +1886,9 @@
 						<key>displayName</key>
 						<string>road_0</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>_road</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>physicsBody</key>
 						<dict>
 							<key>affectedByGravity</key>
@@ -1982,9 +1984,9 @@
 						<key>displayName</key>
 						<string>dart</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>_road</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>physicsBody</key>
 						<dict>
 							<key>affectedByGravity</key>
@@ -2080,9 +2082,9 @@
 						<key>displayName</key>
 						<string>ground</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>_road</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>physicsBody</key>
 						<dict>
 							<key>affectedByGravity</key>
@@ -2205,9 +2207,9 @@
 						<key>displayName</key>
 						<string>dart</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>_road</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>physicsBody</key>
 						<dict>
 							<key>affectedByGravity</key>

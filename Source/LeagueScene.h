@@ -7,7 +7,8 @@
 //
 @protocol LeagueSceneDelegate <NSObject>
 
--(void) sendLevel:(CCNode *)level;
+
+
 
 @end
 
@@ -15,11 +16,15 @@
 #import "CCNode.h"
 #import "LeagueLayer.h"
 
-@interface LeagueScene : CCNode<LeagueLayerDelegate>
+@interface LeagueScene : CCNode<LeagueLayerDelegate,CCAlertviewDelegate>
 {
     CCScrollView * _leagueSceneScrollView;
+    
 }
 @property (nonatomic,weak) id <LeagueSceneDelegate> delegate;
+
 -(void) popLeagueScene;
--(void) pushLevel:(CCScene *)scene;
+-(void) pushLevel;
+-(void) intoLevelOrNot;
+-(void) controlSlide:(int)slide;
 @end

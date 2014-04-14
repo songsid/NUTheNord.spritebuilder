@@ -22,14 +22,25 @@
     tableView.anchorPoint = ccp(0, 1);
     tableView.position = ccp(243 ,300 );
     _levels = nil;
+    _levelNum = 0;
     [self addChild:tableView z:1];
+
+    [self setBlockButton:YES];
+    
     CCLOG(@"didloadfromccb");
+  /*  _isSelectLevel0.block = ^(id sender)
+    {
+        
+        CCLOG(@"block");
+    };*/
     
-    
+    //
+    slide = 1;
+    [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"SelectLevel"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 -(void) setTableView:(CCTableView *)tableViewer
 {
-//    tableViewer = [[CCTableView alloc] init];
     tableViewer.contentSizeType = CCSizeTypeMake(CCSizeUnitNormalized, CCSizeUnitInsetPoints);
     tableViewer.contentSize = CGSizeMake(0.3f,90.0f);
     tableViewer.rowHeight = kCCTestMenuItemHeight;
@@ -42,18 +53,22 @@
 }
 -(void) isSelectAreaOne:(id)sender
 {
-    [self removeChild:tableView cleanup:YES];
+    /*[self removeChild:tableView cleanup:YES];
     _levels = [[NSArray alloc]initWithObjects:@"Level_0",@"Level_1",@"Level_2",@"Level_3",@"Level_99", nil];
+    _levelNum = 10;
     tableView = [[CCTableView alloc]init];
     tableView.dataSource = self;
     [self setTableView:tableView];
-
+    
     //cclog test
     int i;
     for (i=0; i<_levels.count; i++) {
         CCLOG(@"%@",_levels[i]);
     }
-
+     */
+    
+    [self.delegate controlSlide:slide];
+    slide = slide +1;
 }
 
 -(void) isSelectAreaTwo:(id)sender
@@ -61,6 +76,7 @@
     [self removeChild:tableView cleanup:YES];
 
     _levels = [[NSArray alloc]initWithObjects:@"Level_4",@"Level_5",@"Level_6",@"Level_7", nil];
+    _levelNum =20 ;
     tableView = [[CCTableView alloc]init];
     tableView.dataSource = self;
     [self setTableView:tableView];
@@ -111,6 +127,44 @@
     bt.positionType = CCPositionTypeNormalized;
     bt.position = ccp(0.0f,0.0f);
     bt.anchorPoint = ccp(0, 0);
+    [self setTableInt:index];
+ //   [bt setTarget:self selector:@selector(tableButton:)];
+    switch (_tableInt) {
+        case 11:
+            [bt setTarget:self selector:@selector(tableButton11:)];
+            break;
+        case 12:
+            [bt setTarget:self selector:@selector(tableButton12:)];
+            break;
+        case 13:
+            [bt setTarget:self selector:@selector(tableButton13:)];
+            break;
+        case 14:
+            [bt setTarget:self selector:@selector(tableButton14:)];
+            break;
+        case 15:
+            [bt setTarget:self selector:@selector(tableButton15:)];
+            break;
+        case 21:
+            [bt setTarget:self selector:@selector(tableButton21:)];
+            break;
+        case 22:
+            [bt setTarget:self selector:@selector(tableButton22:)];
+            break;
+        case 23:
+            [bt setTarget:self selector:@selector(tableButton23:)];
+            break;
+        case 24:
+            [bt setTarget:self selector:@selector(tableButton24:)];
+            break;
+        default:
+            break;
+    }
+    
+    
+    
+    
+
     [cell addChild:bt];
     
     CCLOG(@"return cell");
@@ -129,27 +183,51 @@
     return kCCTestMenuItemHeight;
 }
 
+-(void) appearAlertView
+{
+    [self scheduleBlock:^(CCTimer *timer){
+        CCAlertView *av = [[CCAlertView alloc] initWithTitle:@"Alert" message:@"CCAlertView" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitle:@"OK"];
+        [av showAV];
+        CCLOG(@"self scheduleblock");
+    } delay:0.0f];
+    //BLOCK BUTTONS!
+    [self setBlockButton:NO];
 
+}
 
--(void) isPopLeagueScene:(id)sender
+-(void) isPopLeagueScene:(id)sender // XXbutton
 {
     [self.delegate popLeagueScene];
     CCLOG(@"popleague!");
 }
--(void) isSelectLevel_0:(id)sender
+
+
+-(void) isLevel_0First:(id) sender
 {
-    CCNode * send = (CCNode *)[CCBReader load:@"Level_0"];
-    [self.delegate pushLevel:send];
     
+    [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"SwitchLevel"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self appearAlertView];
+
+
+}
+
+
+
+
+-(void) isSelectLevel_0:(id)sender //level_0 button
+{
+    [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"SwitchLevel"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self appearAlertView];
+
     
     CCLOG(@"send level0!");
 }
 
 -(void) touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    if ([event isEqual:tableView ] ) {
-        CCLOG(@"%@",tableView);
-    }
+
     CCLOG(@"touchend");
 }
 
@@ -158,5 +236,99 @@
     CCLOG(@"touchBegin");
 }
 
+-(void) setTableInt:(int)tableInt
+{
+    tableInt = tableInt + _levelNum;
+    _tableInt = tableInt;
+    return ;
+}
 
+
+//set the Ok and Cancel of CCAlertView
+- (void) CCAlertView:(CCNode *)alertView indexSelected:(int)index {
+    if (index == 0) {
+        CCLOG(@"CANCEL Pressed");
+        [self setBlockButton:YES];
+
+
+    }else if (index == 1) {
+        CCLOG(@"OK Pressed");
+        [self setBlockButton:YES];
+        [self scheduleBlock:^(CCTimer * timer){
+            [self.delegate pushLevel];
+            CCLOG(@"afterSureIntoLevel : %@",_sendLevel);
+        } delay:0.1f];
+        
+    }
+}
+-(void) setBlockButton:(BOOL)blockButton
+{
+    _isPopLeagueScene.enabled = blockButton;
+    _isSelectAreaOne.enabled = blockButton;
+    _isSelectAreaTwo.enabled = blockButton;
+    _isSelectLevel0.enabled = blockButton;
+    return;
+}
+
+
+//
+// tableButtonset
+//
+
+-(void) tableButton:(id)sender
+{
+    CCLOG(@"table button!!");
+}
+
+//
+//  11~
+//
+
+-(void) tableButton11:(id)sender
+{
+    CCLOG(@"table button11!!");
+}
+-(void) tableButton12:(id)sender
+{
+    CCLOG(@"table button12!!");
+}
+-(void) tableButton13:(id)sender
+{
+    CCLOG(@"table button13!!");
+}
+-(void) tableButton14:(id)sender
+{
+    CCLOG(@"table button14!!");
+}
+-(void) tableButton15:(id)sender
+{
+    CCLOG(@"table button15!!");
+}
+
+//
+//  21~
+//
+
+-(void) tableButton21:(id)sender
+{
+    CCLOG(@"table button21!!");
+}
+-(void) tableButton22:(id)sender
+{
+    CCLOG(@"table button22!!");
+}
+-(void) tableButton23:(id)sender
+{
+    CCLOG(@"table button23!!");
+}
+-(void) tableButton24:(id)sender
+{
+    CCLOG(@"table button24!!");
+}
+
+//  31~
+//
+-(void) sendLevel:(CCNode *)level
+{}
+//
 @end

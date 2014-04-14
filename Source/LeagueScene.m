@@ -11,10 +11,15 @@
 @implementation LeagueScene
 -(void) didLoadFromCCB
 {
+    
     self.userInteractionEnabled = TRUE;
     LeagueLayer * league = (LeagueLayer *) [CCBReader load:@"LeagueLayer"];
     league.delegate = self;
     _leagueSceneScrollView.contentNode = league;
+    
+    //
+    
+    
 }
 
 -(void) popLeagueScene
@@ -23,13 +28,31 @@
     [[CCDirector sharedDirector]popSceneWithTransition:trans];
     CCLOG(@"popleague!!!!!");
 }
--(void) pushLevel :(CCNode *) level
+-(void) pushLevel
 {
-    
     CCScene * scene = (CCScene * )[CCBReader loadAsScene:@"LevelScene"];
     CCTransition *trans = [CCTransition transitionPushWithDirection:1 duration:0.2f];
     [[CCDirector sharedDirector]pushScene:scene withTransition:trans];
-    [self.delegate sendLevel:level];
-        CCLOG(@"pass level_0!! ");
+
 }
+-(void) intoLevelOrNot
+{
+    
+}
+
+-(void) controlSlide:(int)slide
+{
+    
+    
+    if (slide%2) {
+        [self.userObject runAnimationsForSequenceNamed:@"Slide"];
+    }else{
+        [self.userObject runAnimationsForSequenceNamed:@"BackSlide"];
+    }
+}
+/////////
+-(id) initWithTitle:(NSString*)title message:(NSString *)message delegate:(id)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitle:(NSString *)otherButtonTitle{return 0;}
+-(void) showAV{}
+-(void) CCAlertView:(CCNode *)alertView indexSelected:(int)index{}
+////////
 @end

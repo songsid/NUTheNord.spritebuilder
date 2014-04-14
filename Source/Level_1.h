@@ -11,12 +11,10 @@
 
 @end
 
-
 #import "CCNode.h"
 #import "LevelScene.h"
 #import "Player.h"
-#import "enemy.h"
-#import "Bana.h"
+
 @interface Level_1 : CCNode <CCPhysicsCollisionDelegate>
 {
     CCPhysicsNode * _physicsNode;
@@ -25,7 +23,8 @@
     CCNode * _endPosition;
     CCNode * _boss;
     CCNode * _enemy;
-
+    CCNode * _road;
+    CCNode * _sword;
 
     BOOL enableJump;
 }

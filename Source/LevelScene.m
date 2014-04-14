@@ -12,11 +12,26 @@
 -(void) didLoadFromCCB
 {
     self.userInteractionEnabled = TRUE;
-    Level_1 * level = (Level_1 *) [CCBReader load:@"Level_1"];
-    _levelSceneScrollView.contentNode = level;
-    self.currentLevel = level;
-    level.delegate = self;
- 
+    int switchLevel = [[NSUserDefaults standardUserDefaults]integerForKey:@"SwitchLevel"];
+        switch (switchLevel) {
+        case 0:
+                [self switchLevel_0First];
+            break;
+        case 1:
+                [self switchLevel_1];
+            break;
+        case 2:
+            
+            break;
+        case 3:
+            
+            break;
+        default:
+            break;
+        }
+
+    _entered = YES;
+    
     switch ([[NSUserDefaults standardUserDefaults] integerForKey:@"Spirit"]) {
         case 0:
             _skillOne.visible = NO;
@@ -34,12 +49,31 @@
         default:
             break;
     }
-    
+    info = (HPMPInfo *)[CCBReader load:@"HPMPInfo"];
+    info.anchorPoint = ccp(0,0);
+    info.position = ccp(7.0f, 266.0f);
+    self.HPMP = info;
+    [self addChild:info];
+}
+-(void) switchLevel_0First
+{
+    Level_0First * level = (Level_0First *)[CCBReader load:@"Level_0First"];
+    _levelSceneScrollView.contentNode = level;
+    self.currentLevel = level;
+    level.delegate = self;
+}
+-(void) switchLevel_1
+{
+    Level_1 * level = (Level_1 *)[CCBReader load:@"Level_1"];
+    _levelSceneScrollView.contentNode = level;
+    self.currentLevel = level;
+    level.delegate = self;
 }
 -(void) sendLevel:(CCNode *)level
 {
-    _levelSceneScrollView.contentNode = level;
-        CCLOG(@"pass level_0!!!!!!!");
+    
+        _levelSceneScrollView.contentNode = level;
+        CCLOG(@"get send Level : %@",level);
 }
 
 -(void) popLevelScene
@@ -48,13 +82,34 @@
     [[CCDirector sharedDirector ]popSceneWithTransition:trans];
 }
 
+
+
 -(void) isAttack:(id)sender
 {
-
+    if([[NSString stringWithFormat:@"%@",_currentLevel.class]isEqualToString:@"Level_0First"])
+    {
+        CCLOG(@"is Equal to Level_0First");
+    }
+    if (info.MP>=1) {
     Level_1 * level1 = (Level_1 *) self.currentLevel;
 
     [level1 attack];
-    
-    CCLOG(@"attack");
+        [self transMpDecrease:1];
+    }
+    CCLOG(@"attack %@",_currentLevel.class);
 }
+-(void) transHpDecrease :(int) damage
+{
+    [info hpDecrease:damage];
+}
+-(void) transHpIncrease :(int) plus{}
+-(void) transMpDecrease :(int) count
+{
+    [info mpDecrease:1];
+}
+-(void) transMpIncrease :(int) destance
+{
+    [info mpIncrease:destance];
+}
+
 @end
