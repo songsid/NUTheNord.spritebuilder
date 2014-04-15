@@ -88,9 +88,9 @@
     [_player.userObject runAnimationsForSequenceNamed:@"Attack"];
     CCLOG(@"%@",[_player.userObject runningSequenceName]);
     [self scheduleBlock:^(CCTimer *timer){
-    CCNode * slamCCP = [CCBReader load:@"SlamCCP"];
-    slamCCP.position = ccp(_player.position.x+39,_player.position.y);
-    [self addChild:slamCCP];
+        CCNode * slamCCP = [CCBReader load:@"SlamCCP"];
+        slamCCP.position = ccp(_player.position.x+39,_player.position.y);
+        [self addChild:slamCCP];
     }delay:0.2f];
 //##
  /*   Bana * banana = [[Bana alloc]init];

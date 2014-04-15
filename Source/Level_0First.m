@@ -16,7 +16,7 @@
     _physicsNode.collisionDelegate = self; //set collisionDelegate
     
     
-    _player = (CCNode *) [CCBReader load:@"Player"];
+    _player = (CCNode *) [CCBReader load:@"PlayerSaber"];
     _player.position = ccp(20, 90);
     _player.anchorPoint = ccp(0.5f,0.5f);
     [_physicsNode addChild:_player];
@@ -27,9 +27,34 @@
     _enemy.physicsBody.collisionType = @"enemy";
     _enemy.position = ccp(532, 43);
     [_physicsNode addChild:_enemy];
+  
     
+    _enemy = [CCBReader load:@"enemy"];
+    _enemy.physicsBody.collisionType = @"enemy";
+    _enemy.position = ccp(700, 43);
+    [_physicsNode addChild:_enemy];
     mpDistance = 0.0f;
     
+    _enemy = [CCBReader load:@"enemy"];
+    _enemy.physicsBody.collisionType = @"enemy";
+    _enemy.position = ccp(850, 43);
+    [_physicsNode addChild:_enemy];
+    
+    
+    _enemy = [CCBReader load:@"enemy"];
+    _enemy.physicsBody.collisionType = @"enemy";
+    _enemy.position = ccp(990, 43);
+    [_physicsNode addChild:_enemy];
+    
+    _enemy = [CCBReader load:@"enemy"];
+    _enemy.physicsBody.collisionType = @"enemy";
+    _enemy.position = ccp(1080, 43);
+    [_physicsNode addChild:_enemy];
+    
+    _enemy = [CCBReader load:@"enemy"];
+    _enemy.physicsBody.collisionType = @"enemy";
+    _enemy.position = ccp(1300, 43);
+    [_physicsNode addChild:_enemy];
     CCLOG(@"this is levelFirst!!");
 }
 
@@ -66,12 +91,16 @@
         mpDistance = 0.0f;
     }
     
-    
+
     ///EndGame/////////////////////////////////////////////////////////////
     if((_player.position.x > 3060 )||(_player.position.y<0))
     {
         [self.delegate popLevelScene];
         CCLOG(@"gameover!!!");
+    }
+    ///HP=0 Endgame
+    if ([self.delegate getHp]<=0) {
+        [self.delegate popLevelScene];
     }
     
 }
@@ -96,6 +125,10 @@
         CCNode * slamCCP = [CCBReader load:@"SlamCCP"];
         slamCCP.position = ccp(_player.position.x+39,_player.position.y);
         [self addChild:slamCCP];
+        
+        CCNode * sand = [CCBReader load:@"Sand"];
+        sand.position = ccp(_player.position.x-20,_player.position.y);
+        [self addChild:sand];
     }delay:0.2f];
     //##
     /*   Bana * banana = [[Bana alloc]init];

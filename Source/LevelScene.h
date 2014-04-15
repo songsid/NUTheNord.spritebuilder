@@ -33,4 +33,5 @@
 -(void) transHpIncrease :(int) plus;
 -(void) transMpDecrease :(int) count;
 -(void) transMpIncrease :(int) destance;
+-(int) getHp;
 @end

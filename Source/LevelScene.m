@@ -112,4 +112,8 @@
     [info mpIncrease:destance];
 }
 
+-(int) getHp
+{
+    return info.HP;
+}
 @end

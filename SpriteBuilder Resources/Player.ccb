@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>1</integer>
+	<integer>2</integer>
 	<key>docDimensionsType</key>
 	<integer>1</integer>
 	<key>fileType</key>
@@ -42,7 +42,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>走動圖/走路-1.png</string>
+								<string>走動圖/Lancer/走路-1.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -60,7 +60,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>走動圖/走路-2.png</string>
+								<string>走動圖/Lancer/走路-2.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -78,7 +78,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>走動圖/走路-3.png</string>
+								<string>走動圖/Lancer/走路-3.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -96,7 +96,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>走動圖/走路-4.png</string>
+								<string>走動圖/Lancer/走路-4.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -127,7 +127,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>Picture/跳躍.png</string>
+								<string>走動圖/Lancer/跳躍.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -158,7 +158,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>走動圖/攻擊-1.png</string>
+								<string>走動圖/Lancer/攻擊-1.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -176,7 +176,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>走動圖/攻擊-2.png</string>
+								<string>走動圖/Lancer/攻擊-2.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -194,7 +194,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>走動圖/攻擊-3.png</string>
+								<string>走動圖/Lancer/攻擊-3.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -317,7 +317,7 @@
 				<key>value</key>
 				<array>
 					<string></string>
-					<string>Picture/跳躍.png</string>
+					<string>走動圖/Lancer/攻擊-3.png</string>
 				</array>
 			</dict>
 			<dict>
@@ -391,7 +391,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>0.36666667461395264</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -427,7 +427,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.5</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -463,7 +463,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.3333333432674408</real>
+			<real>0.066666670143604279</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
