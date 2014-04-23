@@ -13,15 +13,19 @@
 -(void) transMpDecrease :(int) count;
 -(void) transMpIncrease :(int) destance;
 -(int) getHp;
-
+-(void) touchToPaused :(UITouch *) touch;
+-(void) removeDialog;
+-(BOOL) getPaused;
 @end
+
+
 #import "CCNode.h"
-#import "LevelScene.h"
-#import "Player.h"
 #import "HPMPInfo.h"
 
+@class LevelScene;
 @interface Level_0First : CCNode <CCPhysicsCollisionDelegate>
 {
+    LevelScene * _levelScene;
     CCPhysicsNode * _physicsNode;
     CCNode * _player;
     CCNode * _attack;
@@ -32,9 +36,12 @@
     CCNode * _sword;
     float mpDistance;
     BOOL enableJump;
+    BOOL dialogOne;
+    BOOL dialogTwo;
+    BOOL dialogTouchOne;
 }
 @property (nonatomic,weak) id <Level_FirstDelegate> delegate;
-
+@property (nonatomic,weak) UITouch * returnTouch;
 @property (nonatomic,assign) float yTarget;
 @property (nonatomic,assign) float ySpeed;
 @property (nonatomic,assign) CGPoint playerY;

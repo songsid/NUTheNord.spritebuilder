@@ -12,7 +12,8 @@
 -(void) didLoadFromCCB
 {
     //self.userInteractionEnabled = TRUE;
-    
+    _mainScrollView.anchorPoint = ccp(0,0);
+    _mainScrollView.position = ccp(0, 0);
     SkipIntoLayer * skip = (SkipIntoLayer *)[CCBReader load:@"SkipIntoLayer"];
     skip.delegate = self;
     _mainScrollView.contentNode = skip;

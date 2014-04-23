@@ -15,18 +15,24 @@
 #import "Level_1.h"
 #import "Level_0First.h"
 #import "HPMPInfo.h"
+#import "Dialog.h"
 
 
-@interface LevelScene : CCNode <LeagueSceneDelegate,LevelDelegate,Level_PDelegate,Level_1Delegate,Level_FirstDelegate>
+@interface LevelScene : CCNode <LeagueSceneDelegate,LevelDelegate,Level_PDelegate,Level_1Delegate,Level_FirstDelegate,DialogDelegate>
 {
-    CCScrollView * _levelSceneScrollView;
-    CCNode * _skillOne;
-    CCNode * _skillTwo;
+
+    CCButton * _skillOne;
+    CCButton * _skillTwo;
+    CCButton * _attack;
     HPMPInfo * info;
+    Dialog * diag;
+    CCNode * _dialog;
+    int count;
 }
 @property (nonatomic,strong) CCNode * currentLevel;
 @property (nonatomic,strong) CCNode * HPMP;
 @property (nonatomic) BOOL entered;
+@property (nonatomic,strong) CCScrollView * levelSceneScrollView;
 
 -(void) popLevelScene;
 -(void) transHpDecrease :(int) damage;
@@ -34,4 +40,7 @@
 -(void) transMpDecrease :(int) count;
 -(void) transMpIncrease :(int) destance;
 -(int) getHp;
+-(void) touchToPaused:(UITouch *) touch;
+-(void) removeDialog;
+-(BOOL) getPaused;
 @end

@@ -12,7 +12,8 @@
 -(void) didLoadFromCCB
 {
     self.userInteractionEnabled = TRUE;
-    
+    [[NSUserDefaults standardUserDefaults]setInteger:0 forKey:@"DialogInt"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
 }
 -(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {

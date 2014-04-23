@@ -9,8 +9,11 @@
 #import "LevelScene.h"
 
 @implementation LevelScene
+
 -(void) didLoadFromCCB
 {
+    _levelSceneScrollView.anchorPoint = ccp(0,0);
+    _levelSceneScrollView.position = ccp(0, 0);
     self.userInteractionEnabled = TRUE;
     int switchLevel = [[NSUserDefaults standardUserDefaults]integerForKey:@"SwitchLevel"];
         switch (switchLevel) {
@@ -54,6 +57,14 @@
     info.position = ccp(7.0f, 266.0f);
     self.HPMP = info;
     [self addChild:info];
+}
+
+-(void) update:(CCTime)delta
+{
+    count = count +delta*100;
+    if (count%5 ==0) {
+        CCLOG(@"levelSceneScrollView.paused = %hhd",_levelSceneScrollView.paused);
+    }
 }
 -(void) switchLevel_0First
 {
@@ -115,5 +126,41 @@
 -(int) getHp
 {
     return info.HP;
+}
+-(void) touchToPaused:(UITouch *)touch
+{
+    CCLOG(@"touch = %@",touch);
+    if (_levelSceneScrollView.paused ==NO) {
+        _attack.enabled = NO;
+        _skillOne.enabled =NO;
+        _skillTwo.enabled = NO;
+
+   _levelSceneScrollView.paused = !_levelSceneScrollView.paused;
+                [self loadDialog];
+        CCLOG(@"touchpause");
+    }
+}
+-(void) loadDialog
+{
+    diag = (Dialog *)[CCBReader load:@"Dialog"];
+    diag.anchorPoint = ccp(0,0);
+    diag.position = ccp(0,0);
+    diag.delegate = self;
+    [self addChild:diag ];
+    
+}
+-(void) removeDialog
+{
+    [diag removeFromParentAndCleanup:YES];
+    _levelSceneScrollView.paused = NO;
+    _attack.enabled = YES;
+    _skillOne.enabled =YES;
+    _skillTwo.enabled = YES;
+
+    CCLOG(@"removeFromParent!");
+}
+-(BOOL) getPaused
+{
+    return _levelSceneScrollView.paused;
 }
 @end

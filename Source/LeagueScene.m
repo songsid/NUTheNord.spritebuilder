@@ -11,7 +11,8 @@
 @implementation LeagueScene
 -(void) didLoadFromCCB
 {
-    
+    _leagueSceneScrollView.anchorPoint = ccp(0, 0);
+    _leagueSceneScrollView.position = ccp(0, 0);
     self.userInteractionEnabled = TRUE;
     LeagueLayer * league = (LeagueLayer *) [CCBReader load:@"LeagueLayer"];
     league.delegate = self;

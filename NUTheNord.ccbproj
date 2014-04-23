@@ -174,22 +174,16 @@
 		</dict>
 		<key>走動圖/拉弓-1.png</key>
 		<dict>
-			<key>isDirty</key>
-			<true/>
 			<key>scaleFrom</key>
 			<integer>2</integer>
 		</dict>
 		<key>走動圖/拉弓-2.png</key>
 		<dict>
-			<key>isDirty</key>
-			<true/>
 			<key>scaleFrom</key>
 			<integer>2</integer>
 		</dict>
 		<key>走動圖/拉弓-3.png</key>
 		<dict>
-			<key>isDirty</key>
-			<true/>
 			<key>scaleFrom</key>
 			<integer>2</integer>
 		</dict>

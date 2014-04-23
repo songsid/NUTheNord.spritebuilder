@@ -50,10 +50,7 @@
     }
 }
 
-+(void) getHP
-{
-    
-}
+
 
 ////---封印////////////
 -(void) popLevelScene{}

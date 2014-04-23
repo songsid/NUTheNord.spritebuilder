@@ -15,7 +15,10 @@
     PlayerInfoLayer * infoLayer = (PlayerInfoLayer *)[CCBReader load:@"PlayerInfoLayer"];
     
     _playerInfoScrollView.contentNode = infoLayer;
-    
+    _playerInfoScrollView.anchorPoint = ccp(0, 0);
+    _playerInfoScrollView.position = ccp(0, 0);
+    _spriteScrollView.anchorPoint = ccp(0, 0);
+    _spriteScrollView.position = ccp(0, 0);
     NSString *user = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
     int score = [[NSUserDefaults standardUserDefaults] integerForKey:@"score"];
     NSLog(@"Welcome! %@\n Your current score is %d.", user, score);

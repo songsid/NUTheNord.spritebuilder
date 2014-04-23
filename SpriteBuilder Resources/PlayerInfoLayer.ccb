@@ -55,7 +55,7 @@
 						<key>value</key>
 						<array>
 							<real>62</real>
-							<real>160</real>
+							<real>265</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -79,8 +79,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>0.34351029992103577</real>
+							<real>0.34351029992103577</real>
 							<true/>
 							<integer>0</integer>
 						</array>
@@ -98,15 +98,23 @@
 					</dict>
 					<dict>
 						<key>name</key>
+						<string>opacity</string>
+						<key>type</key>
+						<string>Float</string>
+						<key>value</key>
+						<real>0.60000002384185791</real>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>color</string>
 						<key>type</key>
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<real>0.35409101843833923</real>
-							<real>0.35409101843833923</real>
-							<real>0.35409101843833923</real>
 							<real>1</real>
+							<real>1</real>
+							<real>1</real>
+							<real>0.60000002384185791</real>
 						</array>
 					</dict>
 				</array>

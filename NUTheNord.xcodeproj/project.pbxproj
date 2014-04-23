@@ -15,9 +15,6 @@
 		1F2D5B3F18E90DAF002AE2F9 /* reddarkButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F2D5B3818E90DAF002AE2F9 /* reddarkButton.png */; };
 		1F2D5B4018E90DAF002AE2F9 /* redlightButton-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F2D5B3918E90DAF002AE2F9 /* redlightButton-hd.png */; };
 		1F2D5B4118E90DAF002AE2F9 /* redlightButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F2D5B3A18E90DAF002AE2F9 /* redlightButton.png */; };
-		1F38763118DB133900807E24 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F38763018DB133900807E24 /* Player.m */; };
-		1F38763618DB15F900807E24 /* enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F38763518DB15F900807E24 /* enemy.m */; };
-		1F38763918DB162600807E24 /* Bana.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F38763818DB162600807E24 /* Bana.m */; };
 		1F69A46118D5CFFE00ECC19D /* Level_P.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F69A46018D5CFFE00ECC19D /* Level_P.m */; };
 		1F69A46418D71C1B00ECC19D /* Level_1.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F69A46318D71C1B00ECC19D /* Level_1.m */; };
 		1F75493018D1D8CF006E357A /* SkipIntoLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F75492F18D1D8CF006E357A /* SkipIntoLayer.m */; };
@@ -32,6 +29,7 @@
 		1F75498818D482A1006E357A /* FirstTimeIntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F75498718D482A1006E357A /* FirstTimeIntroLayer.m */; };
 		1FAB055B18F92450008DF449 /* Level_0First.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAB055A18F92450008DF449 /* Level_0First.m */; };
 		1FAB055F18F98A32008DF449 /* HPMPInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAB055E18F98A32008DF449 /* HPMPInfo.m */; };
+		1FB0D1331906555300D02643 /* Dialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB0D1321906555300D02643 /* Dialog.m */; };
 		B71F5911188484E7003F4D28 /* iPad-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5907188484E7003F4D28 /* iPad-old.png */; };
 		B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5908188484E7003F4D28 /* iPad-old@2x.png */; };
 		B71F5913188484E7003F4D28 /* iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5909188484E7003F4D28 /* iPad.png */; };
@@ -89,12 +87,6 @@
 		1F2D5B3818E90DAF002AE2F9 /* reddarkButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reddarkButton.png; sourceTree = "<group>"; };
 		1F2D5B3918E90DAF002AE2F9 /* redlightButton-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redlightButton-hd.png"; sourceTree = "<group>"; };
 		1F2D5B3A18E90DAF002AE2F9 /* redlightButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redlightButton.png; sourceTree = "<group>"; };
-		1F38762F18DB133900807E24 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = Source/Player.h; sourceTree = "<group>"; };
-		1F38763018DB133900807E24 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Player.m; path = Source/Player.m; sourceTree = "<group>"; };
-		1F38763418DB15F900807E24 /* enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = enemy.h; path = Source/enemy.h; sourceTree = "<group>"; };
-		1F38763518DB15F900807E24 /* enemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = enemy.m; path = Source/enemy.m; sourceTree = "<group>"; };
-		1F38763718DB162600807E24 /* Bana.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bana.h; path = Source/Bana.h; sourceTree = "<group>"; };
-		1F38763818DB162600807E24 /* Bana.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Bana.m; path = Source/Bana.m; sourceTree = "<group>"; };
 		1F69A45F18D5CFFE00ECC19D /* Level_P.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Level_P.h; path = Source/Level_P.h; sourceTree = "<group>"; };
 		1F69A46018D5CFFE00ECC19D /* Level_P.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Level_P.m; path = Source/Level_P.m; sourceTree = "<group>"; };
 		1F69A46218D71C1B00ECC19D /* Level_1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Level_1.h; path = Source/Level_1.h; sourceTree = "<group>"; };
@@ -123,6 +115,8 @@
 		1FAB055A18F92450008DF449 /* Level_0First.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Level_0First.m; path = Source/Level_0First.m; sourceTree = "<group>"; };
 		1FAB055D18F98A32008DF449 /* HPMPInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPMPInfo.h; path = Source/HPMPInfo.h; sourceTree = "<group>"; };
 		1FAB055E18F98A32008DF449 /* HPMPInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPMPInfo.m; path = Source/HPMPInfo.m; sourceTree = "<group>"; };
+		1FB0D1311906555300D02643 /* Dialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dialog.h; path = Source/Dialog.h; sourceTree = "<group>"; };
+		1FB0D1321906555300D02643 /* Dialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Dialog.m; path = Source/Dialog.m; sourceTree = "<group>"; };
 		B71F5907188484E7003F4D28 /* iPad-old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old.png"; path = "Icons/iPad-old.png"; sourceTree = "<group>"; };
 		B71F5908188484E7003F4D28 /* iPad-old@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old@2x.png"; path = "Icons/iPad-old@2x.png"; sourceTree = "<group>"; };
 		B71F5909188484E7003F4D28 /* iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPad.png; path = Icons/iPad.png; sourceTree = "<group>"; };
@@ -182,12 +176,10 @@
 		1F38763318DB133E00807E24 /* LevelObject */ = {
 			isa = PBXGroup;
 			children = (
-				1F38762F18DB133900807E24 /* Player.h */,
-				1F38763018DB133900807E24 /* Player.m */,
-				1F38763418DB15F900807E24 /* enemy.h */,
-				1F38763518DB15F900807E24 /* enemy.m */,
-				1F38763718DB162600807E24 /* Bana.h */,
-				1F38763818DB162600807E24 /* Bana.m */,
+				1FAB055D18F98A32008DF449 /* HPMPInfo.h */,
+				1FAB055E18F98A32008DF449 /* HPMPInfo.m */,
+				1FB0D1311906555300D02643 /* Dialog.h */,
+				1FB0D1321906555300D02643 /* Dialog.m */,
 			);
 			name = LevelObject;
 			sourceTree = "<group>";
@@ -237,8 +229,6 @@
 				1F75495618D206C7006E357A /* LevelObject.m */,
 				1F75494E18D205D1006E357A /* LevelScene.h */,
 				1F75494F18D205D1006E357A /* LevelScene.m */,
-				1FAB055D18F98A32008DF449 /* HPMPInfo.h */,
-				1FAB055E18F98A32008DF449 /* HPMPInfo.m */,
 				1F69A46218D71C1B00ECC19D /* Level_1.h */,
 				1F69A46318D71C1B00ECC19D /* Level_1.m */,
 				1FAB055918F92450008DF449 /* Level_0First.h */,
@@ -476,11 +466,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F38763118DB133900807E24 /* Player.m in Sources */,
 				1F75495418D2060F006E357A /* Level_0.m in Sources */,
 				1F2D5B3218E90D64002AE2F9 /* CCAlertView.m in Sources */,
 				1F75494C18D1FBED006E357A /* LeagueLayer.m in Sources */,
-				1F38763918DB162600807E24 /* Bana.m in Sources */,
 				1F75495018D205D1006E357A /* LevelScene.m in Sources */,
 				1F75493018D1D8CF006E357A /* SkipIntoLayer.m in Sources */,
 				1F75494918D1FBDD006E357A /* LeagueScene.m in Sources */,
@@ -488,10 +476,10 @@
 				1F75493418D1E01F006E357A /* MainMenuLayer.m in Sources */,
 				B737893F1807617C0076A88C /* AppDelegate.m in Sources */,
 				1F75495718D206C7006E357A /* LevelObject.m in Sources */,
-				1F38763618DB15F900807E24 /* enemy.m in Sources */,
 				1F75493E18D1E639006E357A /* PlayerInfoScene.m in Sources */,
 				1FAB055F18F98A32008DF449 /* HPMPInfo.m in Sources */,
 				1F75498818D482A1006E357A /* FirstTimeIntroLayer.m in Sources */,
+				1FB0D1331906555300D02643 /* Dialog.m in Sources */,
 				B7378994180767190076A88C /* MainScene.m in Sources */,
 				1F69A46118D5CFFE00ECC19D /* Level_P.m in Sources */,
 				1F69A46418D71C1B00ECC19D /* Level_1.m in Sources */,
