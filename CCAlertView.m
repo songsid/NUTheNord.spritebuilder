@@ -133,6 +133,7 @@
     [_BG runAction:fadeInT];
     [_alertViewSprite runAction:pulse];
     
+
     [[OALSimpleAudio sharedInstance] playEffect:@"alert.caf"];
 }
 

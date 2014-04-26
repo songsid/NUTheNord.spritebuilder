@@ -13,6 +13,7 @@
 {
     self.userInteractionEnabled = YES;
     userActInt = YES;
+    
     _dialogtext.string = [NSString stringWithFormat:@"歡迎來到新手教學"];
     dialogInt = [[NSUserDefaults standardUserDefaults] integerForKey:@"DialogInt"];
 
@@ -46,26 +47,21 @@
         case 1:
         {
             _dialogtext.string = [NSString stringWithFormat:@"觸碰遊戲空白處可以跳躍"];
-
             break;
         }
         case 2:
         {
             _dialogtext.string = [NSString stringWithFormat:@"按下右下角的按鈕可以使用普通攻擊"];
-
             break;
         }
         case 3:
         {
             _dialogtext.string = [NSString stringWithFormat:@"按下中下方的按鈕可以使用技能攻擊"];
-
             break;
         }
         case 4:
         {
             _dialogtext.string = [NSString stringWithFormat:@"接下來自己試試看吧！"];
-
-
             break;
         }
         case 5:
@@ -77,7 +73,6 @@
         case 10:
         {
             _dialogtext.string = [NSString stringWithFormat:@"點擊遊戲空白處跳躍！"];
-            self.position = ccp(0,120);
             self.userInteractionEnabled = NO;
             break;
         }
@@ -85,6 +80,28 @@
         {
             [self.delegate removeDialog];
             
+            break;
+        }
+        case 12:
+        {
+            _dialogtext.string = [NSString stringWithFormat:@"攻擊！！"];
+            self.userInteractionEnabled = NO;
+            break;
+        }
+        case 13:
+        {
+            [self.delegate removeDialog];
+            break;
+        }
+        case 14:
+        {
+            _dialogtext.string = [NSString stringWithFormat:@"小心！碰到火球會大量損耗HP\n點擊遊戲空白處跳躍閃避！！"];
+            self.userInteractionEnabled = NO;
+            break;
+        }
+        case 15:
+        {
+            [self.delegate removeDialog];
             break;
         }
         default:

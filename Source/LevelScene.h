@@ -40,7 +40,7 @@
 -(void) transMpDecrease :(int) count;
 -(void) transMpIncrease :(int) destance;
 -(int) getHp;
--(void) touchToPaused:(UITouch *) touch;
+-(void) touchToPaused:(BOOL)ny;
 -(void) removeDialog;
 -(BOOL) getPaused;
 @end

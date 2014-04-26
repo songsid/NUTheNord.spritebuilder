@@ -30,6 +30,10 @@
 		1FAB055B18F92450008DF449 /* Level_0First.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAB055A18F92450008DF449 /* Level_0First.m */; };
 		1FAB055F18F98A32008DF449 /* HPMPInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAB055E18F98A32008DF449 /* HPMPInfo.m */; };
 		1FB0D1331906555300D02643 /* Dialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB0D1321906555300D02643 /* Dialog.m */; };
+		1FDB4F09190820DE004301FB /* main4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1FDB4F07190820DE004301FB /* main4.mp3 */; };
+		1FDB4F0A190820DE004301FB /* sure4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1FDB4F08190820DE004301FB /* sure4.mp3 */; };
+		1FDB4F0D190821D8004301FB /* street1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1FDB4F0C190821D8004301FB /* street1.mp3 */; };
+		1FDB4F0F1908DC46004301FB /* slam3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1FDB4F0E1908DC46004301FB /* slam3.mp3 */; };
 		B71F5911188484E7003F4D28 /* iPad-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5907188484E7003F4D28 /* iPad-old.png */; };
 		B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5908188484E7003F4D28 /* iPad-old@2x.png */; };
 		B71F5913188484E7003F4D28 /* iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5909188484E7003F4D28 /* iPad.png */; };
@@ -117,6 +121,10 @@
 		1FAB055E18F98A32008DF449 /* HPMPInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPMPInfo.m; path = Source/HPMPInfo.m; sourceTree = "<group>"; };
 		1FB0D1311906555300D02643 /* Dialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dialog.h; path = Source/Dialog.h; sourceTree = "<group>"; };
 		1FB0D1321906555300D02643 /* Dialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Dialog.m; path = Source/Dialog.m; sourceTree = "<group>"; };
+		1FDB4F07190820DE004301FB /* main4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = main4.mp3; sourceTree = "<group>"; };
+		1FDB4F08190820DE004301FB /* sure4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sure4.mp3; sourceTree = "<group>"; };
+		1FDB4F0C190821D8004301FB /* street1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = street1.mp3; sourceTree = "<group>"; };
+		1FDB4F0E1908DC46004301FB /* slam3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = slam3.mp3; sourceTree = "<group>"; };
 		B71F5907188484E7003F4D28 /* iPad-old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old.png"; path = "Icons/iPad-old.png"; sourceTree = "<group>"; };
 		B71F5908188484E7003F4D28 /* iPad-old@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old@2x.png"; path = "Icons/iPad-old@2x.png"; sourceTree = "<group>"; };
 		B71F5909188484E7003F4D28 /* iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPad.png; path = Icons/iPad.png; sourceTree = "<group>"; };
@@ -275,6 +283,10 @@
 		B73789911807667A0076A88C /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				1FDB4F07190820DE004301FB /* main4.mp3 */,
+				1FDB4F0E1908DC46004301FB /* slam3.mp3 */,
+				1FDB4F08190820DE004301FB /* sure4.mp3 */,
+				1FDB4F0C190821D8004301FB /* street1.mp3 */,
 				1F2D5B3418E90DAF002AE2F9 /* alert.caf */,
 				1F2D5B3518E90DAF002AE2F9 /* redalertview-hd.png */,
 				1F2D5B3618E90DAF002AE2F9 /* redalertview.png */,
@@ -436,6 +448,7 @@
 			files = (
 				B71F5919188484E7003F4D28 /* Settings.png in Resources */,
 				B7378978180762440076A88C /* Default@2x.png in Resources */,
+				1FDB4F0D190821D8004301FB /* street1.mp3 in Resources */,
 				B71F5914188484E7003F4D28 /* iPad@2x.png in Resources */,
 				B71F5913188484E7003F4D28 /* iPad.png in Resources */,
 				B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */,
@@ -444,8 +457,11 @@
 				1F2D5B4018E90DAF002AE2F9 /* redlightButton-hd.png in Resources */,
 				B71F591A188484E7003F4D28 /* Settings@2x.png in Resources */,
 				1F2D5B3E18E90DAF002AE2F9 /* reddarkButton-hd.png in Resources */,
+				1FDB4F0A190820DE004301FB /* sure4.mp3 in Resources */,
 				B7378976180762440076A88C /* Default-Landscape~ipad.png in Resources */,
+				1FDB4F0F1908DC46004301FB /* slam3.mp3 in Resources */,
 				1F2D5B3D18E90DAF002AE2F9 /* redalertview.png in Resources */,
+				1FDB4F09190820DE004301FB /* main4.mp3 in Resources */,
 				1F2D5B3B18E90DAF002AE2F9 /* alert.caf in Resources */,
 				B71F5915188484E7003F4D28 /* iPhone-old.png in Resources */,
 				B71F5917188484E7003F4D28 /* iPhone.png in Resources */,

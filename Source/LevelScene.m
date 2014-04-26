@@ -12,8 +12,10 @@
 
 -(void) didLoadFromCCB
 {
+    
     _levelSceneScrollView.anchorPoint = ccp(0,0);
     _levelSceneScrollView.position = ccp(0, 0);
+
     self.userInteractionEnabled = TRUE;
     int switchLevel = [[NSUserDefaults standardUserDefaults]integerForKey:@"SwitchLevel"];
         switch (switchLevel) {
@@ -68,7 +70,7 @@
 }
 -(void) switchLevel_0First
 {
-    Level_0First * level = (Level_0First *)[CCBReader load:@"Level_0First"];
+    Level_0First * level = (Level_0First *)[CCBReader load:@"Level_0lab"];
     _levelSceneScrollView.contentNode = level;
     self.currentLevel = level;
     level.delegate = self;
@@ -91,6 +93,7 @@
 {
     CCTransition * trans = [CCTransition transitionFadeWithDuration:1.0f];
     [[CCDirector sharedDirector ]popSceneWithTransition:trans];
+    [[OALSimpleAudio sharedInstance] stopAllEffects];
 }
 
 
@@ -127,24 +130,31 @@
 {
     return info.HP;
 }
--(void) touchToPaused:(UITouch *)touch
+-(void) touchToPaused:(BOOL)ny
 {
-    CCLOG(@"touch = %@",touch);
-    if (_levelSceneScrollView.paused ==NO) {
+
+    if (_levelSceneScrollView.paused ==NO && !ny) {
         _attack.enabled = NO;
         _skillOne.enabled =NO;
         _skillTwo.enabled = NO;
-
    _levelSceneScrollView.paused = !_levelSceneScrollView.paused;
                 [self loadDialog];
         CCLOG(@"touchpause");
+    }else if(_levelSceneScrollView.paused ==NO && ny){
+        _attack.enabled = YES;
+        _skillOne.enabled =YES;
+        _skillTwo.enabled = YES;
+        _levelSceneScrollView.userInteractionEnabled = NO;
+        _levelSceneScrollView.paused = !_levelSceneScrollView.paused;
+        [self loadDialog];
+    
     }
 }
 -(void) loadDialog
 {
     diag = (Dialog *)[CCBReader load:@"Dialog"];
     diag.anchorPoint = ccp(0,0);
-    diag.position = ccp(0,0);
+    diag.position = ccp(0,120);
     diag.delegate = self;
     [self addChild:diag ];
     

@@ -43,7 +43,7 @@
 			<key>cornerRadius</key>
 			<real>0.0</real>
 			<key>density</key>
-			<real>9.8000001907348633</real>
+			<real>1</real>
 			<key>dynamic</key>
 			<false/>
 			<key>elasticity</key>
@@ -57,16 +57,16 @@
 					<real>0.0</real>
 				</array>
 				<array>
+					<real>72.703125</real>
 					<real>0.0</real>
-					<real>100</real>
 				</array>
 				<array>
-					<real>100</real>
-					<real>100</real>
+					<real>51.7421875</real>
+					<real>72.41015625</real>
 				</array>
 				<array>
-					<real>100</real>
-					<real>0.0</real>
+					<real>22.41796875</real>
+					<real>72.41015625</real>
 				</array>
 			</array>
 		</dict>
@@ -126,7 +126,7 @@
 				<key>value</key>
 				<array>
 					<string></string>
-					<string>ccbResources/bird.png</string>
+					<string>Picture/enemy/tekirobo_00.png</string>
 				</array>
 			</dict>
 			<dict>

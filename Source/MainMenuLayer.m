@@ -12,15 +12,19 @@
 -(void)didLoadFromCCB
 {
     self.userInteractionEnabled = TRUE;
+    [[OALSimpleAudio sharedInstance] playEffect:@"main4.mp3" loop:YES];
+
 }
 
 -(void) isPlayerInfoScene:(id) sender
 {
     [self.delegate pushPlayerInfoScene];
+        [[OALSimpleAudio sharedInstance] playEffect:@"sure4.mp3"];
 }
 
 -(void) isLeagueScene:(id)sender
 {
     [self.delegate pushLeagueScene];
+        [[OALSimpleAudio sharedInstance] playEffect:@"sure4.mp3"];
 }
 @end

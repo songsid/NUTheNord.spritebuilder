@@ -15,7 +15,7 @@
     _physicsNode.collisionDelegate = self; //set collisionDelegate
     
     
-    _player = (CCNode *) [CCBReader load:@"Player"];
+    _player = (CCNode *) [CCBReader load:@"PlayerSaber"];
     _player.position = ccp(20, 60);
     _player.anchorPoint = ccp(0.5f,0.5f);
     [_physicsNode addChild:_player];
@@ -26,6 +26,9 @@
     _enemy = [CCBReader load:@"enemy"];
     _enemy.physicsBody.collisionType = @"enemy";
     _enemy.position = ccp(532, 43);
+    CGRect a;
+    a = CGRectMake( 200, 200,532, 60);
+    _enemy.physicsBody = [CCPhysicsBody bodyWithPolylineFromRect:a cornerRadius:0];
     [_physicsNode addChild:_enemy];
 
     

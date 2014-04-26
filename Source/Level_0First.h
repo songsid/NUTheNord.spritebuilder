@@ -13,7 +13,7 @@
 -(void) transMpDecrease :(int) count;
 -(void) transMpIncrease :(int) destance;
 -(int) getHp;
--(void) touchToPaused :(UITouch *) touch;
+-(void) touchToPaused :(BOOL) ny;
 -(void) removeDialog;
 -(BOOL) getPaused;
 @end
@@ -34,11 +34,22 @@
     CCNode * _enemy;
     CCNode * _road;
     CCNode * _sword;
+    CCNode * _kake;
+    CCNode * _robertShot;
+    CCNode * _robertShotTwo;
+    CCNode * _labBG1;
+    CCNode * _labBG2;
+    CCNode * _labBG3;
     float mpDistance;
+    float selfAncherPosition;
     BOOL enableJump;
     BOOL dialogOne;
     BOOL dialogTwo;
+    BOOL dialogThree;
+    BOOL dialogFour;
     BOOL dialogTouchOne;
+    BOOL dialogButtonOne;
+    BOOL roberShotBo;
 }
 @property (nonatomic,weak) id <Level_FirstDelegate> delegate;
 @property (nonatomic,weak) UITouch * returnTouch;

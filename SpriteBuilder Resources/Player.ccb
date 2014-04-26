@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>2</integer>
+	<integer>1</integer>
 	<key>docDimensionsType</key>
 	<integer>1</integer>
 	<key>fileType</key>
@@ -317,7 +317,7 @@
 				<key>value</key>
 				<array>
 					<string></string>
-					<string>走動圖/Lancer/攻擊-3.png</string>
+					<string>走動圖/Lancer/跳躍.png</string>
 				</array>
 			</dict>
 			<dict>

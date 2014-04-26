@@ -23,6 +23,9 @@
 -(void) hpDecrease :(int) damage
 {
     HP = HP-damage;
+    if (HP<0) {
+        HP = 0;
+    }
     HPNum.string = [NSString stringWithFormat:@"%d ",HP ];
     float hpl = (float)HP/10;
     HPLine.scaleX = hpl;
@@ -49,7 +52,10 @@
     MPLine.scaleX = mpl;
     }
 }
+-(void) update:(CCTime)delta
+{
 
+}
 
 
 ////---封印////////////
