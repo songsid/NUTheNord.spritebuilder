@@ -15,7 +15,11 @@
     
     _levelSceneScrollView.anchorPoint = ccp(0,0);
     _levelSceneScrollView.position = ccp(0, 0);
-
+    _levelSceneScrollView.verticalScrollEnabled= NO;
+    _levelSceneScrollView.horizontalScrollEnabled = NO;
+    _levelSceneScrollView.bounces = NO;
+    _levelSceneScrollView.pagingEnabled = NO;
+    _levelSceneScrollView.userInteractionEnabled = NO;
     self.userInteractionEnabled = TRUE;
     int switchLevel = [[NSUserDefaults standardUserDefaults]integerForKey:@"SwitchLevel"];
         switch (switchLevel) {
@@ -63,6 +67,7 @@
 
 -(void) update:(CCTime)delta
 {
+  
     count = count +delta*100;
     if (count%5 ==0) {
         CCLOG(@"levelSceneScrollView.paused = %hhd",_levelSceneScrollView.paused);
@@ -105,10 +110,10 @@
         CCLOG(@"is Equal to Level_0First");
     }
     if (info.MP>=1) {
-    Level_1 * level1 = (Level_1 *) self.currentLevel;
+    Level_0First * level = (Level_0First *) self.currentLevel;
 
-    [level1 attack];
-        [self transMpDecrease:1];
+    [level attack];
+        
     }
     CCLOG(@"attack %@",_currentLevel.class);
 }
@@ -117,9 +122,9 @@
     [info hpDecrease:damage];
 }
 -(void) transHpIncrease :(int) plus{}
--(void) transMpDecrease :(int) count
+-(void) transMpDecrease :(int) mpcount
 {
-    [info mpDecrease:1];
+    [info mpDecrease:mpcount];
 }
 -(void) transMpIncrease :(int) destance
 {
@@ -129,6 +134,10 @@
 -(int) getHp
 {
     return info.HP;
+}
+-(int) getMp
+{
+    return info.MP;
 }
 -(void) touchToPaused:(BOOL)ny
 {
@@ -140,11 +149,15 @@
    _levelSceneScrollView.paused = !_levelSceneScrollView.paused;
                 [self loadDialog];
         CCLOG(@"touchpause");
-    }else if(_levelSceneScrollView.paused ==NO && ny){
-        _attack.enabled = YES;
-        _skillOne.enabled =YES;
-        _skillTwo.enabled = YES;
-        _levelSceneScrollView.userInteractionEnabled = NO;
+    }else
+        if(_levelSceneScrollView.paused ==NO && ny){
+            [self scheduleBlock:^(CCTimer *timer) {
+                _attack.enabled = YES;
+                _skillOne.enabled =YES;
+                _skillTwo.enabled = YES;
+            } delay:0.3f];
+
+        self.currentLevel.userInteractionEnabled = NO;
         _levelSceneScrollView.paused = !_levelSceneScrollView.paused;
         [self loadDialog];
     
@@ -161,12 +174,23 @@
 }
 -(void) removeDialog
 {
+    int dia = [[NSUserDefaults standardUserDefaults] integerForKey:@"DialogInt"];
     [diag removeFromParentAndCleanup:YES];
     _levelSceneScrollView.paused = NO;
-    _attack.enabled = YES;
-    _skillOne.enabled =YES;
-    _skillTwo.enabled = YES;
+    
+    if (dia>=14) {
+        [self scheduleBlock:^(CCTimer *timer) {
+            _attack.enabled = YES;
+            _skillOne.enabled =YES;
+            _skillTwo.enabled = YES;
+        } delay:0.3f];
 
+    }else
+    {
+        _attack.enabled = NO;
+        _skillOne.enabled =NO;
+        _skillTwo.enabled = NO;
+    }
     CCLOG(@"removeFromParent!");
 }
 -(BOOL) getPaused

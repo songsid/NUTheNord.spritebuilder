@@ -12,7 +12,7 @@
 -(void)didLoadFromCCB
 {
     self.userInteractionEnabled = TRUE;
-    [[OALSimpleAudio sharedInstance] playEffect:@"main4.mp3" loop:YES];
+  //  [[OALSimpleAudio sharedInstance] playEffect:@"main4.mp3" loop:YES];
 
 }
 

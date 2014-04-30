@@ -32,6 +32,44 @@
 		<string>_kate</string>
 		<key>memberVarAssignmentType</key>
 		<integer>1</integer>
+		<key>physicsBody</key>
+		<dict>
+			<key>affectedByGravity</key>
+			<true/>
+			<key>allowsRotation</key>
+			<false/>
+			<key>bodyShape</key>
+			<integer>0</integer>
+			<key>cornerRadius</key>
+			<real>0.0</real>
+			<key>density</key>
+			<real>0.40000000596046448</real>
+			<key>dynamic</key>
+			<true/>
+			<key>elasticity</key>
+			<real>0.0</real>
+			<key>friction</key>
+			<real>0.0</real>
+			<key>points</key>
+			<array>
+				<array>
+					<real>9.12060546875</real>
+					<real>7.4617190361022949</real>
+				</array>
+				<array>
+					<real>60.056774139404297</real>
+					<real>7.4617190361022949</real>
+				</array>
+				<array>
+					<real>60.056774139404297</real>
+					<real>7.8357424736022949</real>
+				</array>
+				<array>
+					<real>9.1436882019042969</real>
+					<real>7.8108401298522949</real>
+				</array>
+			</array>
+		</dict>
 		<key>properties</key>
 		<array>
 			<dict>
@@ -63,8 +101,8 @@
 				<string>Point</string>
 				<key>value</key>
 				<array>
-					<real>0.34000000357627869</real>
-					<real>0.090000003576278687</real>
+					<real>0.5</real>
+					<real>0.10000000149011612</real>
 				</array>
 			</dict>
 			<dict>

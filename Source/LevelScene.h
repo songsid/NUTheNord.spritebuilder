@@ -37,9 +37,10 @@
 -(void) popLevelScene;
 -(void) transHpDecrease :(int) damage;
 -(void) transHpIncrease :(int) plus;
--(void) transMpDecrease :(int) count;
+-(void) transMpDecrease :(int) mpcount;
 -(void) transMpIncrease :(int) destance;
 -(int) getHp;
+-(int) getMp;
 -(void) touchToPaused:(BOOL)ny;
 -(void) removeDialog;
 -(BOOL) getPaused;

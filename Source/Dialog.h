@@ -17,6 +17,8 @@
     CCLabelTTF * _dialogtext;
     int dialogInt;
     BOOL userActInt;
+    CCNode * _npc;
+    CCNode * _zero;
 }
 
 @property (nonatomic,weak) id<DialogDelegate> delegate;

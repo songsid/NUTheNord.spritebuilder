@@ -140,7 +140,7 @@
 							<key>name</key>
 							<string>spriteFrame</string>
 							<key>time</key>
-							<real>0.1666666716337204</real>
+							<real>0.23333333432674408</real>
 							<key>type</key>
 							<integer>7</integer>
 							<key>value</key>
@@ -158,30 +158,12 @@
 							<key>name</key>
 							<string>spriteFrame</string>
 							<key>time</key>
-							<real>0.30000001192092896</real>
+							<real>0.40000000596046448</real>
 							<key>type</key>
 							<integer>7</integer>
 							<key>value</key>
 							<array>
 								<string>走動圖/Sword/揮劍-3.png</string>
-								<string>Use regular file</string>
-							</array>
-						</dict>
-						<dict>
-							<key>easing</key>
-							<dict>
-								<key>type</key>
-								<integer>0</integer>
-							</dict>
-							<key>name</key>
-							<string>spriteFrame</string>
-							<key>time</key>
-							<real>0.43333333730697632</real>
-							<key>type</key>
-							<integer>7</integer>
-							<key>value</key>
-							<array>
-								<string>走動圖/Sword/揮劍-4.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -274,7 +256,7 @@
 				<string>Point</string>
 				<key>value</key>
 				<array>
-					<real>0.62000000476837158</real>
+					<real>0.64999997615814209</real>
 					<real>0.0</real>
 				</array>
 			</dict>
@@ -380,7 +362,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>0.23333333432674408</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -410,13 +392,13 @@
 			<key>chainedSequenceId</key>
 			<integer>0</integer>
 			<key>length</key>
-			<real>0.60000002384185791</real>
+			<real>0.5</real>
 			<key>name</key>
 			<string>Attack</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.5</real>
+			<real>0.40000000596046448</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

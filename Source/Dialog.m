@@ -82,9 +82,10 @@
             
             break;
         }
+
         case 12:
         {
-            _dialogtext.string = [NSString stringWithFormat:@"攻擊！！"];
+            _dialogtext.string = [NSString stringWithFormat:@"小心！碰到火球會大量損耗HP\n點擊遊戲空白處跳躍閃避！！"];
             self.userInteractionEnabled = NO;
             break;
         }
@@ -95,11 +96,37 @@
         }
         case 14:
         {
-            _dialogtext.string = [NSString stringWithFormat:@"小心！碰到火球會大量損耗HP\n點擊遊戲空白處跳躍閃避！！"];
+            _dialogtext.string = [NSString stringWithFormat:@"攻擊！！"];
             self.userInteractionEnabled = NO;
             break;
         }
         case 15:
+        {
+            [self.delegate removeDialog];
+            break;
+        }
+        case 16:
+        {
+            _dialogtext.string = [NSString stringWithFormat:@"有老鼠！"];
+            _zero.visible = YES;
+            _npc.visible = NO;
+            break;
+        }
+        case 17:
+        {
+            _dialogtext.string = [NSString stringWithFormat:@"嘻嘻\n最近實驗室常會有老鼠偷跑進來\n順便幫組織清理一下吧～"];
+            _zero.visible = NO;
+            _npc.visible = YES;
+            break;
+        }
+        case 18:
+        {
+            _dialogtext.string = [NSString stringWithFormat:@"…………"];
+            _zero.visible = YES;
+            _npc.visible = NO;
+            break;
+        }
+        case 19:
         {
             [self.delegate removeDialog];
             break;

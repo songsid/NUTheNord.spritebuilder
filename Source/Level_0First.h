@@ -10,9 +10,10 @@
 -(void) popLevelScene;
 -(void) transHpDecrease :(int) damage;
 -(void) transHpIncrease :(int) plus;
--(void) transMpDecrease :(int) count;
+-(void) transMpDecrease :(int) mpcount;
 -(void) transMpIncrease :(int) destance;
 -(int) getHp;
+-(int) getMp;
 -(void) touchToPaused :(BOOL) ny;
 -(void) removeDialog;
 -(BOOL) getPaused;
@@ -23,7 +24,7 @@
 #import "HPMPInfo.h"
 
 @class LevelScene;
-@interface Level_0First : CCNode <CCPhysicsCollisionDelegate>
+@interface Level_0First : CCNode <CCPhysicsCollisionDelegate,UIGestureRecognizerDelegate>
 {
     LevelScene * _levelScene;
     CCPhysicsNode * _physicsNode;
@@ -40,6 +41,11 @@
     CCNode * _labBG1;
     CCNode * _labBG2;
     CCNode * _labBG3;
+    CCNode * _blueGnd;
+    CCNode * _beginGnd;
+    CCNode * _blueTopGnd;
+    CCNode * _robertShotPre;
+    
     float mpDistance;
     float selfAncherPosition;
     BOOL enableJump;
@@ -50,14 +56,18 @@
     BOOL dialogTouchOne;
     BOOL dialogButtonOne;
     BOOL roberShotBo;
+
+    int tutorialStep;
 }
 @property (nonatomic,weak) id <Level_FirstDelegate> delegate;
+@property(nonatomic,readwrite) UIGestureRecognizerState state;
 @property (nonatomic,weak) UITouch * returnTouch;
 @property (nonatomic,assign) float yTarget;
 @property (nonatomic,assign) float ySpeed;
 @property (nonatomic,assign) CGPoint playerY;
 @property (nonatomic,assign) float y;
 @property (nonatomic,assign) float t;
+@property (nonatomic,weak) CCNode * sFire;
 
 -(void) attack;
 @end
