@@ -54,11 +54,11 @@
 			<array>
 				<array>
 					<real>-0.8083767294883728</real>
-					<real>0.0</real>
+					<real>-222.23046875</real>
 				</array>
 				<array>
 					<real>827.6822509765625</real>
-					<real>0.0</real>
+					<real>-222.23046875</real>
 				</array>
 				<array>
 					<real>827.6822509765625</real>
@@ -200,7 +200,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>2.2000000476837158</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

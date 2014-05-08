@@ -17,28 +17,31 @@
         _BG = Nil;
         _alertViewSprite = Nil;
         self._delegate = delegate;
-        
-        BOOL isIPAD = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
+        self.userInteractionEnabled = YES;
+       // BOOL isIPAD = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
         CGSize views = CGSizeMake([CCDirector sharedDirector].viewSize.width, [CCDirector sharedDirector].viewSize.height);
         CGSize size = CGSizeMake(287, 139);
         NSString *fontStyle = @"HelveticaNeue-Bold";
-        CCSpriteFrame *altImg = [CCSpriteFrame frameWithImageNamed:@"redalertview.png"]; if (isIPAD) altImg =[CCSpriteFrame frameWithImageNamed: @"redalertview-hd.png"];
+      //  CCSpriteFrame *altImg = [CCSpriteFrame frameWithImageNamed:@"redalertview.png"]; //if (isIPAD) altImg =[CCSpriteFrame frameWithImageNamed: @"redalertview-hd.png"];
         
-        CCSpriteFrame *rlb = [CCSpriteFrame frameWithImageNamed:@"redlightButton.png"]; if (isIPAD) rlb =[CCSpriteFrame frameWithImageNamed:@"redlightButton-hd.png"];
+        CCSpriteFrame *rlb = [CCSpriteFrame frameWithImageNamed:@"redlightButton.png"]; //if (isIPAD) rlb =[CCSpriteFrame frameWithImageNamed:@"redlightButton-hd.png"];
         
-        CCSpriteFrame *rdb =[CCSpriteFrame frameWithImageNamed:@"reddarkButton.png"]; if (isIPAD) rdb =[CCSpriteFrame frameWithImageNamed:@"reddarkButton-hd.png"];
+        CCSpriteFrame *rdb =[CCSpriteFrame frameWithImageNamed:@"reddarkButton.png"]; //if (isIPAD) rdb =[CCSpriteFrame frameWithImageNamed:@"reddarkButton-hd.png"];
         float fnt1 = 18, fnt2 = 14;
-        float padding = 10; // distance between buttons
+       // float padding = 10; // distance between buttons
         float menuPos = 30; // buttons vertical alignment offset
         float titleHtDif = 20; //height of title label
         float msgHtDif = 50; //height of messgae label
-        
+        [_BG setTarget:self selector:@selector(empty:)];
         _BG = [CCNodeColor nodeWithColor:[CCColor colorWithWhite:0.1f alpha:0.8f]];
         _BG.userInteractionEnabled = NO;
         _BG.anchorPoint = ccp(0.5, 0.5);
         _BG.position = ccp(0, 0);
         _BG.contentSize = [CCDirector sharedDirector].viewSize;
         [self addChild:_BG z:0];
+        
+        _BG.userInteractionEnabled = YES;
+        
 		_alertViewSprite = [CCSprite spriteWithImageNamed:[NSString stringWithFormat:@"redalertview.png"]];
         _alertViewSprite.anchorPoint = ccp(0.5, 0.5);
 
@@ -150,5 +153,12 @@
     CCScene *scene = [[CCDirector sharedDirector] runningScene];
     [scene removeChild:self cleanup:YES];
 }
-
+-(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    CCLOG(@"AlertViewtouchbegin");
+}
+-(void) empty:(id)sender
+{
+    CCLOG(@"alertViewtb");
+}
 @end

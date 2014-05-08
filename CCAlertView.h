@@ -15,10 +15,10 @@
 
 
 
-@interface CCAlertView : CCNode
+@interface CCAlertView : CCNode <UIGestureRecognizerDelegate>
 {
     CCSprite * _alertViewSprite;
-    CCNodeColor * _BG;
+    CCButton * _BG;
     id fadeIn1;
     id fadeIn2;
     id fadeInT;
@@ -30,7 +30,7 @@
 }
 
 @property (nonatomic, retain) id <CCAlertviewDelegate> _delegate;
-
+@property (nonatomic,weak) UIGestureRecognizer * getGesture;
 -(id) initWithTitle:(NSString*)title message:(NSString *)message delegate:(id)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitle:(NSString *)otherButtonTitle;
 -(void) showAV;
 

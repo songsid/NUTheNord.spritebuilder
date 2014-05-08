@@ -12,9 +12,6 @@
 
 -(void) didLoadFromCCB
 {
-    
-    _levelSceneScrollView.anchorPoint = ccp(0,0);
-    _levelSceneScrollView.position = ccp(0, 0);
     _levelSceneScrollView.verticalScrollEnabled= NO;
     _levelSceneScrollView.horizontalScrollEnabled = NO;
     _levelSceneScrollView.bounces = NO;
@@ -25,9 +22,17 @@
         switch (switchLevel) {
         case 0:
                 [self switchLevel_0First];
-            break;
+                [_mcBG1_1 removeFromParentAndCleanup:YES];
+                [_mcBG1_2 removeFromParentAndCleanup:YES];
+                [_mcBG2_1 removeFromParentAndCleanup:YES];
+                [_mcBG2_2 removeFromParentAndCleanup:YES];
+                [_mcBG3_1 removeFromParentAndCleanup:YES];
+                [_mcBG3_2 removeFromParentAndCleanup:YES];
+                [_mcBG4_1 removeFromParentAndCleanup:YES];
+                [_mcBG4_2 removeFromParentAndCleanup:YES];
+                break;
         case 1:
-                [self switchLevel_1];
+                [self switchLevel_1MC];
             break;
         case 2:
             
@@ -43,7 +48,7 @@
     
     switch ([[NSUserDefaults standardUserDefaults] integerForKey:@"Spirit"]) {
         case 0:
-            _skillOne.visible = NO;
+            _skillOne.visible = YES;
             _skillTwo.visible = NO;
             break;
         case 1:
@@ -51,8 +56,8 @@
             _skillTwo.visible = NO;
             break;
         case 2:
-            _skillOne.visible = NO;
-            _skillTwo.visible = YES;
+            _skillOne.visible = YES;
+            _skillTwo.visible = NO;
             break;
             
         default:
@@ -71,18 +76,69 @@
     count = count +delta*100;
     if (count%5 ==0) {
         CCLOG(@"levelSceneScrollView.paused = %hhd",_levelSceneScrollView.paused);
+        
     }
+    if ([[NSUserDefaults standardUserDefaults]integerForKey:@"SwitchLevel"]== 1) {
+       
+        float levelAnchorPoint = (float)levelMc.getSelfAnchorPosition;
+        if (!self.currentLevel.paused && !levelMc.getDeltaStop) {
+            
+            _mcBG4_1.position = ccp(_mcBG4_1.position.x - delta * 10, _mcBG4_1.position.y);
+            _mcBG4_2.position = ccp(_mcBG4_2.position.x - delta * 10, _mcBG4_2.position.y);
+            
+            _mcBG3_1.position = ccp(_mcBG3_1.position.x - delta * 15, _mcBG3_1.position.y);
+            _mcBG3_2.position = ccp(_mcBG3_2.position.x - delta * 15, _mcBG3_2.position.y);
+            
+            
+            _mcBG2_1.position = ccp(_mcBG2_1.position.x - delta * 30, _mcBG2_1.position.y);
+            _mcBG2_2.position = ccp(_mcBG2_2.position.x - delta * 30, _mcBG2_2.position.y);
+       
+            _mcBG1_1.position = ccp(_mcBG1_1.position.x -delta *100, _mcBG1_1.position.y);
+            _mcBG1_2.position = ccp(_mcBG1_2.position.x -delta *100, _mcBG1_2.position.y);
+            if (_mcBG2_1.position.x < -678) {
+                _mcBG2_1.position = ccp(_mcBG2_2.position.x +678, _mcBG2_1.position.y);
+            }
+            if (_mcBG2_2.position.x < -678) {
+                _mcBG2_2.position = ccp(_mcBG2_1.position.x +678, _mcBG2_2.position.y);
+            }
+            if (_mcBG1_1.position.x< -678) {
+                _mcBG1_1.position = ccp(_mcBG1_2.position.x +678, _mcBG1_1.position.y);
+            }
+            if (_mcBG1_2.position.x< -678) {
+                _mcBG1_2.position = ccp(_mcBG1_1.position.x +678, _mcBG1_2.position.y);
+            }
+            if (_mcBG3_1.position.x< -678) {
+                _mcBG3_1.position = ccp(_mcBG3_2.position.x +678, _mcBG3_1.position.y);
+            }
+            if (_mcBG3_2.position.x< -678) {
+                _mcBG3_2.position = ccp(_mcBG3_1.position.x +678, _mcBG3_2.position.y);
+            }
+            if (_mcBG4_1.position.x< -678) {
+                _mcBG4_1.position = ccp(_mcBG4_2.position.x +673, _mcBG4_1.position.y);
+            }
+            if (_mcBG4_2.position.x< -678) {
+                _mcBG4_2.position = ccp(_mcBG4_1.position.x +673, _mcBG4_2.position.y);
+            }
+        }else if(self.currentLevel.paused)
+                {
+                    //[self.userObject ;
+                }
+    }
+    CCLOG(@"mcbg2 = %f %f \n bg1 = %f %f",_mcBG2_1.position.x,_mcBG2_2.position.x,_mcBG1_1.position.x,_mcBG1_2.position.x);
 }
 -(void) switchLevel_0First
 {
     Level_0First * level = (Level_0First *)[CCBReader load:@"Level_0lab"];
     _levelSceneScrollView.contentNode = level;
+    CCLOG(@"_levelScemeScrollView.p & an = \n(%f,%f)\n (%f,%f)",_levelSceneScrollView.contentNode.position.x,_levelSceneScrollView.contentNode.position.y,_levelSceneScrollView.contentNode.anchorPoint.x,_levelSceneScrollView.contentNode.anchorPoint.y);
+  //  _levelSceneScrollView.contentNode.position = ccp(0, 0);
+ //   _levelSceneScrollView.contentNode.anchorPoint = ccp(0, 0);
     self.currentLevel = level;
     level.delegate = self;
 }
--(void) switchLevel_1
+-(void) switchLevel_1MC
 {
-    Level_1 * level = (Level_1 *)[CCBReader load:@"Level_1"];
+    Level_1MC * level = (Level_1MC *)[CCBReader load:@"Level_1MC"];
     _levelSceneScrollView.contentNode = level;
     self.currentLevel = level;
     level.delegate = self;
@@ -97,8 +153,12 @@
 -(void) popLevelScene
 {
     CCTransition * trans = [CCTransition transitionFadeWithDuration:1.0f];
+
     [[CCDirector sharedDirector ]popSceneWithTransition:trans];
+    
     [[OALSimpleAudio sharedInstance] stopAllEffects];
+    [[NSUserDefaults standardUserDefaults]setInteger:0 forKey:@"DialogInt"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
 }
 
 
@@ -107,16 +167,43 @@
 {
     if([[NSString stringWithFormat:@"%@",_currentLevel.class]isEqualToString:@"Level_0First"])
     {
+        if (info.MP>=1) {
+        Level_0First * level = (Level_0First *) self.currentLevel;
+        
+        [level attack];
+        }
         CCLOG(@"is Equal to Level_0First");
     }
-    if (info.MP>=1) {
-    Level_0First * level = (Level_0First *) self.currentLevel;
-
-    [level attack];
-        
+    if ([[NSUserDefaults standardUserDefaults]integerForKey:@"SwitchLevel"]== 1) {
+        if (info.MP>=1) {
+            levelMc = (Level_1MC *) self.currentLevel;
+            [levelMc attack];
+        }
     }
-    CCLOG(@"attack %@",_currentLevel.class);
+
 }
+-(void) isSkillOne :(id)sender
+{
+    if([[NSString stringWithFormat:@"%@",_currentLevel.class]isEqualToString:@"Level_0First"])
+    {
+        if (info.MP>=9) {
+            Level_0First * level = (Level_0First *) self.currentLevel;
+            [level skill];
+        }
+    }
+    if ([[NSUserDefaults standardUserDefaults]integerForKey:@"SwitchLevel"]== 1) {
+        if (info.MP>=9) {
+            levelMc = (Level_1MC *) self.currentLevel;
+            [levelMc skill];
+        }
+    }
+}
+-(void) scrollViewShake
+{
+    [self.userObject runAnimationsForSequenceNamed:@"shake"];
+    
+}
+
 -(void) transHpDecrease :(int) damage
 {
     [info hpDecrease:damage];
@@ -162,6 +249,8 @@
         [self loadDialog];
     
     }
+    CCLOG(@"_levelScemeScrollView.p & an = \n(%f,%f)\n (%f,%f)",_levelSceneScrollView.contentNode.position.x,_levelSceneScrollView.contentNode.position.y,_levelSceneScrollView.contentNode.anchorPoint.x,_levelSceneScrollView.contentNode.anchorPoint.y);
+
 }
 -(void) loadDialog
 {
@@ -193,8 +282,60 @@
     }
     CCLOG(@"removeFromParent!");
 }
+-(void) showClearCount
+{
+    
+    _attack.enabled = NO;
+    _skillOne.enabled =NO;
+    _skillTwo.enabled = NO;
+    
+    
+    clearCo = (ClearCount *)[CCBReader load:@"clearCount"];
+    clearCo.anchorPoint = ccp(0, 0);
+    clearCo.position = ccp(0, 0);
+    clearCo.delegate = self;
+    [self addChild:clearCo z:100];
+}
 -(BOOL) getPaused
 {
     return _levelSceneScrollView.paused;
+}
+-(void) isPaused:(id)sender
+{
+    self.currentLevel.paused = YES;
+    self.currentLevel.userInteractionEnabled = NO;
+    _attack.enabled = NO;
+    _skillOne.enabled =NO;
+    _skillTwo.enabled = NO;
+    _pausedButton.enabled = NO;
+    pausedS = (PauseSetting *)[CCBReader load:@"PauseSetting"];
+    pausedS.delegate = self;
+    pausedS.anchorPoint = ccp(0.5, 0.5);
+    pausedS.position = ccp(_levelSceneScrollView.contentSize.width/2, _levelSceneScrollView.contentSize.height/2);
+    [self addChild:pausedS z:100];
+    
+}
+-(void) closePause
+{
+    [self removeChild:pausedS];
+    self.currentLevel.paused = NO;
+    self.currentLevel.userInteractionEnabled = YES;
+    _attack.enabled = YES;
+    _skillOne.enabled =YES;
+    _skillTwo.enabled = YES;
+    _pausedButton.enabled = YES;
+}
+-(void) buttonControl :(BOOL) bo
+{
+    _attack.enabled = bo;
+    _skillOne.enabled =bo;
+    _skillTwo.enabled = bo;
+    _pausedButton.enabled = bo;
+}
+-(void) onEnter
+{
+    [super onEnter];
+    CCLOG(@"onEnter");
+    return;
 }
 @end

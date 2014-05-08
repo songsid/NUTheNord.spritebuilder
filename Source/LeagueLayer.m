@@ -73,6 +73,22 @@
 
 -(void) isSelectAreaTwo:(id)sender
 {
+    CCNode * ccp1 = [CCBReader load:@"ccpLittleFire"];
+    ccp1.position = ccp(40, 160);
+    [self addChild:ccp1];
+    
+    CCNode * ccp2 = [CCBReader load:@"ccpLittleDust"];
+    ccp2.position = ccp(240,20);
+    
+    [self scheduleBlock:^(CCTimer *timer) {
+        [ccp1 removeFromParent];
+
+        [self addChild:ccp2];
+    } delay:10];
+    [self scheduleBlock:^(CCTimer *timer) {
+        [ccp2 removeFromParent];
+    } delay:20];
+   /*
     [self removeChild:tableView cleanup:YES];
 
     _levels = [[NSArray alloc]initWithObjects:@"Level_4",@"Level_5",@"Level_6",@"Level_7", nil];
@@ -87,7 +103,8 @@
     for (i=0; i<_levels.count; i++) {
             CCLOG(@"%@",_levels[i]);
     }
-
+    */
+    
 }
 
 
@@ -185,9 +202,11 @@
 
 -(void) appearAlertView
 {
+    
     [self scheduleBlock:^(CCTimer *timer){
-        CCAlertView *av = [[CCAlertView alloc] initWithTitle:@"Alert" message:@"CCAlertView" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitle:@"OK"];
+        CCAlertView *av = [[CCAlertView alloc] initWithTitle:@"  " message:@"是否進入關卡？" delegate:self cancelButtonTitle:@"否" otherButtonTitle:@"是"];
         [av showAV];
+
         CCLOG(@"self scheduleblock");
     } delay:0.0f];
     //BLOCK BUTTONS!
@@ -212,11 +231,17 @@
 
 }
 
-
+-(void) isLevel_1MC:(id) sender
+{
+    [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"SwitchLevel"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self appearAlertView];
+}
 
 
 -(void) isSelectLevel_0:(id)sender //level_0 button
 {
+    [self setBlockButton:NO];
     [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"SwitchLevel"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [self appearAlertView];
@@ -267,9 +292,27 @@
     _isSelectAreaOne.enabled = blockButton;
     _isSelectAreaTwo.enabled = blockButton;
     _isSelectLevel0.enabled = blockButton;
+    _isLevel_0First.enabled = blockButton;
     return;
 }
 
+-(void) userDefaultO: (id) sender
+{
+    [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"Spirit"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+-(void) userDefaultT: (id) sender
+{
+    [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:@"Spirit"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+-(void) userDefaultZ:(id) sender
+{
+    [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"Spirit"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 
 //
 // tableButtonset

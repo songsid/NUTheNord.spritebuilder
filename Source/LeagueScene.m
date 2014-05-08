@@ -31,12 +31,10 @@
 }
 -(void) pushLevel
 {
-    [[OALSimpleAudio sharedInstance] stopAllEffects];
-    CCScene * scene = (CCScene * )[CCBReader loadAsScene:@"LevelScene"];
-    CCTransition *trans = [CCTransition transitionPushWithDirection:1 duration:0.2f];
-    [[CCDirector sharedDirector]pushScene:scene withTransition:trans];
-    
-
+        CCScene * scene = (CCScene * )[CCBReader loadAsScene:@"LevelScene"];
+        CCTransition *trans = [CCTransition transitionPushWithDirection:1 duration:0.2f];
+        [[CCDirector sharedDirector]pushScene:scene withTransition:trans];
+        [[OALSimpleAudio sharedInstance] stopAllEffects];
 }
 -(void) intoLevelOrNot
 {

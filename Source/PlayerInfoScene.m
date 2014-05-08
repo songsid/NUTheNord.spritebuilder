@@ -86,6 +86,22 @@
     CCTransition * trans = [CCTransition transitionFadeWithDuration:0.2f];
     [[CCDirector sharedDirector]popSceneWithTransition:trans];
 }
-
-
+-(void) playerSelectPlus:(id) sender
+{
+    int hn;
+    hn = _spriteScrollView.numHorizontalPages;
+    CCLOG(@"pages = %d",hn);
+    if (_spriteScrollView.horizontalPage < hn-1) {
+        _spriteScrollView.horizontalPage = _spriteScrollView.horizontalPage +1;
+    }
+}
+-(void) playerSelectMinus:(id) sender
+{
+    int hn;
+    hn = _spriteScrollView.numHorizontalPages;
+    CCLOG(@"pages = %d",hn);
+    if (_spriteScrollView.horizontalPage > 0) {
+        _spriteScrollView.horizontalPage = _spriteScrollView.horizontalPage -1;
+    }
+}
 @end

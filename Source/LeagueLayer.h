@@ -20,12 +20,14 @@
 #define kSimpleTableViewRowHeight 24
 #define kSimpleTableViewInset 50
 
-@interface LeagueLayer : CCNode<CCTableViewDataSource,LeagueSceneDelegate>
+@interface LeagueLayer : CCNode<CCTableViewDataSource,LeagueSceneDelegate,CCAlertviewDelegate>
 {
     CCButton * _isSelectLevel0;
     CCButton * _isPopLeagueScene;
     CCButton * _isSelectAreaOne;
     CCButton * _isSelectAreaTwo;
+    CCButton * _isLevel_0First;
+
     int slide;
 }
 

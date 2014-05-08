@@ -17,6 +17,9 @@
 -(void) touchToPaused :(BOOL) ny;
 -(void) removeDialog;
 -(BOOL) getPaused;
+-(void) scrollViewShake;
+-(void) showClearCount;
+-(void) buttonControl: (BOOL) bo;
 @end
 
 
@@ -45,7 +48,12 @@
     CCNode * _beginGnd;
     CCNode * _blueTopGnd;
     CCNode * _robertShotPre;
+    CCNode * _bRobert;
+    CCNode * _skillFire;
     
+
+    CCNode * _skillBG;
+    BOOL deltaStop;
     float mpDistance;
     float selfAncherPosition;
     BOOL enableJump;
@@ -56,7 +64,9 @@
     BOOL dialogTouchOne;
     BOOL dialogButtonOne;
     BOOL roberShotBo;
-
+    BOOL endgame;
+    CGPoint skillPosition;
+    int bRHP;
     int tutorialStep;
 }
 @property (nonatomic,weak) id <Level_FirstDelegate> delegate;
@@ -70,5 +80,6 @@
 @property (nonatomic,weak) CCNode * sFire;
 
 -(void) attack;
+-(void) skill;
 @end
 
