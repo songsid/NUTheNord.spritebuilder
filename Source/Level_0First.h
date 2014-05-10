@@ -50,7 +50,7 @@
     CCNode * _robertShotPre;
     CCNode * _bRobert;
     CCNode * _skillFire;
-    
+    //NSMutableArray * _enemies;
 
     CCNode * _skillBG;
     BOOL deltaStop;
@@ -78,6 +78,7 @@
 @property (nonatomic,assign) float y;
 @property (nonatomic,assign) float t;
 @property (nonatomic,weak) CCNode * sFire;
+@property (nonatomic, strong) NSMutableArray *enemies;
 
 -(void) attack;
 -(void) skill;

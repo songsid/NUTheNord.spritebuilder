@@ -10,6 +10,10 @@
 
 @implementation CCAlertView
 
+-(void) tapRecognized:(UITapGestureRecognizer *)recognizer{
+    //
+    CCLOG(@"taped!!!");
+}
 
 -(id) initWithTitle:(NSString *)title message:(NSString *)message delegate:(id)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitle:(NSString *)otherButtonTitle
 {CCLOG(@"\n initCCAlertView! \n");
@@ -38,6 +42,12 @@
         _BG.anchorPoint = ccp(0.5, 0.5);
         _BG.position = ccp(0, 0);
         _BG.contentSize = [CCDirector sharedDirector].viewSize;
+        //
+     /*
+        UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRecognized:)];
+        [[[CCDirector sharedDirector] view] addGestureRecognizer:recognizer];
+     */   //
+        
         [self addChild:_BG z:0];
         
         _BG.userInteractionEnabled = YES;

@@ -31,13 +31,12 @@
     switch ([[NSUserDefaults standardUserDefaults] integerForKey:@"Spirit"]) {
         case 0:
             _player = (CCNode *) [CCBReader load:@"PlayerSaber"];
-            
             break;
         case 1:
             _player = (CCNode *) [CCBReader load:@"PlayerLancer"];
             break;
         case 2:
-            _player = (CCNode *) [CCBReader load:@"PlayerSaber"];
+            _player = (CCNode *) [CCBReader load:@"PlayerArcher"];
             break;
             
         default:
@@ -56,19 +55,35 @@
     [_physicsNode addChild:_kake z:0];
     ///setting blueGnd
     [self buildBludGnd:ccp(0, 0) :101];
-    [self buildBludGnd:ccp(770, 0) :100];
-    [self buildBludGnd:ccp(1400, 0) :99];
-    [self buildBludGnd:ccp(2019.8f,0) :98];
-    [self buildBludGndS:ccp(2871.2f,0) :97];
-    [self buildBludGndS:ccp(3000.0f,0) :96];
-    [self buildBludGndS:ccp(3570.0f,0) :95];
+    [self buildBludGnd:ccp(580, 0) :100];
+    [self buildBludGnd:ccp(1060, 0) :99];
+    [self buildBludGnd:ccp(1740,0) :98];
+    [self buildBludGnd:ccp(2871.2f,0) :97];
+    [self buildBludGnd:ccp(3000.0f,0) :96];
+    [self buildBludGnd:ccp(3570.0f,0) :95];
     [self buildBludGnd:ccp(4036.0f,0) :94];
-    [self buildBludGndS:ccp(4800.0f,0) :93];
-    [self buildBludGndS:ccp(5400.0f,0) :92];
+    [self buildBludGnd:ccp(4700.0f,0) :93];
+    [self buildBludGnd:ccp(5000.0f,0) :92];
+    [self buildBludGnd:ccp(5400.0f,0) :92];
+    [self buildBludGnd:ccp(6000.0f,0) :92];
+    [self buildBludGnd:ccp(6400.0f,0) :92];
+    [self buildBludGnd:ccp(7000.0f,0) :92];
+    [self buildBludGnd:ccp(7400.0f,0) :92];
+    [self buildBludGnd:ccp(8000.0f,0) :92];
+    [self buildBludGnd:ccp(8400.0f,0) :92];
+    [self buildBludGnd:ccp(9000.0f,0) :92];
+    
+    //setting MCGndTop
+    [self buildBlueTopGnd:ccp(298, 99)];
+    [self buildBlueTopGnd:ccp(358, 147)];
+    [self buildBlueTopGnd:ccp(524, 147)];
+    [self buildBlueTopGnd:ccp(690, 147)];
+    [self buildBlueTopGnd:ccp(847, 147)];
+    [self buildBlueTopGnd:ccp(982, 213)];
 }
 -(void) buildBludGnd :(CGPoint)x :(NSInteger) z
 {
-    _blueGnd = [CCBReader load:@"blueGnd"];
+    _blueGnd = [CCBReader load:@"MCGnd"];
     _blueGnd.anchorPoint = ccp(0, 0);
     _blueGnd.position = x;
     _blueGnd.physicsBody.elasticity = 0;
@@ -86,24 +101,96 @@
 }
 -(void) buildBlueTopGnd :(CGPoint)x
 {
-    _blueTopGnd = [CCBReader load:@"blueTopGnd"];
-    _blueTopGnd.anchorPoint = ccp(0, 0);
+    _blueTopGnd = [CCBReader load:@"MCTopGnd"];
     _blueTopGnd.physicsBody.elasticity = 0;
     _blueTopGnd.position = x;
     _blueTopGnd.physicsBody.collisionType = @"blueGnd";
     [_physicsNode addChild:_blueTopGnd];
 }
+-(void) createArrowShot //Archer attack
+{
+    _skillFire = [CCBReader load:@"PlayerArcherArrow"];
+    _skillFire.position = ccp(_player.position.x +34, _player.position.y+ 30);
+    _skillFire.physicsBody.collisionType = @"slFire";
+    _skillFire.physicsBody.affectedByGravity = YES;
+    
+    [self scheduleBlock:^(CCTimer *timer) {
+        [_physicsNode addChild:_skillFire];
+        if (_skillFire.parent) {
+            [_skillFire.physicsBody applyImpulse:ccp(440,50)];}
+    } delay:0.3f];
+    [self scheduleBlock:^(CCTimer *timer) {
+        [_skillFire removeFromParentAndCleanup:YES];
+    } delay:0.7f];
+    
+}
 -(void) createSkillShot
 {
-    _skillFire = [CCBReader load:@"skillSaberShot"];
-    _skillFire.position = ccp(_player.position.x +65, _player.position.y +40);
-    _skillFire.physicsBody.collisionType = @"skillFire";
-    [_physicsNode addChild:_skillFire z:10];
+    switch ([[NSUserDefaults standardUserDefaults] integerForKey:@"Spirit"]) {
+        case 0:
+            _skillFire = [CCBReader load:@"skillSaberShot"];
+            _skillFire.position = ccp(_player.position.x +65, _player.position.y +40);
+            _skillFire.physicsBody.collisionType = @"skillFire";
+            [_physicsNode addChild:_skillFire z:10];
+            break;
+        case 1:
+        {
+            _skillFire = [CCBReader load:@"skillLancerShot"];
+            _skillFire.position = ccp(_player.position.x +34, _player.position.y+ 30);
+            _skillFire.physicsBody.collisionType = @"skillFire";
+            [self scheduleBlock:^(CCTimer *timer) {
+                [_physicsNode addChild:_skillFire z:10];
+                [_skillFire.physicsBody applyImpulse:ccp(10000, 0)];
+            } delay:2.2f];
+            
+        }
+            break;
+        case 2:
+        {
+            _skillFire = [CCBReader load:@"PlayerArcherArrow"];
+            [_skillFire.userObject runAnimationsForSequenceNamed:@"Skill"];
+            _skillFire.position = ccp(_player.position.x +65, _player.position.y +40);
+            _skillFire.physicsBody.collisionType = @"skillFire";
+            _skillFire.physicsBody.affectedByGravity = NO;
+            _skillFire.physicsBody.allowsRotation = NO;
+            [_physicsNode addChild:_skillFire z:10];
+            [self scheduleBlock:^(CCTimer *timer) {
+                if (_skillFire.parent) {
+                    [_skillFire.physicsBody applyImpulse:ccp(350, 0)];}
+            } delay:0.0f];
+            [self scheduleBlock:^(CCTimer *timer) {
+                [_skillFire removeFromParentAndCleanup:YES];
+            } delay:0.7f];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
 }
 
 -(void) update:(CCTime)delta
 {
-    
+    switch ([[NSUserDefaults standardUserDefaults] integerForKey:@"Spirit"]) {
+        case 0:
+            
+            break;
+        case 1:
+            
+            break;
+        case 2:
+            if (_skillFire.position.x - _player.position.x >230 && ![[_skillFire.userObject runningSequenceName]isEqualToString:@"Skill"]) {
+                if (_skillFire.parent) {
+                    [_skillFire removeFromParentAndCleanup:YES];
+                }
+            }
+            break;
+            
+        default:
+            break;
+    }
+
     /////// player & layer position
     if (!deltaStop) {
         
@@ -228,20 +315,19 @@
         CCLOG(@"removedia");
     }
     
-    if (enableJump )
+    if (enableJump && !deltaStop)
     {
         [_player.physicsBody applyImpulse:ccp(0,650.0f)];
         if (![[_player.userObject runningSequenceName]isEqualToString:@"Attack"]) {
             [_player.userObject runAnimationsForSequenceNamed:@"Jump"];
-            CCLOG(@"enableJump!!");
         }
     }
     return ;
 }
 -(void)attack
 {
-    if (![[_player.userObject runningSequenceName]isEqualToString:@"Attack"] && [self.delegate getMp]>=3) {
-        [self.delegate transMpDecrease:3];
+    if (![[_player.userObject runningSequenceName]isEqualToString:@"Attack"]) {
+        
         ///step 4 robert remove
         int dia = [[NSUserDefaults standardUserDefaults]integerForKey:@"DialogInt"];
         if ([self.delegate getPaused]&& (dia>=12)&& dialogButtonOne) {
@@ -251,34 +337,75 @@
             CCLOG(@"removedia");
         }
         
-        [_player.userObject runAnimationsForSequenceNamed:@"Attack"];
-        CCLOG(@"%@",[_player.userObject runningSequenceName]);
+        switch ([[NSUserDefaults standardUserDefaults]integerForKey:@"Spirit"]) {
+            case 0:
+            {
+                if ([self.delegate getMp]>=3) {
+                    [_player.userObject runAnimationsForSequenceNamed:@"Attack"];
+                    CCLOG(@"%@",[_player.userObject runningSequenceName]);
+                    [self.delegate transMpDecrease:3];
+                    // shot an attack at px40 py and at the update move to px 25 py1000
+                    _sFire = [CCBReader load:@"attack"];
+                    _sFire.position = ccp(_player.position.x + 50, _player.position.y);
+                    _sFire.physicsBody.collisionType = @"slFire";
+                    [_physicsNode addChild:_sFire];
+                    
+                    [self scheduleBlock:^(CCTimer *timer) {
+                        [_sFire removeFromParent];
+                    } delay:0.2f];
+                    CCLOG(@"slamfire = %@,position = %f,%f",_sFire,_sFire.position.x,_sFire.position.y);
+                    CCLOG(@"slfire = %@",_sFire.physicsBody.collisionType);
+                    /* CCNode * sand = [CCBReader load:@"Sand"];
+                     sand.position = ccp(_player.position.x-20,_player.position.y);
+                     [self addChild:sand];*/
+                    [[OALSimpleAudio sharedInstance] playEffect:@"slam3.mp3"];
+                }
+                break;
+            }
+            case 1:
+            {
+                [_player.userObject runAnimationsForSequenceNamed:@"Attack"];
+                CCLOG(@"%@",[_player.userObject runningSequenceName]);
+                [self.delegate transMpDecrease:3];
+                // shot an attack at px40 py and at the update move to px 25 py1000
+                _sFire = [CCBReader load:@"attack"];
+                _sFire.position = ccp(_player.position.x + 50, _player.position.y);
+                _sFire.physicsBody.collisionType = @"slFire";
+                [_physicsNode addChild:_sFire];
+                
+                [self scheduleBlock:^(CCTimer *timer) {
+                    [_sFire removeFromParent];
+                } delay:0.2f];
+                CCLOG(@"slamfire = %@,position = %f,%f",_sFire,_sFire.position.x,_sFire.position.y);
+                CCLOG(@"slfire = %@",_sFire.physicsBody.collisionType);
+                /* CCNode * sand = [CCBReader load:@"Sand"];
+                 sand.position = ccp(_player.position.x-20,_player.position.y);
+                 [self addChild:sand];*/
+                [[OALSimpleAudio sharedInstance] playEffect:@"slam3.mp3"];
+                break;
+            }
+            case 2:
+            {
+                if ([self.delegate getMp]>2 && !_skillFire.parent) {
+                    [_player.userObject runAnimationsForSequenceNamed:@"Attack"];
+                    CCLOG(@"%@",[_player.userObject runningSequenceName]);
+                    [self.delegate transMpDecrease:2];
+                    [self createArrowShot];
+                }
+                break;
+            }
+            default:
+                break;
+        }
         
-        // shot an attack at px40 py and at the update move to px 25 py1000
-        _sFire = [CCBReader load:@"attack"];
-        _sFire.position = ccp(_player.position.x + 50, _player.position.y);
-        _sFire.physicsBody.collisionType = @"slFire";
-        [_physicsNode addChild:_sFire];
-        
-        [self scheduleBlock:^(CCTimer *timer) {
-            [_sFire removeFromParent];
-        } delay:0.2f];
-        
-        CCLOG(@"slamfire = %@,position = %f,%f",_sFire,_sFire.position.x,_sFire.position.y);
-        CCLOG(@"slfire = %@",_sFire.physicsBody.collisionType);
-        /* CCNode * sand = [CCBReader load:@"Sand"];
-         sand.position = ccp(_player.position.x-20,_player.position.y);
-         [self addChild:sand];*/
-        [[OALSimpleAudio sharedInstance] playEffect:@"slam3.mp3"];
     }
 }
-
 -(void) skill
 {
     switch ([[NSUserDefaults standardUserDefaults] integerForKey:@"Spirit"]) {
         case 0:
         {
-            if ((![[_player.userObject runningSequenceName]isEqualToString:@"Attack"] || ![[_player.userObject runningSequenceName]isEqualToString:@"Jump"]) && [self.delegate getMp]>=9) {
+            if ((![[_player.userObject runningSequenceName]isEqualToString:@"Attack"] && enableJump) && [self.delegate getMp]>=9) {
                 deltaStop = YES;
                 _skillBG.position = ccp(selfAnchorPosition, 0); //load From ccb skillBG
                 _skillBG.visible = YES;
@@ -319,18 +446,76 @@
             break;
         case 1:
         {
-            
+            if ((![[_player.userObject runningSequenceName]isEqualToString:@"Attack"] && enableJump) && [self.delegate getMp]>=9) {
+                deltaStop = YES;
+                _skillBG.position = ccp(selfAnchorPosition, 0); //load From ccb skillBG
+                _skillBG.visible = YES;
+                
+                skillPosition = ccp(_player.position.x, _player.position.y);
+                [self.delegate transMpDecrease:9];
+                [_player.physicsBody applyImpulse:ccp(0, 700)];
+                [_player.userObject runAnimationsForSequenceNamed:@"Skill"];
+                [self scheduleBlock:^(CCTimer *timer) {
+                    
+                    
+                    [self createSkillShot];
+                    
+                    [self scheduleBlock:^(CCTimer *timer) {
+                        [self.delegate scrollViewShake];
+                        //     [_skillFire.physicsBody applyImpulse:ccp(10000, 0)];
+                    } delay:1.0f];
+                } delay:1.0f ];
+                [self scheduleBlock:^(CCTimer *timer) {
+                    deltaStop = NO;
+                    [self scheduleBlock:^(CCTimer *timer) {
+                        _skillBG.visible = NO;
+                    } delay:0.2f];
+                    
+                } delay:4.3f];
+            }
         }
             break;
         case 2:
         {
-            
+            if ((![[_player.userObject runningSequenceName]isEqualToString:@"Attack"] && enableJump) && [self.delegate getMp]>=9) {
+                deltaStop = YES;
+                _skillBG.position = ccp(selfAnchorPosition, 0); //load From ccb skillBG
+                _skillBG.visible = YES;
+                
+                skillPosition = ccp(_player.position.x, _player.position.y);
+                [self.delegate transMpDecrease:9];
+                //[_player.physicsBody applyImpulse:ccp(0, 700)];
+                [_player.userObject runAnimationsForSequenceNamed:@"Skill"];
+                [self scheduleBlock:^(CCTimer *timer) {
+                    /*   [self.delegate scrollViewShake];
+                     CCNode * skillBombccp = [CCBReader load:@"skillCCPSaberTwo"];
+                     skillBombccp.position = ccp(_player.position.x +140, _player.position.y);
+                     [self addChild:skillBombccp];
+                     
+                     CCNode * skillBombccpo = [CCBReader load:@"skillCCPSaberTwo"];
+                     skillBombccpo.position = ccp(_player.position.x +220, _player.position.y);
+                     [self addChild:skillBombccpo];
+                     
+                     CCNode * skillBombccpa = [CCBReader load:@"skillCCPSaberTwo"];
+                     skillBombccpa.position = ccp(_player.position.x +300, _player.position.y);
+                     [self addChild:skillBombccpa];
+                     */
+                    [self createSkillShot];
+                    
+                } delay:1.0f ];
+                [self scheduleBlock:^(CCTimer *timer) {
+                    deltaStop = NO;
+                    [self scheduleBlock:^(CCTimer *timer) {
+                        _skillBG.visible = NO;
+                    } delay:0.8];
+                    
+                } delay:1.5];
+            }
         }
             break;
-            
-            
     }
 }
+
 -(BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair Player:(CCNode *)nodeA blueGnd:(CCNode *)nodeB
 {
     enableJump = YES;

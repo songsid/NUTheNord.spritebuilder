@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>2</integer>
+	<integer>1</integer>
 	<key>docDimensionsType</key>
 	<integer>1</integer>
 	<key>fileType</key>
@@ -507,8 +507,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -546,11 +544,11 @@
 					<real>2.964085578918457</real>
 				</array>
 				<array>
-					<real>46.541778564453125</real>
-					<real>2.9928507804870605</real>
+					<real>47.519390106201172</real>
+					<real>2.9570674896240234</real>
 				</array>
 				<array>
-					<real>46.541778564453125</real>
+					<real>47.519390106201172</real>
 					<real>79.436058044433594</real>
 				</array>
 				<array>
@@ -637,6 +635,8 @@
 				</array>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 		<key>seqExpanded</key>
 		<true/>
 	</dict>

@@ -13,6 +13,13 @@
 
 @implementation Level_0First
 
+-(NSMutableArray *) enemies{
+    if (!_enemies) {
+        _enemies = [NSMutableArray array];
+    }
+    return _enemies;
+}
+
 -(void) didLoadFromCCB
 {
     //[[OALSimpleAudio sharedInstance] playEffect:@"street1.mp3" loop:YES];
@@ -125,12 +132,13 @@
     _skillFire = [CCBReader load:@"PlayerArcherArrow"];
     _skillFire.position = ccp(_player.position.x +34, _player.position.y+ 30);
     _skillFire.physicsBody.collisionType = @"slFire";
-    [_physicsNode addChild:_skillFire];
-    
+    _skillFire.physicsBody.affectedByGravity = YES;
+    _skillFire.physicsBody.allowsRotation = YES;
     [self scheduleBlock:^(CCTimer *timer) {
+        [_physicsNode addChild:_skillFire];
         if (_skillFire.parent) {
             [_skillFire.physicsBody applyImpulse:ccp(440,50)];}
-    } delay:0.0f];
+    } delay:0.3f];
     [self scheduleBlock:^(CCTimer *timer) {
         [_skillFire removeFromParentAndCleanup:YES];
     } delay:0.7f];
@@ -146,10 +154,16 @@
             [_physicsNode addChild:_skillFire z:10];
             break;
         case 1:
-            _skillFire = [CCBReader load:@"skillSaberShot"];
+        {
+            _skillFire = [CCBReader load:@"skillLancerShot"];
             _skillFire.position = ccp(_player.position.x +34, _player.position.y+ 30);
             _skillFire.physicsBody.collisionType = @"skillFire";
-            [_physicsNode addChild:_skillFire z:10];
+            [self scheduleBlock:^(CCTimer *timer) {
+                [_physicsNode addChild:_skillFire z:10];
+                 [_skillFire.physicsBody applyImpulse:ccp(10000, 0)];
+            } delay:2.2f];
+
+        }
             break;
         case 2:
         {
@@ -157,10 +171,12 @@
             [_skillFire.userObject runAnimationsForSequenceNamed:@"Skill"];
             _skillFire.position = ccp(_player.position.x +65, _player.position.y +40);
             _skillFire.physicsBody.collisionType = @"skillFire";
+            _skillFire.physicsBody.affectedByGravity = NO;
+            _skillFire.physicsBody.allowsRotation = NO;
             [_physicsNode addChild:_skillFire z:10];
             [self scheduleBlock:^(CCTimer *timer) {
                 if (_skillFire.parent) {
-                    [_skillFire.physicsBody applyImpulse:ccp(500, 0)];}
+                    [_skillFire.physicsBody applyImpulse:ccp(350, 0)];}
             } delay:0.0f];
             [self scheduleBlock:^(CCTimer *timer) {
                 [_skillFire removeFromParentAndCleanup:YES];
@@ -179,6 +195,8 @@
     _enemy.physicsBody.collisionType = @"enemy";
     _enemy.position = x;
     [_physicsNode addChild:_enemy];
+    
+   
 }
 ///                    create point  speed           delayshotTime
 -(void) createRobertShot :(CGPoint)x :(CGPoint)v :(float) delayShot
@@ -211,6 +229,7 @@
             _enemy.physicsBody.collisionType = @"enemy";
             _enemy.position = x;
             [_physicsNode addChild:_enemy];
+             [self.enemies addObject:_enemy];
             [_enemy.physicsBody applyForce:v];
             [self scheduleBlock:^(CCTimer *timer) {
                 if (_enemy.parent) {
@@ -226,6 +245,7 @@
             _enemy.physicsBody.collisionType = @"enemy";
             _enemy.position = x;
             [_physicsNode addChild:_enemy];
+             [self.enemies addObject:_enemy];
             [_enemy.physicsBody applyForce:v];
             [self scheduleBlock:^(CCTimer *timer) {
                 if (_enemy.parent){
@@ -268,7 +288,6 @@
 
     /////// player & layer position
     if (!deltaStop) {
-        _enemy.paused = NO;
         if ((_player.position.x -_playerY.x > 100*delta) && (_player.position.x <selfAncherPosition+160) && (_player.position.x >selfAncherPosition+100)) {
             [_player.physicsBody applyForce:ccp(-5000.0f *delta, 0.0f)];
 
@@ -308,9 +327,20 @@
             CCLOG(@"Force = %f \n f=%f",6000*delta*f,f);
         }
     }else if (deltaStop){
-        _enemy.paused = YES;
         _player.position = ccp(skillPosition.x,_player.position.y);
-        CCLOG(@"_enemy.paused = %hhd",_enemy.paused);
+        
+        
+        for (CCNode *mouse in self.enemies) {
+            if (mouse.position.x - selfAncherPosition > 0 &&  mouse.position.x -selfAncherPosition < 800) {
+                CCLOG(@"Target mouse found!");
+                CCLOG(@"mouse.position = %f",mouse.position.x);
+                mouse.physicsBody.density = 100;
+                mouse.physicsBody.friction = 100;
+              //  mouse.paused = YES;
+            }
+        }
+//        self.enemies
+        
     }
 
     ///////
@@ -416,7 +446,28 @@
 
         }
     }
-    if (_player.position.x >970){
+    if ([[NSUserDefaults standardUserDefaults]integerForKey:@"Spirit"] !=2) {
+        
+        if (_player.position.x >970){
+        
+            if (dialogThree) {
+                //remove robertshot!
+                [[NSUserDefaults standardUserDefaults]setInteger:14 forKey:@"DialogInt"];
+                [[NSUserDefaults standardUserDefaults]synchronize];
+                _returnTouch = nil;
+                self.userInteractionEnabled = NO;
+                [self.delegate touchToPaused:dialogThree];
+                dialogThree = NO;
+                [self scheduleBlock:^(CCTimer *timer) {
+                    dialogButtonOne = YES;
+               
+                } delay:0.0f]; //set delay for touch remove dialog
+                tutorialStep = tutorialStep+1;
+            }
+        
+        }
+    }else
+        if (_player.position.x >850){
         
         if (dialogThree) {
             //remove robertshot!
@@ -428,7 +479,7 @@
             dialogThree = NO;
             [self scheduleBlock:^(CCTimer *timer) {
                 dialogButtonOne = YES;
-               
+                
             } delay:0.0f]; //set delay for touch remove dialog
             tutorialStep = tutorialStep+1;
         }
@@ -592,7 +643,7 @@
         CCLOG(@"removedia");
     }
     
-    if (enableJump )
+    if (enableJump && !deltaStop)
     {
         [_player.physicsBody applyImpulse:ccp(0,650.0f)];
         if (![[_player.userObject runningSequenceName]isEqualToString:@"Attack"]) {
@@ -684,7 +735,7 @@
     switch ([[NSUserDefaults standardUserDefaults] integerForKey:@"Spirit"]) {
     case 0:
         {
-            if ((![[_player.userObject runningSequenceName]isEqualToString:@"Attack"] || ![[_player.userObject runningSequenceName]isEqualToString:@"Jump"]) && [self.delegate getMp]>=9) {
+            if ((![[_player.userObject runningSequenceName]isEqualToString:@"Attack"] && enableJump) && [self.delegate getMp]>=9) {
                 deltaStop = YES;
                 _skillBG.position = ccp(selfAncherPosition, 0); //load From ccb skillBG
                 _skillBG.visible = YES;
@@ -725,12 +776,38 @@
         break;
     case 1:
         {
-            
+            if ((![[_player.userObject runningSequenceName]isEqualToString:@"Attack"] && enableJump) && [self.delegate getMp]>=9) {
+                deltaStop = YES;
+                _skillBG.position = ccp(selfAncherPosition, 0); //load From ccb skillBG
+                _skillBG.visible = YES;
+                
+                skillPosition = ccp(_player.position.x, _player.position.y);
+                [self.delegate transMpDecrease:9];
+                [_player.physicsBody applyImpulse:ccp(0, 700)];
+                [_player.userObject runAnimationsForSequenceNamed:@"Skill"];
+                [self scheduleBlock:^(CCTimer *timer) {
+                    
+
+                    [self createSkillShot];
+                    
+                    [self scheduleBlock:^(CCTimer *timer) {
+                        [self.delegate scrollViewShake];
+                      
+                    } delay:1.0f];
+                } delay:1.0f ];
+                [self scheduleBlock:^(CCTimer *timer) {
+                    deltaStop = NO;
+                    [self scheduleBlock:^(CCTimer *timer) {
+                        _skillBG.visible = NO;
+                    } delay:0.2f];
+                    
+                } delay:4.3f];
+            }
         }
         break;
     case 2:
         {
-            if ((![[_player.userObject runningSequenceName]isEqualToString:@"Attack"] || ![[_player.userObject runningSequenceName]isEqualToString:@"Jump"]) && [self.delegate getMp]>=9) {
+            if ((![[_player.userObject runningSequenceName]isEqualToString:@"Attack"] && enableJump) && [self.delegate getMp]>=9) {
                 deltaStop = YES;
                 _skillBG.position = ccp(selfAncherPosition, 0); //load From ccb skillBG
                 _skillBG.visible = YES;
