@@ -10,6 +10,28 @@
 #import "LevelScene.h"
 
 @implementation Level_1MC
+
+-(NSMutableArray *) arrayEnemyBat
+{
+    if (!_arrayEnemyBat) {
+        _arrayEnemyBat = [NSMutableArray array];
+    }
+    return _arrayEnemyBat;
+}
+-(NSMutableArray *) arrayGnd
+{
+    if (!_arrayGnd) {
+        _arrayGnd = [NSMutableArray array];
+    }
+    return _arrayGnd;
+}
+-(NSMutableArray *) arrayEnemyPig
+{
+    if (!_arrayEnemyPig) {
+        _arrayEnemyPig = [NSMutableArray array];
+    }
+    return  _arrayEnemyPig;
+}
 -(void) didLoadFromCCB
 {
     self.userInteractionEnabled = TRUE;
@@ -26,8 +48,10 @@
     roberShotBo = NO;
     endgame = NO;
     tutorialStep = 0;
-    _physicsNode.zOrder = 5;
+    enemyAttackStep = 0;
 
+    _mcBGFront.zOrder = 200;
+    _mcBGFrontUp.zOrder = 200;
     switch ([[NSUserDefaults standardUserDefaults] integerForKey:@"Spirit"]) {
         case 0:
             _player = (CCNode *) [CCBReader load:@"PlayerSaber"];
@@ -53,14 +77,20 @@
     _kake.scale = 0.8;
     _kake.physicsBody.collisionType = @"Kake";
     [_physicsNode addChild:_kake z:0];
+    
+    [self createStone:ccp(1542, 51)];
+    [self createStone:ccp(2959, 232)];
+    [self createStone:ccp(3186, 106)];
+    [self createStone:ccp(4761, 60)];
     ///setting blueGnd
     [self buildBludGnd:ccp(0, 0) :101];
-    [self buildBludGnd:ccp(580, 0) :100];
-    [self buildBludGnd:ccp(1060, 0) :99];
-    [self buildBludGnd:ccp(1740,0) :98];
-    [self buildBludGnd:ccp(2871.2f,0) :97];
-    [self buildBludGnd:ccp(3000.0f,0) :96];
-    [self buildBludGnd:ccp(3570.0f,0) :95];
+    [self buildBludGnd:ccp(350, 0) :100];
+    [self buildBludGnd:ccp(1274, 0) :99];
+    [self buildBludGnd:ccp(1874,0) :98];
+    [self buildBludGnd:ccp(2913.0f,55) :96];
+    [self buildBludGnd:ccp(3314.0f,-25) :95];
+    [self buildBludFHGnd:ccp(4997, 12) :95];
+/*
     [self buildBludGnd:ccp(4036.0f,0) :94];
     [self buildBludGnd:ccp(4700.0f,0) :93];
     [self buildBludGnd:ccp(5000.0f,0) :92];
@@ -72,14 +102,52 @@
     [self buildBludGnd:ccp(8000.0f,0) :92];
     [self buildBludGnd:ccp(8400.0f,0) :92];
     [self buildBludGnd:ccp(9000.0f,0) :92];
-    
+*/
     //setting MCGndTop
     [self buildBlueTopGnd:ccp(298, 99)];
     [self buildBlueTopGnd:ccp(358, 147)];
     [self buildBlueTopGnd:ccp(524, 147)];
     [self buildBlueTopGnd:ccp(690, 147)];
     [self buildBlueTopGnd:ccp(847, 147)];
-    [self buildBlueTopGnd:ccp(982, 213)];
+    [self buildBlueTopGnd:ccp(977, 213)];
+    [self buildBlueTopGnd:ccp(1134, 213)];
+    [self buildBlueTopGnd:ccp(1906, 99)];
+    [self buildBlueTopGnd:ccp(1963, 147)];
+    [self buildBlueTopGnd:ccp(2025, 194)];
+    
+    [self buildBlueTopBGnd:ccp(2169, 231)];
+    [self buildBlueTopBGnd:ccp(2259, 231)];
+    [self buildBlueTopBGnd:ccp(2349, 231)];
+    [self buildBlueTopBGnd:ccp(2446, 187)];
+    [self buildBlueTopBGnd:ccp(2536, 187)];
+    [self buildBlueTopBGnd:ccp(2623, 187)];
+    [self buildBlueTopBGnd:ccp(2757, 232)];
+    [self buildBlueTopBGnd:ccp(2847, 232)];
+    [self buildBlueTopBGnd:ccp(2932, 232)];
+    
+    [self buildBlueTopGnd:ccp(2528, 51)];
+    [self buildBlueTopGnd:ccp(2659, 51)];
+    [self buildBlueTopGnd:ccp(2777, 51)];
+    [self buildBlueTopGnd:ccp(3946, 24)];
+    [self buildBlueTopGnd:ccp(4054, 24)];
+    [self buildBlueTopGnd:ccp(4169, 30)];
+    [self buildBlueTopGnd:ccp(4273, 41)];
+    [self buildBlueTopGnd:ccp(4389, 52)];
+    
+    [self buildBlueTopBGnd:ccp(3581, 187)];
+    [self buildBlueTopBGnd:ccp(3667, 187)];
+    [self buildBlueTopBGnd:ccp(3803, 227)];
+    [self buildBlueTopBGnd:ccp(3963, 229)];
+    [self buildBlueTopBGnd:ccp(4131, 223)];
+    [self buildBlueTopBGnd:ccp(4292, 232)];
+    [self buildBlueTopBGnd:ccp(4447, 242)];
+    [self buildBlueTopBGnd:ccp(4605, 242)];
+    [self buildBlueTopBGnd:ccp(4765, 241)];
+
+    
+
+
+
 }
 -(void) buildBludGnd :(CGPoint)x :(NSInteger) z
 {
@@ -89,6 +157,17 @@
     _blueGnd.physicsBody.elasticity = 0;
     _blueGnd.physicsBody.collisionType = @"blueGnd";
     [_physicsNode addChild:_blueGnd z:z];
+    CCLOG(@"BBG");
+}
+-(void) buildBludFHGnd :(CGPoint)x :(NSInteger) z
+{
+    _blueGnd = [CCBReader load:@"MCGndFH"];
+    _blueGnd.anchorPoint = ccp(0, 0);
+    _blueGnd.position = x;
+    _blueGnd.physicsBody.elasticity = 0;
+    _blueGnd.physicsBody.collisionType = @"blueGnd";
+    [_physicsNode addChild:_blueGnd z:z];
+        CCLOG(@"BBFHG");
 }
 -(void) buildBludGndS :(CGPoint)x :(NSInteger) z
 {
@@ -98,6 +177,7 @@
     _blueGnd.physicsBody.elasticity = 0;
     _blueGnd.physicsBody.collisionType = @"blueGnd";
     [_physicsNode addChild:_blueGnd z:z];
+        CCLOG(@"BBGs");
 }
 -(void) buildBlueTopGnd :(CGPoint)x
 {
@@ -106,6 +186,45 @@
     _blueTopGnd.position = x;
     _blueTopGnd.physicsBody.collisionType = @"blueGnd";
     [_physicsNode addChild:_blueTopGnd];
+        CCLOG(@"BBTG");
+}
+-(void) buildBlueTopBGnd :(CGPoint)x
+{
+    _blueTopGnd = [CCBReader load:@"MCTopBridge"];
+    _blueTopGnd.physicsBody.elasticity = 0;
+    _blueTopGnd.position = x;
+    _blueTopGnd.physicsBody.collisionType = @"blueGnd";
+    [_physicsNode addChild:_blueTopGnd];
+            CCLOG(@"BBTBG");
+}
+-(void) createStone :(CGPoint) x
+{
+    _enemy = [CCBReader load:@"MCEnemyStone"];
+    _enemy.position = x;
+    _enemy.physicsBody.collisionType = @"Stone";
+    [_physicsNode addChild:_enemy];
+        CCLOG(@"CS");
+}
+-(void) createBat :(CGPoint) x
+{
+    _enemy = [CCBReader load:@"enemyBat"];
+    _enemy.position = x;
+    _enemy.physicsBody.collisionType = @"enemy";
+    _enemy.scale = 0.5f;
+    [_physicsNode addChild:_enemy];
+    [self.arrayEnemyBat addObject:_enemy];
+        CCLOG(@"CB");
+    
+}
+-(void) createPig :(CGPoint) x
+{
+    _enemy = [CCBReader load:@"enemyPig"];
+    _enemy.position = x;
+    _enemy.physicsBody.collisionType = @"enemy";
+    [_physicsNode addChild:_enemy];
+    [_enemy.physicsBody applyImpulse:ccp(-400, 0)];
+    [self.arrayEnemyPig addObject:_enemy];
+        CCLOG(@"CP");
 }
 -(void) createArrowShot //Archer attack
 {
@@ -190,7 +309,7 @@
         default:
             break;
     }
-
+    
     /////// player & layer position
     if (!deltaStop) {
         
@@ -235,11 +354,77 @@
     }else if (deltaStop){
         _player.position = ccp(skillPosition.x,_player.position.y);
     }
+    
+    ///set create monster
+    
+    if (_player.position.x> 1543 && tutorialStep ==0)
+    {
+        [self createBat:ccp(1943, 300)];
+        tutorialStep = tutorialStep +1;
+    }
+    if (_player.position.x >2100 && tutorialStep ==1) {
+        [self createPig:ccp(2867, 285)];
+        tutorialStep = tutorialStep +1;
+    }
+    
+    
+    
+    
+    ///control monster attack
+    for (CCNode * enemy in _arrayEnemyBat) {
+        if (enemy.position.x -_player.position.x <480 && enemy.position.x > selfAnchorPosition) {
+            CCLOG(@"bat position = %f,%f",enemy.position.x,enemy.position.y);
+            if (enemy.position.x -_player.position.x <300 && enemyAttackStep == 0) {
+                CCLOG(@"intoFirstBat");
+                if (enemy.parent) {
+                    if (enemyAttackStep ==0 && enemy.position.y <160) {
+                        CCLOG(@"1speed up!");
+                        if (enemy.parent) [enemy.physicsBody applyImpulse:ccp(-200, 2500)];
+                        enemyAttackStep =1;
+                    }
+                
+                    if (enemyAttackStep ==1 && enemy.position.y <120){
+                        enemyAttackStep =2;
+                        [self scheduleBlock:^(CCTimer *timer) {
+                            if (enemy.parent) [enemy.physicsBody applyImpulse:ccp(-200, 1500)];
+                        } delay:1.0f];
 
+                        CCLOG(@"2speed up!");
+                        
+                        
+                        
+
+                        
+                    }
+                    if (enemyAttackStep ==2 && enemy.position.y < 100){
+                        if (enemy.parent) [enemy.physicsBody applyImpulse:ccp(-200, 2000)];
+                        CCLOG(@"3speed up!");
+                        return;
+                    }
+
+                }
+                
+                    
+                
+                
+            }
+        }
+    }
     
-    
-    
-    
+    for (CCNode * enemy in _arrayEnemyPig) {
+        if (enemy.position.x - selfAnchorPosition < 480 && enemy.position.x > selfAnchorPosition) {
+            if(enemyEnableJump){
+                CCLOG(@"pig can jump!");
+                int a = arc4random()%7;
+                    if (a == 1) {
+                        CCLOG(@"pig Jump!!");
+                        if (enemy.parent) {
+                    [enemy.physicsBody applyImpulse:ccp(-200, 2000)];
+                        }
+                    }
+                }
+        }
+    }
     
     ///// set MPincrease!!!
     
@@ -266,11 +451,11 @@
     if (deltaStop) {
         self.position = ccp(self.position.x, self.position.y);
     }
-    if(_sFire)
+ /*   if(_sFire)
     {
         _sFire.position = ccp(_player.position.x+25,1000);
     }
-    CCLOG(@"_sFire.position = %f,%f",_sFire.position.x,_sFire.position.y);
+ */   CCLOG(@"_sFire.position = %f,%f",_sFire.position.x,_sFire.position.y);
     _playerY = ccp(_player.position.x, _player.position.y);
     
     CCLOG(@"_player.position.x = %f\n _playerY.position.x = %f",_player.position.x,_playerY.x);
@@ -364,6 +549,8 @@
             }
             case 1:
             {
+                if ([self.delegate getMp]>=3) {
+
                 [_player.userObject runAnimationsForSequenceNamed:@"Attack"];
                 CCLOG(@"%@",[_player.userObject runningSequenceName]);
                 [self.delegate transMpDecrease:3];
@@ -382,6 +569,7 @@
                  sand.position = ccp(_player.position.x-20,_player.position.y);
                  [self addChild:sand];*/
                 [[OALSimpleAudio sharedInstance] playEffect:@"slam3.mp3"];
+                }
                 break;
             }
             case 2:
@@ -528,23 +716,74 @@
     CCLOG(@"Player on thee _blueGnd!!!!!");
     return YES;
 }
--(BOOL) ccPhysicsCollisionPreSolve:(CCPhysicsCollisionPair *)pair Player:(CCNode *)nodeA beginGnd:(CCNode *)nodeB
-{
-    enableJump = YES;
-    CCLOG(@"Player on thee _bGnd!!!!!");
-    return YES;
-}
+
 -(void)ccPhysicsCollisionSeparate:(CCPhysicsCollisionPair *)pair Player:(CCNode *)nodeA blueGnd:(CCNode *)nodeB
 {
     enableJump = NO;
     
 }
--(void)ccPhysicsCollisionSeparate:(CCPhysicsCollisionPair *)pair Player:(CCNode *)nodeA beginGnd:(CCNode *)nodeB
+
+-(BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair enemy:(CCNode *)nodeA blueGnd:(CCNode *)nodeB
 {
-    enableJump = NO;
+    enemyEnableJump = YES;
+    return YES;
+}
+-(void)ccPhysicsCollisionSeparate:(CCPhysicsCollisionPair *)pair enemy:(CCNode *)nodeA blueGnd:(CCNode *)nodeB
+{
+    enemyEnableJump = NO;
     
 }
+-(BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair Player:(CCNode *)nodeA enemy:(CCNode *)nodeB
+{
+    CCLOG(@"player collision bat!!");
+    if (nodeA.parent){   [nodeA.physicsBody applyImpulse:ccp(-200,100)];}
+    if (nodeB.parent)
+    {
+        nodeB.position = ccp(nodeB.position.x, nodeB.position.y+50);
+        [self scheduleBlock:^(CCTimer *timer) {
+            [nodeB.physicsBody applyImpulse:ccp(-100, 600)];
+        } delay:0.1f];
+    }
+    return YES;
+}
+-(void) ccPhysicsCollisionSeparate:(CCPhysicsCollisionPair *)pair Player:(CCNode *)nodeA enemy:(CCNode *)nodeB
+{
+    [self.delegate transHpDecrease:2];
+    
+}
+-(BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair slFire:(CCNode *)nodeA Stone:(CCNode *)nodeB
+{
+    
+    if (bRHP <2) {
+  
+    bRHP = bRHP +1;
+        CCLOG(@"brhp = %d",bRHP);
 
+    }
+    return YES;
+}
+
+-(void)ccPhysicsCollisionSeparate:(CCPhysicsCollisionPair *)pair slFire:(CCNode *)nodeA Stone:(CCNode *)nodeB
+{
+    if (bRHP<2) {
+        [nodeB.physicsBody applyImpulse:ccp(500 , 200)];
+    }
+    if (bRHP == 2) {
+        [nodeB removeFromParent];
+        bRHP = 0;
+    }
+    CCLOG(@"separate brhp = %d",bRHP);
+}
+-(BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair slFire:(CCNode *)nodeA enemy:(CCNode *)nodeB
+{
+    [nodeB removeFromParent];
+    return YES;
+}
+-(BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair SkillFire:(CCNode *)nodeA enemy:(CCNode *)nodeB
+{
+    [nodeB removeFromParent];
+    return YES;
+}
 -(float) getSelfAnchorPosition
 {
     return selfAnchorPosition;

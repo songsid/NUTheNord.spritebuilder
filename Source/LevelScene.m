@@ -332,6 +332,52 @@
     _skillTwo.enabled = bo;
     _pausedButton.enabled = bo;
 }
+-(void) reloadGame
+{
+    [self buttonControl:YES];
+    [info initHPMP];
+    switch ([[NSUserDefaults standardUserDefaults]integerForKey:@"SwitchLevel"]) {
+        case 0:
+        {
+            [[NSUserDefaults standardUserDefaults]setInteger:0 forKey:@"DialogInt"];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+            Level_0First * level = (Level_0First *)[CCBReader load:@"Level_0lab"];
+            _levelSceneScrollView.contentNode = level;
+            self.currentLevel = level;
+            level.delegate = self;
+        }
+            break;
+        case 1:
+        {
+            Level_1MC * level = (Level_1MC *)[CCBReader load:@"Level_1MC"];
+            _levelSceneScrollView.contentNode = level;
+            self.currentLevel = level;
+            level.delegate = self;
+
+        }
+            break;
+        case 2:
+            
+            break;
+            
+        default:
+            break;
+    }
+}
+-(void) appearFailCount
+{
+    self.currentLevel.paused = YES;
+    self.currentLevel.userInteractionEnabled = NO;
+    _attack.enabled = NO;
+    _skillOne.enabled =NO;
+    _skillTwo.enabled = NO;
+    _pausedButton.enabled = NO;
+    FailCount * fail = (FailCount *)[CCBReader load:@"failCount"];
+    fail.position = ccp(0, 0);
+    fail.delegate = self;
+    [self addChild:fail z:100];
+    
+}
 -(void) onEnter
 {
     [super onEnter];

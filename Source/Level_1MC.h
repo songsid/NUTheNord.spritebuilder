@@ -50,11 +50,14 @@
     
     
     CCNode * _skillBG;
+    CCNode * _mcBGFront;
+    CCNode * _mcBGFrontUp;
     BOOL deltaStop;
     float mpDistance;
     float selfAnchorPosition;
     
     BOOL enableJump;
+    BOOL enemyEnableJump;
     BOOL dialogOne;
     BOOL dialogTwo;
     BOOL dialogThree;
@@ -66,6 +69,7 @@
     CGPoint skillPosition;
     int bRHP;
     int tutorialStep;
+    int enemyAttackStep;
 }
 @property (nonatomic,weak) id<Level_1MCDelegate> delegate;
 @property(nonatomic,readwrite) UIGestureRecognizerState state;
@@ -76,6 +80,9 @@
 @property (nonatomic,assign) float y;
 @property (nonatomic,assign) float t;
 @property (nonatomic,weak) CCNode * sFire;
+@property (nonatomic,strong) NSMutableArray * arrayEnemyBat;
+@property (nonatomic,strong) NSMutableArray * arrayEnemyPig;
+@property (nonatomic,strong) NSMutableArray * arrayGnd;
 
 -(void) attack;
 -(void) skill;

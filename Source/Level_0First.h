@@ -20,6 +20,7 @@
 -(void) scrollViewShake;
 -(void) showClearCount;
 -(void) buttonControl: (BOOL) bo;
+-(void) appearFailCount;
 @end
 
 

@@ -37,6 +37,7 @@
 		1FDE92F21913DE5D003714B5 /* ClearCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE92F11913DE5D003714B5 /* ClearCount.m */; };
 		1FDE92F51916213C003714B5 /* PauseSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE92F41916213C003714B5 /* PauseSetting.m */; };
 		1FDE92F81918CF54003714B5 /* Level_1MC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE92F71918CF54003714B5 /* Level_1MC.m */; };
+		1FEF685A1920A27C0022C47C /* FailCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FEF68591920A27C0022C47C /* FailCount.m */; };
 		B71F5911188484E7003F4D28 /* iPad-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5907188484E7003F4D28 /* iPad-old.png */; };
 		B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5908188484E7003F4D28 /* iPad-old@2x.png */; };
 		B71F5913188484E7003F4D28 /* iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5909188484E7003F4D28 /* iPad.png */; };
@@ -134,6 +135,8 @@
 		1FDE92F41916213C003714B5 /* PauseSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PauseSetting.m; path = Source/PauseSetting.m; sourceTree = "<group>"; };
 		1FDE92F61918CF54003714B5 /* Level_1MC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Level_1MC.h; path = Source/Level_1MC.h; sourceTree = "<group>"; };
 		1FDE92F71918CF54003714B5 /* Level_1MC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Level_1MC.m; path = Source/Level_1MC.m; sourceTree = "<group>"; };
+		1FEF68581920A27C0022C47C /* FailCount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FailCount.h; path = Source/FailCount.h; sourceTree = "<group>"; };
+		1FEF68591920A27C0022C47C /* FailCount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FailCount.m; path = Source/FailCount.m; sourceTree = "<group>"; };
 		B71F5907188484E7003F4D28 /* iPad-old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old.png"; path = "Icons/iPad-old.png"; sourceTree = "<group>"; };
 		B71F5908188484E7003F4D28 /* iPad-old@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old@2x.png"; path = "Icons/iPad-old@2x.png"; sourceTree = "<group>"; };
 		B71F5909188484E7003F4D28 /* iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPad.png; path = Icons/iPad.png; sourceTree = "<group>"; };
@@ -201,6 +204,8 @@
 				1FB0D1321906555300D02643 /* Dialog.m */,
 				1FDE92F31916213C003714B5 /* PauseSetting.h */,
 				1FDE92F41916213C003714B5 /* PauseSetting.m */,
+				1FEF68581920A27C0022C47C /* FailCount.h */,
+				1FEF68591920A27C0022C47C /* FailCount.m */,
 			);
 			name = LevelObject;
 			sourceTree = "<group>";
@@ -509,6 +514,7 @@
 				1F75493418D1E01F006E357A /* MainMenuLayer.m in Sources */,
 				B737893F1807617C0076A88C /* AppDelegate.m in Sources */,
 				1F75495718D206C7006E357A /* LevelObject.m in Sources */,
+				1FEF685A1920A27C0022C47C /* FailCount.m in Sources */,
 				1F75493E18D1E639006E357A /* PlayerInfoScene.m in Sources */,
 				1FAB055F18F98A32008DF449 /* HPMPInfo.m in Sources */,
 				1FDE92F51916213C003714B5 /* PauseSetting.m in Sources */,

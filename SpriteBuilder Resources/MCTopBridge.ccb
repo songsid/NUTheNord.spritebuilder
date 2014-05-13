@@ -27,62 +27,127 @@
 	<false/>
 	<key>nodeGraph</key>
 	<dict>
-		<key>animatedProperties</key>
-		<dict>
-			<key>0</key>
-			<dict>
-				<key>spriteFrame</key>
-				<dict>
-					<key>keyframes</key>
-					<array>
-						<dict>
-							<key>easing</key>
-							<dict>
-								<key>type</key>
-								<integer>0</integer>
-							</dict>
-							<key>name</key>
-							<string>spriteFrame</string>
-							<key>time</key>
-							<real>0.0</real>
-							<key>type</key>
-							<integer>7</integer>
-							<key>value</key>
-							<array>
-								<string>Picture/enemy/bat2.png</string>
-								<string>Use regular file</string>
-							</array>
-						</dict>
-						<dict>
-							<key>easing</key>
-							<dict>
-								<key>type</key>
-								<integer>0</integer>
-							</dict>
-							<key>name</key>
-							<string>spriteFrame</string>
-							<key>time</key>
-							<real>0.1666666716337204</real>
-							<key>type</key>
-							<integer>7</integer>
-							<key>value</key>
-							<array>
-								<string>Picture/enemy/bat.png</string>
-								<string>Use regular file</string>
-							</array>
-						</dict>
-					</array>
-					<key>name</key>
-					<string>spriteFrame</string>
-					<key>type</key>
-					<integer>7</integer>
-				</dict>
-			</dict>
-		</dict>
 		<key>baseClass</key>
 		<string>CCSprite</string>
 		<key>children</key>
-		<array/>
+		<array>
+			<dict>
+				<key>baseClass</key>
+				<string>CCNode</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string></string>
+				<key>displayName</key>
+				<string>CCNode</string>
+				<key>memberVarAssignmentName</key>
+				<string></string>
+				<key>memberVarAssignmentType</key>
+				<integer>0</integer>
+				<key>physicsBody</key>
+				<dict>
+					<key>affectedByGravity</key>
+					<true/>
+					<key>allowsRotation</key>
+					<true/>
+					<key>bodyShape</key>
+					<integer>0</integer>
+					<key>cornerRadius</key>
+					<real>0.0</real>
+					<key>density</key>
+					<real>1</real>
+					<key>dynamic</key>
+					<false/>
+					<key>elasticity</key>
+					<real>0.30000001192092896</real>
+					<key>friction</key>
+					<real>0.30000001192092896</real>
+					<key>points</key>
+					<array>
+						<array>
+							<real>0.05322265625</real>
+							<real>-3.6650390625</real>
+						</array>
+						<array>
+							<real>90.1376953125</real>
+							<real>-3.6650390625</real>
+						</array>
+						<array>
+							<real>90.1376953125</real>
+							<real>-1.20654296875</real>
+						</array>
+						<array>
+							<real>0.05322265625</real>
+							<real>-1.20654296875</real>
+						</array>
+					</array>
+				</dict>
+				<key>properties</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>name</string>
+						<key>type</key>
+						<string>StringSimple</string>
+						<key>value</key>
+						<string></string>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>0.0</real>
+							<real>0.0</real>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>contentSize</string>
+						<key>type</key>
+						<string>Size</string>
+						<key>value</key>
+						<array>
+							<real>0.0</real>
+							<real>0.0</real>
+							<integer>0</integer>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>anchorPoint</string>
+						<key>type</key>
+						<string>Point</string>
+						<key>value</key>
+						<array>
+							<real>0.0</real>
+							<real>0.0</real>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+				</array>
+				<key>selected</key>
+				<true/>
+			</dict>
+		</array>
 		<key>customClass</key>
 		<string></string>
 		<key>displayName</key>
@@ -94,7 +159,7 @@
 		<key>physicsBody</key>
 		<dict>
 			<key>affectedByGravity</key>
-			<true/>
+			<false/>
 			<key>allowsRotation</key>
 			<false/>
 			<key>bodyShape</key>
@@ -102,30 +167,30 @@
 			<key>cornerRadius</key>
 			<real>0.0</real>
 			<key>density</key>
-			<real>1</real>
+			<real>255</real>
 			<key>dynamic</key>
-			<true/>
+			<false/>
 			<key>elasticity</key>
 			<real>0.0</real>
 			<key>friction</key>
-			<real>0.30000001192092896</real>
+			<real>0.0</real>
 			<key>points</key>
 			<array>
 				<array>
-					<real>113.8359375</real>
-					<real>70.031219482421875</real>
+					<real>0.0</real>
+					<real>0.0</real>
 				</array>
 				<array>
-					<real>173.69140625</real>
-					<real>70.031219482421875</real>
+					<real>90.0556640625</real>
+					<real>0.0</real>
 				</array>
 				<array>
-					<real>173.69140625</real>
-					<real>154.55075073242188</real>
+					<real>90.0556640625</real>
+					<real>2.08251953125</real>
 				</array>
 				<array>
-					<real>113.8359375</real>
-					<real>154.55075073242188</real>
+					<real>0.0</real>
+					<real>2.08251953125</real>
 				</array>
 			</array>
 		</dict>
@@ -178,11 +243,6 @@
 				</array>
 			</dict>
 			<dict>
-				<key>baseValue</key>
-				<array>
-					<string></string>
-					<string>Use regular file</string>
-				</array>
 				<key>name</key>
 				<string>spriteFrame</string>
 				<key>type</key>
@@ -206,22 +266,7 @@
 					<real>1</real>
 				</array>
 			</dict>
-			<dict>
-				<key>name</key>
-				<string>flip</string>
-				<key>type</key>
-				<string>Flip</string>
-				<key>value</key>
-				<array>
-					<true/>
-					<false/>
-				</array>
-			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
-		<key>seqExpanded</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
@@ -269,15 +314,15 @@
 				<integer>12</integer>
 			</dict>
 			<key>chainedSequenceId</key>
-			<integer>0</integer>
+			<integer>-1</integer>
 			<key>length</key>
-			<real>0.3333333432674408</real>
+			<real>10</real>
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.033333335071802139</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

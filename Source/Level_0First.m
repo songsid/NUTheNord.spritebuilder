@@ -25,7 +25,7 @@
     //[[OALSimpleAudio sharedInstance] playEffect:@"street1.mp3" loop:YES];
 
     self.userInteractionEnabled = TRUE;
-
+    
     _physicsNode.collisionDelegate = self; //set collisionDelegate
     mpDistance = 0.0f;
     bRHP = 0;
@@ -539,24 +539,21 @@
     ///EndGame/////////////////////////////////////////////////////////////
     if((_player.position.y<0))
     {
-        [self.delegate popLevelScene];
+        [_player removeFromParent];
+        [self.delegate appearFailCount];
         CCLOG(@"gameover!!!");
-        [[NSUserDefaults standardUserDefaults]setInteger:0 forKey:@"DialogInt"];
-        [[NSUserDefaults standardUserDefaults]synchronize];
     }
     ///HP=0 Endgame
     if ([self.delegate getHp]<=0) {
-        [self.delegate popLevelScene];
-        [[NSUserDefaults standardUserDefaults]setInteger:0 forKey:@"DialogInt"];
-        [[NSUserDefaults standardUserDefaults]synchronize];
+        [_player removeFromParent];
+        [self.delegate appearFailCount];;
     }
     
     ///player<self endgame
     if(_player.position.x < selfAncherPosition-40 )
     {
-        [self.delegate popLevelScene];
-        [[NSUserDefaults standardUserDefaults]setInteger:0 forKey:@"DialogInt"];
-        [[NSUserDefaults standardUserDefaults]synchronize];
+        [_player removeFromParent];
+        [self.delegate appearFailCount];
     }
     
     
@@ -874,21 +871,18 @@
 -(BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair slFire:(CCNode *)nodeA enemyRB:(CCNode *)nodeB
 {
     CCLOG(@"cc5");
-    [nodeB removeFromParent];
      bRHP = bRHP +1;
- //   if (bRHP>=3){
-  //      [nodeB removeFromParent];}
- //   if (bRHP<3) {
- //       if (_bRobert.parent) {
-    //    [_bRobert.physicsBody applyImpulse:ccp(1000,400)];
-  //      }
-        
- //   }
     return YES;
 }
--(BOOL) ccPhysicsCollisionPreSolve:(CCPhysicsCollisionPair *)pair slFire:(CCNode *)nodeA enemyRB:(CCNode *)nodeB
+-(void) ccPhysicsCollisionSeparate:(CCPhysicsCollisionPair *)pair slFire:(CCNode *)nodeA enemyRB:(CCNode *)nodeB
 {
-    return [pair ignore];
+    if (bRHP < 3) {
+        if (_bRobert.parent) {
+            [_bRobert.physicsBody applyImpulse:ccp(1000,400)];}
+    }
+        if (bRHP ==3) {
+             [nodeB removeFromParent];
+        }
 }
 -(BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair skillFire:(CCNode *)nodeA enemyRB:(CCNode *)nodeB
 {

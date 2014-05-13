@@ -23,5 +23,6 @@
 -(void) mpDecrease :(int) count;
 -(void) mpIncrease :(int) destance;
 -(void) popLevelScene;
+-(void) initHPMP;
 
 @end

@@ -19,7 +19,8 @@
 #import "Dialog.h"
 #import "ClearCount.h"
 #import "PauseSetting.h"
-@interface LevelScene : CCNode <LeagueSceneDelegate,/*LevelDelegate,Level_PDelegate,Level_1Delegate,*/Level_FirstDelegate,DialogDelegate,Level_1MCDelegate,ClearCountDelegate,PauseSettingDelegate>
+#import "FailCount.h"
+@interface LevelScene : CCNode <LeagueSceneDelegate,/*LevelDelegate,Level_PDelegate,Level_1Delegate,*/Level_FirstDelegate,DialogDelegate,Level_1MCDelegate,ClearCountDelegate,PauseSettingDelegate,FailCountDelegate>
 {
 
     CCButton * _skillOne;
@@ -67,4 +68,6 @@
 -(void) scrollViewShake;
 -(void) closePause;
 -(void) buttonControl: (BOOL) bo;
+-(void) reloadGame;
+-(void) appearFailCount;
 @end

@@ -9,6 +9,7 @@
 
 -(void) closePause;
 -(void) popLevelScene;
+-(void) reloadGame;
 @end
 #import "CCNode.h"
 #import "CCAlertView.h"
@@ -16,6 +17,8 @@
 {
     CCButton * _close;
     CCButton * _left;
+    CCButton * _restart;
+    BOOL reloadGame;
 }
 @property (nonatomic,weak) id<PauseSettingDelegate> delegate;
 @end

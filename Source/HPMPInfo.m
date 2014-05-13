@@ -12,6 +12,8 @@
 @synthesize HP,MP;
 -(void) didLoadFromCCB
 {
+  //  [self initHPMP];
+    
     MP = 0;
     HP = 10;
     MPNum.string = [NSString stringWithFormat:@"%d",MP];
@@ -51,6 +53,18 @@
     float mpl = (float)MP/10;
     MPLine.scaleX = mpl;
     }
+}
+-(void) initHPMP
+{
+    HP =10;
+    MP =0;
+    HPNum.string = [NSString stringWithFormat:@"%d ",HP ];
+    float hpl = (float)HP/10;
+    HPLine.scaleX = hpl;
+    MPNum.string = [NSString stringWithFormat:@"%d",MP];
+    float mpl = (float)MP/10;
+    MPLine.scaleX = mpl;
+    
 }
 -(void) update:(CCTime)delta
 {

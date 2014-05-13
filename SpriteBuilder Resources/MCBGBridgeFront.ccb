@@ -39,7 +39,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>平台</string>
+				<string>鐵鏈-前</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -61,95 +61,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-							<integer>0</integer>
-							<integer>0</integer>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>anchorPoint</string>
-						<key>type</key>
-						<string>Point</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>scale</string>
-						<key>type</key>
-						<string>ScaleLock</string>
-						<key>value</key>
-						<array>
-							<real>1.5062328577041626</real>
-							<real>1.5062328577041626</real>
-							<true/>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>spriteFrame</string>
-						<key>type</key>
-						<string>SpriteFrame</string>
-						<key>value</key>
-						<array>
-							<string></string>
-							<string>MCPicture/平台.png</string>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>color</string>
-						<key>type</key>
-						<string>Color3</string>
-						<key>value</key>
-						<array>
-							<real>1</real>
-							<real>1</real>
-							<real>1</real>
-							<real>1</real>
-						</array>
-					</dict>
-				</array>
-			</dict>
-			<dict>
-				<key>baseClass</key>
-				<string>CCSprite</string>
-				<key>children</key>
-				<array/>
-				<key>customClass</key>
-				<string></string>
-				<key>displayName</key>
-				<string>鐵鏈-後</string>
-				<key>memberVarAssignmentName</key>
-				<string></string>
-				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
-				<key>properties</key>
-				<array>
-					<dict>
-						<key>name</key>
-						<string>name</string>
-						<key>type</key>
-						<string>StringSimple</string>
-						<key>value</key>
-						<string></string>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>position</string>
-						<key>type</key>
-						<string>Position</string>
-						<key>value</key>
-						<array>
-							<real>9.2190179824829102</real>
-							<real>101.40000152587891</real>
+							<real>51</real>
+							<real>73</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -187,7 +100,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>MCPicture/鐵鏈-後.png</string>
+							<string>MCPicture/鐵鏈-前.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -213,7 +126,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>鐵鏈-後</string>
+				<string>鐵鏈-前</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -235,8 +148,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>86.485191345214844</real>
-							<real>101.44388580322266</real>
+							<real>124</real>
+							<real>73</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -274,7 +187,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>MCPicture/鐵鏈-後.png</string>
+							<string>MCPicture/鐵鏈-前.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -291,6 +204,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
