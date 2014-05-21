@@ -81,7 +81,7 @@
     if ([[NSUserDefaults standardUserDefaults]integerForKey:@"SwitchLevel"]== 1) {
        
         float levelAnchorPoint = (float)levelMc.getSelfAnchorPosition;
-        if (!self.currentLevel.paused && !levelMc.getDeltaStop) {
+        if (!self.currentLevel.paused && (!levelMc.getDeltaStop||!levelMcBoss.getDeltaStop)) {
             
             _mcBG4_1.position = ccp(_mcBG4_1.position.x - delta * 10, _mcBG4_1.position.y);
             _mcBG4_2.position = ccp(_mcBG4_2.position.x - delta * 10, _mcBG4_2.position.y);
@@ -138,10 +138,29 @@
 }
 -(void) switchLevel_1MC
 {
+//    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+//    spinner.hidesWhenStopped = YES;
+//    [[[CCDirector sharedDirector] view] addSubview:spinner];
+//    [spinner startAnimating];
+//    dispatch_queue_t sendDeviceTokenQueue = dispatch_queue_create("Load Level", NULL);
+//    dispatch_async(sendDeviceTokenQueue, ^{
+        Level_1MCBoss * level = (Level_1MCBoss *)[CCBReader load:@"Level_1MCBoss"];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [spinner stopAnimating];
+//            [spinner removeFromSuperview];
+            _levelSceneScrollView.contentNode = level;
+            self.currentLevel = level;
+            level.delegate = self;
+//        });
+//    });
+
+    
+    /*
     Level_1MC * level = (Level_1MC *)[CCBReader load:@"Level_1MC"];
     _levelSceneScrollView.contentNode = level;
     self.currentLevel = level;
     level.delegate = self;
+     */
 }
 -(void) sendLevel:(CCNode *)level
 {

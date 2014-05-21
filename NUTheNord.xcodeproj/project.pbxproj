@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F20B34219279B7F006B633C /* Level_1MCBoss.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F20B34119279B7F006B633C /* Level_1MCBoss.m */; };
 		1F2D5B3218E90D64002AE2F9 /* CCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2D5B3118E90D64002AE2F9 /* CCAlertView.m */; };
 		1F2D5B3B18E90DAF002AE2F9 /* alert.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1F2D5B3418E90DAF002AE2F9 /* alert.caf */; };
 		1F2D5B3C18E90DAF002AE2F9 /* redalertview-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F2D5B3518E90DAF002AE2F9 /* redalertview-hd.png */; };
@@ -86,6 +87,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F20B34019279B7F006B633C /* Level_1MCBoss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Level_1MCBoss.h; path = Source/Level_1MCBoss.h; sourceTree = "<group>"; };
+		1F20B34119279B7F006B633C /* Level_1MCBoss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Level_1MCBoss.m; path = Source/Level_1MCBoss.m; sourceTree = "<group>"; };
 		1F2D5B3018E90D64002AE2F9 /* CCAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAlertView.h; sourceTree = "<group>"; };
 		1F2D5B3118E90D64002AE2F9 /* CCAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCAlertView.m; sourceTree = "<group>"; };
 		1F2D5B3418E90DAF002AE2F9 /* alert.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alert.caf; sourceTree = "<group>"; };
@@ -261,6 +264,8 @@
 				1FAB055A18F92450008DF449 /* Level_0First.m */,
 				1FDE92F61918CF54003714B5 /* Level_1MC.h */,
 				1FDE92F71918CF54003714B5 /* Level_1MC.m */,
+				1F20B34019279B7F006B633C /* Level_1MCBoss.h */,
+				1F20B34119279B7F006B633C /* Level_1MCBoss.m */,
 				1F69A45F18D5CFFE00ECC19D /* Level_P.h */,
 				1F69A46018D5CFFE00ECC19D /* Level_P.m */,
 				1F75495218D2060F006E357A /* Level_0.h */,
@@ -503,6 +508,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F75495418D2060F006E357A /* Level_0.m in Sources */,
+				1F20B34219279B7F006B633C /* Level_1MCBoss.m in Sources */,
 				1F2D5B3218E90D64002AE2F9 /* CCAlertView.m in Sources */,
 				1F75494C18D1FBED006E357A /* LeagueLayer.m in Sources */,
 				1F75495018D205D1006E357A /* LevelScene.m in Sources */,

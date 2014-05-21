@@ -61,6 +61,7 @@
     HPNum.string = [NSString stringWithFormat:@"%d ",HP ];
     float hpl = (float)HP/10;
     HPLine.scaleX = hpl;
+    
     MPNum.string = [NSString stringWithFormat:@"%d",MP];
     float mpl = (float)MP/10;
     MPLine.scaleX = mpl;

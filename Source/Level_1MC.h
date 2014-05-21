@@ -52,6 +52,13 @@
     CCNode * _skillBG;
     CCNode * _mcBGFront;
     CCNode * _mcBGFrontUp;
+    
+    CCNode * _layer1k;
+    CCNode * _layer2k;
+    CCNode * _layer3k;
+    CCNode * _layer4k;
+    CCNode * _layer5k;
+
     BOOL deltaStop;
     float mpDistance;
     float selfAnchorPosition;
@@ -70,6 +77,8 @@
     int bRHP;
     int tutorialStep;
     int enemyAttackStep;
+    int setLayer;
+    
 }
 @property (nonatomic,weak) id<Level_1MCDelegate> delegate;
 @property(nonatomic,readwrite) UIGestureRecognizerState state;

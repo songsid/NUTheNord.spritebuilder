@@ -279,10 +279,10 @@
     }else if (index == 1) {
         CCLOG(@"OK Pressed");
         [self setBlockButton:YES];
-        [self scheduleBlock:^(CCTimer * timer){
+
             [self.delegate pushLevel];
             CCLOG(@"afterSureIntoLevel : %@",_sendLevel);
-        } delay:0.1f];
+
         
     }
 }

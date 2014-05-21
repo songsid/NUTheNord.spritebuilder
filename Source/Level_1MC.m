@@ -49,7 +49,7 @@
     endgame = NO;
     tutorialStep = 0;
     enemyAttackStep = 0;
-
+    setLayer = 0;
     _mcBGFront.zOrder = 200;
     _mcBGFrontUp.zOrder = 200;
     switch ([[NSUserDefaults standardUserDefaults] integerForKey:@"Spirit"]) {
@@ -89,7 +89,8 @@
     [self buildBludGnd:ccp(1874,0) :98];
     [self buildBludGnd:ccp(2913.0f,55) :96];
     [self buildBludGnd:ccp(3314.0f,-25) :95];
-    [self buildBludFHGnd:ccp(4997, 12) :95];
+    [self buildBludFHGnd:ccp(4506, 12) :95];
+    [self buildBludGnd:ccp(4986, 0) :100];
 /*
     [self buildBludGnd:ccp(4036.0f,0) :94];
     [self buildBludGnd:ccp(4700.0f,0) :93];
@@ -309,21 +310,65 @@
         default:
             break;
     }
+    ///setLayer
     
+    if (setLayer == 0 && selfAnchorPosition >0) { //1k
+        _layer1k = [CCBReader load:@"Level_1MC_1"];
+        _layer1k.anchorPoint = ccp(0, 0);
+        _layer1k.position = ccp(1000, 0);
+        [self addChild:_layer1k z:-1];
+        setLayer = 1;
+    }
+    if (setLayer == 1 && selfAnchorPosition >1000) { //2k
+        _layer2k = [CCBReader load:@"Level_1MC_2"];
+        _layer2k.anchorPoint = ccp(0, 0);
+        _layer2k.position = ccp(2000, 0);
+        [self addChild:_layer2k z:-1];
+        setLayer = 2;
+    }
+    if (setLayer == 2 && selfAnchorPosition >2000) { //3k
+        _layer3k= [CCBReader load:@"Level_1MC_3"];
+        _layer3k.anchorPoint = ccp(0, 0);
+        _layer3k.position = ccp(3000, 0);
+        [self addChild:_layer3k z:-1];
+        [_layer1k removeFromParentAndCleanup:YES]; //remove 1k
+        setLayer = 3;
+    }
+    if (setLayer == 3 && selfAnchorPosition >3000) { //4k
+        _layer4k = [CCBReader load:@"Level_1MC_4"];
+        _layer4k.anchorPoint = ccp(0, 0);
+        _layer4k.position = ccp(4000, 0);
+        [self addChild:_layer4k z:-1];
+        [_layer2k removeFromParentAndCleanup:YES]; //remove 2k
+        setLayer = 4;
+    }
+    if (setLayer == 4 && selfAnchorPosition >4000) { //5k
+        _layer5k = [CCBReader load:@"Level_1MC_5"];
+        _layer5k.anchorPoint = ccp(0, 0);
+        _layer5k.position = ccp(5000, 0);
+        [self addChild:_layer5k z:-1];
+        [_layer3k removeFromParentAndCleanup:YES]; // remove 3k
+        setLayer = 5;
+    }
+    if (setLayer == 5 && selfAnchorPosition >5000) {
+        [_layer4k removeFromParentAndCleanup:YES];
+        [_layer5k removeFromParentAndCleanup:YES];
+        setLayer = 6;
+    }
     /////// player & layer position
     if (!deltaStop) {
-        
-        if ((_player.position.x -_playerY.x > 100*delta) && (_player.position.x <selfAnchorPosition+160) && (_player.position.x >selfAnchorPosition+100)) {
+
+        if ((_player.position.x -_playerY.x > 100*delta) && (_player.position.x <selfAnchorPosition+230) && (_player.position.x >selfAnchorPosition+160)) {
             [_player.physicsBody applyForce:ccp(-5000.0f *delta, 0.0f)];
             
         }
-        if ((_player.position.x -_playerY.x < 100*delta)&& (_player.position.x <selfAnchorPosition+160)&& (_player.position.x >selfAnchorPosition+100))
+        if ((_player.position.x -_playerY.x < 100*delta)&& (_player.position.x <selfAnchorPosition+230)&& (_player.position.x >selfAnchorPosition+160))
         {
             [_player.physicsBody applyForce:ccp(5000.0f *delta, 0.0f)];
         }
-        if (_player.position.x>selfAnchorPosition+160) {
+        if (_player.position.x>selfAnchorPosition+230) {
             float f;
-            f = _player.position.x - selfAnchorPosition+160;
+            f = _player.position.x - selfAnchorPosition+230;
             if (f>55) {
                 f=55;
             }
@@ -331,17 +376,17 @@
             [_player.physicsBody applyForce:ccp(-6000.0f * delta * f, 0.0f)];
             
         }
-        if (_player.position.x<selfAnchorPosition+100) {
+        if (_player.position.x<selfAnchorPosition+160) {
             float f;
             float f2;
-            f = selfAnchorPosition +100 - _player.position.x;
+            f = selfAnchorPosition +160 - _player.position.x;
             CCLOG(@"f = %f",f);
-            if (f>50) {
-                f = 70;
+            if (f>100) {
+                f = 100;
             }
             f2 = f*f;
             CCLOG(@"f2 = %f",f2);
-            f =  f2/4900;
+            f =  f2/10000;
             if ((_player.position.x-_playerY.x > 120 *delta) && f<1) {
                 [_player.physicsBody applyForce:ccp(-5000.0f *delta, 0.0f)];
                 CCLOG(@"+70 --ing");
@@ -367,7 +412,10 @@
         tutorialStep = tutorialStep +1;
     }
     
-    
+    if (_player.position.x > 3800 && tutorialStep ==2) {
+        [self createPig:ccp(4450 , 51)];
+        tutorialStep = tutorialStep+1;
+    }
     
     
     ///control monster attack
@@ -390,11 +438,7 @@
                         } delay:1.0f];
 
                         CCLOG(@"2speed up!");
-                        
-                        
-                        
-
-                        
+ 
                     }
                     if (enemyAttackStep ==2 && enemy.position.y < 100){
                         if (enemy.parent) [enemy.physicsBody applyImpulse:ccp(-200, 2000)];
@@ -413,6 +457,9 @@
     
     for (CCNode * enemy in _arrayEnemyPig) {
         if (enemy.position.x - selfAnchorPosition < 480 && enemy.position.x > selfAnchorPosition) {
+            if (enemy.position.x -selfAnchorPosition < -100) {
+                [enemy removeFromParentAndCleanup:YES];
+            }
             if(enemyEnableJump){
                 CCLOG(@"pig can jump!");
                 int a = arc4random()%7;
@@ -741,7 +788,7 @@
     {
         nodeB.position = ccp(nodeB.position.x, nodeB.position.y+50);
         [self scheduleBlock:^(CCTimer *timer) {
-            [nodeB.physicsBody applyImpulse:ccp(-100, 600)];
+            if (nodeB.parent)[nodeB.physicsBody applyImpulse:ccp(-100, 600)];
         } delay:0.1f];
     }
     return YES;

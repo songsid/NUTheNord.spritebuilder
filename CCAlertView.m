@@ -36,9 +36,11 @@
         float menuPos = 30; // buttons vertical alignment offset
         float titleHtDif = 20; //height of title label
         float msgHtDif = 50; //height of messgae label
+        _BG = [CCButton buttonWithTitle:@"███" fontName:@"新細明體" fontSize:500.0f];
         [_BG setTarget:self selector:@selector(empty:)];
-        _BG = [CCNodeColor nodeWithColor:[CCColor colorWithWhite:0.1f alpha:0.8f]];
-        _BG.userInteractionEnabled = NO;
+        _BG.color = [CCColor colorWithWhite:0.0 alpha:0.6];
+        _BG.enabled = NO;
+        _BG.label.opacity = 0.5f;
         _BG.anchorPoint = ccp(0.5, 0.5);
         _BG.position = ccp(0, 0);
         _BG.contentSize = [CCDirector sharedDirector].viewSize;
@@ -46,7 +48,7 @@
      /*
         UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRecognized:)];
         [[[CCDirector sharedDirector] view] addGestureRecognizer:recognizer];
-     */   //
+       */ //
         
         [self addChild:_BG z:0];
         
@@ -54,9 +56,11 @@
         
 		_alertViewSprite = [CCSprite spriteWithImageNamed:[NSString stringWithFormat:@"redalertview.png"]];
         _alertViewSprite.anchorPoint = ccp(0.5, 0.5);
-
-		[_BG addChild:_alertViewSprite z:1];
-        _alertViewSprite.position = ccp(views.width/2,views.height/2);
+        _alertViewSprite.position = ccp(_BG.position.x, _BG.position.y);
+        CCLOG(@"_alert.position = %f,%f ,%f,%f",_alertViewSprite.position.x,_alertViewSprite.position.y,self.position.x
+              ,self.position.y);
+		[self addChild:_alertViewSprite z:1];
+        
 		// 287X139
 		
 		self.anchorPoint = ccp(0.5,0.5);

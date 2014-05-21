@@ -15,12 +15,14 @@
 //#import "Level_1.h"
 #import "Level_1MC.h"
 #import "Level_0First.h"
+#import "Level_1MCBoss.h"
 #import "HPMPInfo.h"
 #import "Dialog.h"
 #import "ClearCount.h"
 #import "PauseSetting.h"
 #import "FailCount.h"
-@interface LevelScene : CCNode <LeagueSceneDelegate,/*LevelDelegate,Level_PDelegate,Level_1Delegate,*/Level_FirstDelegate,DialogDelegate,Level_1MCDelegate,ClearCountDelegate,PauseSettingDelegate,FailCountDelegate>
+#import "Level_1MCBoss.h"
+@interface LevelScene : CCNode <LeagueSceneDelegate,/*LevelDelegate,Level_PDelegate,Level_1Delegate,*/Level_FirstDelegate,DialogDelegate,Level_1MCDelegate,ClearCountDelegate,PauseSettingDelegate,FailCountDelegate,Level_1MCBossDelegate>
 {
 
     CCButton * _skillOne;
@@ -31,6 +33,7 @@
     Dialog * diag;
     ClearCount * clearCo;
     Level_1MC * levelMc;
+    Level_1MCBoss * levelMcBoss;
     CCNode * _dialog;
     PauseSetting * pausedS;
     int count;
