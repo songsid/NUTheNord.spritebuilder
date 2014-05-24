@@ -10,15 +10,39 @@
 #import "PlayerInfoLayer.h"
 #import "CCNode.h"
 #import "SkipIntoLayer.h"
+#import "SpriteSaber.h"
 
-
-@interface PlayerInfoScene : CCNode
+@interface PlayerInfoScene : CCNode <CCPhysicsCollisionDelegate,PlayerInfoLayerDelegate,SaberDelegate>
 {
+
     CCScrollView * _playerInfoScrollView;
     CCScrollView * _spriteScrollView;
     CCLabelTTF * _spriteLabel;
+    CCPhysicsNode * _physicsNode;
+    PlayerInfoLayer * playerInfo;
+    SpriteSaber * spriteSaber;
+    CCSprite * _spriteArcher;
+    CCSprite * _spriteLancer;
+    CCSprite * _spriteSupVa;
+    CCSprite * _spriteSupSieg;
+    CCSprite * _spriteSupLain;
     
+    BOOL spriteOn;
+    BOOL supOn;
+    BOOL addInfo;
+    id moveSprite;
+    id rotatedSprite;
+    id moveSprite2;
+    id rotatedSprite2;
+    id moveSup;
+    id rotatedSup;
+    id plusSprite;
+    id plusSup;
+    int lastSprite;
 }
 
-
+@property (nonatomic,strong) NSMutableArray * arraySprite;
+@property (nonatomic,strong) NSMutableArray * arraySup;
+-(void) playerInfoLayerRemove;
+-(void) playerInfoLayerAdd :(id)sprite;
 @end
