@@ -6,7 +6,6 @@
 //  Copyright (c) 2014年 Apportable. All rights reserved.
 //
 @protocol PlayerInfoLayerDelegate <NSObject>
--(void) playerInfoLayerAdd;
 -(void) playerInfoLayerRemove;
 
 @end

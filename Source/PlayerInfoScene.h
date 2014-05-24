@@ -11,8 +11,9 @@
 #import "CCNode.h"
 #import "SkipIntoLayer.h"
 #import "SpriteSaber.h"
-
-@interface PlayerInfoScene : CCNode <CCPhysicsCollisionDelegate,PlayerInfoLayerDelegate,SaberDelegate>
+#import "SpriteArcher.h"
+#import "SpriteLancer.h"
+@interface PlayerInfoScene : CCNode <CCPhysicsCollisionDelegate,PlayerInfoLayerDelegate,SaberDelegate,ArcherDelegate,LancerDelegate>
 {
 
     CCScrollView * _playerInfoScrollView;
@@ -21,8 +22,8 @@
     CCPhysicsNode * _physicsNode;
     PlayerInfoLayer * playerInfo;
     SpriteSaber * spriteSaber;
-    CCSprite * _spriteArcher;
-    CCSprite * _spriteLancer;
+    SpriteArcher * spriteArcher;
+    SpriteLancer * spriteLancer;
     CCSprite * _spriteSupVa;
     CCSprite * _spriteSupSieg;
     CCSprite * _spriteSupLain;

@@ -49,17 +49,19 @@
     [_physicsNode addChild:spriteSaber z:0];
     [self.arraySprite addObject:spriteSaber];
     
-    _spriteLancer = (CCSprite * )[CCBReader load:@"SpriteLancer"];
-    _spriteLancer.position = ccp(240, 100);
-    _spriteLancer.physicsBody.collisionType = @"Sprite";
-    [_physicsNode addChild:_spriteLancer z:0];
-    [self.arraySprite addObject:_spriteLancer];
+    spriteLancer = (SpriteLancer * )[CCBReader load:@"SpriteLancer"];
+    spriteLancer.position = ccp(240, 100);
+    spriteLancer.physicsBody.collisionType = @"Sprite";
+    spriteLancer.delegate = self;
+    [_physicsNode addChild:spriteLancer z:0];
+    [self.arraySprite addObject:spriteLancer];
     
-    _spriteArcher = (CCSprite * )[CCBReader load:@"SpriteArcher"];
-    _spriteArcher.position = ccp(280, 100);
-    _spriteArcher.physicsBody.collisionType =@"Sprite";
-    [_physicsNode addChild:_spriteArcher z:0];
-    [self.arraySprite addObject:_spriteArcher];
+    spriteArcher = (SpriteArcher * )[CCBReader load:@"SpriteArcher"];
+    spriteArcher.position = ccp(280, 100);
+    spriteArcher.physicsBody.collisionType =@"Sprite";
+    spriteArcher.delegate =  self;
+    [_physicsNode addChild:spriteArcher z:0];
+    [self.arraySprite addObject:spriteArcher];
     
     
     _spriteSupLain = (CCSprite *)[CCBReader load:@"SpriteSupportLainDau"];
@@ -108,8 +110,8 @@
                 }
             lastSprite = [[NSUserDefaults standardUserDefaults]integerForKey:@"Spirit"];
             if([sprite isEqual:spriteSaber])[[NSUserDefaults standardUserDefaults]setInteger:0 forKey:@"Spirit"];
-            if ([sprite isEqual:_spriteLancer])[[NSUserDefaults standardUserDefaults]setInteger:1 forKey:@"Spirit"];
-            if ([sprite isEqual:_spriteArcher])[[NSUserDefaults standardUserDefaults]setInteger:2 forKey:@"Spirit"];
+            if ([sprite isEqual:spriteLancer])[[NSUserDefaults standardUserDefaults]setInteger:1 forKey:@"Spirit"];
+            if ([sprite isEqual:spriteArcher])[[NSUserDefaults standardUserDefaults]setInteger:2 forKey:@"Spirit"];
             [[NSUserDefaults standardUserDefaults] synchronize];
             //  sprite.position = ccp(116, 208);
            // sprite.rotation = 0;
@@ -125,16 +127,16 @@
                     [spriteSaber.physicsBody applyImpulse:ccp(200, 100)];
                     break;
                 case 1:
-                    _spriteLancer.position = ccp(242, 231);
-                    _spriteLancer.physicsBody.affectedByGravity = YES;
-                    _spriteLancer.physicsBody.allowsRotation = YES;
-                    [_spriteLancer.physicsBody applyImpulse:ccp(200, 100)];
+                    spriteLancer.position = ccp(242, 231);
+                    spriteLancer.physicsBody.affectedByGravity = YES;
+                    spriteLancer.physicsBody.allowsRotation = YES;
+                    [spriteLancer.physicsBody applyImpulse:ccp(200, 100)];
                     break;
                 case 2:
-                    _spriteArcher.position = ccp(242, 231);
-                    _spriteArcher.physicsBody.affectedByGravity = YES;
-                    _spriteArcher.physicsBody.allowsRotation = YES;
-                    [_spriteArcher.physicsBody applyImpulse:ccp(200, 100)];
+                    spriteArcher.position = ccp(242, 231);
+                    spriteArcher.physicsBody.affectedByGravity = YES;
+                    spriteArcher.physicsBody.allowsRotation = YES;
+                    [spriteArcher.physicsBody applyImpulse:ccp(200, 100)];
                     break;
                 default:
                     break;
@@ -170,8 +172,8 @@
             }*/
             break;
         case 1:
-            _spriteLancer.position = ccp(116, 208);
-            _spriteLancer.rotation = 0;
+            spriteLancer.position = ccp(116, 208);
+            spriteLancer.rotation = 0;
    /*         if (spriteOn) {
             spriteSaber.physicsBody.allowsRotation = YES;
             spriteSaber.physicsBody.affectedByGravity = YES;
@@ -180,8 +182,8 @@
             }*/
             break;
         case 2:
-            _spriteArcher.position  = ccp(116, 208);
-            _spriteArcher.rotation = 0;
+            spriteArcher.position  = ccp(116, 208);
+            spriteArcher.rotation = 0;
   /*          if (spriteOn) {
             spriteSaber.physicsBody.allowsRotation = YES;
             spriteSaber.physicsBody.affectedByGravity = YES;
@@ -227,7 +229,25 @@
 }
 -(void) playerInfoLayerAdd :(id)sprite
 {
+    if ([sprite isEqualToString:@"0"]) {
+        CCLOG(@"ADD PlayerInfoLayer!!");
+        playerInfo = (PlayerInfoLayer *)[CCBReader load:@"PlayerInfoLayer"];
+        playerInfo.position = ccp(0,0);
+        playerInfo.delegate = self;
+        _physicsNode.paused = YES;
+        [self addChild:playerInfo z:100];
+        addInfo = YES;
+    }
     if ([sprite isEqualToString:@"1"]) {
+        CCLOG(@"ADD PlayerInfoLayer!!");
+        playerInfo = (PlayerInfoLayer *)[CCBReader load:@"PlayerInfoLayer"];
+        playerInfo.position = ccp(0,0);
+        playerInfo.delegate = self;
+        _physicsNode.paused = YES;
+        [self addChild:playerInfo z:100];
+        addInfo = YES;
+    }
+    if ([sprite isEqualToString:@"2"]) {
         CCLOG(@"ADD PlayerInfoLayer!!");
         playerInfo = (PlayerInfoLayer *)[CCBReader load:@"PlayerInfoLayer"];
         playerInfo.position = ccp(0,0);

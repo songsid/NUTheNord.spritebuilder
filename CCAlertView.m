@@ -28,9 +28,9 @@
         NSString *fontStyle = @"HelveticaNeue-Bold";
       //  CCSpriteFrame *altImg = [CCSpriteFrame frameWithImageNamed:@"redalertview.png"]; //if (isIPAD) altImg =[CCSpriteFrame frameWithImageNamed: @"redalertview-hd.png"];
         
-        CCSpriteFrame *rlb = [CCSpriteFrame frameWithImageNamed:@"redlightButton.png"]; //if (isIPAD) rlb =[CCSpriteFrame frameWithImageNamed:@"redlightButton-hd.png"];
+        CCSpriteFrame *rlb = [CCSpriteFrame frameWithImageNamed:@"NUCL_R.png"]; //if (isIPAD) rlb =[CCSpriteFrame frameWithImageNamed:@"redlightButton-hd.png"];
         
-        CCSpriteFrame *rdb =[CCSpriteFrame frameWithImageNamed:@"reddarkButton.png"]; //if (isIPAD) rdb =[CCSpriteFrame frameWithImageNamed:@"reddarkButton-hd.png"];
+        CCSpriteFrame *rdb =[CCSpriteFrame frameWithImageNamed:@"NUCD_R.png"]; //if (isIPAD) rdb =[CCSpriteFrame frameWithImageNamed:@"reddarkButton-hd.png"];
         float fnt1 = 18, fnt2 = 14;
        // float padding = 10; // distance between buttons
         float menuPos = 30; // buttons vertical alignment offset
@@ -54,7 +54,9 @@
         
         _BG.userInteractionEnabled = YES;
         
-		_alertViewSprite = [CCSprite spriteWithImageNamed:[NSString stringWithFormat:@"redalertview.png"]];
+		_alertViewSprite = [CCSprite spriteWithImageNamed:[NSString stringWithFormat:@"NUAlertView.png"]];
+        
+        _alertViewSprite.opacity = 1;
         _alertViewSprite.anchorPoint = ccp(0.5, 0.5);
         _alertViewSprite.position = ccp(_BG.position.x, _BG.position.y);
         CCLOG(@"_alert.position = %f,%f ,%f,%f",_alertViewSprite.position.x,_alertViewSprite.position.y,self.position.x
@@ -79,9 +81,11 @@
         }
         
         CCButton * OK = [CCButton buttonWithTitle:@"" spriteFrame:rlb];
+        OK.scale = 0.7f;
         [OK setTarget:self selector:@selector(otherButtonPressed:)];
         //       CCMenuItemImage *OK = [CCMenuItemImage itemWithNormalImage:rdb selectedImage:rlb target:self selector:@selector(otherButtonPressed:)];
         CCButton * Cancel = [CCButton buttonWithTitle:@"" spriteFrame:rdb];
+        Cancel.scale = 0.7f;
         [Cancel setTarget:self selector:@selector(cancelButtonPressed:)];
         //		CCMenuItemImage *Cancel = [CCMenuItemImage itemWithNormalImage:rdb selectedImage:rlb target:self selector:@selector(cancelButtonPressed:)];
         
@@ -120,8 +124,7 @@
 		cancellabel.position = ccp(Cancel.contentSize.width * .5, Cancel.contentSize.height * .5);
 		[Cancel addChild:cancellabel];
 		
-		_alertViewSprite.scale = 1;
-		_alertViewSprite.opacity = 0.8f;
+
         
         fadeIn1 = [CCActionFadeTo actionWithDuration:0.01f opacity:0.0f];
         fadeIn2 = [CCActionFadeTo actionWithDuration:0.3f opacity:0.9f];
@@ -147,8 +150,8 @@
     
 
     CCLOG(@"%@",fadeInT);
-    [_BG runAction:fadeInT];
-    [_alertViewSprite runAction:pulse];
+    //[_BG runAction:fadeInT];
+    //[_alertViewSprite runAction:pulse];
     
 
     [[OALSimpleAudio sharedInstance] playEffect:@"alert.caf"];

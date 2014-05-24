@@ -12,7 +12,7 @@
 -(void) didLoadFromCCB
 {
     self.userInteractionEnabled = YES;
-    CCLOG(@"enter SpriteSaber");
+
     CCLOG(@"self.position = %f,%f",self.position.x,self.position.y);
     selfLocation = self.position;
 
