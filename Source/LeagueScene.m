@@ -14,7 +14,7 @@
     _leagueSceneScrollView.anchorPoint = ccp(0, 0);
     _leagueSceneScrollView.position = ccp(0, 0);
     self.userInteractionEnabled = TRUE;
-    LeagueLayer * league = (LeagueLayer *) [CCBReader load:@"LeagueLayer"];
+    LeagueLayer * league = (LeagueLayer *) [CCBReader load:@"LeagueMapLayer"];
     league.delegate = self;
     _leagueSceneScrollView.contentNode = league;
     
