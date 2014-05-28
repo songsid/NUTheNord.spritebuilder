@@ -11,16 +11,18 @@
 #import "MainMenuLayer.h"
 #import "PlayerInfoScene.h"
 #import "FirstTimeIntroLayer.h"
+#import "FirstTimeIntroTwoLayer.h"
 
 
-@interface MainScene : CCNode<SkipIntoLayerDelegate,MainMenuLayerDelegate,FirstTimeIntroLayer>
+@interface MainScene : CCScene<SkipIntoLayerDelegate,MainMenuLayerDelegate,FirstTimeIntroLayer,FirstTimeTwoDelegate>
 {
-    CCScrollView * _mainScrollView;
-}
 
+}
+@property (nonatomic,strong)CCScrollView * mainScrollView;
 -(void) skipInto;
 -(void) pushPlayerInfoScene;
 -(void) pushLeagueScene;
+-(void) firstTimeEnd;
 -(void) firstTimeIntro;
-
+-(void) selectFirstTime;
 @end

@@ -11,24 +11,37 @@
 @implementation FirstTimeIntroLayer
 -(void) didLoadFromCCB
 {
+    end = YES;
+    _load.visible = NO;
     self.userInteractionEnabled = YES;
     //first time key
     [[NSUserDefaults standardUserDefaults] setObject:@"Intro"  forKey:@"FirstTime" ];
     //spirit default
     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"Spirit"];
-
+    [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"Sup"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-
+/*
     _talk.anchorPoint = ccp(0.5, 0.5);
     _talk.position = ccp(240, 160);
 
-    _talk.string = [NSString stringWithFormat:@"你好"];
+   // _talk.string = [NSString stringWithFormat:@"你好"];
     labelCount = 0;
+*/
+}
+-(void) isSkip:(id)sender
+{
+    _load.visible = YES;
 
 }
-
 -(void) update:(CCTime)delta
 {
+    
+    if (_load.visible == YES ) {
+        [self.delegate firstTimeEnd];
+    }
+    CCLOG(@"_load.visible = %hhd",_load.visible);
+    
+    
     switch (labelCount) {
         case 1:
             _talk.string = [NSString stringWithFormat:@"1"];
@@ -77,7 +90,7 @@
 
 -(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event{
 
-    labelCount = labelCount + 1;
+    //labelCount = labelCount + 1;
 
 }
 

@@ -25,39 +25,13 @@
 		<key>children</key>
 		<array/>
 		<key>customClass</key>
-		<string>SpriteSupportSiegfried</string>
+		<string>SpriteSaber</string>
 		<key>displayName</key>
 		<string>CCSprite</string>
 		<key>memberVarAssignmentName</key>
 		<string></string>
 		<key>memberVarAssignmentType</key>
 		<integer>0</integer>
-		<key>physicsBody</key>
-		<dict>
-			<key>affectedByGravity</key>
-			<true/>
-			<key>allowsRotation</key>
-			<true/>
-			<key>bodyShape</key>
-			<integer>1</integer>
-			<key>cornerRadius</key>
-			<real>33</real>
-			<key>density</key>
-			<real>10</real>
-			<key>dynamic</key>
-			<true/>
-			<key>elasticity</key>
-			<real>0.0</real>
-			<key>friction</key>
-			<real>0.0</real>
-			<key>points</key>
-			<array>
-				<array>
-					<real>25.0234375</real>
-					<real>24.421875</real>
-				</array>
-			</array>
-		</dict>
 		<key>properties</key>
 		<array>
 			<dict>
@@ -66,7 +40,7 @@
 				<key>type</key>
 				<string>StringSimple</string>
 				<key>value</key>
-				<string>5</string>
+				<string>11</string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -114,7 +88,7 @@
 				<key>value</key>
 				<array>
 					<string></string>
-					<string>Picture/齊格飛.png</string>
+					<string>Picture/Sprite/齊格飛.png</string>
 				</array>
 			</dict>
 			<dict>

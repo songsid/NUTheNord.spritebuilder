@@ -46,7 +46,32 @@
         default:
             break;
     }
-    
+    switch ([[NSUserDefaults standardUserDefaults] integerForKey:@"Sup"]) {
+            
+        case 0:
+        {
+            stJump = ccp(0,750.0f);
+            vinaSing = 100;
+        }
+            break;
+        case 1:
+        {
+            stJump = ccp(0,650.0f);
+            vinaSing = 100;
+        }
+            break;
+        case 2:
+        {
+            stJump = ccp(0,650.0f);
+            vinaSing = 150;
+        }
+            break;
+            
+            
+        default:
+            break;
+    }
+
     _player.position = ccp(80, 90);
     [_physicsNode addChild:_player z:1];
     _player.physicsBody.collisionType = @"Player";
@@ -226,12 +251,15 @@
     }
     ///// set MPincrease!!!
     
-    mpDistance  = mpDistance + 100*delta;
+    mpDistance  = mpDistance + vinaSing * delta;
     if (mpDistance>=150) {
         [self.delegate transMpIncrease:1];
         mpDistance = 0.0f;
-        
     }
+    /// hpmpInfo opacity
+    if (_player.position.y > 200) {
+        [self.delegate hpmpInfoOpacity:YES];
+    }else [self.delegate hpmpInfoOpacity:NO];
     ///
     if (![self.delegate getPaused] && !deltaStop) {
         if ((_player.position.x-_playerY.x)<0) {
@@ -300,7 +328,7 @@
     */
     if (enableJump && !deltaStop)
     {
-        [_player.physicsBody applyImpulse:ccp(0,650.0f)];
+        [_player.physicsBody applyImpulse:stJump];
         if (![[_player.userObject runningSequenceName]isEqualToString:@"Attack"]) {
             [_player.userObject runAnimationsForSequenceNamed:@"Jump"];
         }

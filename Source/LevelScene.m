@@ -17,6 +17,7 @@
     _levelSceneScrollView.bounces = NO;
     _levelSceneScrollView.pagingEnabled = NO;
     _levelSceneScrollView.userInteractionEnabled = NO;
+    if ([[UIDevice currentDevice]userInterfaceIdiom] == UIUserInterfaceIdiomPad){ self.scale = 1.07;}
     self.userInteractionEnabled = TRUE;
     int switchLevel = [[NSUserDefaults standardUserDefaults]integerForKey:@"SwitchLevel"];
         switch (switchLevel) {
@@ -63,7 +64,7 @@
         default:
             break;
     }
-    info = (HPMPInfo *)[CCBReader load:@"HPMPInfo"];
+    info = (HPMPInfo *)[CCBReader load:@"HPMPInfoN"];
     info.anchorPoint = ccp(0,0);
     info.position = ccp(7.0f, 266.0f);
     self.HPMP = info;
@@ -128,39 +129,20 @@
 }
 -(void) switchLevel_0First
 {
+    [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"DialogInt"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
     Level_0First * level = (Level_0First *)[CCBReader load:@"Level_0lab"];
     _levelSceneScrollView.contentNode = level;
-    CCLOG(@"_levelScemeScrollView.p & an = \n(%f,%f)\n (%f,%f)",_levelSceneScrollView.contentNode.position.x,_levelSceneScrollView.contentNode.position.y,_levelSceneScrollView.contentNode.anchorPoint.x,_levelSceneScrollView.contentNode.anchorPoint.y);
-  //  _levelSceneScrollView.contentNode.position = ccp(0, 0);
- //   _levelSceneScrollView.contentNode.anchorPoint = ccp(0, 0);
     self.currentLevel = level;
     level.delegate = self;
 }
 -(void) switchLevel_1MC
 {
-//    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-//    spinner.hidesWhenStopped = YES;
-//    [[[CCDirector sharedDirector] view] addSubview:spinner];
-//    [spinner startAnimating];
-//    dispatch_queue_t sendDeviceTokenQueue = dispatch_queue_create("Load Level", NULL);
-//    dispatch_async(sendDeviceTokenQueue, ^{
-        Level_1MCBoss * level = (Level_1MCBoss *)[CCBReader load:@"Level_1MCBoss"];
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [spinner stopAnimating];
-//            [spinner removeFromSuperview];
+        Level_1MC * level = (Level_1MC *)[CCBReader load:@"Level_1MC"];
+
             _levelSceneScrollView.contentNode = level;
             self.currentLevel = level;
             level.delegate = self;
-//        });
-//    });
-
-    
-    /*
-    Level_1MC * level = (Level_1MC *)[CCBReader load:@"Level_1MC"];
-    _levelSceneScrollView.contentNode = level;
-    self.currentLevel = level;
-    level.delegate = self;
-     */
 }
 -(void) sendLevel:(CCNode *)level
 {
@@ -168,13 +150,19 @@
         _levelSceneScrollView.contentNode = level;
         CCLOG(@"get send Level : %@",level);
 }
-
+-(void) loadBoss
+{
+    levelMcBoss = (Level_1MCBoss * )[CCBReader load:@"Level_1MCBoss"];
+    _levelSceneScrollView.contentNode = levelMcBoss;
+    self.currentLevel = levelMcBoss;
+    levelMcBoss.delegate = self;
+}
 -(void) popLevelScene
 {
     CCTransition * trans = [CCTransition transitionFadeWithDuration:1.0f];
 
+    [[CCDirector sharedDirector ]popScene];
     [[CCDirector sharedDirector ]popSceneWithTransition:trans];
-    
     [[OALSimpleAudio sharedInstance] stopAllEffects];
     [[NSUserDefaults standardUserDefaults]setInteger:0 forKey:@"DialogInt"];
     [[NSUserDefaults standardUserDefaults]synchronize];
@@ -245,10 +233,15 @@
 {
     return info.MP;
 }
+-(void) hpmpInfoOpacity: (BOOL) op
+{
+        [info opacity:op];
+}
 -(void) touchToPaused:(BOOL)ny
 {
 
     if (_levelSceneScrollView.paused ==NO && !ny) {
+     
         _attack.enabled = NO;
         _skillOne.enabled =NO;
         _skillTwo.enabled = NO;
@@ -278,7 +271,6 @@
     diag.position = ccp(0,120);
     diag.delegate = self;
     [self addChild:diag ];
-    
 }
 -(void) removeDialog
 {

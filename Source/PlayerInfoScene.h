@@ -19,14 +19,14 @@
     CCScrollView * _playerInfoScrollView;
     CCScrollView * _spriteScrollView;
     CCLabelTTF * _spriteLabel;
-    CCPhysicsNode * _physicsNode;
+ 
     PlayerInfoLayer * playerInfo;
     SpriteSaber * spriteSaber;
-    SpriteArcher * spriteArcher;
-    SpriteLancer * spriteLancer;
-    CCSprite * _spriteSupVa;
-    CCSprite * _spriteSupSieg;
-    CCSprite * _spriteSupLain;
+    SpriteSaber * spriteArcher;
+    SpriteSaber * spriteLancer;
+    SpriteSaber * spriteSupVa;
+    SpriteSaber * spriteSupSieg;
+    SpriteSaber * spriteSupLain;
     
     BOOL spriteOn;
     BOOL supOn;
@@ -40,6 +40,7 @@
     id plusSprite;
     id plusSup;
     int lastSprite;
+    int lastSup;
 }
 
 @property (nonatomic,strong) NSMutableArray * arraySprite;

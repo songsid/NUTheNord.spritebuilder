@@ -5,7 +5,7 @@
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
-	<integer>1</integer>
+	<integer>2</integer>
 	<key>currentSequenceId</key>
 	<integer>2</integer>
 	<key>docDimensionsType</key>
@@ -930,8 +930,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>440</real>
-							<real>21</real>
+							<real>434.44000244140625</real>
+							<real>35.200000762939453</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -955,9 +955,9 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
-							<false/>
+							<real>1.203685998916626</real>
+							<real>1.203685998916626</real>
+							<true/>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -979,8 +979,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>40</real>
-							<real>40</real>
+							<real>75</real>
+							<real>60</real>
 							<integer>0</integer>
 							<integer>0</integer>
 						</array>
@@ -1025,7 +1025,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string>Picture/外框.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1225,14 +1225,6 @@
 				<array>
 					<dict>
 						<key>name</key>
-						<string>visible</string>
-						<key>type</key>
-						<string>Check</string>
-						<key>value</key>
-						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
 						<string>name</string>
 						<key>type</key>
 						<string>StringSimple</string>
@@ -1246,8 +1238,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>250</real>
-							<real>1</real>
+							<real>269.94442749023438</real>
+							<real>29.920005798339844</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -1260,8 +1252,8 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>0.5</real>
+							<real>0.5</real>
 						</array>
 					</dict>
 					<dict>
@@ -1273,7 +1265,7 @@
 						<array>
 							<real>1</real>
 							<real>1</real>
-							<false/>
+							<true/>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1295,8 +1287,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>40</real>
-							<real>40</real>
+							<real>75</real>
+							<real>60</real>
 							<integer>0</integer>
 							<integer>0</integer>
 						</array>
@@ -1329,7 +1321,7 @@
 						<string>String</string>
 						<key>value</key>
 						<array>
-							<string>SkillOne</string>
+							<string>Skill</string>
 							<false/>
 						</array>
 					</dict>
@@ -1341,7 +1333,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string>Picture/外框.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -2178,7 +2170,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-5.1916942596435547</real>
+							<real>0.0</real>
 							<real>320</real>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -2332,14 +2324,6 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>rotation</string>
-						<key>type</key>
-						<string>Degrees</string>
-						<key>value</key>
-						<real>-0.31209865212440491</real>
-					</dict>
-					<dict>
-						<key>name</key>
 						<string>color</string>
 						<key>type</key>
 						<string>Color3</string>
@@ -2371,6 +2355,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -2603,6 +2589,6 @@
 		</dict>
 	</array>
 	<key>stageBorder</key>
-	<integer>3</integer>
+	<integer>0</integer>
 </dict>
 </plist>

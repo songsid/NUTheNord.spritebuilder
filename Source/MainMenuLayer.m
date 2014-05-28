@@ -21,7 +21,10 @@
     [self.delegate pushPlayerInfoScene];
         [[OALSimpleAudio sharedInstance] playEffect:@"sure4.mp3"];
 }
-
+-(void) isFirstTimeIntro:(id)sender
+{
+    [self.delegate selectFirstTime];
+}
 -(void) isLeagueScene:(id)sender
 {
     [self.delegate pushLeagueScene];

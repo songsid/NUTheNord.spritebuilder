@@ -15,11 +15,16 @@
 
 #import "CCNode.h"
 #import "LeagueLayer.h"
+#import "LeagueInfo.h"
 
 @interface LeagueScene : CCNode<LeagueLayerDelegate,CCAlertviewDelegate>
 {
     CCScrollView * _leagueSceneScrollView;
-    
+    CCButton * _enter;
+    CCButton * _cancel;
+    LeagueInfo * leagueInfo;
+    BOOL showInfo;
+    int levelCount;
 }
 @property (nonatomic,weak) id <LeagueSceneDelegate> delegate;
 
@@ -27,4 +32,5 @@
 -(void) pushLevel;
 -(void) intoLevelOrNot;
 -(void) controlSlide:(int)slide;
+-(void) showLeagueInfo:(CGPoint) x:(int)level;
 @end

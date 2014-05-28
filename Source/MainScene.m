@@ -14,21 +14,49 @@
     //self.userInteractionEnabled = TRUE;
     _mainScrollView.anchorPoint = ccp(0,0);
     _mainScrollView.position = ccp(0, 0);
+ if ([[UIDevice currentDevice]userInterfaceIdiom] == UIUserInterfaceIdiomPad){ self.scale = 1.07;}
+  
+    if ([[NSUserDefaults standardUserDefaults]boolForKey:@"SeePre"]) {
+        FirstTimeIntroLayer * first = (FirstTimeIntroLayer *) [CCBReader load:@"FirstTimeIntroLayer"];
+        first.delegate = self;
+        _mainScrollView.contentNode = first;
+    }else{
     SkipIntoLayer * skip = (SkipIntoLayer *)[CCBReader load:@"SkipIntoLayer"];
     skip.delegate = self;
     _mainScrollView.contentNode = skip;
-    
-    [[NSUserDefaults standardUserDefaults] setObject:@"danchen" forKey:@"username"];
-    [[NSUserDefaults standardUserDefaults] setInteger:99 forKey:@"score"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    }
 }
--(void) firstTimeIntro
+-(void) firstTimeEnd
 {
+    FirstTimeIntroTwoLayer * two = (FirstTimeIntroTwoLayer *) [CCBReader load:@"FirstTimeIntroTwoLayer"];
+    two.delegate = self;
+    _mainScrollView.contentNode = two;
+
+}
+-(void) firstTimeIntro //left FirstTimeIntro into LeagueScene
+{
+    if ([[NSUserDefaults standardUserDefaults]boolForKey:@"SeePre"] ){
+        [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"SeePre"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+        [[CCDirector sharedDirector]popScene];
+    }else{
     MainMenuLayer * menu = (MainMenuLayer *) [CCBReader load:@"MainMenuLayer"];
     menu.delegate = self;
     _mainScrollView.contentNode = menu;
     CCLOG(@"skip!!!!");
-    
+    [self pushLeagueScene];
+    }
+}
+-(void) selectFirstTime // from button into FirstIntro
+{
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"SeePre"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    MainScene * main = (MainScene *)[CCBReader loadAsScene:@"MainScene"];
+
+    [[CCDirector sharedDirector] pushScene:main];
+   /* FirstTimeIntroLayer * first = (FirstTimeIntroLayer *) [CCBReader load:@"FirstTimeIntroLayer"];
+    first.delegate = main;
+    main.mainScrollView.contentNode = first;*/
 }
 -(void) skipInto
 {

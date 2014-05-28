@@ -37,6 +37,11 @@
 		1FBCA27C193097EE0038396A /* NUDL_L.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBCA277193097EE0038396A /* NUDL_L.png */; };
 		1FBCA28319309A840038396A /* NUAlertView.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBCA28219309A840038396A /* NUAlertView.png */; };
 		1FBCA28519309B6F0038396A /* NUAlertViewoo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBCA28419309B6F0038396A /* NUAlertViewoo.png */; };
+		1FBCA2881932EFC00038396A /* LeagueInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBCA2871932EFC00038396A /* LeagueInfo.m */; };
+		1FBCA28B193383980038396A /* FirstTimeIntroTwoLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBCA28A193383980038396A /* FirstTimeIntroTwoLayer.m */; };
+		1FBCA292193460140038396A /* ArcherImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBCA28F193460140038396A /* ArcherImg.png */; };
+		1FBCA293193460140038396A /* LancerImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBCA290193460140038396A /* LancerImg.png */; };
+		1FBCA294193460140038396A /* SaberImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBCA291193460140038396A /* SaberImg.png */; };
 		1FDB4F09190820DE004301FB /* main4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1FDB4F07190820DE004301FB /* main4.mp3 */; };
 		1FDB4F0A190820DE004301FB /* sure4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1FDB4F08190820DE004301FB /* sure4.mp3 */; };
 		1FDB4F0D190821D8004301FB /* street1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1FDB4F0C190821D8004301FB /* street1.mp3 */; };
@@ -146,6 +151,13 @@
 		1FBCA277193097EE0038396A /* NUDL_L.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NUDL_L.png; sourceTree = "<group>"; };
 		1FBCA28219309A840038396A /* NUAlertView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NUAlertView.png; sourceTree = "<group>"; };
 		1FBCA28419309B6F0038396A /* NUAlertViewoo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NUAlertViewoo.png; sourceTree = "<group>"; };
+		1FBCA2861932EFC00038396A /* LeagueInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeagueInfo.h; path = Source/LeagueInfo.h; sourceTree = "<group>"; };
+		1FBCA2871932EFC00038396A /* LeagueInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeagueInfo.m; path = Source/LeagueInfo.m; sourceTree = "<group>"; };
+		1FBCA289193383980038396A /* FirstTimeIntroTwoLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FirstTimeIntroTwoLayer.h; path = Source/FirstTimeIntroTwoLayer.h; sourceTree = "<group>"; };
+		1FBCA28A193383980038396A /* FirstTimeIntroTwoLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FirstTimeIntroTwoLayer.m; path = Source/FirstTimeIntroTwoLayer.m; sourceTree = "<group>"; };
+		1FBCA28F193460140038396A /* ArcherImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ArcherImg.png; sourceTree = "<group>"; };
+		1FBCA290193460140038396A /* LancerImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LancerImg.png; sourceTree = "<group>"; };
+		1FBCA291193460140038396A /* SaberImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SaberImg.png; sourceTree = "<group>"; };
 		1FDB4F07190820DE004301FB /* main4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = main4.mp3; sourceTree = "<group>"; };
 		1FDB4F08190820DE004301FB /* sure4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sure4.mp3; sourceTree = "<group>"; };
 		1FDB4F0C190821D8004301FB /* street1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = street1.mp3; sourceTree = "<group>"; };
@@ -266,6 +278,8 @@
 				1F75493318D1E01F006E357A /* MainMenuLayer.m */,
 				1F75498618D482A1006E357A /* FirstTimeIntroLayer.h */,
 				1F75498718D482A1006E357A /* FirstTimeIntroLayer.m */,
+				1FBCA289193383980038396A /* FirstTimeIntroTwoLayer.h */,
+				1FBCA28A193383980038396A /* FirstTimeIntroTwoLayer.m */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -275,6 +289,8 @@
 			children = (
 				1F75494718D1FBDD006E357A /* LeagueScene.h */,
 				1F75494818D1FBDD006E357A /* LeagueScene.m */,
+				1FBCA2861932EFC00038396A /* LeagueInfo.h */,
+				1FBCA2871932EFC00038396A /* LeagueInfo.m */,
 				1F75494A18D1FBED006E357A /* LeagueLayer.h */,
 				1F75494B18D1FBED006E357A /* LeagueLayer.m */,
 			);
@@ -316,6 +332,16 @@
 				1FBCA277193097EE0038396A /* NUDL_L.png */,
 			);
 			path = NUAlertView;
+			sourceTree = "<group>";
+		};
+		1FBCA2951934601C0038396A /* Spirit */ = {
+			isa = PBXGroup;
+			children = (
+				1FBCA28F193460140038396A /* ArcherImg.png */,
+				1FBCA290193460140038396A /* LancerImg.png */,
+				1FBCA291193460140038396A /* SaberImg.png */,
+			);
+			name = Spirit;
 			sourceTree = "<group>";
 		};
 		1FF029FE192D0BA8001896A0 /* Sprite */ = {
@@ -378,6 +404,7 @@
 				1FBCA272193097EE0038396A /* NUAlertView */,
 				1F2D5B3418E90DAF002AE2F9 /* alert.caf */,
 				1F2D5B3518E90DAF002AE2F9 /* redalertview-hd.png */,
+				1FBCA2951934601C0038396A /* Spirit */,
 				1F2D5B3618E90DAF002AE2F9 /* redalertview.png */,
 				1F2D5B3718E90DAF002AE2F9 /* reddarkButton-hd.png */,
 				1F2D5B3818E90DAF002AE2F9 /* reddarkButton.png */,
@@ -555,13 +582,16 @@
 				1F2D5B3D18E90DAF002AE2F9 /* redalertview.png in Resources */,
 				1FDB4F09190820DE004301FB /* main4.mp3 in Resources */,
 				1F2D5B3B18E90DAF002AE2F9 /* alert.caf in Resources */,
+				1FBCA292193460140038396A /* ArcherImg.png in Resources */,
 				B71F5915188484E7003F4D28 /* iPhone-old.png in Resources */,
 				B71F5917188484E7003F4D28 /* iPhone.png in Resources */,
 				1FBCA28319309A840038396A /* NUAlertView.png in Resources */,
 				1FBCA279193097EE0038396A /* NUCD_R.png in Resources */,
 				1FBCA28519309B6F0038396A /* NUAlertViewoo.png in Resources */,
+				1FBCA293193460140038396A /* LancerImg.png in Resources */,
 				B7378975180762440076A88C /* Default-568h@2x.png in Resources */,
 				1F2D5B4118E90DAF002AE2F9 /* redlightButton.png in Resources */,
+				1FBCA294193460140038396A /* SaberImg.png in Resources */,
 				B71F5918188484E7003F4D28 /* iPhone@2x.png in Resources */,
 				B7378977180762440076A88C /* Default.png in Resources */,
 				1F2D5B3F18E90DAF002AE2F9 /* reddarkButton.png in Resources */,
@@ -590,9 +620,11 @@
 				1FF02A07192F704E001896A0 /* SpriteArcher.m in Sources */,
 				1FAB055B18F92450008DF449 /* Level_0First.m in Sources */,
 				1FDE92F21913DE5D003714B5 /* ClearCount.m in Sources */,
+				1FBCA28B193383980038396A /* FirstTimeIntroTwoLayer.m in Sources */,
 				1F75493418D1E01F006E357A /* MainMenuLayer.m in Sources */,
 				B737893F1807617C0076A88C /* AppDelegate.m in Sources */,
 				1F75495718D206C7006E357A /* LevelObject.m in Sources */,
+				1FBCA2881932EFC00038396A /* LeagueInfo.m in Sources */,
 				1FEF685A1920A27C0022C47C /* FailCount.m in Sources */,
 				1F75493E18D1E639006E357A /* PlayerInfoScene.m in Sources */,
 				1FAB055F18F98A32008DF449 /* HPMPInfo.m in Sources */,

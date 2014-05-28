@@ -73,4 +73,6 @@
 -(void) buttonControl: (BOOL) bo;
 -(void) reloadGame;
 -(void) appearFailCount;
+-(void) hpmpInfoOpacity: (BOOL) op;
+-(void) loadBoss;
 @end

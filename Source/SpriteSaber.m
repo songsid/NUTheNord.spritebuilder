@@ -19,6 +19,7 @@
 }
 -(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
+    [self stopAllActions];
     touchBeg = YES;
     touchMov = YES;
     self.physicsBody.affectedByGravity = NO;

@@ -12,7 +12,9 @@
 {
     CCNode * HPLine;
     CCLabelTTF * HPNum;
+    CCLabelTTF * _hptotal;
     CCNode * MPLine;
+    CCNode * _bg;
     CCLabelTTF * MPNum;
 }
 @property (nonatomic,strong) CCNode * currentLevel;
@@ -24,5 +26,5 @@
 -(void) mpIncrease :(int) destance;
 -(void) popLevelScene;
 -(void) initHPMP;
-
+-(void) opacity : (BOOL) op;
 @end

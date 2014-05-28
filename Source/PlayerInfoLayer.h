@@ -16,7 +16,20 @@
 @interface PlayerInfoLayer : CCNode
 {
     CCButton * _bgButton;
-
+ 
+    CCLabelTTF * _spirit;
+    CCLabelTTF * _class;
+    CCLabelTTF * _attack;
+    CCLabelTTF * _skill;
+    
+    CCNode * _saber;
+    CCNode * _archer;
+    CCNode * _lancer;
+    
+    CCNode * _supLi;
+    CCNode * _supSieg;
+    CCNode * _supVa;
 }
 @property (nonatomic,weak) id<PlayerInfoLayerDelegate> delegate;
+-(void) setLabel : (id)name;
 @end

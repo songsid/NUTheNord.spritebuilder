@@ -19,6 +19,8 @@
     BOOL userActInt;
     CCNode * _npc;
     CCNode * _zero;
+    CCNode * _blueDia;
+    CCNode * _sciDia;
 }
 
 @property (nonatomic,weak) id<DialogDelegate> delegate;

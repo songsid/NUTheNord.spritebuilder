@@ -8,7 +8,7 @@
 @protocol MainMenuLayerDelegate <NSObject>
 -(void) pushPlayerInfoScene;
 -(void) pushLeagueScene;
-
+-(void) selectFirstTime;
 @end
 #import "CCNode.h"
 

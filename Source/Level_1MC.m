@@ -66,7 +66,31 @@
         default:
             break;
     }
-    
+    switch ([[NSUserDefaults standardUserDefaults] integerForKey:@"Sup"]) {
+
+        case 0:
+        {
+            stJump = ccp(0,750.0f);
+            vinaSing = 100;
+        }
+            break;
+        case 1:
+        {
+            stJump = ccp(0,650.0f);
+            vinaSing = 100;
+        }
+            break;
+        case 2:
+        {
+            stJump = ccp(0,650.0f);
+            vinaSing = 150;
+        }
+            break;
+            
+            
+        default:
+            break;
+    }
     _player.position = ccp(80, 90);
     [_physicsNode addChild:_player z:1];
     _player.physicsBody.collisionType = @"Player";
@@ -352,9 +376,9 @@
     }
     if (setLayer == 5 && selfAnchorPosition >5000) {
         [_layer4k removeFromParentAndCleanup:YES];
-        [_layer5k removeFromParentAndCleanup:YES];
-        setLayer = 6;
+              setLayer = 6;
     }
+    
     /////// player & layer position
     if (!deltaStop) {
 
@@ -398,6 +422,26 @@
         }
     }else if (deltaStop){
         _player.position = ccp(skillPosition.x,_player.position.y);
+        
+        
+        for (CCNode * enemy in _arrayEnemyPig) {
+            if (enemy.position.x - selfAnchorPosition > 0 &&  enemy.position.x -selfAnchorPosition < 800) {
+                enemy.physicsBody.density = 100;
+                enemy.physicsBody.friction = 100;
+                //  mouse.paused = YES;
+            }
+        }
+        for (CCNode * enemy in _arrayEnemyBat) {
+            if (enemy.position.x - selfAnchorPosition > 0 &&  enemy.position.x -selfAnchorPosition < 800) {
+                enemy.physicsBody.density = 100;
+                enemy.physicsBody.friction = 100;
+                //  mouse.paused = YES;
+            }
+        }
+        
+        
+        
+        
     }
     
     ///set create monster
@@ -416,7 +460,10 @@
         [self createPig:ccp(4450 , 51)];
         tutorialStep = tutorialStep+1;
     }
-    
+    if (_player.position.x > 5400 && tutorialStep ==3) {
+        tutorialStep = tutorialStep +1;
+        [self.delegate loadBoss];
+    }
     
     ///control monster attack
     for (CCNode * enemy in _arrayEnemyBat) {
@@ -475,12 +522,16 @@
     
     ///// set MPincrease!!!
     
-    mpDistance  = mpDistance + 100*delta;
+    mpDistance  = mpDistance + vinaSing * delta;
     if (mpDistance>=150) {
         [self.delegate transMpIncrease:1];
         mpDistance = 0.0f;
-        
     }
+    /// hpmpInfo opacity
+    if (_player.position.y > 200) {
+        [self.delegate hpmpInfoOpacity:YES];
+    }else [self.delegate hpmpInfoOpacity:NO];
+
     ////////////player & layer position
     
     if (![self.delegate getPaused] && !deltaStop) {
@@ -549,7 +600,7 @@
     
     if (enableJump && !deltaStop)
     {
-        [_player.physicsBody applyImpulse:ccp(0,650.0f)];
+        [_player.physicsBody applyImpulse:stJump];
         if (![[_player.userObject runningSequenceName]isEqualToString:@"Attack"]) {
             [_player.userObject runAnimationsForSequenceNamed:@"Jump"];
         }
@@ -826,9 +877,10 @@
     [nodeB removeFromParent];
     return YES;
 }
--(BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair SkillFire:(CCNode *)nodeA enemy:(CCNode *)nodeB
+-(BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair skillFire:(CCNode *)nodeA enemy:(CCNode *)nodeB
 {
     [nodeB removeFromParent];
+    CCLOG(@"skillshot");
     return YES;
 }
 -(float) getSelfAnchorPosition

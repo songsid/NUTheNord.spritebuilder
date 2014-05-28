@@ -213,20 +213,22 @@
     [self setBlockButton:NO];
 
 }
-
+/*
 -(void) isPopLeagueScene:(id)sender // XXbutton
 {
     [self.delegate popLeagueScene];
     CCLOG(@"popleague!");
 }
-
+*/
 
 -(void) isLevel_0First:(id) sender
 {
     
     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"SwitchLevel"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    [self appearAlertView];
+    [self.delegate showLeagueInfo:_isLevel_0First.position :0];
+
+//    [self appearAlertView];
 
 
 }
@@ -235,7 +237,7 @@
 {
     [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"SwitchLevel"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    [self appearAlertView];
+        [self.delegate showLeagueInfo:_isLevel_1MC.position :1];
 }
 
 
@@ -288,7 +290,7 @@
 }
 -(void) setBlockButton:(BOOL)blockButton
 {
-    _isPopLeagueScene.enabled = blockButton;
+
     _isSelectAreaOne.enabled = blockButton;
     _isSelectAreaTwo.enabled = blockButton;
     _isSelectLevel0.enabled = blockButton;

@@ -14,6 +14,7 @@
 -(void) transMpIncrease :(int) destance;
 -(int) getHp;
 -(int) getMp;
+-(void) hpmpInfoOpacity: (BOOL) op;
 -(void) touchToPaused :(BOOL) ny;
 -(void) removeDialog;
 -(BOOL) getPaused;
@@ -69,6 +70,9 @@
     CGPoint skillPosition;
     int bRHP;
     int tutorialStep;
+    
+    int vinaSing;
+    CGPoint stJump;
 }
 @property (nonatomic,weak) id <Level_FirstDelegate> delegate;
 @property(nonatomic,readwrite) UIGestureRecognizerState state;

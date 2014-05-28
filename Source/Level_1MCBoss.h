@@ -13,6 +13,7 @@
 -(void) transMpIncrease :(int) destance;
 -(int) getHp;
 -(int) getMp;
+-(void) hpmpInfoOpacity: (BOOL) op;
 -(void) touchToPaused :(BOOL) ny;
 -(void) removeDialog;
 -(BOOL) getPaused;
@@ -55,6 +56,9 @@
     CGPoint _playerY;
     int bRHP;
     int createOneF;
+    
+    int vinaSing;
+    CGPoint stJump;
 }
 
 @property (nonatomic,weak) id<Level_1MCBossDelegate> delegate;

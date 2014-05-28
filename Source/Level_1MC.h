@@ -13,18 +13,22 @@
 -(void) transMpIncrease :(int) destance;
 -(int) getHp;
 -(int) getMp;
+-(void) hpmpInfoOpacity: (BOOL) op;
 -(void) touchToPaused :(BOOL) ny;
 -(void) removeDialog;
 -(BOOL) getPaused;
 -(void) scrollViewShake;
 -(void) showClearCount;
 -(void) buttonControl: (BOOL) bo;
+-(void) loadBoss;
 @end
 
 #import "CCNode.h"
 #import "HPMPInfo.h"
+#import "Dialog.h"
+
 @class LevelScene;
-@interface Level_1MC : CCNode <CCPhysicsCollisionDelegate>
+@interface Level_1MC : CCNode <CCPhysicsCollisionDelegate,DialogDelegate>
 {
     LevelScene * _levelScene;
     CCPhysicsNode * _physicsNode;
@@ -79,6 +83,9 @@
     int enemyAttackStep;
     int setLayer;
     
+    int vinaSing;
+    CGPoint stJump;
+    
 }
 @property (nonatomic,weak) id<Level_1MCDelegate> delegate;
 @property(nonatomic,readwrite) UIGestureRecognizerState state;
@@ -97,5 +104,5 @@
 -(void) skill;
 -(float) getSelfAnchorPosition;
 -(BOOL) getDeltaStop;
-
+-(void) removeDialog;
 @end

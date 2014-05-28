@@ -8,6 +8,7 @@
 @protocol FirstTimeIntroLayer <NSObject>
 
 -(void) firstTimeIntro;
+-(void) firstTimeEnd;
 
 @end
 #import "CCNode.h"
@@ -17,6 +18,8 @@
     CCLabelTTF * _talk;
     int labelCount;
     BOOL lableSwitch;
+    CCNode * _load;
+    BOOL end;
 }
 
 @property (nonatomic,weak) id <FirstTimeIntroLayer> delegate;

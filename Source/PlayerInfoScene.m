@@ -31,6 +31,7 @@
     _playerInfoScrollView.contentNode = infoLayer;
     _playerInfoScrollView.anchorPoint = ccp(0, 0);
     _playerInfoScrollView.position = ccp(0, 0);
+    if ([[UIDevice currentDevice]userInterfaceIdiom] == UIUserInterfaceIdiomPad){ self.scale = 1.07;}
     _spriteScrollView.anchorPoint = ccp(0, 0);
     _spriteScrollView.position = ccp(0, 0);
     NSString *user = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
@@ -40,42 +41,47 @@
     _spriteLabel.position =ccp(140, 301);
     _spriteLabel.string = [NSString stringWithFormat:@"fdfsaweraef"];
 
-    _physicsNode.collisionDelegate = self;
+
  
     spriteSaber = (SpriteSaber * )[CCBReader load:@"SpriteSaber"];
-    spriteSaber.position = ccp(200, 100);
+    spriteSaber.position = ccp(45, 64);
     spriteSaber.physicsBody.collisionType = @"Sprite";
     spriteSaber.delegate  = self;
-    [_physicsNode addChild:spriteSaber z:0];
+    [self addChild:spriteSaber z:0];
     [self.arraySprite addObject:spriteSaber];
     
-    spriteLancer = (SpriteLancer * )[CCBReader load:@"SpriteLancer"];
-    spriteLancer.position = ccp(240, 100);
+    spriteLancer = (SpriteSaber * )[CCBReader load:@"SpriteLancer"];
+    spriteLancer.position = ccp(145, 64);
     spriteLancer.physicsBody.collisionType = @"Sprite";
     spriteLancer.delegate = self;
-    [_physicsNode addChild:spriteLancer z:0];
+    [self addChild:spriteLancer z:0];
     [self.arraySprite addObject:spriteLancer];
     
-    spriteArcher = (SpriteArcher * )[CCBReader load:@"SpriteArcher"];
-    spriteArcher.position = ccp(280, 100);
+    spriteArcher = (SpriteSaber * )[CCBReader load:@"SpriteArcher"];
+    spriteArcher.position = ccp(200, 64);
     spriteArcher.physicsBody.collisionType =@"Sprite";
     spriteArcher.delegate =  self;
-    [_physicsNode addChild:spriteArcher z:0];
+    [self addChild:spriteArcher z:0];
     [self.arraySprite addObject:spriteArcher];
     
     
-    _spriteSupLain = (CCSprite *)[CCBReader load:@"SpriteSupportLainDau"];
-    _spriteSupLain.position = ccp(300, 100);
-    [_physicsNode addChild:_spriteSupLain];
+    spriteSupLain = (SpriteSaber *)[CCBReader load:@"SpriteSupportLainDau"];
+    spriteSupLain.position = ccp(402, 64);
+    spriteSupLain.delegate = self;
+    [self addChild:spriteSupLain];
+    [self.arraySup addObject:spriteSupLain];
     
-    _spriteSupSieg = (CCSprite *)[CCBReader load:@"SpriteSupportSiegfried"];
-    _spriteSupSieg.position = ccp(320, 100);
-    [_physicsNode addChild:_spriteSupSieg];
+    spriteSupSieg = (SpriteSaber *)[CCBReader load:@"SpriteSupportSiegfried"];
+    spriteSupSieg.position = ccp(350, 64);
+    spriteSupSieg.delegate = self;
+    [self addChild:spriteSupSieg];
+    [self.arraySup addObject:spriteSupSieg];
     
-    _spriteSupVa = (CCSprite * )[CCBReader load:@"SpriteSupportVaina"];
-    _spriteSupVa.position = ccp(320, 110);
-    [_physicsNode addChild:_spriteSupVa];
-    
+    spriteSupVa = (SpriteSaber * )[CCBReader load:@"SpriteSupportVaina"];
+    spriteSupVa.position = ccp(300, 64);
+    spriteSupVa.delegate = self;
+    [self addChild:spriteSupVa];
+    [self.arraySup addObject:spriteSupVa];
     
     ///set Action
 
@@ -92,139 +98,157 @@
 }
 -(void)update:(CCTime)delta
 {
- if (!addInfo) {
+    if (!addInfo) {
     for (CCNode * sprite in _arraySprite) {
         
-        if (sprite.physicsBody.affectedByGravity && ((sprite.position.y+sprite.contentSize.height * .3 > 208) && (sprite.position.y-sprite.contentSize.height * .3 < 208) && (sprite.position.x+sprite.contentSize.width * .3 > 116) && (sprite.position.x-sprite.contentSize.width * .3 < 116))) {
+        if (((sprite.position.y+sprite.contentSize.height * .3 > 208) && (sprite.position.y-sprite.contentSize.height * .3 < 208) && (sprite.position.x+sprite.contentSize.width * .3 > 116) && (sprite.position.x-sprite.contentSize.width * .3 < 116))) {
             CCLOG(@"got!!");
             spriteOn = YES;
             [sprite stopAllActions];
-            sprite.physicsBody.affectedByGravity = NO;
-            sprite.physicsBody.allowsRotation = NO;
-            
-           // [sprite runAction:plusSprite];
-                if (sprite.position.x == 116 && sprite.position.y == 208) {
-                    sprite.position = ccp(116, 208);
-                    sprite.rotation = 0;
-                    CCLOG(@"in 116");
-                }
             lastSprite = [[NSUserDefaults standardUserDefaults]integerForKey:@"Spirit"];
             if([sprite isEqual:spriteSaber])[[NSUserDefaults standardUserDefaults]setInteger:0 forKey:@"Spirit"];
             if ([sprite isEqual:spriteLancer])[[NSUserDefaults standardUserDefaults]setInteger:1 forKey:@"Spirit"];
             if ([sprite isEqual:spriteArcher])[[NSUserDefaults standardUserDefaults]setInteger:2 forKey:@"Spirit"];
             [[NSUserDefaults standardUserDefaults] synchronize];
-            //  sprite.position = ccp(116, 208);
-           // sprite.rotation = 0;
             
         }
         if (spriteOn) {
             spriteOn = NO;
             switch (lastSprite) {
                 case 0:
+                {
                     spriteSaber.position = ccp(242, 231);
-                    spriteSaber.physicsBody.affectedByGravity = YES;
-                    spriteSaber.physicsBody.allowsRotation = YES;
-                    [spriteSaber.physicsBody applyImpulse:ccp(200, 100)];
+                    id mov  = [CCActionMoveTo actionWithDuration:3.0f position:ccp(45, 64)];
+                    [spriteSaber runAction:mov];
+                }
                     break;
                 case 1:
+                {
                     spriteLancer.position = ccp(242, 231);
-                    spriteLancer.physicsBody.affectedByGravity = YES;
-                    spriteLancer.physicsBody.allowsRotation = YES;
-                    [spriteLancer.physicsBody applyImpulse:ccp(200, 100)];
+                    id mov  = [CCActionMoveTo actionWithDuration:3.0f position:ccp(145, 64)];
+                    [spriteLancer runAction:mov];
+                }
                     break;
                 case 2:
+                {
                     spriteArcher.position = ccp(242, 231);
-                    spriteArcher.physicsBody.affectedByGravity = YES;
-                    spriteArcher.physicsBody.allowsRotation = YES;
-                    [spriteArcher.physicsBody applyImpulse:ccp(200, 100)];
+                    id mov  = [CCActionMoveTo actionWithDuration:3.0f position:ccp(200, 64)];
+                    [spriteArcher runAction:mov];
+                }
                     break;
                 default:
                     break;
             }
         }
-/*        if (spriteOn && ((sprite.position.y+sprite.contentSize.height * .3 > 208) && (sprite.position.y-sprite.contentSize.height * .3 < 208) && (sprite.position.x+sprite.contentSize.width * .3 > 116) && (sprite.position.x-sprite.contentSize.width * .3 < 116))) {
-            sprite.position = ccp(116, 208);
-    
-        }
-        if (!spriteOn && ((sprite.position.y+sprite.contentSize.height * .3 > 208) && (sprite.position.y-sprite.contentSize.height * .3 < 208) && (sprite.position.x+sprite.contentSize.width * .3 > 116) && (sprite.position.x-sprite.contentSize.width * .3 < 116))) {
-            sprite.physicsBody.affectedByGravity =YES;
-            sprite.physicsBody.allowsRotation = YES;
-            [sprite.physicsBody applyImpulse:ccp(400, 100)];
-            
-        }*/
-        /*   CCLOG(@"sprite.position.y+sprite.contentSize.height =%f\n (sprite.position.y-sprite.contentSize.height =%f\n (sprite.position.x+sprite.contentSize.width =%f && (sprite.position.x-sprite.contentSize.width=%f",sprite.position.y+sprite.contentSize.height,sprite.position.y-sprite.contentSize.height,sprite.position.x+sprite.contentSize.width,sprite.position.x-sprite.contentSize.width);
-        if (sprite.parent) {
-            CCLOG(@"go!");
-        }*/
+
     }
  }
-    
  
     switch ([[NSUserDefaults standardUserDefaults]integerForKey:@"Spirit"]) {
         case 0:
             spriteSaber.position = ccp(116, 208);
-            spriteSaber.rotation = 0;
- /*           if (spriteOn) {
-            _spriteLancer.physicsBody.allowsRotation = YES;
-            _spriteLancer.physicsBody.affectedByGravity = YES;
-            _spriteArcher.physicsBody.allowsRotation =YES;
-            _spriteArcher.physicsBody.affectedByGravity = YES;
-            }*/
             break;
         case 1:
             spriteLancer.position = ccp(116, 208);
-            spriteLancer.rotation = 0;
-   /*         if (spriteOn) {
-            spriteSaber.physicsBody.allowsRotation = YES;
-            spriteSaber.physicsBody.affectedByGravity = YES;
-            _spriteArcher.physicsBody.allowsRotation =YES;
-            _spriteArcher.physicsBody.affectedByGravity = YES;
-            }*/
             break;
         case 2:
             spriteArcher.position  = ccp(116, 208);
-            spriteArcher.rotation = 0;
-  /*          if (spriteOn) {
-            spriteSaber.physicsBody.allowsRotation = YES;
-            spriteSaber.physicsBody.affectedByGravity = YES;
-            _spriteLancer.physicsBody.allowsRotation = YES;
-            _spriteLancer.physicsBody.affectedByGravity = YES;
-            }*/
             break;
         default:
             break;
     }
-   // CCLOG(@"%d", _spriteScrollView.horizontalPage);
+    if (spriteSaber.position.x <49 && spriteSaber.position.x >41 && spriteSaber.position.y <67 && spriteSaber.position.y >61) {
+        [spriteSaber stopAllActions];
+    }
+    if (spriteLancer.position.x <148 && spriteLancer.position.x >142 && spriteLancer.position.y <67 && spriteLancer.position.y >61) {
+        [spriteLancer stopAllActions];
+    }
+    if (spriteArcher.position.x <203 && spriteArcher.position.x >197 && spriteArcher.position.y <67 && spriteArcher.position.y >62) {
+        [spriteArcher stopAllActions];
+    }
 
-    
-    /*
-    switch (_spriteScrollView.horizontalPage) {
+    if (!addInfo) {
+        for (CCNode * sprite in _arraySup) {
+            
+            if (((sprite.position.y+sprite.contentSize.height * .3 > 208) && (sprite.position.y-sprite.contentSize.height * .3 < 208) && (sprite.position.x+sprite.contentSize.width * .3 > 358) && (sprite.position.x-sprite.contentSize.width * .3 < 358))) {
+                CCLOG(@"got!!");
+                supOn = YES;
+                [sprite stopAllActions];
+
+
+                lastSup = [[NSUserDefaults standardUserDefaults]integerForKey:@"Sup"];
+                if([sprite isEqual:spriteSupLain])[[NSUserDefaults standardUserDefaults]setInteger:0 forKey:@"Sup"];
+                if ([sprite isEqual:spriteSupSieg])[[NSUserDefaults standardUserDefaults]setInteger:1 forKey:@"Sup"];
+                if ([sprite isEqual:spriteSupVa])[[NSUserDefaults standardUserDefaults]setInteger:2 forKey:@"Sup"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+
+                
+            }
+            if (supOn) {
+                supOn = NO;
+                switch (lastSup) {
+                    case 0:{
+                        spriteSupLain.position = ccp(242, 231);
+                        id mov  = [CCActionMoveTo actionWithDuration:3.0f position:ccp(402, 64)];
+                        [spriteSupLain runAction:mov];
+
+                        break;
+                    }
+                    case 1:
+                    {
+                        spriteSupSieg.position = ccp(242, 231);
+                        id mov  = [CCActionMoveTo actionWithDuration:3.0f position:ccp(350, 64)];
+                        [spriteSupSieg runAction:mov];
+                  }
+                        break;
+                    case 2:
+                    {
+                        spriteSupVa.position = ccp(242, 231);
+                        id mov  = [CCActionMoveTo actionWithDuration:3.0f position:ccp(300, 64)];
+                        [spriteSupVa runAction:mov];
+                    }
+                        break;
+                        
+                    default:
+                        break;
+                }
+            }
+
+        }
+    }
+    switch ([[NSUserDefaults standardUserDefaults]integerForKey:@"Sup"]) {
         case 0:
-            _spriteLabel.string = [NSString stringWithFormat:@"1"];
-         //   CCLOG(@"case1");
+            spriteSupLain.position = ccp(358, 208);
             break;
         case 1:
-            _spriteLabel.string = [NSString stringWithFormat:@"2"];
-          //              CCLOG(@"case2");
+            spriteSupSieg.position = ccp(358, 208);
             break;
         case 2:
-            _spriteLabel.string = [NSString stringWithFormat:@"dsfdfwefwfdf" ];
-         //               CCLOG(@"case3");
+            spriteSupVa.position  = ccp(358, 208);
             break;
         default:
-            _spriteLabel.string = [NSString stringWithFormat:@"fasdf"];
             break;
-   
-     }
-      */
-        
+    }
+    if (spriteSupSieg.position.x <356 && spriteSupSieg.position.x >347 && spriteSupSieg.position.y <67 && spriteSupSieg.position.y >62) {
+        [spriteSupSieg stopAllActions];
+        CCLOG(@"stop sieg");
+    }
+    if (spriteSupVa.position.x <305 && spriteSupVa.position.x >296 && spriteSupVa.position.y <67 && spriteSupVa.position.y >62) {
+        [spriteSupVa stopAllActions];
+        CCLOG(@"stop va");
+    }
+    if (spriteSupLain.position.x <405 && spriteSupLain.position.x >399 && spriteSupLain.position.y <67 && spriteSupLain.position.y >62) {
+        [spriteSupLain stopAllActions];
+        CCLOG(@"stop lain");
+    }
+
 }
 -(void) playerInfoLayerRemove
 {
     CCLOG(@"removeInfo");
     [self removeChild:playerInfo];
     addInfo = NO;
-    _physicsNode.paused = NO;
+
 
 }
 -(void) playerInfoLayerAdd :(id)sprite
@@ -234,7 +258,7 @@
         playerInfo = (PlayerInfoLayer *)[CCBReader load:@"PlayerInfoLayer"];
         playerInfo.position = ccp(0,0);
         playerInfo.delegate = self;
-        _physicsNode.paused = YES;
+        [playerInfo setLabel:sprite];
         [self addChild:playerInfo z:100];
         addInfo = YES;
     }
@@ -243,7 +267,7 @@
         playerInfo = (PlayerInfoLayer *)[CCBReader load:@"PlayerInfoLayer"];
         playerInfo.position = ccp(0,0);
         playerInfo.delegate = self;
-        _physicsNode.paused = YES;
+        [playerInfo setLabel:sprite];
         [self addChild:playerInfo z:100];
         addInfo = YES;
     }
@@ -252,17 +276,40 @@
         playerInfo = (PlayerInfoLayer *)[CCBReader load:@"PlayerInfoLayer"];
         playerInfo.position = ccp(0,0);
         playerInfo.delegate = self;
-        _physicsNode.paused = YES;
+            [playerInfo setLabel:sprite];
+        [self addChild:playerInfo z:100];
+        addInfo = YES;
+    }
+    if ([sprite isEqualToString:@"10"]) {
+        CCLOG(@"ADD PlayerInfoLayer!!");
+        playerInfo = (PlayerInfoLayer *)[CCBReader load:@"PlayerInfoLayer"];
+        playerInfo.position = ccp(0,0);
+        playerInfo.delegate = self;
+  
+                [playerInfo setLabel:sprite];
+        [self addChild:playerInfo z:100];
+        addInfo = YES;
+    }
+    if ([sprite isEqualToString:@"11"]) {
+        CCLOG(@"ADD PlayerInfoLayer!!");
+        playerInfo = (PlayerInfoLayer *)[CCBReader load:@"PlayerInfoLayer"];
+        playerInfo.position = ccp(0,0);
+        playerInfo.delegate = self;
+                [playerInfo setLabel:sprite];
+        [self addChild:playerInfo z:100];
+        addInfo = YES;
+    }
+    if ([sprite isEqualToString:@"12"]) {
+        CCLOG(@"ADD PlayerInfoLayer!!");
+        playerInfo = (PlayerInfoLayer *)[CCBReader load:@"PlayerInfoLayer"];
+        playerInfo.position = ccp(0,0);
+        playerInfo.delegate = self;
+                [playerInfo setLabel:sprite];
         [self addChild:playerInfo z:100];
         addInfo = YES;
     }
 }
 
 
--(BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair Sprite:(CCNode *)nodeA Sprite:(CCNode *)nodeB
-{
-    spriteOn = NO;
-    CCLOG(@"sprite sprite!!");
-    return YES;
-}
+
 @end

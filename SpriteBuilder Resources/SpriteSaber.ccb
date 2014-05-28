@@ -32,32 +32,6 @@
 		<string></string>
 		<key>memberVarAssignmentType</key>
 		<integer>0</integer>
-		<key>physicsBody</key>
-		<dict>
-			<key>affectedByGravity</key>
-			<true/>
-			<key>allowsRotation</key>
-			<true/>
-			<key>bodyShape</key>
-			<integer>1</integer>
-			<key>cornerRadius</key>
-			<real>54.1953125</real>
-			<key>density</key>
-			<real>10</real>
-			<key>dynamic</key>
-			<true/>
-			<key>elasticity</key>
-			<real>0.0</real>
-			<key>friction</key>
-			<real>0.0</real>
-			<key>points</key>
-			<array>
-				<array>
-					<real>62.5</real>
-					<real>62.5</real>
-				</array>
-			</array>
-		</dict>
 		<key>properties</key>
 		<array>
 			<dict>
@@ -114,7 +88,7 @@
 				<key>value</key>
 				<array>
 					<string></string>
-					<string>Picture/劍英靈Q版.png</string>
+					<string>Picture/Sprite/劍英靈Q版.png</string>
 				</array>
 			</dict>
 			<dict>
