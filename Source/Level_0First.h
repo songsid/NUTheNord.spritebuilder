@@ -73,6 +73,7 @@
     
     int vinaSing;
     CGPoint stJump;
+    BOOL mouseExisted;
 }
 @property (nonatomic,weak) id <Level_FirstDelegate> delegate;
 @property(nonatomic,readwrite) UIGestureRecognizerState state;

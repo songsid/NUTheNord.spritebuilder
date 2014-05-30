@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>frames</key>
+	<dict>
+		<key>MCPicture/dj;4.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{858, 323}, {154, 158}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {154, 158}}</string>
+			<key>sourceSize</key>
+			<string>{154, 158}</string>
+		</dict>
+		<key>MCPicture/地表.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{396, 1003}, {62, 14}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {62, 14}}</string>
+			<key>sourceSize</key>
+			<string>{62, 14}</string>
+		</dict>
+		<key>MCPicture/地表2.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{1, 1003}, {148, 20}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {148, 20}}</string>
+			<key>sourceSize</key>
+			<string>{148, 20}</string>
+		</dict>
+		<key>MCPicture/地面.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{858, 479}, {142, 79}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {142, 79}}</string>
+			<key>sourceSize</key>
+			<string>{142, 79}</string>
+		</dict>
+		<key>MCPicture/平台.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{728, 956}, {90, 29}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {90, 29}}</string>
+			<key>sourceSize</key>
+			<string>{90, 29}</string>
+		</dict>
+		<key>MCPicture/石頭拷貝.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{151, 1003}, {243, 19}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {243, 19}}</string>
+			<key>sourceSize</key>
+			<string>{243, 19}</string>
+		</dict>
+		<key>MCPicture/礦坑.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{1, 1}, {1012, 320}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {1012, 320}}</string>
+			<key>sourceSize</key>
+			<string>{1012, 320}</string>
+		</dict>
+		<key>MCPicture/礦坑1b.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{533, 323}, {642, 110}}</string>
+			<key>offset</key>
+			<string>{1, -1}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{15, 2}, {642, 110}}</string>
+			<key>sourceSize</key>
+			<string>{670, 112}</string>
+		</dict>
+		<key>MCPicture/礦坑1top.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{784, 323}, {629, 72}}</string>
+			<key>offset</key>
+			<string>{-5, 3}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{15, 0}, {629, 72}}</string>
+			<key>sourceSize</key>
+			<string>{670, 79}</string>
+		</dict>
+		<key>MCPicture/礦坑2b.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{363, 323}, {678, 168}}</string>
+			<key>offset</key>
+			<string>{0, -4}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{0, 7}, {678, 168}}</string>
+			<key>sourceSize</key>
+			<string>{678, 175}</string>
+		</dict>
+		<key>MCPicture/礦坑2top.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{645, 323}, {631, 137}}</string>
+			<key>offset</key>
+			<string>{-2, 3}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{21, 0}, {631, 137}}</string>
+			<key>sourceSize</key>
+			<string>{678, 144}</string>
+		</dict>
+		<key>MCPicture/礦坑4.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{1, 323}, {678, 360}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {678, 360}}</string>
+			<key>sourceSize</key>
+			<string>{678, 360}</string>
+		</dict>
+		<key>MCPicture/礦坑5top1.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{858, 560}, {198, 123}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {198, 123}}</string>
+			<key>sourceSize</key>
+			<string>{198, 123}</string>
+		</dict>
+		<key>MCPicture/礦坑5top2.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{858, 760}, {100, 87}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {100, 87}}</string>
+			<key>sourceSize</key>
+			<string>{100, 87}</string>
+		</dict>
+		<key>MCPicture/鐵軌.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{533, 967}, {193, 34}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {193, 34}}</string>
+			<key>sourceSize</key>
+			<string>{193, 34}</string>
+		</dict>
+		<key>MCPicture/鐵鏈-前.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{460, 1003}, {11, 129}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {11, 129}}</string>
+			<key>sourceSize</key>
+			<string>{11, 129}</string>
+		</dict>
+		<key>MCPicture/鐵鏈-後.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{591, 1003}, {11, 129}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {11, 129}}</string>
+			<key>sourceSize</key>
+			<string>{11, 129}</string>
+		</dict>
+	</dict>
+	<key>metadata</key>
+	<dict>
+		<key>format</key>
+		<integer>2</integer>
+		<key>size</key>
+		<string>{2048, 2048}</string>
+		<key>textureFileName</key>
+		<string>MCPicture.png</string>
+	</dict>
+</dict>
+</plist>

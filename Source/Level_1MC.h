@@ -20,6 +20,7 @@
 -(void) scrollViewShake;
 -(void) showClearCount;
 -(void) buttonControl: (BOOL) bo;
+-(void) appearFailCount;
 -(void) loadBoss;
 @end
 
@@ -28,7 +29,7 @@
 #import "Dialog.h"
 
 @class LevelScene;
-@interface Level_1MC : CCNode <CCPhysicsCollisionDelegate,DialogDelegate>
+@interface Level_1MC : CCNode <CCPhysicsCollisionDelegate>
 {
     LevelScene * _levelScene;
     CCPhysicsNode * _physicsNode;
@@ -104,5 +105,4 @@
 -(void) skill;
 -(float) getSelfAnchorPosition;
 -(BOOL) getDeltaStop;
--(void) removeDialog;
 @end

@@ -38,6 +38,8 @@
     slide = 1;
     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"SelectLevel"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    [[OALSimpleAudio sharedInstance] stopAllEffects];
+    [[OALSimpleAudio sharedInstance] playEffect:@"mapMusic.mp3" loop:YES];
 }
 -(void) setTableView:(CCTableView *)tableViewer
 {
@@ -226,7 +228,11 @@
     
     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"SwitchLevel"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+
     [self.delegate showLeagueInfo:_isLevel_0First.position :0];
+
+    [[OALSimpleAudio sharedInstance] playEffect:@"mapSelectMusic.mp3" loop:NO];
+
 
 //    [self appearAlertView];
 
@@ -237,7 +243,9 @@
 {
     [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"SwitchLevel"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-        [self.delegate showLeagueInfo:_isLevel_1MC.position :1];
+
+    [self.delegate showLeagueInfo:_isLevel_1MC.position :1];
+        [[OALSimpleAudio sharedInstance] playEffect:@"mapSelectMusic.mp3" loop:NO];
 }
 
 

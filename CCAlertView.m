@@ -23,7 +23,7 @@
         self._delegate = delegate;
         self.userInteractionEnabled = YES;
        // BOOL isIPAD = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
-        CGSize views = CGSizeMake([CCDirector sharedDirector].viewSize.width, [CCDirector sharedDirector].viewSize.height);
+ //       CGSize views = CGSizeMake([CCDirector sharedDirector].viewSize.width, [CCDirector sharedDirector].viewSize.height);
         CGSize size = CGSizeMake(287, 139);
         NSString *fontStyle = @"HelveticaNeue-Bold";
       //  CCSpriteFrame *altImg = [CCSpriteFrame frameWithImageNamed:@"redalertview.png"]; //if (isIPAD) altImg =[CCSpriteFrame frameWithImageNamed: @"redalertview-hd.png"];
@@ -154,7 +154,7 @@
     //[_alertViewSprite runAction:pulse];
     
 
-    [[OALSimpleAudio sharedInstance] playEffect:@"alert.caf"];
+ //   [[OALSimpleAudio sharedInstance] playEffect:@"alert.caf"];
 }
 
 -(void) otherButtonPressed:(id) sender {

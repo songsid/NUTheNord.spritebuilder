@@ -11,7 +11,7 @@
 -(void) pushLevel;
 -(void) intoLevelOrNot;
 -(void) controlSlide:(int)slide;
--(void) showLeagueInfo:(CGPoint) x:(int)level;
+-(void) showLeagueInfo:(CGPoint)x :(int)level;
 @end
 
 
@@ -24,6 +24,7 @@
 
 @interface LeagueLayer : CCNode<CCTableViewDataSource,LeagueSceneDelegate,CCAlertviewDelegate>
 {
+
     CCButton * _isSelectLevel0;
 //    CCButton * _isPopLeagueScene;
     CCButton * _isSelectAreaOne;
@@ -44,3 +45,23 @@
 @property (nonatomic) BOOL blockButton;
 @property (nonatomic,strong) CCNode * sendLevel;
 @end
+
+///
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///

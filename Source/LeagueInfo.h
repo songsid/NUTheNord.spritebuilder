@@ -9,5 +9,11 @@
 #import "CCNode.h"
 
 @interface LeagueInfo : CCNode
+{
+    CCLabelTTF * _mission;
+    CCLabelTTF * _missionDetail;
+}
 
+-(void) setMissionString :(NSString *) str;
+-(void) setMissionDetailString :(NSString *) str;
 @end

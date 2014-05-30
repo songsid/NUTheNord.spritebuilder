@@ -9,7 +9,21 @@
 #import "LeagueInfo.h"
 
 @implementation LeagueInfo
+-(void) didLoadFromCCB
 {
+    
+    [[OALSimpleAudio sharedInstance] stopAllEffects];
+    [[OALSimpleAudio sharedInstance] playEffect:@"prepareMusic.mp3" loop:YES];
+
+}
+
+-(void) setMissionString :(NSString *) str
+{
+    _mission.string = str;
+}
+-(void) setMissionDetailString :(NSString *) str
+{
+    _missionDetail.string = str;
 }
 
 @end

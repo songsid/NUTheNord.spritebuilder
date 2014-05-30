@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>frames</key>
+	<dict>
+		<key>Menu0.7/Menu.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{483, 1}, {402, 194}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {402, 194}}</string>
+			<key>sourceSize</key>
+			<string>{402, 194}</string>
+		</dict>
+		<key>Menu0.7/home.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{955, 83}, {66, 56}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {66, 56}}</string>
+			<key>sourceSize</key>
+			<string>{66, 56}</string>
+		</dict>
+		<key>Menu0.7/home2.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{887, 83}, {66, 56}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {66, 56}}</string>
+			<key>sourceSize</key>
+			<string>{66, 56}</string>
+		</dict>
+		<key>Menu0.7/restart.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{887, 141}, {60, 55}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {60, 55}}</string>
+			<key>sourceSize</key>
+			<string>{60, 55}</string>
+		</dict>
+		<key>Menu0.7/sword.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{949, 141}, {53, 54}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {53, 54}}</string>
+			<key>sourceSize</key>
+			<string>{53, 54}</string>
+		</dict>
+		<key>Menu0.7/主選單.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{1, 1}, {480, 320}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {480, 320}}</string>
+			<key>sourceSize</key>
+			<string>{480, 320}</string>
+		</dict>
+		<key>Menu0.7/右門.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{887, 1}, {40, 133}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {40, 133}}</string>
+			<key>sourceSize</key>
+			<string>{40, 133}</string>
+		</dict>
+		<key>Menu0.7/大門.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{483, 197}, {285, 237}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {285, 237}}</string>
+			<key>sourceSize</key>
+			<string>{285, 237}</string>
+		</dict>
+		<key>Menu0.7/左門.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{887, 43}, {38, 125}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {38, 125}}</string>
+			<key>sourceSize</key>
+			<string>{38, 125}</string>
+		</dict>
+	</dict>
+	<key>metadata</key>
+	<dict>
+		<key>format</key>
+		<integer>2</integer>
+		<key>size</key>
+		<string>{1024, 1024}</string>
+		<key>textureFileName</key>
+		<string>Menu0.7.png</string>
+	</dict>
+</dict>
+</plist>

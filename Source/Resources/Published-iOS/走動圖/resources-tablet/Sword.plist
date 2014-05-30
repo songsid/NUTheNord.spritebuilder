@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>frames</key>
+	<dict>
+		<key>走動圖/Sword/技能-1.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{1, 463}, {120, 132}}</string>
+			<key>offset</key>
+			<string>{-8, 11}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{4, 0}, {120, 132}}</string>
+			<key>sourceSize</key>
+			<string>{145, 155}</string>
+		</dict>
+		<key>走動圖/Sword/技能-2.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{158, 183}, {115, 155}}</string>
+			<key>offset</key>
+			<string>{5, 0}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{20, 0}, {115, 155}}</string>
+			<key>sourceSize</key>
+			<string>{145, 155}</string>
+		</dict>
+		<key>走動圖/Sword/技能-3.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{1, 316}, {145, 146}}</string>
+			<key>offset</key>
+			<string>{0, -5}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{0, 9}, {145, 146}}</string>
+			<key>sourceSize</key>
+			<string>{145, 155}</string>
+		</dict>
+		<key>走動圖/Sword/揮劍-1.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{315, 183}, {109, 155}}</string>
+			<key>offset</key>
+			<string>{-17, 0}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {109, 155}}</string>
+			<key>sourceSize</key>
+			<string>{145, 155}</string>
+		</dict>
+		<key>走動圖/Sword/揮劍-2.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{158, 300}, {105, 154}}</string>
+			<key>offset</key>
+			<string>{-19, -1}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{0, 1}, {105, 154}}</string>
+			<key>sourceSize</key>
+			<string>{145, 155}</string>
+		</dict>
+		<key>走動圖/Sword/揮劍-3.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{149, 407}, {136, 136}}</string>
+			<key>offset</key>
+			<string>{4, -10}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{8, 19}, {136, 136}}</string>
+			<key>sourceSize</key>
+			<string>{145, 155}</string>
+		</dict>
+		<key>走動圖/Sword/特效-1.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{492, 1}, {222, 129}}</string>
+			<key>offset</key>
+			<string>{-14, -16}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 42}, {222, 129}}</string>
+			<key>sourceSize</key>
+			<string>{250, 180}</string>
+		</dict>
+		<key>走動圖/Sword/特效-2.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{628, 284}, {95, 115}}</string>
+			<key>offset</key>
+			<string>{-46, 10}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{31, 22}, {95, 115}}</string>
+			<key>sourceSize</key>
+			<string>{250, 180}</string>
+		</dict>
+		<key>走動圖/Sword/特效-3.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{492, 132}, {149, 179}}</string>
+			<key>offset</key>
+			<string>{-34, 0}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{16, 1}, {149, 179}}</string>
+			<key>sourceSize</key>
+			<string>{250, 180}</string>
+		</dict>
+		<key>走動圖/Sword/特效-4.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{673, 152}, {130, 166}}</string>
+			<key>offset</key>
+			<string>{-25, -4}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{35, 11}, {130, 166}}</string>
+			<key>sourceSize</key>
+			<string>{250, 180}</string>
+		</dict>
+		<key>走動圖/Sword/特效-5.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{250, 1}, {240, 180}}</string>
+			<key>offset</key>
+			<string>{5, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{10, 0}, {240, 180}}</string>
+			<key>sourceSize</key>
+			<string>{250, 180}</string>
+		</dict>
+		<key>走動圖/Sword/特效-6.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{716, 1}, {149, 180}}</string>
+			<key>offset</key>
+			<string>{-44, 0}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{6, 0}, {149, 180}}</string>
+			<key>sourceSize</key>
+			<string>{250, 180}</string>
+		</dict>
+		<key>走動圖/Sword/特效-7.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{1, 1}, {247, 180}}</string>
+			<key>offset</key>
+			<string>{1, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{3, 0}, {247, 180}}</string>
+			<key>sourceSize</key>
+			<string>{250, 180}</string>
+		</dict>
+		<key>走動圖/Sword/走路-1.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{898, 1}, {123, 155}}</string>
+			<key>offset</key>
+			<string>{11, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{22, 0}, {123, 155}}</string>
+			<key>sourceSize</key>
+			<string>{145, 155}</string>
+		</dict>
+		<key>走動圖/Sword/走路-2.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{472, 283}, {138, 154}}</string>
+			<key>offset</key>
+			<string>{4, -1}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{7, 1}, {138, 154}}</string>
+			<key>sourceSize</key>
+			<string>{145, 155}</string>
+		</dict>
+		<key>走動圖/Sword/走路-3.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{1, 183}, {131, 155}}</string>
+			<key>offset</key>
+			<string>{4, 0}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{11, 0}, {131, 155}}</string>
+			<key>sourceSize</key>
+			<string>{145, 155}</string>
+		</dict>
+		<key>走動圖/Sword/走路-4.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{315, 294}, {137, 154}}</string>
+			<key>offset</key>
+			<string>{4, -1}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{8, 1}, {137, 154}}</string>
+			<key>sourceSize</key>
+			<string>{145, 155}</string>
+		</dict>
+		<key>走動圖/Sword/跳躍.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{841, 158}, {142, 155}}</string>
+			<key>offset</key>
+			<string>{-1, 0}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {142, 155}}</string>
+			<key>sourceSize</key>
+			<string>{145, 155}</string>
+		</dict>
+	</dict>
+	<key>metadata</key>
+	<dict>
+		<key>format</key>
+		<integer>2</integer>
+		<key>size</key>
+		<string>{1024, 1024}</string>
+		<key>textureFileName</key>
+		<string>Sword.png</string>
+	</dict>
+</dict>
+</plist>

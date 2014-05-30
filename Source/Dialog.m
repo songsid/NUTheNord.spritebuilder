@@ -163,6 +163,29 @@
             [self.delegate removeDialog];
             break;
         }
+        case 20:
+        {
+            _dialogtext.string = [NSString stringWithFormat:@"前方有巨石！\n必須使用攻擊排除！"];
+            _zero.visible = NO;
+            _npc.visible = YES;
+            _blueDia.visible = NO;
+            _sciDia.visible= YES;
+            break;
+        }
+        case 21:
+        {
+            [self.delegate removeDialog];
+            break;
+        }
+        
+            
+            
+            
+            
+            
+            
+            
+            
             /// First Time Intro Dialog
         case 90:
         {
@@ -185,7 +208,7 @@
 
         case 92:
         {
-            _dialogtext.string = [NSString stringWithFormat:@"…活…人…?\n猛然驚醒，想坐起身來，\n身體卻仍然使不上力"];
+            _dialogtext.string = [NSString stringWithFormat:@"…活…人…?\n(猛然驚醒，想坐起身來，\n身體卻仍然使不上力)"];
             _zero.visible = YES;
             _npc.visible = NO;
             _blueDia.visible = YES;

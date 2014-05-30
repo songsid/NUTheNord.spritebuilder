@@ -25,9 +25,10 @@
 }
 -(void) didLoadFromCCB
 {
+    _block.visible = NO;
+    _block.zOrder = 10;
     self.userInteractionEnabled = TRUE;
     PlayerInfoLayer * infoLayer = (PlayerInfoLayer *)[CCBReader load:@"PlayerInfoLayer"];
-
     _playerInfoScrollView.contentNode = infoLayer;
     _playerInfoScrollView.anchorPoint = ccp(0, 0);
     _playerInfoScrollView.position = ccp(0, 0);
@@ -82,6 +83,10 @@
     spriteSupVa.delegate = self;
     [self addChild:spriteSupVa];
     [self.arraySup addObject:spriteSupVa];
+    //
+    [[OALSimpleAudio sharedInstance] stopAllEffects];
+    [[OALSimpleAudio sharedInstance] playEffect:@"spiritMusic.mp3" loop:YES];
+
     
     ///set Action
 
@@ -90,11 +95,17 @@
     moveSprite2 = [CCActionMoveTo actionWithDuration:20.0f position:ccp(116, 208)];
 //    rotatedSprite = [CCActionRotateTo actionWithDuration:20.0f angle:0.0f];
     plusSprite = [CCActionSequence actions:moveSprite,rotatedSprite,moveSprite2, nil];
+    
+
 }
 -(void) popPlayerInfoScene:(id)sender
 {
+    _block.visible = YES;
     CCTransition * trans = [CCTransition transitionFadeWithDuration:0.2f];
     [[CCDirector sharedDirector]popSceneWithTransition:trans];
+
+    [[OALSimpleAudio sharedInstance] stopAllEffects];
+    [[OALSimpleAudio sharedInstance] playEffect:@"d5.mp3" loop:YES];
 }
 -(void)update:(CCTime)delta
 {
@@ -118,6 +129,7 @@
                 case 0:
                 {
                     spriteSaber.position = ccp(242, 231);
+                  //  [[OALSimpleAudio sharedInstance] playEffect:@"spiritUP.mp3" loop:NO];
                     id mov  = [CCActionMoveTo actionWithDuration:3.0f position:ccp(45, 64)];
                     [spriteSaber runAction:mov];
                 }
@@ -125,12 +137,14 @@
                 case 1:
                 {
                     spriteLancer.position = ccp(242, 231);
+                  //  [[OALSimpleAudio sharedInstance] playEffect:@"spiritUP.mp3" loop:NO];
                     id mov  = [CCActionMoveTo actionWithDuration:3.0f position:ccp(145, 64)];
                     [spriteLancer runAction:mov];
                 }
                     break;
                 case 2:
                 {
+                  //  [[OALSimpleAudio sharedInstance] playEffect:@"spiritUP.mp3" loop:NO];
                     spriteArcher.position = ccp(242, 231);
                     id mov  = [CCActionMoveTo actionWithDuration:3.0f position:ccp(200, 64)];
                     [spriteArcher runAction:mov];
@@ -188,6 +202,8 @@
                 supOn = NO;
                 switch (lastSup) {
                     case 0:{
+                    //    [[OALSimpleAudio sharedInstance] playEffect:@"spiritUP.mp3" loop:NO];
+
                         spriteSupLain.position = ccp(242, 231);
                         id mov  = [CCActionMoveTo actionWithDuration:3.0f position:ccp(402, 64)];
                         [spriteSupLain runAction:mov];
@@ -196,6 +212,8 @@
                     }
                     case 1:
                     {
+                   //     [[OALSimpleAudio sharedInstance] playEffect:@"spiritUP.mp3" loop:NO];
+
                         spriteSupSieg.position = ccp(242, 231);
                         id mov  = [CCActionMoveTo actionWithDuration:3.0f position:ccp(350, 64)];
                         [spriteSupSieg runAction:mov];
@@ -203,6 +221,8 @@
                         break;
                     case 2:
                     {
+                    //    [[OALSimpleAudio sharedInstance] playEffect:@"spiritUP.mp3" loop:NO];
+
                         spriteSupVa.position = ccp(242, 231);
                         id mov  = [CCActionMoveTo actionWithDuration:3.0f position:ccp(300, 64)];
                         [spriteSupVa runAction:mov];
@@ -251,65 +271,100 @@
 
 
 }
+-(id) addLayerWithAnamation
+{
+    showLayer = [CCActionMoveTo actionWithDuration:0.2f position:ccp(self.contentSize.width/2,self.contentSize.height/2)];
+    scaleLayer = [CCActionScaleTo actionWithDuration:0.2f scale:1];
+    id seq = [CCActionSequence actionOne:showLayer two:scaleLayer];
+    return seq;
+}
+
 -(void) playerInfoLayerAdd :(id)sprite
 {
     if ([sprite isEqualToString:@"0"]) {
         CCLOG(@"ADD PlayerInfoLayer!!");
         playerInfo = (PlayerInfoLayer *)[CCBReader load:@"PlayerInfoLayer"];
-        playerInfo.position = ccp(0,0);
+        playerInfo.position = spriteSaber.position;
+        playerInfo.scale  = 0;
         playerInfo.delegate = self;
         [playerInfo setLabel:sprite];
         [self addChild:playerInfo z:100];
+        [playerInfo runAction:[self addLayerWithAnamation]];
         addInfo = YES;
+        [[OALSimpleAudio sharedInstance] playEffect:@"spriteTouch.mp3" loop:NO];
+
     }
     if ([sprite isEqualToString:@"1"]) {
         CCLOG(@"ADD PlayerInfoLayer!!");
         playerInfo = (PlayerInfoLayer *)[CCBReader load:@"PlayerInfoLayer"];
-        playerInfo.position = ccp(0,0);
+        playerInfo.position = spriteLancer.position;
+        playerInfo.scale  = 0;
         playerInfo.delegate = self;
         [playerInfo setLabel:sprite];
         [self addChild:playerInfo z:100];
+        [playerInfo runAction:[self addLayerWithAnamation]];
         addInfo = YES;
+        [[OALSimpleAudio sharedInstance] playEffect:@"spriteTouch.mp3" loop:NO];
+
     }
     if ([sprite isEqualToString:@"2"]) {
         CCLOG(@"ADD PlayerInfoLayer!!");
         playerInfo = (PlayerInfoLayer *)[CCBReader load:@"PlayerInfoLayer"];
-        playerInfo.position = ccp(0,0);
+        playerInfo.position = spriteArcher.position;
+        playerInfo.scale  = 0;
         playerInfo.delegate = self;
             [playerInfo setLabel:sprite];
         [self addChild:playerInfo z:100];
+        [playerInfo runAction:[self addLayerWithAnamation]];
         addInfo = YES;
+        [[OALSimpleAudio sharedInstance] playEffect:@"spriteTouch.mp3" loop:NO];
+
     }
     if ([sprite isEqualToString:@"10"]) {
         CCLOG(@"ADD PlayerInfoLayer!!");
         playerInfo = (PlayerInfoLayer *)[CCBReader load:@"PlayerInfoLayer"];
-        playerInfo.position = ccp(0,0);
+        playerInfo.position = spriteSupLain.position;
+        playerInfo.scale  = 0;
         playerInfo.delegate = self;
   
                 [playerInfo setLabel:sprite];
         [self addChild:playerInfo z:100];
+        [playerInfo runAction:[self addLayerWithAnamation]];
         addInfo = YES;
+        [[OALSimpleAudio sharedInstance] playEffect:@"spriteTouch.mp3" loop:NO];
+
     }
     if ([sprite isEqualToString:@"11"]) {
         CCLOG(@"ADD PlayerInfoLayer!!");
         playerInfo = (PlayerInfoLayer *)[CCBReader load:@"PlayerInfoLayer"];
-        playerInfo.position = ccp(0,0);
+        playerInfo.position = spriteSupSieg.position;
+        playerInfo.scale  = 0;
         playerInfo.delegate = self;
                 [playerInfo setLabel:sprite];
         [self addChild:playerInfo z:100];
+        [playerInfo runAction:[self addLayerWithAnamation]];
         addInfo = YES;
+        [[OALSimpleAudio sharedInstance] playEffect:@"spriteTouch.mp3" loop:NO];
+
     }
     if ([sprite isEqualToString:@"12"]) {
         CCLOG(@"ADD PlayerInfoLayer!!");
         playerInfo = (PlayerInfoLayer *)[CCBReader load:@"PlayerInfoLayer"];
-        playerInfo.position = ccp(0,0);
+        playerInfo.position = spriteSupVa.position;
+        playerInfo.scale  = 0;
         playerInfo.delegate = self;
                 [playerInfo setLabel:sprite];
         [self addChild:playerInfo z:100];
+        [playerInfo runAction:[self addLayerWithAnamation]];
         addInfo = YES;
+        [[OALSimpleAudio sharedInstance] playEffect:@"spriteTouch.mp3" loop:NO];
+
     }
 }
-
+-(void) block :(id)sender
+{
+    //important can't delet
+}
 
 
 @end

@@ -3,7 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>filenames</key>
-	<dict/>
+	<dict>
+		<key>Picture/enemy/YAMABUTA_00.psd</key>
+		<string>Picture/enemy/YAMABUTA_00.png</string>
+	</dict>
 	<key>metadata</key>
 	<dict>
 		<key>version</key>

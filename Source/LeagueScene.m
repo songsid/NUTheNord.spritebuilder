@@ -11,6 +11,9 @@
 @implementation LeagueScene
 -(void) didLoadFromCCB
 {
+    blockPop = NO;
+    _block.visible = NO;
+    _block.zOrder = 10;
     _leagueSceneScrollView.anchorPoint = ccp(0, 0);
     _leagueSceneScrollView.position = ccp(0, 0);
     if ([[UIDevice currentDevice]userInterfaceIdiom] == UIUserInterfaceIdiomPad)
@@ -32,9 +35,12 @@
 
 -(void) popLeagueScene
 {
+    if (!blockPop) {
+        blockPop = YES;
     CCTransition * trans = [CCTransition transitionFadeWithDuration:0.2];
     [[CCDirector sharedDirector]popSceneWithTransition:trans];
     CCLOG(@"popleague!!!!!");
+    }
 }
 -(void) pushLevel
 {
@@ -60,11 +66,14 @@
 }
 -(void) isPopLeagueScene:(id)sender
 {
-    if (showInfo) {
+    if (!showInfo) {
+        _block.visible = YES;
+        [self popLeagueScene];
+        [[OALSimpleAudio sharedInstance] stopAllEffects];
+        [[OALSimpleAudio sharedInstance] playEffect:@"d5.mp3" loop:YES];
+    }else{
         showInfo = NO;
         [self removeChild:leagueInfo cleanup:YES];
-    }else{
-    [self popLeagueScene];
     }
 }
 -(void) showLeagueInfo:(CGPoint)x :(int)level
@@ -79,6 +88,20 @@
     [leagueInfo runAction:scale];
     [leagueInfo runAction:mov];
     showInfo = YES;
+    switch (level) {
+        case 0:
+            [leagueInfo setMissionString:@"首次戰鬥！"];
+            [leagueInfo setMissionDetailString:@"難易度：★★★☆☆\n\n本關卡內將會教導如何使用英靈戰鬥"];
+            break;
+        case 1:
+             [leagueInfo setMissionString:@"前方的道路─西北方礦坑"];
+             [leagueInfo setMissionDetailString:@"難易度：★★★★☆\n\n為了前往拯救鄰鎮的同胞，\n礦坑是唯一的道路。"];
+
+            break;
+            
+        default:
+            break;
+    }
     
 }
 -(void) isEnter:(id)sender
@@ -97,6 +120,11 @@
                 break;
         }
     }
+}
+-(void) block:(id) sender
+{
+    CCLOG(@"block!");
+    //important !
 }
 /////////
 -(id) initWithTitle:(NSString*)title message:(NSString *)message delegate:(id)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitle:(NSString *)otherButtonTitle{return 0;}

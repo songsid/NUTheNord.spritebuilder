@@ -14,6 +14,8 @@
     self.userInteractionEnabled= YES;
     [[NSUserDefaults standardUserDefaults] setInteger:90 forKey:@"DialogInt"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    [[OALSimpleAudio sharedInstance] stopAllEffects];
+    [[OALSimpleAudio sharedInstance] playEffect:@"firstTimeMusic2.mp3" loop:YES];
     [self loadDialog];
 }
 -(void) loadDialog

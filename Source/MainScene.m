@@ -11,7 +11,6 @@
 @implementation MainScene
 -(void) didLoadFromCCB
 {
-    //self.userInteractionEnabled = TRUE;
     _mainScrollView.anchorPoint = ccp(0,0);
     _mainScrollView.position = ccp(0, 0);
  if ([[UIDevice currentDevice]userInterfaceIdiom] == UIUserInterfaceIdiomPad){ self.scale = 1.07;}
@@ -25,6 +24,9 @@
     skip.delegate = self;
     _mainScrollView.contentNode = skip;
     }
+    
+    [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"SeePre"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
 }
 -(void) firstTimeEnd
 {
@@ -87,6 +89,11 @@
     CCScene * info = (CCScene * )[CCBReader loadAsScene:@"LeagueScene"];
     CCTransition *trans = [CCTransition transitionPushWithDirection:1 duration:0.2f];
     [[CCDirector sharedDirector]pushScene:info withTransition:trans];
+    
+}
+
+-(void) update:(CCTime)delta
+{
     
 }
 @end

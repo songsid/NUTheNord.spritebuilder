@@ -28,6 +28,7 @@
     SpriteSaber * spriteSupSieg;
     SpriteSaber * spriteSupLain;
     
+    CCButton * _block;
     BOOL spriteOn;
     BOOL supOn;
     BOOL addInfo;
@@ -41,6 +42,9 @@
     id plusSup;
     int lastSprite;
     int lastSup;
+    
+    id showLayer;
+    id scaleLayer;
 }
 
 @property (nonatomic,strong) NSMutableArray * arraySprite;

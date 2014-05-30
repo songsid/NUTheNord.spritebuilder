@@ -88,9 +88,16 @@
 			<key>previewFolderHidden</key>
 			<true/>
 		</dict>
-		<key>MCPicture</key>
+		<key>LabPicture</key>
 		<dict>
-			<key>isDirty</key>
+			<key>isSmartSpriteSheet</key>
+			<true/>
+		</dict>
+		<key>MCPicture</key>
+		<dict/>
+		<key>Menu0.7</key>
+		<dict>
+			<key>isSmartSpriteSheet</key>
 			<true/>
 		</dict>
 		<key>Sprites</key>
@@ -176,6 +183,22 @@
 			<integer>2</integer>
 			<key>tabletScale</key>
 			<integer>1</integer>
+		</dict>
+		<key>情節</key>
+		<dict/>
+		<key>走動圖</key>
+		<dict/>
+		<key>走動圖/Archer</key>
+		<dict>
+			<key>isSmartSpriteSheet</key>
+			<true/>
+		</dict>
+		<key>走動圖/Lancer</key>
+		<dict/>
+		<key>走動圖/Sword</key>
+		<dict>
+			<key>isSmartSpriteSheet</key>
+			<true/>
 		</dict>
 		<key>走動圖/拉弓-1.png</key>
 		<dict>

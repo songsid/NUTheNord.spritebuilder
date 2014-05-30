@@ -11,23 +11,46 @@
 @implementation MainMenuLayer
 -(void)didLoadFromCCB
 {
+    _blockButton.visible = NO;
+    _blockButton.zOrder = 10;
     self.userInteractionEnabled = TRUE;
-  //  [[OALSimpleAudio sharedInstance] playEffect:@"main4.mp3" loop:YES];
+    [[OALSimpleAudio sharedInstance] stopAllEffects];
+    [[OALSimpleAudio sharedInstance] playEffect:@"d5.mp3" loop:YES];
+
 
 }
 
 -(void) isPlayerInfoScene:(id) sender
 {
+    _blockButton.visible = YES;
     [self.delegate pushPlayerInfoScene];
-        [[OALSimpleAudio sharedInstance] playEffect:@"sure4.mp3"];
+    
+    [self scheduleBlock:^(CCTimer *timer) {
+        _blockButton.visible = NO;
+    } delay:0.2f];
+    
 }
 -(void) isFirstTimeIntro:(id)sender
 {
+    _blockButton.visible = YES;
+    [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"SeePre"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
     [self.delegate selectFirstTime];
+    [self scheduleBlock:^(CCTimer *timer) {
+        _blockButton.visible = NO;
+    } delay:0.2f];
 }
 -(void) isLeagueScene:(id)sender
 {
+    _blockButton.visible = YES;
     [self.delegate pushLeagueScene];
-        [[OALSimpleAudio sharedInstance] playEffect:@"sure4.mp3"];
+    [self scheduleBlock:^(CCTimer *timer) {
+        _blockButton.visible = NO;
+    } delay:0.2f];
 }
+-(void) block:(id)sender
+{
+}
+
+
 @end

@@ -20,6 +20,8 @@
     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"Spirit"];
     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"Sup"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    [[OALSimpleAudio sharedInstance] stopAllEffects];
+    [[OALSimpleAudio sharedInstance] playEffect:@"firstTimeMusic.mp3" loop:YES];
 /*
     _talk.anchorPoint = ccp(0.5, 0.5);
     _talk.position = ccp(240, 160);

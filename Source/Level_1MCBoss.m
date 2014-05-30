@@ -316,7 +316,7 @@
 -(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     
-    int dia = [[NSUserDefaults standardUserDefaults]integerForKey:@"DialogInt"];
+ //   int dia = [[NSUserDefaults standardUserDefaults]integerForKey:@"DialogInt"];
    /* CCLOG(@"dialog int = %d",dia);
     CCLOG(@"levelscenepause = %hhd",[self.delegate getPaused]);
     if ([self.delegate getPaused]&& (dia>=10)&& dialogTouchOne) {

@@ -8,6 +8,11 @@
 		<integer>1</integer>
 	</dict>
 	<key>spriteFrameFiles</key>
-	<array/>
+	<array>
+		<string>走動圖/Sword.plist</string>
+		<string>Menu0.7.plist</string>
+		<string>LabPicture.plist</string>
+		<string>走動圖/Archer.plist</string>
+	</array>
 </dict>
 </plist>

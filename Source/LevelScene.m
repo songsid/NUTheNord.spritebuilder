@@ -81,7 +81,7 @@
     }
     if ([[NSUserDefaults standardUserDefaults]integerForKey:@"SwitchLevel"]== 1) {
        
-        float levelAnchorPoint = (float)levelMc.getSelfAnchorPosition;
+  //      float levelAnchorPoint = (float)levelMc.getSelfAnchorPosition;
         if (!self.currentLevel.paused && (!levelMc.getDeltaStop||!levelMcBoss.getDeltaStop)) {
             
             _mcBG4_1.position = ccp(_mcBG4_1.position.x - delta * 10, _mcBG4_1.position.y);
@@ -389,10 +389,12 @@
     [self addChild:fail z:100];
     
 }
--(void) onEnter
-{
-    [super onEnter];
-    CCLOG(@"onEnter");
-    return;
+-(void)onExit {
+    [self stopAllActions];
+    [self unscheduleAllSelectors];
+    [self removeAllChildrenWithCleanup:YES];
+    [[OALSimpleAudio sharedInstance]stopEverything];
+    CCLOG(@"Onexit");
+    [super onExit];
 }
 @end

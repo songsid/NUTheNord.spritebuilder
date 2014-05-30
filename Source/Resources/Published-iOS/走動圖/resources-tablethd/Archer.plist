@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>frames</key>
+	<dict>
+		<key>走動圖/Archer/arrow 2.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{895, 1}, {680, 140}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {680, 140}}</string>
+			<key>sourceSize</key>
+			<string>{680, 140}</string>
+		</dict>
+		<key>走動圖/Archer/arrow.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{1, 1}, {892, 140}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {892, 140}}</string>
+			<key>sourceSize</key>
+			<string>{892, 140}</string>
+		</dict>
+		<key>走動圖/Archer/攻擊-1.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{861, 143}, {282, 310}}</string>
+			<key>offset</key>
+			<string>{4, 0}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{8, 0}, {282, 310}}</string>
+			<key>sourceSize</key>
+			<string>{290, 310}</string>
+		</dict>
+		<key>走動圖/Archer/攻擊-2.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{1173, 417}, {280, 302}}</string>
+			<key>offset</key>
+			<string>{5, 4}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{10, 0}, {280, 302}}</string>
+			<key>sourceSize</key>
+			<string>{290, 310}</string>
+		</dict>
+		<key>走動圖/Archer/攻擊-3.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{1173, 143}, {272, 307}}</string>
+			<key>offset</key>
+			<string>{9, 1}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{18, 0}, {272, 307}}</string>
+			<key>sourceSize</key>
+			<string>{290, 310}</string>
+		</dict>
+		<key>走動圖/Archer/特效1_1.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{303, 143}, {312, 244}}</string>
+			<key>offset</key>
+			<string>{55, -5}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{149, 63}, {312, 244}}</string>
+			<key>sourceSize</key>
+			<string>{500, 360}</string>
+		</dict>
+		<key>走動圖/Archer/特效1_2.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{149, 143}, {320, 152}}</string>
+			<key>offset</key>
+			<string>{21, -19}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{111, 123}, {320, 152}}</string>
+			<key>sourceSize</key>
+			<string>{500, 360}</string>
+		</dict>
+		<key>走動圖/Archer/特效1_3.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{1, 143}, {322, 146}}</string>
+			<key>offset</key>
+			<string>{15, -21}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{104, 128}, {322, 146}}</string>
+			<key>sourceSize</key>
+			<string>{500, 360}</string>
+		</dict>
+		<key>走動圖/Archer/特效2_1.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{1, 498}, {495, 356}}</string>
+			<key>offset</key>
+			<string>{-2, 1}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{0, 1}, {495, 356}}</string>
+			<key>sourceSize</key>
+			<string>{500, 360}</string>
+		</dict>
+		<key>走動圖/Archer/特效2_2.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{1577, 1}, {495, 360}}</string>
+			<key>offset</key>
+			<string>{2, 0}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{5, 0}, {495, 360}}</string>
+			<key>sourceSize</key>
+			<string>{500, 360}</string>
+		</dict>
+		<key>走動圖/Archer/走路-1.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{359, 697}, {257, 292}}</string>
+			<key>offset</key>
+			<string>{-1, 0}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{15, 9}, {257, 292}}</string>
+			<key>sourceSize</key>
+			<string>{290, 310}</string>
+		</dict>
+		<key>走動圖/Archer/走路-2.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{549, 433}, {262, 295}}</string>
+			<key>offset</key>
+			<string>{3, -3}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{17, 11}, {262, 295}}</string>
+			<key>sourceSize</key>
+			<string>{290, 310}</string>
+		</dict>
+		<key>走動圖/Archer/走路-3.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{861, 427}, {270, 298}}</string>
+			<key>offset</key>
+			<string>{-10, 3}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{0, 3}, {270, 298}}</string>
+			<key>sourceSize</key>
+			<string>{290, 310}</string>
+		</dict>
+		<key>走動圖/Archer/走路-4.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{1477, 498}, {275, 290}}</string>
+			<key>offset</key>
+			<string>{7, -1}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{15, 11}, {275, 290}}</string>
+			<key>sourceSize</key>
+			<string>{290, 310}</string>
+		</dict>
+		<key>走動圖/Archer/跳.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{549, 143}, {288, 310}}</string>
+			<key>offset</key>
+			<string>{-1, 0}</string>
+			<key>rotated</key>
+			<true/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {288, 310}}</string>
+			<key>sourceSize</key>
+			<string>{290, 310}</string>
+		</dict>
+	</dict>
+	<key>metadata</key>
+	<dict>
+		<key>format</key>
+		<integer>2</integer>
+		<key>size</key>
+		<string>{2048, 2048}</string>
+		<key>textureFileName</key>
+		<string>Archer.png</string>
+	</dict>
+</dict>
+</plist>

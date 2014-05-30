@@ -36,7 +36,7 @@
     dialogTouchOne = NO;
     dialogButtonOne = NO;
     roberShotBo = NO;
-    endgame = NO;
+    endgame = YES;
     tutorialStep = 0;
     
 
@@ -126,6 +126,7 @@
     [self buildBlueTopGnd:ccp(4463, 95)];
     [self buildBlueTopGnd:ccp(4582, 95)];
 }
+
 -(void) buildBludGnd :(CGPoint)x :(NSInteger) z
 {
     _blueGnd = [CCBReader load:@"blueGnd"];
@@ -368,29 +369,17 @@
 //        self.enemies
         
     }
-
-    ///////
-   /* if (![self.delegate getPaused]) {
-
-        if (_player.physicsBody.force.x <200) {
-            [_player.physicsBody applyForce:ccp(10000.0f, 0.0f)];
-            self.position = ccp(self.position.x - (30+ 0.1*(_player.physicsBody.force.x) )*delta, self.position.y);
-        }else
-        {
-            self.position = ccp(self.position.x - 100*delta, self.position.y);
+    for (CCNode * m in self.enemies) {
+        if (m.position.x-selfAncherPosition > 0 && m.position.x - selfAncherPosition < 800) {
+            if (m.parent) {
+                mouseExisted = YES;
+            }else {
+                mouseExisted = NO;
+            }
         }
-    }*/
- //   _player.position = ccp(_player.position.x + 100*delta, _player.position.y);
-    //CCLOG(@"\nposition = %f, %hhd",_player.position.y,enableJump);
-//    float xTarget = 80 - _player.position.x;
-/*    float xTarget = 100 - self.position.x ;
-    CGPoint oldLayerPosition = _player.position;
-    
-    float yNew = oldLayerPosition.y;
-    float xNew = xTarget * 0.1 + oldLayerPosition.x * (1.0f - 0.1);
-    
-    _player.position = ccp(xNew, yNew);
-*/
+    }
+    ///////
+
     switch ([[NSUserDefaults standardUserDefaults] integerForKey:@"Spirit"]) {
         case 0:
          
@@ -416,6 +405,11 @@
 
         _returnTouch = nil;
         self.userInteractionEnabled = NO;
+
+                [[OALSimpleAudio sharedInstance] stopAllEffects];
+                [[OALSimpleAudio sharedInstance] playEffect:@"d4.mp3" volume:0.5 pitch:1.0f pan:0.0f loop:YES];
+                
+            
         [self.delegate touchToPaused:dialogOne];
         CCLOG(@"touchToJump");
             dialogOne = YES;
@@ -523,11 +517,13 @@
         tutorialStep = tutorialStep +1;
     }
     
-    if (_player.position.x > 2970 && tutorialStep ==7) {
+    if (_player.position.x > 2730 && tutorialStep ==7) {
+        tutorialStep = tutorialStep +1;
+        if (mouseExisted) {
         [[NSUserDefaults standardUserDefaults]setInteger:16 forKey:@"DialogInt"];
         [[NSUserDefaults standardUserDefaults]synchronize];
-        tutorialStep = tutorialStep +1;
         [self.delegate touchToPaused:NO];
+        }
     }
     
     if (_player.position.x > 3050 && tutorialStep ==8) {
@@ -547,8 +543,6 @@
     
     if (_player.position.x >5200 && tutorialStep ==11) {
 
-        
-        
         tutorialStep = tutorialStep +1;
 
     }
@@ -587,7 +581,7 @@
     
     
     ///completegame
-    if ((_player.position.x > 6500 && !endgame )) {
+    if ((_player.position.x > 5400 && !endgame )) {
         endgame = YES;
         deltaStop = YES;
         skillPosition.x = _player.position.x;
@@ -713,8 +707,7 @@
                 /* CCNode * sand = [CCBReader load:@"Sand"];
                  sand.position = ccp(_player.position.x-20,_player.position.y);
                  [self addChild:sand];*/
-                [[OALSimpleAudio sharedInstance] playEffect:@"slam3.mp3"];
-            }
+                [[OALSimpleAudio sharedInstance] playEffect:@"sabersMusic.mp3"];            }
                 break;
             }
             case 1:
@@ -736,7 +729,7 @@
                 /* CCNode * sand = [CCBReader load:@"Sand"];
                  sand.position = ccp(_player.position.x-20,_player.position.y);
                  [self addChild:sand];*/
-                [[OALSimpleAudio sharedInstance] playEffect:@"slam3.mp3"];
+                [[OALSimpleAudio sharedInstance] playEffect:@"lancerSMusic.mp3" volume:1 pitch:1.0f pan:0.0f loop:NO];
                 break;
             }
             case 2:
@@ -746,6 +739,7 @@
                 CCLOG(@"%@",[_player.userObject runningSequenceName]);
                 [self.delegate transMpDecrease:2];
                 [self createArrowShot];
+                    [[OALSimpleAudio sharedInstance] playEffect:@"archerShotMusic"                    volume:1.5 pitch:1.0f pan:0.0f loop:NO];
                 }
                 break;
             }
@@ -792,6 +786,7 @@
                 } delay:1.0f ];
                 [self scheduleBlock:^(CCTimer *timer) {
                     deltaStop = NO;
+                    [[OALSimpleAudio sharedInstance]playEffect:@"exp.mp3" volume:5 pitch:1.0f pan:0.0f loop:NO];
                     [self scheduleBlock:^(CCTimer *timer) {
                         _skillBG.visible = NO;
                     } delay:0.8];
@@ -812,11 +807,12 @@
                 [_player.physicsBody applyImpulse:ccp(0, 700)];
                 [_player.userObject runAnimationsForSequenceNamed:@"Skill"];
                 [self scheduleBlock:^(CCTimer *timer) {
-                    
+                    [[OALSimpleAudio sharedInstance]playEffect:@"lancerSkMusic.mp3"];
 
                     [self createSkillShot];
                     
                     [self scheduleBlock:^(CCTimer *timer) {
+                        [[OALSimpleAudio sharedInstance]playEffect:@"exp.mp3" volume:5 pitch:1.0f pan:0.0f loop:NO];
                         [self.delegate scrollViewShake];
                       
                     } delay:1.0f];
@@ -856,6 +852,7 @@
                     skillBombccpa.position = ccp(_player.position.x +300, _player.position.y);
                     [self addChild:skillBombccpa];
                    */
+                    [[OALSimpleAudio sharedInstance]playEffect:@"archerSKM.mp3"];
                     [self createSkillShot];
                     
                 } delay:1.0f ];
@@ -911,12 +908,18 @@
     }
         if (bRHP ==3) {
              [nodeB removeFromParent];
+            [self scheduleBlock:^(CCTimer *timer) {
+                endgame = NO;
+            } delay:3];
         }
 }
 -(BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair skillFire:(CCNode *)nodeA enemyRB:(CCNode *)nodeB
 {
     CCLOG(@"cc6");
     [nodeB removeFromParent];
+    [self scheduleBlock:^(CCTimer *timer) {
+        endgame = NO;
+    } delay:3];
     return YES;
 }
 -(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair Player:(CCNode *)nodeA enemy:(CCNode *)nodeB

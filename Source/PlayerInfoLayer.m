@@ -13,6 +13,8 @@
 {
     self.userInteractionEnabled = YES;
     _bgButton.label.opacity = 0.5;
+
+
 }
 
 -(void) update:(CCTime)delta
@@ -69,7 +71,7 @@
     if ([name isEqualToString:@"0"]) {
         _spirit.string = @"亞瑟王";
         _class.string = @"職業：劍士";
-        _attack.string = @"攻擊：攻擊力3點，消耗4點MP。";
+        _attack.string = @"攻擊：攻擊力3點，消耗3點MP。";
         _skill.string = @"技能：破炎斬";
         [self spiritSetting:0];
       //  _img.spriteFrame = [CCSprite spriteWithSpriteFrame:img];
@@ -84,7 +86,7 @@
     if ([name isEqualToString:@"2"]) {
         _spirit.string = @"豐鍬";
         _class.string = @"職業：弓箭手";
-        _attack.string = @"攻擊：攻擊力1點，消耗2點MP。";
+        _attack.string = @"攻擊：攻擊力1點，消耗3點MP。";
         _skill.string = @"技能：風刃矢";
         [self spiritSetting:2];
     }

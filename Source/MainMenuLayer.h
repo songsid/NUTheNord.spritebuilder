@@ -13,5 +13,11 @@
 #import "CCNode.h"
 
 @interface MainMenuLayer : CCNode
+{
+    CCButton * _left;
+    CCButton * _right;
+    CCButton * _rightUp;
+    CCButton * _blockButton;
+}
 @property (nonatomic,weak) id <MainMenuLayerDelegate> delegate;
 @end
