@@ -4,6 +4,8 @@
 <dict>
 	<key>filenames</key>
 	<dict>
+		<key>MCPicture/礦坑4.png</key>
+		<string>MCPicture/礦坑4.jpg</string>
 		<key>Picture/enemy/YAMABUTA_00.psd</key>
 		<string>Picture/enemy/YAMABUTA_00.png</string>
 	</dict>

@@ -95,11 +95,68 @@
 		</dict>
 		<key>MCPicture</key>
 		<dict/>
+		<key>MCPicture/dj;4.png</key>
+		<dict/>
+		<key>MCPicture/mc1.0.png</key>
+		<dict/>
+		<key>MCPicture/地表.png</key>
+		<dict/>
+		<key>MCPicture/地表2.png</key>
+		<dict>
+			<key>format_ios</key>
+			<integer>9</integer>
+		</dict>
+		<key>MCPicture/地面.png</key>
+		<dict/>
+		<key>MCPicture/巨石.png</key>
+		<dict>
+			<key>format_ios</key>
+			<integer>8</integer>
+			<key>isDirty</key>
+			<true/>
+		</dict>
+		<key>MCPicture/平台.png</key>
+		<dict/>
+		<key>MCPicture/石頭拷貝.png</key>
+		<dict/>
+		<key>MCPicture/礦坑.png</key>
+		<dict/>
+		<key>MCPicture/礦坑1b.png</key>
+		<dict/>
+		<key>MCPicture/礦坑1top.png</key>
+		<dict/>
+		<key>MCPicture/礦坑2b.png</key>
+		<dict/>
+		<key>MCPicture/礦坑2top.png</key>
+		<dict/>
+		<key>MCPicture/礦坑3.png</key>
+		<dict/>
+		<key>MCPicture/礦坑4.png</key>
+		<dict>
+			<key>format_ios</key>
+			<integer>10</integer>
+		</dict>
+		<key>MCPicture/礦坑5bm.png</key>
+		<dict/>
+		<key>MCPicture/礦坑5top1.png</key>
+		<dict/>
+		<key>MCPicture/礦坑5top2.png</key>
+		<dict/>
+		<key>MCPicture/礦坑5柱.png</key>
+		<dict/>
+		<key>MCPicture/鐵軌.png</key>
+		<dict/>
+		<key>MCPicture/鐵鏈-前.png</key>
+		<dict/>
+		<key>MCPicture/鐵鏈-後.png</key>
+		<dict/>
 		<key>Menu0.7</key>
 		<dict>
 			<key>isSmartSpriteSheet</key>
 			<true/>
 		</dict>
+		<key>Menu0.7/alt.png</key>
+		<dict/>
 		<key>Sprites</key>
 		<dict/>
 		<key>ccbResources</key>
