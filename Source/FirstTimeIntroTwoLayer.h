@@ -14,9 +14,10 @@
 
 @interface FirstTimeIntroTwoLayer : CCNode <DialogDelegate>
 {
-    CCSprite * _bg;
     Dialog * diag;
 }
 @property (nonatomic,weak) id<FirstTimeTwoDelegate> delegate;
+@property (nonatomic,weak) CCSprite * bg;
+
 -(void) removeDialog;
 @end

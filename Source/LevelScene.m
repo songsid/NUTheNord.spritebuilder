@@ -82,7 +82,7 @@
     if ([[NSUserDefaults standardUserDefaults]integerForKey:@"SwitchLevel"]== 1) {
        
   //      float levelAnchorPoint = (float)levelMc.getSelfAnchorPosition;
-        if (!self.currentLevel.paused && (!levelMc.getDeltaStop||!levelMcBoss.getDeltaStop)) {
+        if (!_levelSceneScrollView.contentNode.paused && (!levelMc.getDeltaStop||!levelMcBoss.getDeltaStop)) {
             
             _mcBG4_1.position = ccp(_mcBG4_1.position.x - delta * 10, _mcBG4_1.position.y);
             _mcBG4_2.position = ccp(_mcBG4_2.position.x - delta * 10, _mcBG4_2.position.y);
@@ -120,7 +120,7 @@
             if (_mcBG4_2.position.x< -678) {
                 _mcBG4_2.position = ccp(_mcBG4_1.position.x +673, _mcBG4_2.position.y);
             }
-        }else if(self.currentLevel.paused)
+        }else if(_levelSceneScrollView.contentNode.paused)
                 {
                     //[self.userObject ;
                 }
@@ -131,18 +131,18 @@
 {
     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"DialogInt"];
     [[NSUserDefaults standardUserDefaults]synchronize];
-    Level_0First * level = (Level_0First *)[CCBReader load:@"Level_0lab"];
-    _levelSceneScrollView.contentNode = level;
-    self.currentLevel = level;
-    level.delegate = self;
+    leveLab = (Level_0First *)[CCBReader load:@"Level_0lab"];
+    _levelSceneScrollView.contentNode = leveLab;
+//    self.currentLevel = leveLab;
+    leveLab.delegate = self;
 }
 -(void) switchLevel_1MC
 {
-        Level_1MC * level = (Level_1MC *)[CCBReader load:@"Level_1MC"];
+        levelMc = (Level_1MC *)[CCBReader load:@"Level_1MC"];
 
-            _levelSceneScrollView.contentNode = level;
-            self.currentLevel = level;
-            level.delegate = self;
+            _levelSceneScrollView.contentNode = levelMc;
+//            self.currentLevel = level;
+            levelMc.delegate = self;
 }
 -(void) sendLevel:(CCNode *)level
 {
@@ -154,36 +154,42 @@
 {
     levelMcBoss = (Level_1MCBoss * )[CCBReader load:@"Level_1MCBoss"];
     _levelSceneScrollView.contentNode = levelMcBoss;
-    self.currentLevel = levelMcBoss;
+   // self.currentLevel = levelMcBoss;
     levelMcBoss.delegate = self;
 }
 -(void) popLevelScene
 {
-    CCTransition * trans = [CCTransition transitionFadeWithDuration:1.0f];
-
-    [[CCDirector sharedDirector ]popScene];
-    [[CCDirector sharedDirector ]popSceneWithTransition:trans];
-    [[OALSimpleAudio sharedInstance] stopAllEffects];
     [[NSUserDefaults standardUserDefaults]setInteger:0 forKey:@"DialogInt"];
     [[NSUserDefaults standardUserDefaults]synchronize];
-}
+//   CCTransition * trans = [CCTransition transitionFadeWithDuration:1.0f];
+    //_league  =  (LeagueScene *)[CCBReader loadAsScene:@"LeagueScene"];
+    _levelSceneScrollView.contentNode = nil;
+    LeagueScene *league =  (LeagueScene *)[CCBReader loadAsScene:@"LeagueScene"];
+    //CCScene *runnungScene = [[CCDirector sharedDirector] runningScene];
+    [[CCDirector sharedDirector ]replaceScene:league];
+    //runnungScene = nil;
+ //   [[CCDirector sharedDirector ]popScene];
+ //   [[OALSimpleAudio sharedInstance] stopAllEffects];
 
+
+    
+}
 
 
 -(void) isAttack:(id)sender
 {
-    if([[NSString stringWithFormat:@"%@",_currentLevel.class]isEqualToString:@"Level_0First"])
+    if([[NSString stringWithFormat:@"%@",_levelSceneScrollView.contentNode.class]isEqualToString:@"Level_0First"])
     {
         if (info.MP>=1) {
-        Level_0First * level = (Level_0First *) self.currentLevel;
+       // Level_0First * level = (Level_0First *) self.currentLevel;
         
-        [level attack];
+        [leveLab attack];
         }
         CCLOG(@"is Equal to Level_0First");
     }
     if ([[NSUserDefaults standardUserDefaults]integerForKey:@"SwitchLevel"]== 1) {
         if (info.MP>=1) {
-            levelMc = (Level_1MC *) self.currentLevel;
+            //levelMc = (Level_1MC *) self.currentLevel;
             [levelMc attack];
         }
     }
@@ -191,16 +197,16 @@
 }
 -(void) isSkillOne :(id)sender
 {
-    if([[NSString stringWithFormat:@"%@",_currentLevel.class]isEqualToString:@"Level_0First"])
+    if([[NSString stringWithFormat:@"%@",_levelSceneScrollView.contentNode.class]isEqualToString:@"Level_0First"])
     {
         if (info.MP>=9) {
-            Level_0First * level = (Level_0First *) self.currentLevel;
-            [level skill];
+         //   Level_0First * level = (Level_0First *) self.currentLevel;
+            [leveLab skill];
         }
     }
     if ([[NSUserDefaults standardUserDefaults]integerForKey:@"SwitchLevel"]== 1) {
         if (info.MP>=9) {
-            levelMc = (Level_1MC *) self.currentLevel;
+            //levelMc = (Level_1MC *) self.currentLevel;
             [levelMc skill];
         }
     }
@@ -256,7 +262,8 @@
                 _skillTwo.enabled = YES;
             } delay:0.3f];
 
-        self.currentLevel.userInteractionEnabled = NO;
+       // self.currentLevel
+            _levelSceneScrollView.contentNode.userInteractionEnabled = NO;
         _levelSceneScrollView.paused = !_levelSceneScrollView.paused;
         [self loadDialog];
     
@@ -313,8 +320,9 @@
 }
 -(void) isPaused:(id)sender
 {
-    self.currentLevel.paused = YES;
-    self.currentLevel.userInteractionEnabled = NO;
+//    self.currentLevel
+    _levelSceneScrollView.contentNode.paused = YES;
+    _levelSceneScrollView.contentNode.userInteractionEnabled = NO;
     _attack.enabled = NO;
     _skillOne.enabled =NO;
     _skillTwo.enabled = NO;
@@ -329,8 +337,9 @@
 -(void) closePause
 {
     [self removeChild:pausedS];
-    self.currentLevel.paused = NO;
-    self.currentLevel.userInteractionEnabled = YES;
+   //    self.currentLevel
+    _levelSceneScrollView.contentNode.paused = NO;
+    _levelSceneScrollView.contentNode.userInteractionEnabled = YES;
     _attack.enabled = YES;
     _skillOne.enabled =YES;
     _skillTwo.enabled = YES;
@@ -352,19 +361,24 @@
         {
             [[NSUserDefaults standardUserDefaults]setInteger:0 forKey:@"DialogInt"];
             [[NSUserDefaults standardUserDefaults]synchronize];
-            Level_0First * level = (Level_0First *)[CCBReader load:@"Level_0lab"];
-            _levelSceneScrollView.contentNode = level;
-            self.currentLevel = level;
-            level.delegate = self;
+            leveLab = (Level_0First *)[CCBReader load:@"Level_0lab"];
+            _levelSceneScrollView.contentNode = leveLab;
+            //self.currentLevel = level;
+            leveLab.delegate = self;
         }
             break;
         case 1:
         {
+            levelMc = (Level_1MC *)[CCBReader load:@"Level_1MC"];
+            _levelSceneScrollView.contentNode = levelMc;
+            //self.currentLevel = level;
+            levelMc.delegate = self;
+            /*
             Level_1MC * level = (Level_1MC *)[CCBReader load:@"Level_1MC"];
             _levelSceneScrollView.contentNode = level;
-            self.currentLevel = level;
+            //self.currentLevel = level;
             level.delegate = self;
-
+             */
         }
             break;
         case 2:
@@ -377,8 +391,9 @@
 }
 -(void) appearFailCount
 {
-    self.currentLevel.paused = YES;
-    self.currentLevel.userInteractionEnabled = NO;
+    //self.currentLevel
+    _levelSceneScrollView.contentNode.paused = YES;
+    _levelSceneScrollView.contentNode.userInteractionEnabled = NO;
     _attack.enabled = NO;
     _skillOne.enabled =NO;
     _skillTwo.enabled = NO;
@@ -392,8 +407,9 @@
 -(void)onExit {
     [self stopAllActions];
     [self unscheduleAllSelectors];
+
     [self removeAllChildrenWithCleanup:YES];
-    [[OALSimpleAudio sharedInstance]stopEverything];
+ //   [[OALSimpleAudio sharedInstance]stopEverything];
     CCLOG(@"Onexit");
     [super onExit];
 }

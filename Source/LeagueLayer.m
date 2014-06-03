@@ -10,17 +10,18 @@
 #define kCCTestMenuItemHeight 30
 #define kCCUITestHeaderHeight 44
 @implementation LeagueLayer
-@synthesize tableView;
+
 -(void) didLoadFromCCB
 {
     self.userInteractionEnabled = TRUE;
-    tableView = [[CCTableView alloc] init];
+/*    tableView = [[CCTableView alloc] init];
     tableView.contentSizeType = CCSizeTypeMake(CCSizeUnitNormalized, CCSizeUnitInsetPoints);
     tableView.contentSize = CGSizeMake(0.3f,90.0f);
     tableView.rowHeight = kCCTestMenuItemHeight;
     tableView.dataSource = self;
     tableView.anchorPoint = ccp(0, 1);
     tableView.position = ccp(243 ,300 );
+ 
     _levels = nil;
     _levelNum = 0;
     [self addChild:tableView z:1];
@@ -28,19 +29,20 @@
     [self setBlockButton:YES];
     
     CCLOG(@"didloadfromccb");
-  /*  _isSelectLevel0.block = ^(id sender)
+  *//*  _isSelectLevel0.block = ^(id sender)
     {
         
         CCLOG(@"block");
     };*/
     
     //
-    slide = 1;
+  //  slide = 1;
     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"SelectLevel"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    [[OALSimpleAudio sharedInstance] stopAllEffects];
-    [[OALSimpleAudio sharedInstance] playEffect:@"mapMusic.mp3" loop:YES];
+  //  [[OALSimpleAudio sharedInstance] stopAllEffects];
+  //  [[OALSimpleAudio sharedInstance] playEffect:@"mapMusic.mp3" loop:YES];
 }
+/*
 -(void) setTableView:(CCTableView *)tableViewer
 {
     tableViewer.contentSizeType = CCSizeTypeMake(CCSizeUnitNormalized, CCSizeUnitInsetPoints);
@@ -52,10 +54,11 @@
 
     [self addChild:tableViewer z:1];
 
-}
+}*/
+/*
 -(void) isSelectAreaOne:(id)sender
 {
-    /*[self removeChild:tableView cleanup:YES];
+    [self removeChild:tableView cleanup:YES];
     _levels = [[NSArray alloc]initWithObjects:@"Level_0",@"Level_1",@"Level_2",@"Level_3",@"Level_99", nil];
     _levelNum = 10;
     tableView = [[CCTableView alloc]init];
@@ -67,7 +70,7 @@
     for (i=0; i<_levels.count; i++) {
         CCLOG(@"%@",_levels[i]);
     }
-     */
+ 
     
     [self.delegate controlSlide:slide];
     slide = slide +1;
@@ -90,7 +93,7 @@
     [self scheduleBlock:^(CCTimer *timer) {
         [ccp2 removeFromParent];
     } delay:20];
-   /*
+ 
     [self removeChild:tableView cleanup:YES];
 
     _levels = [[NSArray alloc]initWithObjects:@"Level_4",@"Level_5",@"Level_6",@"Level_7", nil];
@@ -105,11 +108,11 @@
     for (i=0; i<_levels.count; i++) {
             CCLOG(@"%@",_levels[i]);
     }
-    */
+ 
     
 }
-
-
+*/
+/*
 -(CCTableViewCell *) tableView:(CCTableView *)tableView nodeForRowAtIndex:(NSUInteger)index
 {
     
@@ -201,16 +204,17 @@
 - (float) tableView:(CCTableView*)tableView heightForRowAtIndex:(NSUInteger) index{
     return kCCTestMenuItemHeight;
 }
+*/
 
 -(void) appearAlertView
 {
-    
-    [self scheduleBlock:^(CCTimer *timer){
-        CCAlertView *av = [[CCAlertView alloc] initWithTitle:@"  " message:@"是否進入關卡？" delegate:self cancelButtonTitle:@"否" otherButtonTitle:@"是"];
+    CCAlertView *av = [CCAlertView alloc];
+    av = (CCAlertView* )[CCBReader load:@"CCAlertView"];
+    [av initWithTitle:@"  " message:@"是否進入關卡？" delegate:self cancelButtonTitle:@"否" otherButtonTitle:@"是"];
         [av showAV];
 
         CCLOG(@"self scheduleblock");
-    } delay:0.0f];
+
     //BLOCK BUTTONS!
     [self setBlockButton:NO];
 
@@ -231,7 +235,7 @@
 
     [self.delegate showLeagueInfo:_isLevel_0First.position :0];
 
-    [[OALSimpleAudio sharedInstance] playEffect:@"mapSelectMusic.mp3" loop:NO];
+ //   [[OALSimpleAudio sharedInstance] playEffect:@"mapSelectMusic.mp3" loop:NO];
 
 
 //    [self appearAlertView];
@@ -245,7 +249,7 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 
     [self.delegate showLeagueInfo:_isLevel_1MC.position :1];
-        [[OALSimpleAudio sharedInstance] playEffect:@"mapSelectMusic.mp3" loop:NO];
+   //     [[OALSimpleAudio sharedInstance] playEffect:@"mapSelectMusic.mp3" loop:NO];
 }
 
 
@@ -270,14 +274,14 @@
 {
     CCLOG(@"touchBegin");
 }
-
+/*
 -(void) setTableInt:(int)tableInt
 {
     tableInt = tableInt + _levelNum;
     _tableInt = tableInt;
     return ;
 }
-
+*/
 
 //set the Ok and Cancel of CCAlertView
 - (void) CCAlertView:(CCNode *)alertView indexSelected:(int)index {
@@ -299,13 +303,13 @@
 -(void) setBlockButton:(BOOL)blockButton
 {
 
-    _isSelectAreaOne.enabled = blockButton;
-    _isSelectAreaTwo.enabled = blockButton;
+ //   _isSelectAreaOne.enabled = blockButton;
+ //   _isSelectAreaTwo.enabled = blockButton;
     _isSelectLevel0.enabled = blockButton;
     _isLevel_0First.enabled = blockButton;
     return;
 }
-
+/*
 -(void) userDefaultO: (id) sender
 {
     [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"Spirit"];
@@ -323,11 +327,20 @@
     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"Spirit"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
-
+ */
+-(void)onExit {
+    [self stopAllActions];
+    [self unscheduleAllSelectors];
+    [self removeAllChildrenWithCleanup:YES];
+//    [[OALSimpleAudio sharedInstance] stopAllEffects];
+//    [[OALSimpleAudio sharedInstance]unloadAllEffects];
+    CCLOG(@"Onexit");
+    [super onExit];
+}
 //
 // tableButtonset
 //
-
+/*
 -(void) tableButton:(id)sender
 {
     CCLOG(@"table button!!");
@@ -381,6 +394,7 @@
 
 //  31~
 //
+*/
 -(void) sendLevel:(CCNode *)level
 {}
 //

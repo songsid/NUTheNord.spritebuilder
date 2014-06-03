@@ -14,8 +14,8 @@
     self.userInteractionEnabled = TRUE;
     [[NSUserDefaults standardUserDefaults]setInteger:0 forKey:@"DialogInt"];
     [[NSUserDefaults standardUserDefaults]synchronize];
-    [[OALSimpleAudio sharedInstance] stopAllEffects];
-    [[OALSimpleAudio sharedInstance] playEffect:@"skipIntoMusic.mp3" loop:YES];
+  //  [[OALSimpleAudio sharedInstance] stopAllEffects];
+ //   [[OALSimpleAudio sharedInstance] playEffect:@"skipIntoMusic.mp3" loop:YES];
 }
 -(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {

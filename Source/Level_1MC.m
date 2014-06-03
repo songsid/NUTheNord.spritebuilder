@@ -35,7 +35,7 @@
 -(void) didLoadFromCCB
 {
     self.userInteractionEnabled = TRUE;
-    [[OALSimpleAudio sharedInstance] stopAllEffects];
+ //   [[OALSimpleAudio sharedInstance] stopAllEffects];
     _physicsNode.collisionDelegate = self; //set collisionDelegate
     mpDistance = 0.0f;
     bRHP = 0;
@@ -128,15 +128,12 @@
     [self buildBlueTopGnd:ccp(1963, 147)];
     [self buildBlueTopGnd:ccp(2025, 194)];
     
-    [self buildBlueTopBGnd:ccp(2169, 231)];
-    [self buildBlueTopBGnd:ccp(2259, 231)];
-    [self buildBlueTopBGnd:ccp(2349, 231)];
-    [self buildBlueTopBGnd:ccp(2446, 187)];
-    [self buildBlueTopBGnd:ccp(2536, 187)];
-    [self buildBlueTopBGnd:ccp(2623, 187)];
-    [self buildBlueTopBGnd:ccp(2757, 232)];
-    [self buildBlueTopBGnd:ccp(2847, 232)];
-    [self buildBlueTopBGnd:ccp(2932, 232)];
+    [self buildBlueTopBGndThree:ccp(2169, 231)]; //set three times long gnd
+    
+    [self buildBlueTopBGndThree:ccp(2446, 187)];
+ 
+    [self buildBlueTopBGndThree:ccp(2757, 232)];
+
     
     [self buildBlueTopGnd:ccp(2528, 51)];
     [self buildBlueTopGnd:ccp(2659, 51)];
@@ -209,6 +206,15 @@
     _blueTopGnd.physicsBody.collisionType = @"blueGnd";
     [_physicsNode addChild:_blueTopGnd];
             CCLOG(@"BBTBG");
+}
+-(void) buildBlueTopBGndThree :(CGPoint)x
+{
+    _blueTopGnd = [CCBReader load:@"MCTopBridge3"];
+    _blueTopGnd.physicsBody.elasticity = 0;
+    _blueTopGnd.position = x;
+    _blueTopGnd.physicsBody.collisionType = @"blueGnd";
+    [_physicsNode addChild:_blueTopGnd];
+    CCLOG(@"BBTBG");
 }
 -(void) createStone :(CGPoint) x
 {
@@ -330,7 +336,7 @@
         _layer1k.position = ccp(1000, 0);
         [self addChild:_layer1k z:-1];
         setLayer = 1;
-        [[OALSimpleAudio sharedInstance]playEffect:@"MCMusic.mp3" volume:0.5f pitch:1.0 pan:0.0 loop:YES];
+    //    [[OALSimpleAudio sharedInstance]playEffect:@"MCMusic.mp3" volume:0.5f pitch:1.0 pan:0.0 loop:YES];
     }
     if (setLayer == 1 && selfAnchorPosition >1000) { //2k
         _layer2k = [CCBReader load:@"Level_1MC_2"];
@@ -664,7 +670,7 @@
                     /* CCNode * sand = [CCBReader load:@"Sand"];
                      sand.position = ccp(_player.position.x-20,_player.position.y);
                      [self addChild:sand];*/
-                    [[OALSimpleAudio sharedInstance] playEffect:@"sabersMusic.mp3"];
+        //            [[OALSimpleAudio sharedInstance] playEffect:@"sabersMusic.mp3"];
                 }
                 break;
             }
@@ -689,7 +695,7 @@
                 /* CCNode * sand = [CCBReader load:@"Sand"];
                  sand.position = ccp(_player.position.x-20,_player.position.y);
                  [self addChild:sand];*/
-                    [[OALSimpleAudio sharedInstance] playEffect:@"lancerSMusic.mp3"];
+       //             [[OALSimpleAudio sharedInstance] playEffect:@"lancerSMusic.mp3"];
                 }
                 break;
             }
@@ -700,7 +706,7 @@
                     CCLOG(@"%@",[_player.userObject runningSequenceName]);
                     [self.delegate transMpDecrease:2];
                     [self createArrowShot];
-                        [[OALSimpleAudio sharedInstance] playEffect:@"archerShotMusic"                    volume:1.5 pitch:1.0f pan:0.0f loop:NO];
+     //                   [[OALSimpleAudio sharedInstance] playEffect:@"archerShotMusic"                    volume:1.5 pitch:1.0f pan:0.0f loop:NO];
                 }
                 break;
             }
@@ -746,7 +752,7 @@
                 } delay:1.0f ];
                 [self scheduleBlock:^(CCTimer *timer) {
                     deltaStop = NO;
-                    [[OALSimpleAudio sharedInstance]playEffect:@"exp.mp3" volume:5 pitch:1.0f pan:0.0f loop:NO];;
+    //                [[OALSimpleAudio sharedInstance]playEffect:@"exp.mp3" volume:5 pitch:1.0f pan:0.0f loop:NO];;
                     [self scheduleBlock:^(CCTimer *timer) {
                         _skillBG.visible = NO;
                     } delay:0.8];
@@ -767,12 +773,12 @@
                 [_player.physicsBody applyImpulse:ccp(0, 700)];
                 [_player.userObject runAnimationsForSequenceNamed:@"Skill"];
                 [self scheduleBlock:^(CCTimer *timer) {
-                    [[OALSimpleAudio sharedInstance]playEffect:@"lancerSkMusic.mp3"];
+    //                [[OALSimpleAudio sharedInstance]playEffect:@"lancerSkMusic.mp3"];
                     
                     [self createSkillShot];
                     
                     [self scheduleBlock:^(CCTimer *timer) {
-                    [[OALSimpleAudio sharedInstance]playEffect:@"exp.mp3" volume:5 pitch:1.0f pan:0.0f loop:NO];
+    //                [[OALSimpleAudio sharedInstance]playEffect:@"exp.mp3" volume:5 pitch:1.0f pan:0.0f loop:NO];
                         [self.delegate scrollViewShake];
                         
                     } delay:1.0f];
@@ -800,7 +806,7 @@
                 [_player.userObject runAnimationsForSequenceNamed:@"Skill"];
                 [self scheduleBlock:^(CCTimer *timer) {
 
-                    [[OALSimpleAudio sharedInstance]playEffect:@"archerSKM.mp3"];
+ //                   [[OALSimpleAudio sharedInstance]playEffect:@"archerSKM.mp3"];
                     [self createSkillShot];
                     
                 } delay:1.0f ];
@@ -914,4 +920,19 @@
 {
     return deltaStop;
 }
+
+-(void)onExit {
+    [self stopAllActions];
+    [_arrayEnemyBat removeAllObjects];
+    [_arrayEnemyPig removeAllObjects];
+    [_arrayGnd removeAllObjects];
+    
+    [self unscheduleAllSelectors];
+    
+    [self removeAllChildrenWithCleanup:YES];
+    //   [[OALSimpleAudio sharedInstance]stopEverything];
+    CCLOG(@"Onexit");
+    [super onExit];
+}
+
 @end

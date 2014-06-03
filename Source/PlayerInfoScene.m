@@ -7,6 +7,7 @@
 //
 
 #import "PlayerInfoScene.h"
+#import "AppDelegate.h"
 
 @implementation PlayerInfoScene
 -(NSMutableArray *) arraySprite
@@ -84,8 +85,8 @@
     [self addChild:spriteSupVa];
     [self.arraySup addObject:spriteSupVa];
     //
-    [[OALSimpleAudio sharedInstance] stopAllEffects];
-    [[OALSimpleAudio sharedInstance] playEffect:@"spiritMusic.mp3" loop:YES];
+ //   [[OALSimpleAudio sharedInstance] stopAllEffects];
+ //   [[OALSimpleAudio sharedInstance] playEffect:@"spiritMusic.mp3" loop:YES];
 
     
     ///set Action
@@ -100,12 +101,16 @@
 }
 -(void) popPlayerInfoScene:(id)sender
 {
+    AppController *appDelegate = (AppController *)[[UIApplication sharedApplication] delegate];
+    [appDelegate performSelector:@selector(rebuildMainScene) withObject:nil afterDelay:0.2];
+    
     _block.visible = YES;
     CCTransition * trans = [CCTransition transitionFadeWithDuration:0.2f];
     [[CCDirector sharedDirector]popSceneWithTransition:trans];
-
-    [[OALSimpleAudio sharedInstance] stopAllEffects];
-    [[OALSimpleAudio sharedInstance] playEffect:@"d5.mp3" loop:YES];
+ //   CCScene * sce = [CCBReader loadAsScene:@"MainScene"];
+ //   [[CCDirector sharedDirector]runWithScene:sce];
+  //  [[OALSimpleAudio sharedInstance] stopAllEffects];
+  //  [[OALSimpleAudio sharedInstance] playEffect:@"d5.mp3" loop:YES];
 }
 -(void)update:(CCTime)delta
 {
@@ -291,7 +296,7 @@
         [self addChild:playerInfo z:100];
         [playerInfo runAction:[self addLayerWithAnamation]];
         addInfo = YES;
-        [[OALSimpleAudio sharedInstance] playEffect:@"spriteTouch.mp3" loop:NO];
+ //       [[OALSimpleAudio sharedInstance] playEffect:@"spriteTouch.mp3" loop:NO];
 
     }
     if ([sprite isEqualToString:@"1"]) {
@@ -304,7 +309,7 @@
         [self addChild:playerInfo z:100];
         [playerInfo runAction:[self addLayerWithAnamation]];
         addInfo = YES;
-        [[OALSimpleAudio sharedInstance] playEffect:@"spriteTouch.mp3" loop:NO];
+//        [[OALSimpleAudio sharedInstance] playEffect:@"spriteTouch.mp3" loop:NO];
 
     }
     if ([sprite isEqualToString:@"2"]) {
@@ -317,7 +322,7 @@
         [self addChild:playerInfo z:100];
         [playerInfo runAction:[self addLayerWithAnamation]];
         addInfo = YES;
-        [[OALSimpleAudio sharedInstance] playEffect:@"spriteTouch.mp3" loop:NO];
+   //     [[OALSimpleAudio sharedInstance] playEffect:@"spriteTouch.mp3" loop:NO];
 
     }
     if ([sprite isEqualToString:@"10"]) {
@@ -331,7 +336,7 @@
         [self addChild:playerInfo z:100];
         [playerInfo runAction:[self addLayerWithAnamation]];
         addInfo = YES;
-        [[OALSimpleAudio sharedInstance] playEffect:@"spriteTouch.mp3" loop:NO];
+  //      [[OALSimpleAudio sharedInstance] playEffect:@"spriteTouch.mp3" loop:NO];
 
     }
     if ([sprite isEqualToString:@"11"]) {
@@ -344,7 +349,7 @@
         [self addChild:playerInfo z:100];
         [playerInfo runAction:[self addLayerWithAnamation]];
         addInfo = YES;
-        [[OALSimpleAudio sharedInstance] playEffect:@"spriteTouch.mp3" loop:NO];
+ //       [[OALSimpleAudio sharedInstance] playEffect:@"spriteTouch.mp3" loop:NO];
 
     }
     if ([sprite isEqualToString:@"12"]) {
@@ -357,7 +362,7 @@
         [self addChild:playerInfo z:100];
         [playerInfo runAction:[self addLayerWithAnamation]];
         addInfo = YES;
-        [[OALSimpleAudio sharedInstance] playEffect:@"spriteTouch.mp3" loop:NO];
+ //       [[OALSimpleAudio sharedInstance] playEffect:@"spriteTouch.mp3" loop:NO];
 
     }
 }
@@ -365,6 +370,16 @@
 {
     //important can't delet
 }
-
+-(void)onExit {
+    [self stopAllActions];
+    [self unscheduleAllSelectors];
+    [self removeAllChildrenWithCleanup:YES];
+    [[OALSimpleAudio sharedInstance]stopAllEffects];
+    [[OALSimpleAudio sharedInstance]unloadAllEffects];
+ //   [[OALSimpleAudio sharedInstance] stopAllEffects];
+  //  [[OALSimpleAudio sharedInstance]unloadAllEffects];
+    CCLOG(@"Onexit");
+    [super onExit];
+}
 
 @end

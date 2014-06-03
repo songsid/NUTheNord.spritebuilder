@@ -10,9 +10,6 @@
 
 #import "CCNode.h"
 #import "LeagueScene.h"
-//#import "Level_0.h"
-//#import "Level_P.h"
-//#import "Level_1.h"
 #import "Level_1MC.h"
 #import "Level_0First.h"
 #import "Level_1MCBoss.h"
@@ -22,7 +19,8 @@
 #import "PauseSetting.h"
 #import "FailCount.h"
 #import "Level_1MCBoss.h"
-@interface LevelScene : CCNode <LeagueSceneDelegate,/*LevelDelegate,Level_PDelegate,Level_1Delegate,*/Level_FirstDelegate,DialogDelegate,Level_1MCDelegate,ClearCountDelegate,PauseSettingDelegate,FailCountDelegate,Level_1MCBossDelegate>
+
+@interface LevelScene : CCScene <LeagueSceneDelegate,Level_FirstDelegate,DialogDelegate,Level_1MCDelegate,ClearCountDelegate,PauseSettingDelegate,FailCountDelegate,Level_1MCBossDelegate>
 {
 
     CCButton * _skillOne;
@@ -32,13 +30,14 @@
     HPMPInfo * info;
     Dialog * diag;
     ClearCount * clearCo;
+    Level_0First * leveLab;
     Level_1MC * levelMc;
     Level_1MCBoss * levelMcBoss;
     CCNode * _dialog;
     PauseSetting * pausedS;
     int count;
     
-    ///Level_1MC BG
+    
     CCNode * _mcBG1_1;
     CCNode * _mcBG1_2;
     CCNode * _mcBG2_1;
@@ -53,10 +52,11 @@
     NSArray * _BG4;
     
 }
-@property (nonatomic,strong) CCNode * currentLevel;
-@property (nonatomic,strong) CCNode * HPMP;
+//@property (nonatomic, weak) CCNode * currentLevel;
+@property (nonatomic, weak) CCNode * HPMP;
 @property (nonatomic) BOOL entered;
-@property (nonatomic,strong) CCScrollView * levelSceneScrollView;
+@property (nonatomic, weak) CCScrollView * levelSceneScrollView;
+//@property (nonatomic) LeagueScene * league;
 
 -(void) popLevelScene;
 -(void) transHpDecrease :(int) damage;

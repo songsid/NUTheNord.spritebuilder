@@ -11,6 +11,8 @@
 @implementation FirstTimeIntroLayer
 -(void) didLoadFromCCB
 {
+  //  [[OALSimpleAudio sharedInstance]unloadAllEffects];
+
     end = YES;
     _load.visible = NO;
     self.userInteractionEnabled = YES;
@@ -20,8 +22,8 @@
     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"Spirit"];
     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"Sup"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    [[OALSimpleAudio sharedInstance] stopAllEffects];
-    [[OALSimpleAudio sharedInstance] playEffect:@"firstTimeMusic.mp3" loop:YES];
+//     [[OALSimpleAudio sharedInstance] stopAllEffects];
+ //   [[OALSimpleAudio sharedInstance] playEffect:@"firstTimeMusic.mp3" loop:YES];
 /*
     _talk.anchorPoint = ccp(0.5, 0.5);
     _talk.position = ccp(240, 160);
@@ -93,7 +95,15 @@
 -(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event{
 
     //labelCount = labelCount + 1;
-
 }
 
+-(void)onExit {
+    [self stopAllActions];
+    [self unscheduleAllSelectors];
+    [self removeAllChildrenWithCleanup:YES];
+//    [[OALSimpleAudio sharedInstance] stopAllEffects];
+//    [[OALSimpleAudio sharedInstance]unloadAllEffects];
+    CCLOG(@"Onexit");
+    [super onExit];
+}
 @end

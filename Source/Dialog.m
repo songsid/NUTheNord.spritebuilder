@@ -29,11 +29,11 @@
         if (!self.userInteractionEnabled) {
             userActInt = YES;
             CCLOG(@"!userInteractionEnabled");
-            [self scheduleBlock:^(CCTimer *timer) {
+            //[self scheduleBlock:^(CCTimer *timer) {
                 self.userInteractionEnabled = YES;
                     dialogInt = dialogInt + 1;
                 CCLOG(@"YYYYYYYEEEEEEEESSSSSSS");
-            } delay:0.0f];
+            //} delay:0.0f];
         }
     }
     

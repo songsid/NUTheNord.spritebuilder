@@ -37,23 +37,29 @@
 {
     if (!blockPop) {
         blockPop = YES;
+        [[OALSimpleAudio sharedInstance]unloadAllEffects];
     CCTransition * trans = [CCTransition transitionFadeWithDuration:0.2];
-    [[CCDirector sharedDirector]popSceneWithTransition:trans];
+//        [[CCDirector sharedDirector]popSceneWithTransition:trans];
     CCLOG(@"popleague!!!!!");
+        CCScene * sce = [CCBReader loadAsScene:@"MainScene"];
+        [[CCDirector sharedDirector]replaceScene:sce withTransition:trans];
     }
 }
 -(void) pushLevel
 {
-        CCScene * scene = (CCScene * )[CCBReader loadAsScene:@"LevelScene"];
+    [[OALSimpleAudio sharedInstance] stopAllEffects];
+    [[OALSimpleAudio sharedInstance]unloadAllEffects];
+   // _level = [CCBReader loadAsScene:@"LevelScene"];
         CCTransition *trans = [CCTransition transitionPushWithDirection:1 duration:0.2f];
-        [[CCDirector sharedDirector]pushScene:scene withTransition:trans];
-        [[OALSimpleAudio sharedInstance] stopAllEffects];
+        [[CCDirector sharedDirector]replaceScene:[CCBReader loadAsScene:@"LevelScene"] withTransition:trans];
+  
 }
+/*
 -(void) intoLevelOrNot
 {
     
 }
-
+*/
 -(void) controlSlide:(int)slide
 {
     
@@ -132,12 +138,17 @@
 -(void) appearAlertView
 {
     
-    [self scheduleBlock:^(CCTimer *timer){
-        CCAlertView *av = [[CCAlertView alloc] initWithTitle:@"  " message:@"是否進入關卡？" delegate:self cancelButtonTitle:@"否" otherButtonTitle:@"是"];
-        [av showAV];
+
+    CCAlertView *av = [CCAlertView alloc];
+    av = (CCAlertView* )[CCBReader load:@"CCAlertView"];
+    [av initWithTitle:@"  " message:@"是否進入關卡？" delegate:self cancelButtonTitle:@"否" otherButtonTitle:@"是"];
+    
+                           
+    
+    [av showAV];
         
         CCLOG(@"self scheduleblock");
-    } delay:0.0f];
+
     
 }
 //set the Ok and Cancel of CCAlertView
@@ -155,4 +166,17 @@
     }
 }
 ////////
+
+-(void) onExit
+{
+    [self stopAllActions];
+    
+    [self removeAllChildrenWithCleanup:YES];
+
+    [self unscheduleAllSelectors];
+    
+    CCLOG(@"oneXit");
+    [super onExit];
+    CCLOG(@"onExIT");
+}
 @end

@@ -22,14 +22,14 @@
         MPLine.scaleX = 0.01f;
         HPLine.scaleX = 1;
     }else{
-    MP = 0;
-    HP = 10;
-    MPNum.string = [NSString stringWithFormat:@"%d",MP];
-    HPNum.string = [NSString stringWithFormat:@"%d",HP];
-    MPLine.scaleX = 0.01f;
-    HPLine.scaleX = 1;
+        MP = 0;
+        HP = 10;
+        MPNum.string = [NSString stringWithFormat:@"%d",MP];
+        HPNum.string = [NSString stringWithFormat:@"%d",HP];
+        MPLine.scaleX = 0.01f;
+        HPLine.scaleX = 1;
     }
-    }
+}
 -(void) hpDecrease :(int) damage
 {
     if ([[NSUserDefaults standardUserDefaults]integerForKey:@"Sup"] == 1) {
@@ -42,8 +42,8 @@
         HPLine.scaleX = hpl;
         CCLOG(@"HPDECREASE HERE! HP:%d %f %f",HP,(float) HP/13,HPLine.scaleY);
     }else{
-    HP = HP-damage;
-    if (HP<0) {
+        HP = HP-damage;
+        if (HP<0) {
         HP = 0;
     }
     HPNum.string = [NSString stringWithFormat:@"%d ",HP ];

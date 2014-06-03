@@ -13,16 +13,16 @@
 {
     _mainScrollView.anchorPoint = ccp(0,0);
     _mainScrollView.position = ccp(0, 0);
- if ([[UIDevice currentDevice]userInterfaceIdiom] == UIUserInterfaceIdiomPad){ self.scale = 1.07;}
+    if ([[UIDevice currentDevice]userInterfaceIdiom] == UIUserInterfaceIdiomPad){ self.scale = 1.07;}
   
     if ([[NSUserDefaults standardUserDefaults]boolForKey:@"SeePre"]) {
         FirstTimeIntroLayer * first = (FirstTimeIntroLayer *) [CCBReader load:@"FirstTimeIntroLayer"];
         first.delegate = self;
         _mainScrollView.contentNode = first;
-    }else{
-    SkipIntoLayer * skip = (SkipIntoLayer *)[CCBReader load:@"SkipIntoLayer"];
-    skip.delegate = self;
-    _mainScrollView.contentNode = skip;
+        }else{
+            SkipIntoLayer * skip = (SkipIntoLayer *)[CCBReader load:@"SkipIntoLayer"];
+            skip.delegate = self;
+            _mainScrollView.contentNode = skip;
     }
     
     [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"SeePre"];
@@ -41,12 +41,12 @@
         [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"SeePre"];
         [[NSUserDefaults standardUserDefaults]synchronize];
         [[CCDirector sharedDirector]popScene];
-    }else{
-    MainMenuLayer * menu = (MainMenuLayer *) [CCBReader load:@"MainMenuLayer"];
-    menu.delegate = self;
-    _mainScrollView.contentNode = menu;
-    CCLOG(@"skip!!!!");
-    [self pushLeagueScene];
+        }else{
+                MainMenuLayer * menu = (MainMenuLayer *) [CCBReader load:@"MainMenuLayer"];
+                menu.delegate = self;
+                _mainScrollView.contentNode = menu;
+                CCLOG(@"skip!!!!");
+                [self pushLeagueScene];
     }
 }
 -(void) selectFirstTime // from button into FirstIntro
@@ -55,7 +55,7 @@
     [[NSUserDefaults standardUserDefaults]synchronize];
     MainScene * main = (MainScene *)[CCBReader loadAsScene:@"MainScene"];
 
-    [[CCDirector sharedDirector] pushScene:main];
+    [[CCDirector sharedDirector] replaceScene:main];
    /* FirstTimeIntroLayer * first = (FirstTimeIntroLayer *) [CCBReader load:@"FirstTimeIntroLayer"];
     first.delegate = main;
     main.mainScrollView.contentNode = first;*/
@@ -79,21 +79,18 @@
 }
 -(void) pushPlayerInfoScene
 {
-    CCScene * info = (CCScene * )[CCBReader loadAsScene:@"PlayerInfoScene"];
+  //  [[OALSimpleAudio sharedInstance]unloadAllEffects];
+    _playerInfo = (PlayerInfoScene * )[CCBReader loadAsScene:@"PlayerInfoScene"];
     CCTransition *trans = [CCTransition transitionPushWithDirection:1 duration:0.2f];
-    [[CCDirector sharedDirector]pushScene:info withTransition:trans];
+
+    [[CCDirector sharedDirector]replaceScene:_playerInfo withTransition:trans];
 }
 
 -(void) pushLeagueScene
 {
-    CCScene * info = (CCScene * )[CCBReader loadAsScene:@"LeagueScene"];
+    _league = (LeagueScene * )[CCBReader loadAsScene:@"LeagueScene"];
     CCTransition *trans = [CCTransition transitionPushWithDirection:1 duration:0.2f];
-    [[CCDirector sharedDirector]pushScene:info withTransition:trans];
-    
-}
-
--(void) update:(CCTime)delta
-{
+    [[CCDirector sharedDirector]replaceScene:_league withTransition:trans];
     
 }
 @end

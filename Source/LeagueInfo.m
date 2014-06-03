@@ -12,8 +12,8 @@
 -(void) didLoadFromCCB
 {
     
-    [[OALSimpleAudio sharedInstance] stopAllEffects];
-    [[OALSimpleAudio sharedInstance] playEffect:@"prepareMusic.mp3" loop:YES];
+  //  [[OALSimpleAudio sharedInstance] stopAllEffects];
+  //  [[OALSimpleAudio sharedInstance] playEffect:@"prepareMusic.mp3" loop:YES];
 
 }
 

@@ -19,8 +19,11 @@
 }
 -(void) leftLevel:(id)sender
 {
-    CCAlertView *av = [[CCAlertView alloc] initWithTitle:@"遊戲提醒" message:@"是否離開本關卡？" delegate:self cancelButtonTitle:@"取消" otherButtonTitle:@"確定"];
+    CCAlertView *av = [CCAlertView alloc];
+    av = (CCAlertView* )[CCBReader load:@"CCAlertView"];
+    [av initWithTitle:@"遊戲提醒" message:@"是否離開本關卡？" delegate:self cancelButtonTitle:@"取消" otherButtonTitle:@"確定"];
     [av showAV];
+    
     _close.enabled = NO;
     _left.enabled = NO;
     _restart.enabled = NO;
@@ -28,8 +31,11 @@
 }
 -(void) isRestart:(id) sender
 {
-    CCAlertView * av = [[CCAlertView alloc] initWithTitle:@" " message:@"是否重新開始本關卡？" delegate:self cancelButtonTitle:@"取消" otherButtonTitle:@"確定"];
+    CCAlertView *av = [CCAlertView alloc];
+    av = (CCAlertView* )[CCBReader load:@"CCAlertView"];
+    [av initWithTitle:@" " message:@"是否重新開始本關卡？" delegate:self cancelButtonTitle:@"取消" otherButtonTitle:@"確定"];
     [av showAV];
+    
     _close.enabled = NO;
     _left.enabled = NO;
     _restart.enabled = NO;
@@ -46,9 +52,9 @@
         if (!reloadGame) {
         [self scheduleBlock:^(CCTimer * timer){
             [self.delegate popLevelScene];
-            _close.enabled = YES;
+/*            _close.enabled = YES;
             _left.enabled = YES;
-            _restart.enabled =YES;
+            _restart.enabled =YES; */
         } delay:0.1f];
         }else{
             [self.delegate reloadGame];

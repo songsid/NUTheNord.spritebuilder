@@ -15,12 +15,12 @@
 
 @interface FirstTimeIntroLayer : CCNode
 {
-    CCLabelTTF * _talk;
     int labelCount;
     BOOL lableSwitch;
-    CCNode * _load;
     BOOL end;
 }
 
 @property (nonatomic,weak) id <FirstTimeIntroLayer> delegate;
+@property (nonatomic,weak) CCLabelTTF * talk;
+@property (nonatomic,weak) CCNode * load;
 @end

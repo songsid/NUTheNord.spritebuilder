@@ -14,8 +14,8 @@
     _blockButton.visible = NO;
     _blockButton.zOrder = 10;
     self.userInteractionEnabled = TRUE;
-    [[OALSimpleAudio sharedInstance] stopAllEffects];
-    [[OALSimpleAudio sharedInstance] playEffect:@"d5.mp3" loop:YES];
+ //   [[OALSimpleAudio sharedInstance] stopAllEffects];
+ //   [[OALSimpleAudio sharedInstance] playEffect:@"d5.mp3" loop:YES];
 
 
 }

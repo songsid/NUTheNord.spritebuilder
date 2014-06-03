@@ -115,4 +115,11 @@
 
     }
 }
+-(void)onExit {
+    [self stopAllActions];
+    [self unscheduleAllSelectors];
+    [self removeAllChildrenWithCleanup:YES];
+    CCLOG(@"Onexit");
+    [super onExit];
+}
 @end

@@ -14,8 +14,8 @@
     self.userInteractionEnabled= YES;
     [[NSUserDefaults standardUserDefaults] setInteger:90 forKey:@"DialogInt"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    [[OALSimpleAudio sharedInstance] stopAllEffects];
-    [[OALSimpleAudio sharedInstance] playEffect:@"firstTimeMusic2.mp3" loop:YES];
+  //  [[OALSimpleAudio sharedInstance] stopAllEffects];
+  //  [[OALSimpleAudio sharedInstance] playEffect:@"firstTimeMusic2.mp3" loop:YES];
     [self loadDialog];
 }
 -(void) loadDialog
@@ -35,4 +35,13 @@
 }
 -(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {}
+-(void)onExit {
+    [self stopAllActions];
+    [self unscheduleAllSelectors];
+    [self removeAllChildrenWithCleanup:YES];
+  //  [[OALSimpleAudio sharedInstance] stopAllEffects];
+  //  [[OALSimpleAudio sharedInstance]unloadAllEffects];
+    CCLOG(@"Onexit");
+    [super onExit];
+}
 @end

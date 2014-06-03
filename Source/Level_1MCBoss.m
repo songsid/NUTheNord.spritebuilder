@@ -369,7 +369,7 @@
                     /* CCNode * sand = [CCBReader load:@"Sand"];
                      sand.position = ccp(_player.position.x-20,_player.position.y);
                      [self addChild:sand];*/
-                    [[OALSimpleAudio sharedInstance] playEffect:@"slam3.mp3"];
+   //                 [[OALSimpleAudio sharedInstance] playEffect:@"slam3.mp3"];
                 }
                 break;
             }
@@ -394,7 +394,7 @@
                     /* CCNode * sand = [CCBReader load:@"Sand"];
                      sand.position = ccp(_player.position.x-20,_player.position.y);
                      [self addChild:sand];*/
-                    [[OALSimpleAudio sharedInstance] playEffect:@"slam3.mp3"];
+    //                [[OALSimpleAudio sharedInstance] playEffect:@"slam3.mp3"];
                 }
                 break;
             }

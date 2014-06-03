@@ -50,14 +50,14 @@
 }
 -(void) update:(CCTime)delta
 {
-    if (touchBeg && touchMov &&( (fabsf(self.position.x -selfLocation.x))<50*delta)&& (fabsf(self.position.y -selfLocation.y))<50*delta) {
+    if (touchBeg && touchMov &&( (fabsf(self.position.x -selfLocation.x))<200*delta)&& (fabsf(self.position.y -selfLocation.y))<200*delta) {
         CCLOG(@"highlighte & nomov!");
         buttonTime = buttonTime +delta;
         if (buttonTime > 0.35f) {
             buttonTime = 0;
             CCLOG(@"call info!");
             [self.delegate playerInfoLayerAdd:self.name];
-            [[OALSimpleAudio sharedInstance] playEffect:@"spriteTouch.mp3" loop:NO];
+   //         [[OALSimpleAudio sharedInstance] playEffect:@"spriteTouch.mp3" loop:NO];
 
             touchMov = NO;
             touchBeg = NO;

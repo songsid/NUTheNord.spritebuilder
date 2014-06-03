@@ -14,10 +14,14 @@
 
 @interface MainMenuLayer : CCNode
 {
-    CCButton * _left;
+ /*   CCButton * _left;
     CCButton * _right;
     CCButton * _rightUp;
-    CCButton * _blockButton;
+    CCButton * _blockButton; */
 }
 @property (nonatomic,weak) id <MainMenuLayerDelegate> delegate;
+@property (nonatomic,weak) CCButton * left;
+@property (nonatomic,weak) CCButton * right;
+@property (nonatomic,weak) CCButton * rightUp;
+@property (nonatomic,weak) CCButton * blockButton;
 @end

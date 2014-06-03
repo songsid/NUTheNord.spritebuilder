@@ -9,15 +9,14 @@
 
 
 
-
 @end
 
 
 #import "CCNode.h"
 #import "LeagueLayer.h"
 #import "LeagueInfo.h"
-
-@interface LeagueScene : CCNode<LeagueLayerDelegate,CCAlertviewDelegate>
+@class LevelScene;
+@interface LeagueScene : CCScene<LeagueLayerDelegate,CCAlertviewDelegate>
 {
     
     CCScrollView * _leagueSceneScrollView;
@@ -30,10 +29,10 @@
     BOOL blockPop;
 }
 @property (nonatomic,weak) id <LeagueSceneDelegate> delegate;
-
+//@property (nonatomic) CCScene * level;
 -(void) popLeagueScene;
 -(void) pushLevel;
--(void) intoLevelOrNot;
+//-(void) intoLevelOrNot;
 -(void) controlSlide:(int)slide;
 -(void) showLeagueInfo:(CGPoint)x :(int)level;
 @end

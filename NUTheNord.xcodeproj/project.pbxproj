@@ -87,11 +87,6 @@
 		1FDE92F81918CF54003714B5 /* Level_1MC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE92F71918CF54003714B5 /* Level_1MC.m */; };
 		1FEF685A1920A27C0022C47C /* FailCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FEF68591920A27C0022C47C /* FailCount.m */; };
 		1FF029FC192D0B9E001896A0 /* SpriteSaber.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF029FB192D0B9E001896A0 /* SpriteSaber.m */; };
-		1FF02A01192DFE4E001896A0 /* SpriteLancer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF02A00192DFE4E001896A0 /* SpriteLancer.m */; };
-		1FF02A07192F704E001896A0 /* SpriteArcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF02A06192F704E001896A0 /* SpriteArcher.m */; };
-		1FF02A0A192F707E001896A0 /* SpriteSupportLainDau.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF02A09192F707E001896A0 /* SpriteSupportLainDau.m */; };
-		1FF02A0D192F70A0001896A0 /* SpriteSupportSiegfried.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF02A0C192F70A0001896A0 /* SpriteSupportSiegfried.m */; };
-		1FF02A10192F70AF001896A0 /* SpriteSupportVaina.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF02A0F192F70AF001896A0 /* SpriteSupportVaina.m */; };
 		B737893B180761570076A88C /* Published-iOS in Resources */ = {isa = PBXBuildFile; fileRef = B737893A180761570076A88C /* Published-iOS */; };
 		B737893F1807617C0076A88C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B737893E1807617C0076A88C /* AppDelegate.m */; };
 		B73789871807631A0076A88C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B73789851807631A0076A88C /* main.m */; };
@@ -230,16 +225,6 @@
 		1FEF68591920A27C0022C47C /* FailCount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FailCount.m; path = Source/FailCount.m; sourceTree = "<group>"; };
 		1FF029FA192D0B9E001896A0 /* SpriteSaber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpriteSaber.h; path = Source/SpriteSaber.h; sourceTree = "<group>"; };
 		1FF029FB192D0B9E001896A0 /* SpriteSaber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpriteSaber.m; path = Source/SpriteSaber.m; sourceTree = "<group>"; };
-		1FF029FF192DFE4E001896A0 /* SpriteLancer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpriteLancer.h; path = Source/SpriteLancer.h; sourceTree = "<group>"; };
-		1FF02A00192DFE4E001896A0 /* SpriteLancer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpriteLancer.m; path = Source/SpriteLancer.m; sourceTree = "<group>"; };
-		1FF02A05192F704E001896A0 /* SpriteArcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpriteArcher.h; path = Source/SpriteArcher.h; sourceTree = "<group>"; };
-		1FF02A06192F704E001896A0 /* SpriteArcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpriteArcher.m; path = Source/SpriteArcher.m; sourceTree = "<group>"; };
-		1FF02A08192F707E001896A0 /* SpriteSupportLainDau.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpriteSupportLainDau.h; path = Source/SpriteSupportLainDau.h; sourceTree = "<group>"; };
-		1FF02A09192F707E001896A0 /* SpriteSupportLainDau.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpriteSupportLainDau.m; path = Source/SpriteSupportLainDau.m; sourceTree = "<group>"; };
-		1FF02A0B192F70A0001896A0 /* SpriteSupportSiegfried.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpriteSupportSiegfried.h; path = Source/SpriteSupportSiegfried.h; sourceTree = "<group>"; };
-		1FF02A0C192F70A0001896A0 /* SpriteSupportSiegfried.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpriteSupportSiegfried.m; path = Source/SpriteSupportSiegfried.m; sourceTree = "<group>"; };
-		1FF02A0E192F70AF001896A0 /* SpriteSupportVaina.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpriteSupportVaina.h; path = Source/SpriteSupportVaina.h; sourceTree = "<group>"; };
-		1FF02A0F192F70AF001896A0 /* SpriteSupportVaina.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpriteSupportVaina.m; path = Source/SpriteSupportVaina.m; sourceTree = "<group>"; };
 		B737893A180761570076A88C /* Published-iOS */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Published-iOS"; path = "Source/Resources/Published-iOS"; sourceTree = SOURCE_ROOT; };
 		B737893D1807617C0076A88C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Source/AppDelegate.h; sourceTree = "<group>"; };
 		B737893E1807617C0076A88C /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Source/AppDelegate.m; sourceTree = "<group>"; };
@@ -419,18 +404,8 @@
 		1FF029FE192D0BA8001896A0 /* Sprite */ = {
 			isa = PBXGroup;
 			children = (
-				1FF02A05192F704E001896A0 /* SpriteArcher.h */,
-				1FF02A06192F704E001896A0 /* SpriteArcher.m */,
-				1FF029FF192DFE4E001896A0 /* SpriteLancer.h */,
-				1FF02A00192DFE4E001896A0 /* SpriteLancer.m */,
 				1FF029FA192D0B9E001896A0 /* SpriteSaber.h */,
 				1FF029FB192D0B9E001896A0 /* SpriteSaber.m */,
-				1FF02A08192F707E001896A0 /* SpriteSupportLainDau.h */,
-				1FF02A09192F707E001896A0 /* SpriteSupportLainDau.m */,
-				1FF02A0B192F70A0001896A0 /* SpriteSupportSiegfried.h */,
-				1FF02A0C192F70A0001896A0 /* SpriteSupportSiegfried.m */,
-				1FF02A0E192F70AF001896A0 /* SpriteSupportVaina.h */,
-				1FF02A0F192F70AF001896A0 /* SpriteSupportVaina.m */,
 			);
 			name = Sprite;
 			sourceTree = "<group>";
@@ -706,14 +681,11 @@
 				1F75495418D2060F006E357A /* Level_0.m in Sources */,
 				1F20B34219279B7F006B633C /* Level_1MCBoss.m in Sources */,
 				1F2D5B3218E90D64002AE2F9 /* CCAlertView.m in Sources */,
-				1FF02A0D192F70A0001896A0 /* SpriteSupportSiegfried.m in Sources */,
-				1FF02A0A192F707E001896A0 /* SpriteSupportLainDau.m in Sources */,
 				1F75494C18D1FBED006E357A /* LeagueLayer.m in Sources */,
 				1F75495018D205D1006E357A /* LevelScene.m in Sources */,
 				1F75493018D1D8CF006E357A /* SkipIntoLayer.m in Sources */,
 				1F75494918D1FBDD006E357A /* LeagueScene.m in Sources */,
 				1FDE92F81918CF54003714B5 /* Level_1MC.m in Sources */,
-				1FF02A07192F704E001896A0 /* SpriteArcher.m in Sources */,
 				1FAB055B18F92450008DF449 /* Level_0First.m in Sources */,
 				1FDE92F21913DE5D003714B5 /* ClearCount.m in Sources */,
 				1FBCA28B193383980038396A /* FirstTimeIntroTwoLayer.m in Sources */,
@@ -725,11 +697,9 @@
 				1F75493E18D1E639006E357A /* PlayerInfoScene.m in Sources */,
 				1FAB055F18F98A32008DF449 /* HPMPInfo.m in Sources */,
 				1FDE92F51916213C003714B5 /* PauseSetting.m in Sources */,
-				1FF02A01192DFE4E001896A0 /* SpriteLancer.m in Sources */,
 				1F75498818D482A1006E357A /* FirstTimeIntroLayer.m in Sources */,
 				1FB0D1331906555300D02643 /* Dialog.m in Sources */,
 				B7378994180767190076A88C /* MainScene.m in Sources */,
-				1FF02A10192F70AF001896A0 /* SpriteSupportVaina.m in Sources */,
 				1FF029FC192D0B9E001896A0 /* SpriteSaber.m in Sources */,
 				1F69A46118D5CFFE00ECC19D /* Level_P.m in Sources */,
 				1F69A46418D71C1B00ECC19D /* Level_1.m in Sources */,

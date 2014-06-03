@@ -25,9 +25,11 @@
 
 #import <UIKit/UIKit.h>
 #import "cocos2d.h"
+#import "LeagueScene.h"
 
 @interface AppController : CCAppDelegate
 {
 }
 
+-(void) rebuildMainScene;
 @end

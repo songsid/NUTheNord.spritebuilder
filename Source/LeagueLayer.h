@@ -9,7 +9,7 @@
 
 -(void) popLeagueScene;
 -(void) pushLevel;
--(void) intoLevelOrNot;
+
 -(void) controlSlide:(int)slide;
 -(void) showLeagueInfo:(CGPoint)x :(int)level;
 @end
@@ -22,46 +22,28 @@
 #define kSimpleTableViewRowHeight 24
 #define kSimpleTableViewInset 50
 
-@interface LeagueLayer : CCNode<CCTableViewDataSource,LeagueSceneDelegate,CCAlertviewDelegate>
+@interface LeagueLayer : CCNode<LeagueSceneDelegate,CCAlertviewDelegate>
 {
 
     CCButton * _isSelectLevel0;
 //    CCButton * _isPopLeagueScene;
-    CCButton * _isSelectAreaOne;
-    CCButton * _isSelectAreaTwo;
+//    CCButton * _isSelectAreaOne;
+//    CCButton * _isSelectAreaTwo;
     CCButton * _isLevel_0First;
     CCButton * _isLevel_1MC;
     LeagueInfo * leagueInfo;
-    int slide;
+ //   int slide;
 }
 
 
-@property (nonatomic,weak) id <LeagueLayerDelegate,CCAlertviewDelegate> delegate;
+@property (nonatomic,weak) id <LeagueLayerDelegate> delegate;
 
 @property (nonatomic,strong) NSArray * levels;
 @property (nonatomic) int levelNum;
-@property (nonatomic) int tableInt;
-@property (nonatomic,strong) CCTableView* tableView ;
+//@property (nonatomic) int tableInt;
+//@property (nonatomic,strong) CCTableView* tableView ;
 @property (nonatomic) BOOL blockButton;
 @property (nonatomic,strong) CCNode * sendLevel;
 @end
 
-///
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-///

@@ -9,19 +9,25 @@
 #import "CCAlertView.h"
 
 @implementation CCAlertView
-
--(void) tapRecognized:(UITapGestureRecognizer *)recognizer{
-    //
-    CCLOG(@"taped!!!");
+-(void) didLoadFromCCB
+{
+    self.userInteractionEnabled = YES;
+    fadeIn1 = [CCActionFadeTo actionWithDuration:0.01f opacity:0.0f];
+    fadeIn2 = [CCActionFadeTo actionWithDuration:0.3f opacity:0.9f];
+    fadeInT = [CCActionSequence actions: fadeIn1,fadeIn2,nil];
+    fadeIn = [CCActionFadeIn actionWithDuration:0.1];
+    scale1 = [CCActionSpawn actions:fadeIn, [CCActionScaleTo actionWithDuration:0.15 scale:1.1], nil];
+    scale2 = [CCActionScaleTo actionWithDuration:0.1 scale:0.9];
+    scale3 = [CCActionScaleTo actionWithDuration:0.05 scale:1.0];
+    pulse = [CCActionSequence actions:scale1, scale2, scale3, nil];
 }
 
--(id) initWithTitle:(NSString *)title message:(NSString *)message delegate:(id)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitle:(NSString *)otherButtonTitle
+
+-(void) initWithTitle:(NSString *)title message:(NSString *)message delegate:(id)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitle:(NSString *)otherButtonTitle
 {CCLOG(@"\n initCCAlertView! \n");
-    if (self == [super init]) {
-        _BG = Nil;
-        _alertViewSprite = Nil;
+    {
         self._delegate = delegate;
-        self.userInteractionEnabled = YES;
+        
        // BOOL isIPAD = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
  //       CGSize views = CGSizeMake([CCDirector sharedDirector].viewSize.width, [CCDirector sharedDirector].viewSize.height);
         CGSize size = CGSizeMake(287, 139);
@@ -36,11 +42,11 @@
         float menuPos = 30; // buttons vertical alignment offset
         float titleHtDif = 20; //height of title label
         float msgHtDif = 50; //height of messgae label
-        _BG = [CCButton buttonWithTitle:@"███" fontName:@"新細明體" fontSize:500.0f];
-        [_BG setTarget:self selector:@selector(empty:)];
+  //      _BG = [CCButton buttonWithTitle:@"███" fontName:@"新細明體" fontSize:500.0f];
+   //     [_BG setTarget:self selector:@selector(empty:)];
         _BG.color = [CCColor colorWithWhite:0.0 alpha:0.6];
-        _BG.enabled = NO;
-        _BG.label.opacity = 0.5f;
+   //     _BG.enabled = NO;
+   //     _BG.label.opacity = 0.5f;
         _BG.anchorPoint = ccp(0.5, 0.5);
         _BG.position = ccp(0, 0);
         _BG.contentSize = [CCDirector sharedDirector].viewSize;
@@ -50,18 +56,16 @@
         [[[CCDirector sharedDirector] view] addGestureRecognizer:recognizer];
        */ //
         
-        [self addChild:_BG z:0];
+     //   [self addChild:_BG z:0];
         
         _BG.userInteractionEnabled = YES;
         
-		_alertViewSprite = [CCSprite spriteWithImageNamed:[NSString stringWithFormat:@"NUAlertView.png"]];
+	//	_alertViewSprite = [CCSprite spriteWithImageNamed:[NSString stringWithFormat:@"NUAlertView.png"]];
         
-        _alertViewSprite.opacity = 1;
-        _alertViewSprite.anchorPoint = ccp(0.5, 0.5);
-        _alertViewSprite.position = ccp(_BG.position.x, _BG.position.y);
-        CCLOG(@"_alert.position = %f,%f ,%f,%f",_alertViewSprite.position.x,_alertViewSprite.position.y,self.position.x
-              ,self.position.y);
-		[self addChild:_alertViewSprite z:1];
+        _alertView.opacity = 1;
+        _alertView.anchorPoint = ccp(0.5, 0.5);
+        _alertView.position = ccp(_BG.position.x, _BG.position.y);
+
         
 		// 287X139
 		
@@ -79,7 +83,7 @@
         if (cancelButtonTitle == nil || [cancelButtonTitle isEqualToString:@""]){
             cancelButtonTitle = @"OK";
         }
-        
+    /*
         CCButton * OK = [CCButton buttonWithTitle:@"" spriteFrame:rlb];
         OK.scale = 0.7f;
         [OK setTarget:self selector:@selector(otherButtonPressed:)];
@@ -94,7 +98,7 @@
         [alertMenu addChild:OK];
         [alertMenu addChild:Cancel];
         alertMenu.anchorPoint = ccp(0.5f,0.5f);
-        
+     */
         //        CCMenu *alertMenu;
         /*
          if (otherButtonTitle == nil || [otherButtonTitle isEqualToString:@""]){
@@ -105,38 +109,37 @@
          [alertMenu alignItemsHorizontallyWithPadding:padding];
          }
          */
-		alertMenu.position = ccp(size.width * .5, (size.height * .5) - menuPos);
-		[_alertViewSprite addChild:alertMenu];
+		//_alertMenu.position = ccp(size.width * .5, (size.height * .5) - menuPos);
+		//[_alertViewSprite addChild:_alertMenu];
 		
-		CCLabelTTF *TitleLabel = [CCLabelTTF labelWithString:title fontName:fontStyle fontSize:fnt1];
-		TitleLabel.position = ccp(_alertViewSprite.contentSize.width * .5, _alertViewSprite.contentSize.height-titleHtDif);
-		[_alertViewSprite addChild:TitleLabel];
+	//	CCLabelTTF *TitleLabel = [CCLabelTTF labelWithString:title fontName:fontStyle fontSize:fnt1];
         
-        CCLabelTTF *MessageLabel = [CCLabelTTF labelWithString:message fontName:fontStyle fontSize:fnt2 ];// dimensions:CGSizeMake(_alertViewSprite.contentSize.width - 10, fnt2*3) hAlignment:kCCTextAlignmentCenter vAlignment:kCCVerticalTextAlignmentCenter lineBreakMode:kCCLineBreakModeWordWrap];
-		MessageLabel.position = ccp(_alertViewSprite.contentSize.width * .5, _alertViewSprite.contentSize.height-msgHtDif);
-		[_alertViewSprite addChild:MessageLabel];
+     
+        _titleLabel.string = title;
+		_titleLabel.position = ccp(_alertView.contentSize.width * .5, _alertView.contentSize.height-titleHtDif);
+	//	[_alertViewSprite addChild:TitleLabel];
+        
+    //    CCLabelTTF *MessageLabel = [CCLabelTTF labelWithString:message fontName:fontStyle fontSize:fnt2 ];// dimensions:CGSizeMake(_alertViewSprite.contentSize.width - 10, fnt2*3) hAlignment:kCCTextAlignmentCenter vAlignment:kCCVerticalTextAlignmentCenter lineBreakMode:kCCLineBreakModeWordWrap];
+        _messageLabel.string = message;
+		_messageLabel.position = ccp(_alertView.contentSize.width * .5, _alertView.contentSize.height-msgHtDif);
+	//	[_alertViewSprite addChild:MessageLabel];
 		
-		CCLabelTTF *OKlabel = [CCLabelTTF labelWithString:otherButtonTitle fontName:fontStyle fontSize:fnt1];
-		OKlabel.position = ccp(OK.contentSize.width * .5, OK.contentSize.height * .5);
-		[OK addChild:OKlabel];
+	//	CCLabelTTF *OKlabel = [CCLabelTTF labelWithString:otherButtonTitle fontName:fontStyle fontSize:fnt1];
+        _ok.label.string = otherButtonTitle;
+		//_ok.label.position = ccp(_ok.contentSize.width * .5, _ok.contentSize.height * .5);
+	//	[OK addChild:OKlabel];
 		
-		CCLabelTTF *cancellabel = [CCLabelTTF labelWithString:cancelButtonTitle fontName:fontStyle fontSize:fnt1];
-		cancellabel.position = ccp(Cancel.contentSize.width * .5, Cancel.contentSize.height * .5);
-		[Cancel addChild:cancellabel];
+	//	CCLabelTTF *cancellabel = [CCLabelTTF labelWithString:cancelButtonTitle fontName:fontStyle fontSize:fnt1];
+        _cancel.label.string = cancelButtonTitle;
+		//_cancel.label.position = ccp(_cancel.contentSize.width * .5, _cancel.contentSize.height * .5);
+	//	[Cancel addChild:cancellabel];
 		
 
         
-        fadeIn1 = [CCActionFadeTo actionWithDuration:0.01f opacity:0.0f];
-        fadeIn2 = [CCActionFadeTo actionWithDuration:0.3f opacity:0.9f];
-        fadeInT = [CCActionSequence actions: fadeIn1,fadeIn2,nil];
-        fadeIn = [CCActionFadeIn actionWithDuration:0.1];
-        scale1 = [CCActionSpawn actions:fadeIn, [CCActionScaleTo actionWithDuration:0.15 scale:1.1], nil];
-        scale2 = [CCActionScaleTo actionWithDuration:0.1 scale:0.9];
-        scale3 = [CCActionScaleTo actionWithDuration:0.05 scale:1.0];
-        pulse = [CCActionSequence actions:scale1, scale2, scale3, nil];
+
 	}
 	
-    return self;
+
     
 }
 
@@ -146,6 +149,7 @@
     CCScene *scene = [[CCDirector sharedDirector] runningScene];
     CGSize size = [[CCDirector sharedDirector]viewSize];
     self.position = ccp(size.width * .5, size.height * .5);
+   
     [scene addChild:self z:1];
     
 

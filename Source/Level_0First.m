@@ -228,6 +228,7 @@
 ///                    create point  speed           delayshotTime
 -(void) createRobertShot :(CGPoint)x :(CGPoint)v :(float) delayShot
 {
+    Level_0First * lv = self; // test self block
     _robertShot = [CCBReader load:@"robertShotStable"];
     _robertShot.anchorPoint = ccp(0.5, 0.5);
     _robertShot.position = x;
@@ -236,7 +237,7 @@
     [self scheduleBlock:^(CCTimer *timer) {
         _robertShotPre = [CCBReader load:@"robertShot"];
         _robertShotPre.position = x;
-        [self addChild:_robertShotPre];
+        [lv addChild:_robertShotPre];
         
         [self scheduleBlock:^(CCTimer *timer) {
                 [_robertShot.physicsBody applyForce:v];
@@ -406,8 +407,8 @@
         _returnTouch = nil;
         self.userInteractionEnabled = NO;
 
-                [[OALSimpleAudio sharedInstance] stopAllEffects];
-                [[OALSimpleAudio sharedInstance] playEffect:@"d4.mp3" volume:0.5 pitch:1.0f pan:0.0f loop:YES];
+     //           [[OALSimpleAudio sharedInstance] stopAllEffects];
+     //           [[OALSimpleAudio sharedInstance] playEffect:@"d4.mp3" volume:0.5 pitch:1.0f pan:0.0f loop:YES];
                 
             
         [self.delegate touchToPaused:dialogOne];
@@ -424,12 +425,13 @@
         [[NSUserDefaults standardUserDefaults]setInteger:10 forKey:@"DialogInt"];
             [[NSUserDefaults standardUserDefaults]synchronize];
         _returnTouch = nil;
-
+            
+            Level_0First * lv = self; // test self block
         [self.delegate touchToPaused:dialogTwo];
             dialogTwo = YES;
             [self scheduleBlock:^(CCTimer *timer) {
                 dialogTouchOne = YES;
-                self.userInteractionEnabled = YES;
+                lv.userInteractionEnabled = YES;
             } delay:0.5f]; //set delay for touch remove dialog
             tutorialStep = tutorialStep+1;
 
@@ -458,9 +460,10 @@
             self.userInteractionEnabled = NO;
             [self.delegate touchToPaused:dialogTwo];;
             dialogFour = YES;
+            Level_0First * lv = self; // test self block
             [self scheduleBlock:^(CCTimer *timer) {
                 dialogTouchOne = YES;
-                self.userInteractionEnabled = YES;
+                lv.userInteractionEnabled = YES;
             } delay:0.5f]; //set delay for touch remove dialog
             tutorialStep = tutorialStep+1;
 
@@ -707,7 +710,8 @@
                 /* CCNode * sand = [CCBReader load:@"Sand"];
                  sand.position = ccp(_player.position.x-20,_player.position.y);
                  [self addChild:sand];*/
-                [[OALSimpleAudio sharedInstance] playEffect:@"sabersMusic.mp3"];            }
+     //           [[OALSimpleAudio sharedInstance] playEffect:@"sabersMusic.mp3"];
+            }
                 break;
             }
             case 1:
@@ -729,7 +733,7 @@
                 /* CCNode * sand = [CCBReader load:@"Sand"];
                  sand.position = ccp(_player.position.x-20,_player.position.y);
                  [self addChild:sand];*/
-                [[OALSimpleAudio sharedInstance] playEffect:@"lancerSMusic.mp3" volume:1 pitch:1.0f pan:0.0f loop:NO];
+      //          [[OALSimpleAudio sharedInstance] playEffect:@"lancerSMusic.mp3" volume:1 pitch:1.0f pan:0.0f loop:NO];
                 break;
             }
             case 2:
@@ -739,7 +743,7 @@
                 CCLOG(@"%@",[_player.userObject runningSequenceName]);
                 [self.delegate transMpDecrease:2];
                 [self createArrowShot];
-                    [[OALSimpleAudio sharedInstance] playEffect:@"archerShotMusic"                    volume:1.5 pitch:1.0f pan:0.0f loop:NO];
+    //                [[OALSimpleAudio sharedInstance] playEffect:@"archerShotMusic"                    volume:1.5 pitch:1.0f pan:0.0f loop:NO];
                 }
                 break;
             }
@@ -764,30 +768,31 @@
                 [self.delegate transMpDecrease:9];
                 [_player.physicsBody applyImpulse:ccp(0, 700)];
                 [_player.userObject runAnimationsForSequenceNamed:@"Skill"];
+                Level_0First * lv = self; // test self block
                 [self scheduleBlock:^(CCTimer *timer) {
-                    [self.delegate scrollViewShake];
+                    [lv.delegate scrollViewShake];
                     CCNode * skillBombccp = [CCBReader load:@"skillCCPSaberTwo"];
                     skillBombccp.position = ccp(_player.position.x +140, _player.position.y);
-                    [self addChild:skillBombccp];
+                    [lv addChild:skillBombccp];
                     
                     CCNode * skillBombccpo = [CCBReader load:@"skillCCPSaberTwo"];
                     skillBombccpo.position = ccp(_player.position.x +220, _player.position.y);
-                    [self addChild:skillBombccpo];
+                    [lv addChild:skillBombccpo];
                     
                     CCNode * skillBombccpa = [CCBReader load:@"skillCCPSaberTwo"];
                     skillBombccpa.position = ccp(_player.position.x +300, _player.position.y);
-                    [self addChild:skillBombccpa];
+                    [lv addChild:skillBombccpa];
                     
-                    [self createSkillShot];
+                    [lv createSkillShot];
                     
-                    [self scheduleBlock:^(CCTimer *timer) {
+                    [lv scheduleBlock:^(CCTimer *timer) {
                         [_skillFire.physicsBody applyImpulse:ccp(10000, 0)];
                     } delay:0.3];
                 } delay:1.0f ];
                 [self scheduleBlock:^(CCTimer *timer) {
                     deltaStop = NO;
-                    [[OALSimpleAudio sharedInstance]playEffect:@"exp.mp3" volume:5 pitch:1.0f pan:0.0f loop:NO];
-                    [self scheduleBlock:^(CCTimer *timer) {
+    //                [[OALSimpleAudio sharedInstance]playEffect:@"exp.mp3" volume:5 pitch:1.0f pan:0.0f loop:NO];
+                    [lv scheduleBlock:^(CCTimer *timer) {
                         _skillBG.visible = NO;
                     } delay:0.8];
                     
@@ -806,20 +811,21 @@
                 [self.delegate transMpDecrease:9];
                 [_player.physicsBody applyImpulse:ccp(0, 700)];
                 [_player.userObject runAnimationsForSequenceNamed:@"Skill"];
+                Level_0First * lv = self;
                 [self scheduleBlock:^(CCTimer *timer) {
-                    [[OALSimpleAudio sharedInstance]playEffect:@"lancerSkMusic.mp3"];
+  //                  [[OALSimpleAudio sharedInstance]playEffect:@"lancerSkMusic.mp3"];
 
-                    [self createSkillShot];
+                    [lv createSkillShot];
                     
-                    [self scheduleBlock:^(CCTimer *timer) {
-                        [[OALSimpleAudio sharedInstance]playEffect:@"exp.mp3" volume:5 pitch:1.0f pan:0.0f loop:NO];
-                        [self.delegate scrollViewShake];
+                    [lv scheduleBlock:^(CCTimer *timer) {
+   //                     [[OALSimpleAudio sharedInstance]playEffect:@"exp.mp3" volume:5 pitch:1.0f pan:0.0f loop:NO];
+                        [lv.delegate scrollViewShake];
                       
                     } delay:1.0f];
                 } delay:1.0f ];
                 [self scheduleBlock:^(CCTimer *timer) {
                     deltaStop = NO;
-                    [self scheduleBlock:^(CCTimer *timer) {
+                    [lv scheduleBlock:^(CCTimer *timer) {
                         _skillBG.visible = NO;
                     } delay:0.2f];
                     
@@ -838,6 +844,7 @@
                 [self.delegate transMpDecrease:9];
                 //[_player.physicsBody applyImpulse:ccp(0, 700)];
                 [_player.userObject runAnimationsForSequenceNamed:@"Skill"];
+                Level_0First * lv = self;
                 [self scheduleBlock:^(CCTimer *timer) {
                  /*   [self.delegate scrollViewShake];
                     CCNode * skillBombccp = [CCBReader load:@"skillCCPSaberTwo"];
@@ -852,13 +859,13 @@
                     skillBombccpa.position = ccp(_player.position.x +300, _player.position.y);
                     [self addChild:skillBombccpa];
                    */
-                    [[OALSimpleAudio sharedInstance]playEffect:@"archerSKM.mp3"];
-                    [self createSkillShot];
+     //               [[OALSimpleAudio sharedInstance]playEffect:@"archerSKM.mp3"];
+                    [lv createSkillShot];
                     
                 } delay:1.0f ];
                 [self scheduleBlock:^(CCTimer *timer) {
                     deltaStop = NO;
-                    [self scheduleBlock:^(CCTimer *timer) {
+                    [lv scheduleBlock:^(CCTimer *timer) {
                         _skillBG.visible = NO;
                     } delay:0.8];
                     
@@ -1029,6 +1036,17 @@
 {
     CCLOG(@"player & kake ignore!");
     return [pair ignore];
+}
+
+-(void)onExit {
+    [self stopAllActions];
+    [_enemies removeAllObjects];
+    [self unscheduleAllSelectors];
+    
+    [self removeAllChildrenWithCleanup:YES];
+    //   [[OALSimpleAudio sharedInstance]stopEverything];
+    CCLOG(@"Onexit");
+    [super onExit];
 }
 @end
 
