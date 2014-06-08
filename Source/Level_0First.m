@@ -22,7 +22,8 @@
 
 -(void) didLoadFromCCB
 {
-    //[[OALSimpleAudio sharedInstance] playEffect:@"street1.mp3" loop:YES];
+   // [[OALSimpleAudio sharedInstance] playEffect:@"street1.mp3" loop:YES];
+    oal = [OALSimpleAudio sharedInstance];
 
     self.userInteractionEnabled = TRUE;
     
@@ -404,11 +405,10 @@
     if (_player.position.x > 0) {
         if (!dialogOne) {
 
-        _returnTouch = nil;
         self.userInteractionEnabled = NO;
 
-     //           [[OALSimpleAudio sharedInstance] stopAllEffects];
-     //           [[OALSimpleAudio sharedInstance] playEffect:@"d4.mp3" volume:0.5 pitch:1.0f pan:0.0f loop:YES];
+            [oal stopAllEffects];
+                [oal playEffect:@"d4.caf" volume:0.5 pitch:1.0f pan:0.0f loop:YES];
                 
             
         [self.delegate touchToPaused:dialogOne];
@@ -424,7 +424,6 @@
 
         [[NSUserDefaults standardUserDefaults]setInteger:10 forKey:@"DialogInt"];
             [[NSUserDefaults standardUserDefaults]synchronize];
-        _returnTouch = nil;
             
             Level_0First * lv = self; // test self block
         [self.delegate touchToPaused:dialogTwo];
@@ -456,7 +455,6 @@
             
             [[NSUserDefaults standardUserDefaults]setInteger:12 forKey:@"DialogInt"];
             [[NSUserDefaults standardUserDefaults]synchronize];
-            _returnTouch = nil;
             self.userInteractionEnabled = NO;
             [self.delegate touchToPaused:dialogTwo];;
             dialogFour = YES;
@@ -477,7 +475,6 @@
                 //remove robertshot!
                 [[NSUserDefaults standardUserDefaults]setInteger:14 forKey:@"DialogInt"];
                 [[NSUserDefaults standardUserDefaults]synchronize];
-                _returnTouch = nil;
                 self.userInteractionEnabled = NO;
                 [self.delegate touchToPaused:dialogThree];
                 dialogThree = NO;
@@ -496,7 +493,6 @@
             //remove robertshot!
             [[NSUserDefaults standardUserDefaults]setInteger:14 forKey:@"DialogInt"];
             [[NSUserDefaults standardUserDefaults]synchronize];
-            _returnTouch = nil;
             self.userInteractionEnabled = NO;
             [self.delegate touchToPaused:dialogThree];
             dialogThree = NO;
@@ -655,7 +651,6 @@
 -(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     
-    _returnTouch  = touch;
     int dia = [[NSUserDefaults standardUserDefaults]integerForKey:@"DialogInt"];
     CCLOG(@"dialog int = %d",dia);
     CCLOG(@"levelscenepause = %hhd",[self.delegate getPaused]);
@@ -710,7 +705,7 @@
                 /* CCNode * sand = [CCBReader load:@"Sand"];
                  sand.position = ccp(_player.position.x-20,_player.position.y);
                  [self addChild:sand];*/
-     //           [[OALSimpleAudio sharedInstance] playEffect:@"sabersMusic.mp3"];
+                [oal playEffect:@"sabersMusic.mp3"];
             }
                 break;
             }
@@ -733,7 +728,7 @@
                 /* CCNode * sand = [CCBReader load:@"Sand"];
                  sand.position = ccp(_player.position.x-20,_player.position.y);
                  [self addChild:sand];*/
-      //          [[OALSimpleAudio sharedInstance] playEffect:@"lancerSMusic.mp3" volume:1 pitch:1.0f pan:0.0f loop:NO];
+                [oal playEffect:@"lancerSMusic.caf" volume:1 pitch:1.0f pan:0.0f loop:NO];
                 break;
             }
             case 2:
@@ -743,7 +738,7 @@
                 CCLOG(@"%@",[_player.userObject runningSequenceName]);
                 [self.delegate transMpDecrease:2];
                 [self createArrowShot];
-    //                [[OALSimpleAudio sharedInstance] playEffect:@"archerShotMusic"                    volume:1.5 pitch:1.0f pan:0.0f loop:NO];
+                    [oal playEffect:@"archerShotMusic"                    volume:1.5 pitch:1.0f pan:0.0f loop:NO];
                 }
                 break;
             }
@@ -791,7 +786,7 @@
                 } delay:1.0f ];
                 [self scheduleBlock:^(CCTimer *timer) {
                     deltaStop = NO;
-    //                [[OALSimpleAudio sharedInstance]playEffect:@"exp.mp3" volume:5 pitch:1.0f pan:0.0f loop:NO];
+                    [oal playEffect:@"exp.caf" volume:5 pitch:1.0f pan:0.0f loop:NO];
                     [lv scheduleBlock:^(CCTimer *timer) {
                         _skillBG.visible = NO;
                     } delay:0.8];
@@ -813,12 +808,12 @@
                 [_player.userObject runAnimationsForSequenceNamed:@"Skill"];
                 Level_0First * lv = self;
                 [self scheduleBlock:^(CCTimer *timer) {
-  //                  [[OALSimpleAudio sharedInstance]playEffect:@"lancerSkMusic.mp3"];
+                    [oal playEffect:@"lancerSkMusic.caf"];
 
                     [lv createSkillShot];
                     
                     [lv scheduleBlock:^(CCTimer *timer) {
-   //                     [[OALSimpleAudio sharedInstance]playEffect:@"exp.mp3" volume:5 pitch:1.0f pan:0.0f loop:NO];
+                        [oal playEffect:@"exp.caf" volume:5 pitch:1.0f pan:0.0f loop:NO];
                         [lv.delegate scrollViewShake];
                       
                     } delay:1.0f];
@@ -859,7 +854,7 @@
                     skillBombccpa.position = ccp(_player.position.x +300, _player.position.y);
                     [self addChild:skillBombccpa];
                    */
-     //               [[OALSimpleAudio sharedInstance]playEffect:@"archerSKM.mp3"];
+                    [oal playEffect:@"archerSKM.caf"];
                     [lv createSkillShot];
                     
                 } delay:1.0f ];
@@ -1039,12 +1034,14 @@
 }
 
 -(void)onExit {
+    [oal stopAllEffects];
+    [oal unloadAllEffects];
     [self stopAllActions];
     [_enemies removeAllObjects];
     [self unscheduleAllSelectors];
     
     [self removeAllChildrenWithCleanup:YES];
-    //   [[OALSimpleAudio sharedInstance]stopEverything];
+    
     CCLOG(@"Onexit");
     [super onExit];
 }

@@ -18,6 +18,7 @@
     CCButton * _right;
     CCButton * _rightUp;
     CCButton * _blockButton; */
+       OALSimpleAudio * oal;
 }
 @property (nonatomic,weak) id <MainMenuLayerDelegate> delegate;
 @property (nonatomic,weak) CCButton * left;

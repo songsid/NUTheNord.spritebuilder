@@ -28,6 +28,7 @@
     SpriteSaber * spriteSupLain;
     
     CCButton * _block;
+        OALSimpleAudio * oal;
     BOOL spriteOn;
     BOOL supOn;
     BOOL addInfo;

@@ -36,7 +36,7 @@
     CCNode * _dialog;
     PauseSetting * pausedS;
     int count;
-    
+        OALSimpleAudio * oal;
     
     CCNode * _mcBG1_1;
     CCNode * _mcBG1_2;
@@ -46,6 +46,8 @@
     CCNode * _mcBG3_2;
     CCNode * _mcBG4_1;
     CCNode * _mcBG4_2;
+    
+    CCNode * _skillOk;
     NSArray * _BG1;
     NSArray * _BG2;
     NSArray * _BG3;

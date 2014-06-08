@@ -32,6 +32,7 @@
     CCButton * _isLevel_0First;
     CCButton * _isLevel_1MC;
     LeagueInfo * leagueInfo;
+    OALSimpleAudio *oal;
  //   int slide;
 }
 
@@ -43,7 +44,6 @@
 //@property (nonatomic) int tableInt;
 //@property (nonatomic,strong) CCTableView* tableView ;
 @property (nonatomic) BOOL blockButton;
-@property (nonatomic,strong) CCNode * sendLevel;
 @end
 
 

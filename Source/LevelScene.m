@@ -12,6 +12,9 @@
 
 -(void) didLoadFromCCB
 {
+     oal = [OALSimpleAudio sharedInstance];
+    _skillOk.visible = NO;
+    _skillOne.zOrder = _skillOne.zOrder +1;
     _levelSceneScrollView.verticalScrollEnabled= NO;
     _levelSceneScrollView.horizontalScrollEnabled = NO;
     _levelSceneScrollView.bounces = NO;
@@ -73,7 +76,15 @@
 
 -(void) update:(CCTime)delta
 {
-  
+    if ([self getMp]>=9) {
+        _skillOk.visible = YES;
+        _skillOne.label.fontColor = [CCColor colorWithWhite:0.0 alpha:1];
+    }else {
+        _skillOk.visible = NO;
+        _skillOne.label.fontColor = [CCColor colorWithWhite:1.0 alpha:1];
+    }
+    
+    
     count = count +delta*100;
     if (count%5 ==0) {
         CCLOG(@"levelSceneScrollView.paused = %hhd",_levelSceneScrollView.paused);
@@ -405,6 +416,9 @@
     
 }
 -(void)onExit {
+    [oal stopEverything];
+    [oal stopAllEffects];
+    [oal unloadAllEffects];
     [self stopAllActions];
     [self unscheduleAllSelectors];
 

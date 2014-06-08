@@ -53,7 +53,7 @@
     CCNode * _bRobert;
     CCNode * _skillFire;
     //NSMutableArray * _enemies;
-
+        OALSimpleAudio * oal;
     CCNode * _skillBG;
     BOOL deltaStop;
     float mpDistance;
@@ -75,9 +75,8 @@
     CGPoint stJump;
     BOOL mouseExisted;
 }
+
 @property (nonatomic,weak) id <Level_FirstDelegate> delegate;
-@property(nonatomic,readwrite) UIGestureRecognizerState state;
-@property (nonatomic,weak) UITouch * returnTouch;
 @property (nonatomic,assign) float yTarget;
 @property (nonatomic,assign) float ySpeed;
 @property (nonatomic,assign) CGPoint playerY;

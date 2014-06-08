@@ -22,8 +22,9 @@
     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"Spirit"];
     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"Sup"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-//     [[OALSimpleAudio sharedInstance] stopAllEffects];
- //   [[OALSimpleAudio sharedInstance] playEffect:@"firstTimeMusic.mp3" loop:YES];
+    oal = [OALSimpleAudio sharedInstance];
+    [oal stopAllEffects];
+    [oal playEffect:@"firstTimeMusic.caf" loop:YES];
 /*
     _talk.anchorPoint = ccp(0.5, 0.5);
     _talk.position = ccp(240, 160);
@@ -101,8 +102,8 @@
     [self stopAllActions];
     [self unscheduleAllSelectors];
     [self removeAllChildrenWithCleanup:YES];
-//    [[OALSimpleAudio sharedInstance] stopAllEffects];
-//    [[OALSimpleAudio sharedInstance]unloadAllEffects];
+    [oal stopAllEffects];
+    [oal unloadAllEffects];
     CCLOG(@"Onexit");
     [super onExit];
 }

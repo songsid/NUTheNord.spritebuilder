@@ -86,11 +86,9 @@
     
     int vinaSing;
     CGPoint stJump;
-    
+        OALSimpleAudio * oal;
 }
 @property (nonatomic,weak) id<Level_1MCDelegate> delegate;
-@property(nonatomic,readwrite) UIGestureRecognizerState state;
-@property (nonatomic,weak) UITouch * returnTouch;
 @property (nonatomic,assign) float yTarget;
 @property (nonatomic,assign) float ySpeed;
 @property (nonatomic,assign) CGPoint playerY;

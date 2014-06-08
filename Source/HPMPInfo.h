@@ -17,7 +17,6 @@
     CCNode * _bg;
     CCLabelTTF * MPNum;
 }
-@property (nonatomic,strong) CCNode * currentLevel;
 @property (nonatomic) int HP;
 @property (nonatomic) int MP;
 -(void) hpDecrease :(int) damage;

@@ -33,8 +33,9 @@
 
 -(void) rebuildMainScene{
     CCLOG(@"Do something here");
-    
-    // Configure Cocos2d with the options set in SpriteBuilder
+    [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"Rebuild"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+        // Configure Cocos2d with the options set in SpriteBuilder
     NSString* configPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Published-iOS"]; // TODO: add support for Published-Android support
     configPath = [configPath stringByAppendingPathComponent:@"configCocos2d.plist"];
     

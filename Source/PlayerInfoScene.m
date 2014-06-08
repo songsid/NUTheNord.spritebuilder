@@ -85,8 +85,9 @@
     [self addChild:spriteSupVa];
     [self.arraySup addObject:spriteSupVa];
     //
- //   [[OALSimpleAudio sharedInstance] stopAllEffects];
- //   [[OALSimpleAudio sharedInstance] playEffect:@"spiritMusic.mp3" loop:YES];
+    oal = [OALSimpleAudio sharedInstance];
+    [oal stopAllEffects];
+    [oal playEffect:@"spiritMusic.caf" loop:YES];
 
     
     ///set Action
@@ -101,12 +102,15 @@
 }
 -(void) popPlayerInfoScene:(id)sender
 {
+   /*
     AppController *appDelegate = (AppController *)[[UIApplication sharedApplication] delegate];
     [appDelegate performSelector:@selector(rebuildMainScene) withObject:nil afterDelay:0.2];
-    
+    */
+    [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"Rebuild"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
     _block.visible = YES;
     CCTransition * trans = [CCTransition transitionFadeWithDuration:0.2f];
-    [[CCDirector sharedDirector]popSceneWithTransition:trans];
+    [[CCDirector sharedDirector]replaceScene:[CCBReader loadAsScene:@"MainScene"] withTransition:trans];
  //   CCScene * sce = [CCBReader loadAsScene:@"MainScene"];
  //   [[CCDirector sharedDirector]runWithScene:sce];
   //  [[OALSimpleAudio sharedInstance] stopAllEffects];
@@ -371,11 +375,13 @@
     //important can't delet
 }
 -(void)onExit {
+    [oal  stopEverything];
+    [oal stopAllEffects];
+    [oal unloadAllEffects];
     [self stopAllActions];
     [self unscheduleAllSelectors];
     [self removeAllChildrenWithCleanup:YES];
-    [[OALSimpleAudio sharedInstance]stopAllEffects];
-    [[OALSimpleAudio sharedInstance]unloadAllEffects];
+
  //   [[OALSimpleAudio sharedInstance] stopAllEffects];
   //  [[OALSimpleAudio sharedInstance]unloadAllEffects];
     CCLOG(@"Onexit");

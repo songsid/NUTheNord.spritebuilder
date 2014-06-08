@@ -35,7 +35,8 @@
 -(void) didLoadFromCCB
 {
     self.userInteractionEnabled = TRUE;
- //   [[OALSimpleAudio sharedInstance] stopAllEffects];
+    oal = [OALSimpleAudio sharedInstance];
+    [oal stopAllEffects];
     _physicsNode.collisionDelegate = self; //set collisionDelegate
     mpDistance = 0.0f;
     bRHP = 0;
@@ -336,7 +337,7 @@
         _layer1k.position = ccp(1000, 0);
         [self addChild:_layer1k z:-1];
         setLayer = 1;
-    //    [[OALSimpleAudio sharedInstance]playEffect:@"MCMusic.mp3" volume:0.5f pitch:1.0 pan:0.0 loop:YES];
+       [oal playEffect:@"MCMusic.caf" volume:0.5f pitch:1.0 pan:0.0 loop:YES];
     }
     if (setLayer == 1 && selfAnchorPosition >1000) { //2k
         _layer2k = [CCBReader load:@"Level_1MC_2"];
@@ -616,7 +617,6 @@
 -(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     
-    _returnTouch  = touch;
     int dia = [[NSUserDefaults standardUserDefaults]integerForKey:@"DialogInt"];
     CCLOG(@"dialog int = %d",dia);
     CCLOG(@"levelscenepause = %hhd",[self.delegate getPaused]);
@@ -670,7 +670,7 @@
                     /* CCNode * sand = [CCBReader load:@"Sand"];
                      sand.position = ccp(_player.position.x-20,_player.position.y);
                      [self addChild:sand];*/
-        //            [[OALSimpleAudio sharedInstance] playEffect:@"sabersMusic.mp3"];
+                    [oal playEffect:@"sabersMusic.caf"];
                 }
                 break;
             }
@@ -695,7 +695,7 @@
                 /* CCNode * sand = [CCBReader load:@"Sand"];
                  sand.position = ccp(_player.position.x-20,_player.position.y);
                  [self addChild:sand];*/
-       //             [[OALSimpleAudio sharedInstance] playEffect:@"lancerSMusic.mp3"];
+                    [oal playEffect:@"lancerSMusic.caf"];
                 }
                 break;
             }
@@ -706,7 +706,7 @@
                     CCLOG(@"%@",[_player.userObject runningSequenceName]);
                     [self.delegate transMpDecrease:2];
                     [self createArrowShot];
-     //                   [[OALSimpleAudio sharedInstance] playEffect:@"archerShotMusic"                    volume:1.5 pitch:1.0f pan:0.0f loop:NO];
+                        [oal playEffect:@"archerShotMusic"                    volume:1.5 pitch:1.0f pan:0.0f loop:NO];
                 }
                 break;
             }
@@ -747,12 +747,13 @@
                     [self createSkillShot];
                     
                     [self scheduleBlock:^(CCTimer *timer) {
-                        [_skillFire.physicsBody applyImpulse:ccp(10000, 0)];
+                        
+                        if (_skillFire.parent) {[_skillFire.physicsBody applyImpulse:ccp(10000, 0)];}
                     } delay:0.3];
                 } delay:1.0f ];
                 [self scheduleBlock:^(CCTimer *timer) {
                     deltaStop = NO;
-    //                [[OALSimpleAudio sharedInstance]playEffect:@"exp.mp3" volume:5 pitch:1.0f pan:0.0f loop:NO];;
+                    [oal playEffect:@"exp.caf" volume:5 pitch:1.0f pan:0.0f loop:NO];;
                     [self scheduleBlock:^(CCTimer *timer) {
                         _skillBG.visible = NO;
                     } delay:0.8];
@@ -773,12 +774,12 @@
                 [_player.physicsBody applyImpulse:ccp(0, 700)];
                 [_player.userObject runAnimationsForSequenceNamed:@"Skill"];
                 [self scheduleBlock:^(CCTimer *timer) {
-    //                [[OALSimpleAudio sharedInstance]playEffect:@"lancerSkMusic.mp3"];
+                    [oal playEffect:@"lancerSkMusic.caf"];
                     
                     [self createSkillShot];
                     
                     [self scheduleBlock:^(CCTimer *timer) {
-    //                [[OALSimpleAudio sharedInstance]playEffect:@"exp.mp3" volume:5 pitch:1.0f pan:0.0f loop:NO];
+                    [oal playEffect:@"exp.caf" volume:5 pitch:1.0f pan:0.0f loop:NO];
                         [self.delegate scrollViewShake];
                         
                     } delay:1.0f];
@@ -806,7 +807,7 @@
                 [_player.userObject runAnimationsForSequenceNamed:@"Skill"];
                 [self scheduleBlock:^(CCTimer *timer) {
 
- //                   [[OALSimpleAudio sharedInstance]playEffect:@"archerSKM.mp3"];
+                    [oal playEffect:@"archerSKM.caf"];
                     [self createSkillShot];
                     
                 } delay:1.0f ];
@@ -885,7 +886,7 @@
 -(void)ccPhysicsCollisionSeparate:(CCPhysicsCollisionPair *)pair slFire:(CCNode *)nodeA Stone:(CCNode *)nodeB
 {
     if (bRHP<2) {
-        if (nodeB.parent) [nodeB.physicsBody applyImpulse:ccp(500 , 200)];
+        //if (nodeB.parent) [nodeB.physicsBody applyImpulse:ccp(500 , 200)];
     }
     if (bRHP == 2) {
         [nodeB removeFromParent];
@@ -922,6 +923,9 @@
 }
 
 -(void)onExit {
+    [oal stopEverything];
+    [oal stopAllEffects];
+    [oal unloadAllEffects];
     [self stopAllActions];
     [_arrayEnemyBat removeAllObjects];
     [_arrayEnemyPig removeAllObjects];
@@ -930,7 +934,7 @@
     [self unscheduleAllSelectors];
     
     [self removeAllChildrenWithCleanup:YES];
-    //   [[OALSimpleAudio sharedInstance]stopEverything];
+    //
     CCLOG(@"Onexit");
     [super onExit];
 }

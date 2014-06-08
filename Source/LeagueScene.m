@@ -7,10 +7,12 @@
 //
 
 #import "LeagueScene.h"
-
+#import "AppDelegate.h"
 @implementation LeagueScene
 -(void) didLoadFromCCB
 {
+    _enterFire.visible = NO;
+    _enter.zOrder = _enterFire.zOrder +1;
     blockPop = NO;
     _block.visible = NO;
     _block.zOrder = 10;
@@ -29,6 +31,8 @@
     _cancel.zOrder = 100;
     _enter.zOrder = 100;
     //
+    oal = [OALSimpleAudio sharedInstance];
+
     
     
 }
@@ -38,17 +42,22 @@
     if (!blockPop) {
         blockPop = YES;
         [[OALSimpleAudio sharedInstance]unloadAllEffects];
+        
+         AppController *appDelegate = (AppController *)[[UIApplication sharedApplication] delegate];
+         [appDelegate performSelector:@selector(rebuildMainScene) withObject:nil afterDelay:0.2];
+        [[CCDirector sharedDirector] popScene];
+        /*
     CCTransition * trans = [CCTransition transitionFadeWithDuration:0.2];
 //        [[CCDirector sharedDirector]popSceneWithTransition:trans];
     CCLOG(@"popleague!!!!!");
         CCScene * sce = [CCBReader loadAsScene:@"MainScene"];
-        [[CCDirector sharedDirector]replaceScene:sce withTransition:trans];
+        [[CCDirector sharedDirector]replaceScene:sce withTransition:trans];*/
     }
 }
 -(void) pushLevel
 {
-    [[OALSimpleAudio sharedInstance] stopAllEffects];
-    [[OALSimpleAudio sharedInstance]unloadAllEffects];
+    [oal stopAllEffects];
+  //  [[OALSimpleAudio sharedInstance]unloadAllEffects];
    // _level = [CCBReader loadAsScene:@"LevelScene"];
         CCTransition *trans = [CCTransition transitionPushWithDirection:1 duration:0.2f];
         [[CCDirector sharedDirector]replaceScene:[CCBReader loadAsScene:@"LevelScene"] withTransition:trans];
@@ -74,16 +83,19 @@
 {
     if (!showInfo) {
         _block.visible = YES;
+        [oal stopAllEffects];
         [self popLeagueScene];
-        [[OALSimpleAudio sharedInstance] stopAllEffects];
-        [[OALSimpleAudio sharedInstance] playEffect:@"d5.mp3" loop:YES];
+        
+      //  [[OALSimpleAudio sharedInstance] playEffect:@"d5.mp3" loop:YES];
     }else{
         showInfo = NO;
+        _enterFire.visible = NO;
         [self removeChild:leagueInfo cleanup:YES];
     }
 }
 -(void) showLeagueInfo:(CGPoint)x :(int)level
 {
+    _enterFire.visible = YES;
     levelCount = level;
     leagueInfo = (LeagueInfo *)[CCBReader load:@"LeagueInfo"];
     leagueInfo.position = x;
@@ -169,6 +181,8 @@
 
 -(void) onExit
 {
+    [oal stopAllEffects];
+    [oal unloadAllEffects];
     [self stopAllActions];
     
     [self removeAllChildrenWithCleanup:YES];

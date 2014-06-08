@@ -39,8 +39,9 @@
   //  slide = 1;
     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"SelectLevel"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-  //  [[OALSimpleAudio sharedInstance] stopAllEffects];
-  //  [[OALSimpleAudio sharedInstance] playEffect:@"mapMusic.mp3" loop:YES];
+    oal = [OALSimpleAudio sharedInstance];
+    [oal stopAllEffects];
+    [oal playEffect:@"mapMusic.caf" loop:YES];
 }
 /*
 -(void) setTableView:(CCTableView *)tableViewer
@@ -295,7 +296,6 @@
         [self setBlockButton:YES];
 
             [self.delegate pushLevel];
-            CCLOG(@"afterSureIntoLevel : %@",_sendLevel);
 
         
     }
@@ -329,11 +329,12 @@
 }
  */
 -(void)onExit {
+    [oal stopAllEffects];
+    [oal unloadAllEffects];
     [self stopAllActions];
     [self unscheduleAllSelectors];
     [self removeAllChildrenWithCleanup:YES];
-//    [[OALSimpleAudio sharedInstance] stopAllEffects];
-//    [[OALSimpleAudio sharedInstance]unloadAllEffects];
+
     CCLOG(@"Onexit");
     [super onExit];
 }
@@ -395,7 +396,6 @@
 //  31~
 //
 */
--(void) sendLevel:(CCNode *)level
-{}
+
 //
 @end

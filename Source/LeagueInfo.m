@@ -11,9 +11,9 @@
 @implementation LeagueInfo
 -(void) didLoadFromCCB
 {
-    
-  //  [[OALSimpleAudio sharedInstance] stopAllEffects];
-  //  [[OALSimpleAudio sharedInstance] playEffect:@"prepareMusic.mp3" loop:YES];
+    oal = [OALSimpleAudio sharedInstance];
+    [oal stopAllEffects];
+    [oal playEffect:@"prepareMusic.caf" loop:YES];
 
 }
 

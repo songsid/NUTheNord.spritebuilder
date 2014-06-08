@@ -23,7 +23,9 @@
     CCButton * _enter;
     CCButton * _cancel;
     CCButton * _block;
+    CCNode * _enterFire;
     LeagueInfo * leagueInfo;
+    OALSimpleAudio * oal;
     BOOL showInfo;
     int levelCount;
     BOOL blockPop;

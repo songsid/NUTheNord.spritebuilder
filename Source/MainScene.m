@@ -15,6 +15,11 @@
     _mainScrollView.position = ccp(0, 0);
     if ([[UIDevice currentDevice]userInterfaceIdiom] == UIUserInterfaceIdiomPad){ self.scale = 1.07;}
   
+    if ([[NSUserDefaults standardUserDefaults]integerForKey:@"Rebuild"] ==1) {
+        MainMenuLayer * main =  (MainMenuLayer *)[CCBReader load:@"MainMenuLayer"];
+        _mainScrollView.contentNode = main;
+        main.delegate = self;
+    }else{
     if ([[NSUserDefaults standardUserDefaults]boolForKey:@"SeePre"]) {
         FirstTimeIntroLayer * first = (FirstTimeIntroLayer *) [CCBReader load:@"FirstTimeIntroLayer"];
         first.delegate = self;
@@ -24,8 +29,9 @@
             skip.delegate = self;
             _mainScrollView.contentNode = skip;
     }
-    
+    }
     [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"SeePre"];
+    [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"Rebuild"];
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
 -(void) firstTimeEnd

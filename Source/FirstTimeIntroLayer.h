@@ -18,6 +18,7 @@
     int labelCount;
     BOOL lableSwitch;
     BOOL end;
+    OALSimpleAudio *oal;
 }
 
 @property (nonatomic,weak) id <FirstTimeIntroLayer> delegate;

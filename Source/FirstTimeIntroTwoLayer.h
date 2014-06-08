@@ -15,6 +15,7 @@
 @interface FirstTimeIntroTwoLayer : CCNode <DialogDelegate>
 {
     Dialog * diag;
+    OALSimpleAudio *oal;
 }
 @property (nonatomic,weak) id<FirstTimeTwoDelegate> delegate;
 @property (nonatomic,weak) CCSprite * bg;

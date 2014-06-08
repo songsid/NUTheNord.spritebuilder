@@ -12,6 +12,7 @@
 {
     CCLabelTTF * _mission;
     CCLabelTTF * _missionDetail;
+    OALSimpleAudio *oal;
 }
 
 -(void) setMissionString :(NSString *) str;

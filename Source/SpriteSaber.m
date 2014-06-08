@@ -57,7 +57,7 @@
             buttonTime = 0;
             CCLOG(@"call info!");
             [self.delegate playerInfoLayerAdd:self.name];
-   //         [[OALSimpleAudio sharedInstance] playEffect:@"spriteTouch.mp3" loop:NO];
+            //[[OALSimpleAudio sharedInstance] playEffect:@"spriteTouch.mp3" loop:NO];
 
             touchMov = NO;
             touchBeg = NO;
